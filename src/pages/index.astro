@@ -853,12 +853,12 @@ import Layout from '../layouts/Layout.astro';
             ]
           },
         ].map((group, i) => (
-          <div class="flex md:flex-row items-stretch flex-1">
+          <div class="flex flex-col md:flex-row items-stretch flex-1">
             <div class={`flex-1 h-full border ${group.color} rounded-xl p-8 flex flex-col`}>
               <span class={`text-xs font-mono font-bold uppercase tracking-widest ${group.labelColor}`}>{group.stage}</span>
-              <div class="flex-1 flex flex-row md:flex-col gap-4 items-center justify-center mt-4">
+              <div class="flex-1 flex flex-col gap-4 items-center justify-center mt-4">
                 {group.tools.map(tool => (
-                  <a href={tool.url} target="_blank" rel="noopener" class="relative group/tip bg-white rounded-xl px-4 h-14 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200">
+                  <a href={tool.url} target="_blank" rel="noopener" class="relative group/tip bg-white rounded-xl px-4 h-14 w-full flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200">
                     <img src={tool.src} alt={tool.alt} class={tool.cls ?? 'h-8 w-auto object-contain max-w-[120px]'} />
                     <div class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-ink text-cream text-xs rounded-lg px-3 py-2 leading-relaxed opacity-0 group-hover/tip:opacity-100 transition-opacity duration-200 z-10 text-center shadow-lg">
                       {tool.tip}
@@ -869,11 +869,18 @@ import Layout from '../layouts/Layout.astro';
               </div>
             </div>
             {i < 3 && (
-              <div class="hidden md:flex items-center px-2 text-ink/20">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
+              <>
+                <div class="hidden md:flex items-center px-2 text-ink/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+                <div class="flex md:hidden justify-center py-3 text-ink/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12l7 7 7-7" />
+                  </svg>
+                </div>
+              </>
             )}
           </div>
         ))}
