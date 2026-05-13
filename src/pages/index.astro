@@ -351,53 +351,72 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Business Impact -->
+  <!-- Solution / Benefits -->
   <section id="impact" class="py-24 px-6 bg-warm">
     <div class="max-w-6xl mx-auto">
+
+      <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">The Semantic Nexus</div>
+      <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em; max-width: 640px">One <span class="text-brand-600">truth.</span> Every team.<br>Every decision.</h2>
+      <p class="text-lg text-ink/55 mb-12" style="max-width: 560px">We build the data foundation underneath your business. Not another dashboard, but the layer that makes every dashboard, report, and KPI trustworthy.</p>
+
+      <!-- Before / After -->
+      <div class="grid md:grid-cols-2 gap-4 mb-10">
+
+        <div class="bg-cream rounded-xl p-8 border border-ink/10">
+          <div class="flex items-center gap-2 font-mono text-xs text-ink/40 uppercase tracking-wider mb-5">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            Before MAXQ
+          </div>
+          <ul class="flex flex-col gap-0">
+            {['Metrics defined differently across departments', 'Manual exports and reconciliation every month', 'Dashboards that break when someone changes a column', 'No one knows which number is "the real one"', 'Data questions need a developer to answer'].map(item => (
+              <li class="flex gap-3 text-sm text-ink/55 py-2.5 border-b border-ink/8 last:border-0">
+                <span class="text-ink/30 font-bold shrink-0">✗</span>{item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bg-cream rounded-xl p-8 border border-brand-600">
+          <div class="flex items-center gap-2 font-mono text-xs text-brand-600 uppercase tracking-wider mb-5">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            After MAXQ
+          </div>
+          <ul class="flex flex-col gap-0">
+            {['Every metric defined once, visible to everyone', 'Board decks pull automatically, no scramble', 'Bad data caught before it reaches your boardroom', 'Finance, sales, and ops all see the same truth', 'Ask your data questions in plain English via AI'].map(item => (
+              <li class="flex gap-3 text-sm text-ink/70 py-2.5 border-b border-ink/8 last:border-0">
+                <span class="text-brand-600 font-bold shrink-0">✓</span>{item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
       <div class="text-center mb-16">
-        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Business impact</div>
-        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">What it brings to your business</h2>
-        <p class="text-lg text-ink/55 max-w-2xl mx-auto">The Semantic Nexus is designed to remove ambiguity, reduce overhead, and give every team a reliable foundation to make decisions from.</p>
+        <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-ink text-cream font-semibold px-8 py-3.5 rounded-full hover:bg-ink/80 transition-colors text-sm">
+          See what this looks like for your business
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
-      <div class="grid md:grid-cols-3 gap-4">
 
-        <div class="bg-cream rounded-xl p-8 border border-ink/10">
-          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">One truth</div>
-          <h3 class="text-base font-bold text-ink mb-2">Aligned across every team</h3>
-          <p class="text-ink/60 text-sm leading-relaxed">Leadership, finance, and operations all work from the same semantic layer. No more conflicting spreadsheets or disputed numbers — every metric is defined once and used everywhere.</p>
-        </div>
-
-        <div class="bg-cream rounded-xl p-8 border border-ink/10">
-          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">Less overhead</div>
-          <h3 class="text-base font-bold text-ink mb-2">Faster ad-hoc requests</h3>
-          <p class="text-ink/60 text-sm leading-relaxed">Finance and planning managers run their own calculations directly against the semantic model. Your team members spend less time answering one-off questions and more time building what matters.</p>
-        </div>
-
-        <div class="bg-cream rounded-xl p-8 border border-ink/10">
-          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">Full trust</div>
-          <h3 class="text-base font-bold text-ink mb-2">Data you can rely on</h3>
-          <p class="text-ink/60 text-sm leading-relaxed">Automated data entry tests and pipeline freshness monitoring catch issues before they reach decision-makers. Your reports are only as good as the data behind them — so we make sure it stays clean.</p>
-        </div>
-
-        <div class="bg-cream rounded-xl p-8 border border-ink/10">
-          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">Stakeholder ready</div>
-          <h3 class="text-base font-bold text-ink mb-2">KPIs straight to the boardroom</h3>
-          <p class="text-ink/60 text-sm leading-relaxed">After a successful deployment, monthly company KPIs can be shared directly with shareholders and stakeholders through the metrics exchange — no manual exports, no preparation overhead.</p>
-        </div>
-
-        <div class="bg-cream rounded-xl p-8 border border-ink/10">
-          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">Full ownership</div>
-          <h3 class="text-base font-bold text-ink mb-2">Your data, your infrastructure</h3>
-          <p class="text-ink/60 text-sm leading-relaxed">Every repository is version-controlled and owned by the client. No vendor lock-in, no black-box dependencies. You can switch tools or engineers without losing your architecture.</p>
-        </div>
-
-        <div class="bg-cream rounded-xl p-8 border border-ink/10">
-          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">AI native</div>
-          <h3 class="text-base font-bold text-ink mb-2">Natural language on your data</h3>
-          <p class="text-ink/60 text-sm leading-relaxed">With the MCP Server, your semantic layer becomes accessible to AI agents. Leverage your single source of truth for agentic workflows and performance reviews.</p>
-        </div>
-
+      <!-- Numbered benefits -->
+      <div class="border-t border-ink/10">
+        {[
+          { n: '01', h: 'Every metric, defined once', p: 'Every KPI gets its own scorecard with the formula, the source, and the business context. No more debates about what "revenue" means.' },
+          { n: '02', h: 'Bad data caught automatically', p: 'Problems get caught before they reach a decision-maker. Each test has an owner, a direct link to fix the issue at source, and a clear description.' },
+          { n: '03', h: 'See exactly where your data is', p: 'A live view of your full data pipeline: extraction, transformation, delivery. Every stakeholder can see how data flows, which systems are involved, what\'s current, and where bottlenecks sit.' },
+          { n: '04', h: 'Each department gets their own view', p: 'Finance sees margins and cash flow. Sales sees pipeline and unit economics. Operations sees utilisation and capacity. Same data, purpose-built views for the people who need them.' },
+          { n: '05', h: 'Ask your data questions in plain English', p: 'An AI layer connected directly to your data model. Query live data through Claude and other AI systems. No SQL, no waiting for a developer. Your single source of truth, accessible through conversation.' },
+          { n: '06', h: 'KPIs straight to the boardroom', p: 'Monthly company KPIs shared directly with shareholders through an automated metrics exchange. No manual exports, no slide decks cobbled together at midnight. Always current, always consistent.' },
+        ].map(row => (
+          <div class="grid md:grid-cols-[64px_1fr_1.2fr] gap-6 py-10 border-b border-ink/8 last:border-0 items-start">
+            <span class="font-mono text-sm font-medium text-brand-600">{row.n}</span>
+            <h3 class="text-lg font-bold text-ink" style="letter-spacing: -0.01em">{row.h}</h3>
+            <p class="text-sm text-ink/60 leading-relaxed">{row.p}</p>
+          </div>
+        ))}
       </div>
+
     </div>
   </section>
 
