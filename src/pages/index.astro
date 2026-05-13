@@ -141,29 +141,23 @@ import Layout from '../layouts/Layout.astro';
     <p class="text-center text-xs font-mono font-medium text-ink/40 uppercase tracking-widest mb-8">Trusted by</p>
     <div class="marquee-fade-wrapper">
       <div class="flex gap-14 items-center animate-marquee whitespace-nowrap">
-        {[
-          { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/6242c6dc816b4f62d5c56f90_Delta-Safety-Training.png', alt: 'Delta Safety Training', href: 'https://www.deltasafetytraining.nl' },
-          { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/6242c6d49b1ad2fcefbd8d2d_logo-clubcollect%20(1).png', alt: 'Club Collect', href: 'https://www.clubcollect.com', h: 'h-6' },
-          { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/648aec0b84ca07f77700a234_bootman_logo.png', alt: 'Bootman', href: 'https://www.bootman.nl', h: 'h-6' },
-          { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/649150688a5331c19bc40445_ciphix_logo.png', alt: 'Ciphix', href: 'https://www.ciphix.com', h: 'h-6' },
-          { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/64e9b09b165f6871809ceb5e_Freeday-logo.png', alt: 'Freeday', href: 'https://www.freeday.ai' },
-          { src: '/cjob-logo.jpeg', alt: 'C-Job Naval Architects', href: 'https://c-job.com' },
-          { src: '/rebelsai-logo.jpeg', alt: 'RebelsAI', href: 'https://www.rebelsai.nl' },
-          { src: '/twelve-logo.svg', alt: 'Twelve', href: 'https://www.twelve.eu', h: 'h-6' },
-          /* duplicate set for seamless loop */
-          { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/6242c6dc816b4f62d5c56f90_Delta-Safety-Training.png', alt: 'Delta Safety Training', href: 'https://www.deltasafetytraining.nl' },
-          { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/6242c6d49b1ad2fcefbd8d2d_logo-clubcollect%20(1).png', alt: 'Club Collect', href: 'https://www.clubcollect.com', h: 'h-6' },
-          { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/648aec0b84ca07f77700a234_bootman_logo.png', alt: 'Bootman', href: 'https://www.bootman.nl', h: 'h-6' },
-          { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/649150688a5331c19bc40445_ciphix_logo.png', alt: 'Ciphix', href: 'https://www.ciphix.com', h: 'h-6' },
-          { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/64e9b09b165f6871809ceb5e_Freeday-logo.png', alt: 'Freeday', href: 'https://www.freeday.ai' },
-          { src: '/cjob-logo.jpeg', alt: 'C-Job Naval Architects', href: 'https://c-job.com' },
-          { src: '/rebelsai-logo.jpeg', alt: 'RebelsAI', href: 'https://www.rebelsai.nl' },
-          { src: '/twelve-logo.svg', alt: 'Twelve', href: 'https://www.twelve.eu', h: 'h-6' },
-        ].map(logo => (
-          <a href={logo.href} target="_blank" rel="noopener" class="inline-flex items-center shrink-0">
-            <img src={logo.src} alt={logo.alt} class={`${logo.h ?? 'h-7'} w-auto object-contain grayscale opacity-35 hover:grayscale-0 hover:opacity-80 transition-all duration-300`} />
-          </a>
-        ))}
+        {(() => {
+          const logos = [
+            { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/6242c6dc816b4f62d5c56f90_Delta-Safety-Training.png', alt: 'Delta Safety Training', href: 'https://www.deltasafetytraining.nl' },
+            { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/6242c6d49b1ad2fcefbd8d2d_logo-clubcollect%20(1).png', alt: 'Club Collect', href: 'https://www.clubcollect.com', h: 'h-6' },
+            { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/648aec0b84ca07f77700a234_bootman_logo.png', alt: 'Bootman', href: 'https://www.bootman.nl', h: 'h-6' },
+            { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/649150688a5331c19bc40445_ciphix_logo.png', alt: 'Ciphix', href: 'https://www.ciphix.com', h: 'h-6' },
+            { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/64e9b09b165f6871809ceb5e_Freeday-logo.png', alt: 'Freeday', href: 'https://www.freeday.ai' },
+            { src: '/cjob-logo.jpeg', alt: 'C-Job Naval Architects', href: 'https://c-job.com' },
+            { src: '/rebelsai-logo.jpeg', alt: 'RebelsAI', href: 'https://www.rebelsai.nl' },
+            { src: '/twelve-logo.svg', alt: 'Twelve', href: 'https://www.twelve.eu', h: 'h-6' },
+          ];
+          return [...logos, ...logos, ...logos, ...logos].map((logo, i) => (
+            <a href={logo.href} target="_blank" rel="noopener" class="inline-flex items-center shrink-0">
+              <img src={logo.src} alt={logo.alt} class={`${logo.h ?? 'h-7'} w-auto object-contain grayscale opacity-35 hover:grayscale-0 hover:opacity-80 transition-all duration-300`} />
+            </a>
+          ));
+        })()}
       </div>
     </div>
   </section>
