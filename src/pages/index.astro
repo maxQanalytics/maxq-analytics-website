@@ -121,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Client Logo Carousel -->
-  <section class="py-12 bg-cream border-b border-ink/10 overflow-hidden">
+  <section class="py-12 bg-cream overflow-hidden">
     <p class="text-center text-xs font-mono font-medium text-ink/40 uppercase tracking-widest mb-8">Trusted by</p>
     <div class="marquee-fade-wrapper">
       <div class="flex gap-14 items-center animate-marquee whitespace-nowrap">
@@ -779,6 +779,49 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <p class="text-center mt-9 font-mono text-xs text-cream/25 uppercase tracking-wider">Underlying tool costs (warehouse, extraction, BI) billed directly by vendors</p>
+    </div>
+  </section>
+
+  <!-- Common Questions -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Common questions</div>
+        <h2 class="text-4xl font-bold text-ink" style="letter-spacing: -0.02em">Before you <span class="text-brand-600">decide</span></h2>
+      </div>
+
+      <div class="border-t border-ink/15" id="faq">
+        {[
+          {
+            q: '"Isn\'t this just another dashboard tool?"',
+            a: 'No. Dashboards visualise data. The Semantic Nexus is the layer underneath: the foundation that makes every dashboard reliable. We don\'t replace your BI tool. We make it trustworthy.',
+          },
+          {
+            q: '"We tried building this internally. It didn\'t work."',
+            a: "That's exactly why MAXQ exists. Internal builds fail because they lose priority to product work. We've deployed this architecture across different industries. The patterns are proven. The pitfalls are known.",
+          },
+          {
+            q: '"Can\'t we just hire a data engineer?"',
+            a: 'A senior data engineer in the Netherlands costs €115–140K total per year including employer costs. You\'re looking at 3–6 months to hire and onboard. With MAXQ, you get a full data team\'s worth of experience starting at €3K/month, delivering within weeks. And if they leave, you don\'t lose your architecture.',
+          },
+          {
+            q: '"What if we want to switch providers later?"',
+            a: "Everything we build is yours. Every repository is version-controlled and client-owned. No proprietary platform, no black-box dependencies. You can switch tools or engineers without losing a thing.",
+          },
+          {
+            q: '"We\'re not sure we need this level of infrastructure yet."',
+            a: "If you have more than 20 people and your CEO can't answer basic questions about the business without asking three people, you already do. The cost of bad decisions on bad data is always higher than the cost of fixing the data.",
+          },
+        ].map((item, i) => (
+          <details class="group border-b border-ink/10 cursor-pointer">
+            <summary class="flex items-center justify-between py-6 text-base font-bold text-ink list-none" style="letter-spacing: -0.01em">
+              {item.q}
+              <span class="text-brand-600 text-2xl font-light ml-6 shrink-0 transition-transform duration-300 group-open:rotate-45">+</span>
+            </summary>
+            <p class="text-sm text-ink/60 leading-relaxed pb-6">{item.a}</p>
+          </details>
+        ))}
+      </div>
     </div>
   </section>
 
