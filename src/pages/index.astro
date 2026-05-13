@@ -3,6 +3,24 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
+  <!-- Calendly Modal -->
+  <div id="calendlyModal" style="position:fixed;inset:0;background:rgba(10,10,15,0.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease;">
+    <div id="calendlyContainer" style="background:#f5f3f0;border-radius:16px;width:100%;max-width:680px;max-height:90vh;overflow:hidden;transform:translateY(20px) scale(0.97);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);box-shadow:0 24px 80px rgba(0,0,0,0.25);">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(10,10,15,0.08);">
+        <div>
+          <div style="font-size:16px;font-weight:700;letter-spacing:-0.01em;color:#0a0a0f">Schedule a call with Philip</div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:#6b6560;text-transform:uppercase;letter-spacing:0.04em;margin-top:2px">30 min · no pitch deck · just data talk</div>
+        </div>
+        <button id="calendlyClose" aria-label="Close" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(10,10,15,0.12);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div style="height:640px;overflow:hidden;">
+        <iframe id="calendlyFrame" src="about:blank" title="Schedule a call with Philip Boontje" loading="lazy" style="width:100%;height:100%;border:none;"></iframe>
+      </div>
+    </div>
+  </div>
+
   <!-- Nav -->
   <nav class="fixed top-0 w-full z-50 bg-cream/90 backdrop-blur border-b border-ink/10">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -886,4 +904,45 @@ import Layout from '../layouts/Layout.astro';
 
     </div>
   </footer>
+  <script>
+    (function () {
+      const overlay   = document.getElementById('calendlyModal');
+      const container = document.getElementById('calendlyContainer');
+      const frame     = document.getElementById('calendlyFrame');
+      const closeBtn  = document.getElementById('calendlyClose');
+      const CALENDLY  = 'https://calendly.com/philip-boontje?hide_gdpr_banner=1&background_color=f5f3f0&text_color=0a0a0f&primary_color=1a4fff';
+
+      function openModal() {
+        frame.src = CALENDLY;
+        overlay.style.opacity = '1';
+        overlay.style.visibility = 'visible';
+        container.style.transform = 'translateY(0) scale(1)';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+        container.style.transform = 'translateY(20px) scale(0.97)';
+        document.body.style.overflow = '';
+        setTimeout(function () { frame.src = 'about:blank'; }, 300);
+      }
+
+      // Intercept all Calendly links
+      document.querySelectorAll('a[href*="calendly.com"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          openModal();
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.style.visibility === 'visible') closeModal();
+      });
+    })();
+  </script>
 </Layout>
