@@ -154,7 +154,7 @@ import Layout from '../layouts/Layout.astro';
           ];
           return [...logos, ...logos, ...logos, ...logos].map((logo, i) => (
             <a href={logo.href} target="_blank" rel="noopener" class="inline-flex items-center shrink-0">
-              <img src={logo.src} alt={logo.alt} class={`${logo.h ?? 'h-7'} w-auto object-contain grayscale opacity-35 hover:grayscale-0 hover:opacity-80 transition-all duration-300`} />
+              <img src={logo.src} alt={logo.alt} class={`${logo.h ?? 'h-7'} w-auto object-contain grayscale opacity-35 hover:grayscale-0 hover:opacity-80 transition-all duration-300`} style="mix-blend-mode: multiply" />
             </a>
           ));
         })()}
