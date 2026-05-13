@@ -4,19 +4,19 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout>
   <!-- Nav -->
-  <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur border-b border-slate-100">
+  <nav class="fixed top-0 w-full z-50 bg-cream/90 backdrop-blur border-b border-ink/10">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="/" class="flex items-center">
         <img src="/semantic-nexus-logo.svg" alt="Semantic Nexus" class="h-12 w-auto" />
       </a>
-      <div class="hidden md:flex items-center gap-8 text-sm text-slate-600 font-medium">
+      <div class="hidden md:flex items-center gap-8 text-sm text-ink/60 font-medium">
         <a href="#impact" class="hover:text-brand-600 transition-colors">Impact</a>
         <a href="#product-items" class="hover:text-brand-600 transition-colors">Product Items</a>
         <a href="#frameworks" class="hover:text-brand-600 transition-colors">Frameworks</a>
         <a href="#stack" class="hover:text-brand-600 transition-colors">Tech Stack</a>
         <a href="#case-studies" class="hover:text-brand-600 transition-colors">Case Studies</a>
         <a href="#pricing" class="hover:text-brand-600 transition-colors">Pricing</a>
-        <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="bg-brand-600 text-white px-4 py-2 rounded-lg hover:bg-brand-700 transition-colors">
+        <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="bg-ink text-cream px-5 py-2 rounded-full text-sm font-semibold hover:bg-ink/80 transition-colors">
           Contact us
         </a>
       </div>
@@ -24,22 +24,30 @@ import Layout from '../layouts/Layout.astro';
   </nav>
 
   <!-- Hero -->
-  <section class="pt-32 pb-24 px-6 bg-gradient-to-br from-brand-950 via-brand-900 to-brand-700 text-white">
-    <div class="max-w-5xl mx-auto text-center">
-      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+  <section class="pt-32 pb-24 px-6 bg-ink text-cream relative overflow-hidden">
+    <div class="hero-grid-lines" aria-hidden="true">
+      <div class="hero-line-v" style="left: 20%"></div>
+      <div class="hero-line-v" style="left: 40%"></div>
+      <div class="hero-line-v" style="left: 60%"></div>
+      <div class="hero-line-v" style="left: 80%"></div>
+      <div class="hero-line-h" style="top: 33%"></div>
+      <div class="hero-line-h" style="top: 66%"></div>
+    </div>
+    <div class="max-w-5xl mx-auto text-center relative">
+      <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-none" style="letter-spacing: -0.04em">
         Semantic<br /><span class="text-brand-300">Nexus</span>
       </h1>
-      <p class="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
+      <p class="text-xl md:text-2xl text-cream/60 max-w-2xl mx-auto mb-10 leading-relaxed">
         Our flagship data architecture that gives your entire organisation a single source of truth — from raw data to boardroom KPIs.
       </p>
     </div>
   </section>
 
   <!-- Client Logo Carousel -->
-  <section class="py-14 bg-white border-b border-slate-100 overflow-hidden">
-    <p class="text-center text-sm font-medium text-slate-400 uppercase tracking-widest mb-8">Trusted by</p>
-    <div class="relative">
-      <div class="flex gap-16 items-center animate-marquee whitespace-nowrap">
+  <section class="py-12 bg-cream border-b border-ink/10 overflow-hidden">
+    <p class="text-center text-xs font-mono font-medium text-ink/40 uppercase tracking-widest mb-8">Trusted by</p>
+    <div class="marquee-fade-wrapper">
+      <div class="flex gap-14 items-center animate-marquee whitespace-nowrap">
         {[
           { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/6242c6dc816b4f62d5c56f90_Delta-Safety-Training.png', alt: 'Delta Safety Training', href: 'https://www.deltasafetytraining.nl' },
           { src: 'https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/6242c6d49b1ad2fcefbd8d2d_logo-clubcollect%20(1).png', alt: 'Club Collect', href: 'https://www.clubcollect.com', h: 'h-6' },
@@ -60,7 +68,7 @@ import Layout from '../layouts/Layout.astro';
           { src: '/twelve-logo.svg', alt: 'Twelve', href: 'https://www.twelve.eu', h: 'h-6' },
         ].map(logo => (
           <a href={logo.href} target="_blank" rel="noopener" class="inline-flex items-center shrink-0">
-            <img src={logo.src} alt={logo.alt} class={`${logo.h ?? 'h-10'} w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300`} />
+            <img src={logo.src} alt={logo.alt} class={`${logo.h ?? 'h-7'} w-auto object-contain grayscale opacity-35 hover:grayscale-0 hover:opacity-80 transition-all duration-300`} />
           </a>
         ))}
       </div>
@@ -68,21 +76,61 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <style>
+    /* Hero grid lines */
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0.04;
+    }
+    .hero-line-v {
+      position: absolute;
+      width: 1px;
+      top: 0; bottom: 0;
+      background: #8aaaff;
+    }
+    .hero-line-h {
+      position: absolute;
+      height: 1px;
+      left: 0; right: 0;
+      background: #8aaaff;
+    }
+    /* Marquee */
     @keyframes marquee {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
     .animate-marquee {
-      animation: marquee 30s linear infinite;
+      animation: marquee 35s linear infinite;
       width: max-content;
     }
     .animate-marquee:hover {
       animation-play-state: paused;
     }
+    /* Fade edges */
+    .marquee-fade-wrapper { position: relative; }
+    .marquee-fade-wrapper::before,
+    .marquee-fade-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-fade-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, #f5f3f0, transparent);
+    }
+    .marquee-fade-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, #f5f3f0, transparent);
+    }
   </style>
 
   <!-- Stats -->
-  <section class="py-12 px-6 bg-brand-950 text-white">
+  <section class="py-12 px-6 bg-ink text-cream">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
         {[
@@ -92,8 +140,8 @@ import Layout from '../layouts/Layout.astro';
           { value: '25k+', label: 'Analytics API requests / day' },
         ].map(stat => (
           <div class="flex flex-col gap-2">
-            <span class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">{stat.value}</span>
-            <span class="text-sm text-white/50 leading-snug">{stat.label}</span>
+            <span class="text-4xl md:text-5xl font-black text-cream tracking-tight" style="letter-spacing: -0.03em">{stat.value}</span>
+            <span class="text-xs font-mono text-cream/40 leading-snug uppercase tracking-wider">{stat.label}</span>
           </div>
         ))}
       </div>
@@ -101,48 +149,49 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Business Impact -->
-  <section id="impact" class="py-24 px-6 bg-slate-50">
+  <section id="impact" class="py-24 px-6 bg-warm">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-slate-900 mb-4">What it brings to your business</h2>
-        <p class="text-xl text-slate-500 max-w-2xl mx-auto">The Semantic Nexus is designed to remove ambiguity, reduce overhead, and give every team a reliable foundation to make decisions from.</p>
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Business impact</div>
+        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">What it brings to your business</h2>
+        <p class="text-lg text-ink/55 max-w-2xl mx-auto">The Semantic Nexus is designed to remove ambiguity, reduce overhead, and give every team a reliable foundation to make decisions from.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-3 gap-4">
 
-        <div class="bg-white rounded-2xl p-8 border border-slate-200">
-          <div class="text-3xl font-extrabold text-brand-600 mb-3">One truth</div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Aligned across every team</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">Leadership, finance, and operations all work from the same semantic layer. No more conflicting spreadsheets or disputed numbers — every metric is defined once and used everywhere.</p>
+        <div class="bg-cream rounded-xl p-8 border border-ink/10">
+          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">One truth</div>
+          <h3 class="text-base font-bold text-ink mb-2">Aligned across every team</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Leadership, finance, and operations all work from the same semantic layer. No more conflicting spreadsheets or disputed numbers — every metric is defined once and used everywhere.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-8 border border-slate-200">
-          <div class="text-3xl font-extrabold text-brand-600 mb-3">Less overhead</div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Faster ad-hoc requests</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">Finance and planning managers run their own calculations directly against the semantic model. Your team members spend less time answering one-off questions and more time building what matters.</p>
+        <div class="bg-cream rounded-xl p-8 border border-ink/10">
+          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">Less overhead</div>
+          <h3 class="text-base font-bold text-ink mb-2">Faster ad-hoc requests</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Finance and planning managers run their own calculations directly against the semantic model. Your team members spend less time answering one-off questions and more time building what matters.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-8 border border-slate-200">
-          <div class="text-3xl font-extrabold text-brand-600 mb-3">Full trust</div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Data you can rely on</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">Automated data entry tests and pipeline freshness monitoring catch issues before they reach decision-makers. Your reports are only as good as the data behind them — so we make sure it stays clean.</p>
+        <div class="bg-cream rounded-xl p-8 border border-ink/10">
+          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">Full trust</div>
+          <h3 class="text-base font-bold text-ink mb-2">Data you can rely on</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Automated data entry tests and pipeline freshness monitoring catch issues before they reach decision-makers. Your reports are only as good as the data behind them — so we make sure it stays clean.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-8 border border-slate-200">
-          <div class="text-3xl font-extrabold text-brand-600 mb-3">Stakeholder ready</div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">KPIs straight to the boardroom</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">After a successful deployment, monthly company KPIs can be shared directly with shareholders and stakeholders through the metrics exchange — no manual exports, no preparation overhead.</p>
+        <div class="bg-cream rounded-xl p-8 border border-ink/10">
+          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">Stakeholder ready</div>
+          <h3 class="text-base font-bold text-ink mb-2">KPIs straight to the boardroom</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">After a successful deployment, monthly company KPIs can be shared directly with shareholders and stakeholders through the metrics exchange — no manual exports, no preparation overhead.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-8 border border-slate-200">
-          <div class="text-3xl font-extrabold text-brand-600 mb-3">Full ownership</div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Your data, your infrastructure</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">Every repository is version-controlled and owned by the client. No vendor lock-in, no black-box dependencies. You can switch tools or engineers without losing your architecture.</p>
+        <div class="bg-cream rounded-xl p-8 border border-ink/10">
+          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">Full ownership</div>
+          <h3 class="text-base font-bold text-ink mb-2">Your data, your infrastructure</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Every repository is version-controlled and owned by the client. No vendor lock-in, no black-box dependencies. You can switch tools or engineers without losing your architecture.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-8 border border-slate-200">
-          <div class="text-3xl font-extrabold text-brand-600 mb-3">AI native</div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Natural language on your data</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">With the MCP Server, your semantic layer becomes accessible to AI agents. Leverage your single source of truth for agentic workflows and performance reviews.</p>
+        <div class="bg-cream rounded-xl p-8 border border-ink/10">
+          <div class="text-3xl font-black text-brand-600 mb-3" style="letter-spacing: -0.02em">AI native</div>
+          <h3 class="text-base font-bold text-ink mb-2">Natural language on your data</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">With the MCP Server, your semantic layer becomes accessible to AI agents. Leverage your single source of truth for agentic workflows and performance reviews.</p>
         </div>
 
       </div>
@@ -150,80 +199,81 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Product Items -->
-  <section id="product-items" class="py-24 px-6 bg-white">
+  <section id="product-items" class="py-24 px-6 bg-cream">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-slate-900 mb-4">Product items</h2>
-        <p class="text-xl text-slate-500 max-w-2xl mx-auto">Five components that together give your organisation complete visibility into its data — from raw sources to AI-powered querying.</p>
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">What you get</div>
+        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Product items</h2>
+        <p class="text-lg text-ink/55 max-w-2xl mx-auto">Five components that together give your organisation complete visibility into its data — from raw sources to AI-powered querying.</p>
       </div>
 
       <!-- Top row: 3 cards -->
-      <div class="grid md:grid-cols-3 gap-6 mb-6">
+      <div class="grid md:grid-cols-3 gap-4 mb-4">
 
         <!-- Data Model Explorer -->
-        <div class="bg-slate-50 rounded-2xl p-7 flex flex-col">
-          <div class="w-11 h-11 bg-brand-100 text-brand-700 rounded-xl flex items-center justify-center mb-5 shrink-0">
+        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
+          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6M9 8h6M9 16h4" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Data Model Explorer</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-4">A unified, navigable interface that maps your entire data architecture. Source tables are shown post-transformation with aggregations for fast analysis. Each critical metric gets its own dedicated page with a scorecard, numerator/denominator breakdown, and business context provided by the client.</p>
-          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data%20Model%20Explorer" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-800 transition-colors">View in docs →</a>
+          <h3 class="text-base font-bold text-ink mb-2">Data Model Explorer</h3>
+          <p class="text-ink/60 text-sm leading-relaxed mb-4">A unified, navigable interface that maps your entire data architecture. Source tables are shown post-transformation with aggregations for fast analysis. Each critical metric gets its own dedicated page with a scorecard, numerator/denominator breakdown, and business context provided by the client.</p>
+          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data%20Model%20Explorer" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">View in docs →</a>
         </div>
 
         <!-- Data Entry Tests -->
-        <div class="bg-slate-50 rounded-2xl p-7 flex flex-col">
-          <div class="w-11 h-11 bg-brand-100 text-brand-700 rounded-xl flex items-center justify-center mb-5 shrink-0">
+        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
+          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Data Entry Tests</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-4">Automated, client-specific tests that continuously validate data entries and business workflows. Each test is assigned an owner, a deeplink for direct resolution at the source, a context description, and a unique test ID — keeping data quality accountable and easy to communicate across teams.</p>
-          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Entry+Tests" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-800 transition-colors">View in docs →</a>
+          <h3 class="text-base font-bold text-ink mb-2">Data Entry Tests</h3>
+          <p class="text-ink/60 text-sm leading-relaxed mb-4">Automated, client-specific tests that continuously validate data entries and business workflows. Each test is assigned an owner, a deeplink for direct resolution at the source, a context description, and a unique test ID — keeping data quality accountable and easy to communicate across teams.</p>
+          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Entry+Tests" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">View in docs →</a>
         </div>
 
         <!-- Pipeline Freshness -->
-        <div class="bg-slate-50 rounded-2xl p-7 flex flex-col">
-          <div class="w-11 h-11 bg-brand-100 text-brand-700 rounded-xl flex items-center justify-center mb-5 shrink-0">
+        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
+          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Pipeline Freshness</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-4">A live flowchart of your full data pipeline from extraction through transformation to consumption. Every stakeholder can see how data moves across your architecture — which systems are involved, what the current status is, and where bottlenecks occur. Invaluable when planning refactors or expansions.</p>
-          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Freshness" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-800 transition-colors">View in docs →</a>
+          <h3 class="text-base font-bold text-ink mb-2">Pipeline Freshness</h3>
+          <p class="text-ink/60 text-sm leading-relaxed mb-4">A live flowchart of your full data pipeline from extraction through transformation to consumption. Every stakeholder can see how data moves across your architecture — which systems are involved, what the current status is, and where bottlenecks occur. Invaluable when planning refactors or expansions.</p>
+          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Freshness" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">View in docs →</a>
         </div>
 
       </div>
 
       <!-- Bottom row: 2 cards centred -->
-      <div class="grid md:grid-cols-2 gap-6 md:max-w-3xl md:mx-auto">
+      <div class="grid md:grid-cols-2 gap-4 md:max-w-3xl md:mx-auto">
 
         <!-- Domain Reports -->
-        <div class="bg-slate-50 rounded-2xl p-7 flex flex-col">
-          <div class="w-11 h-11 bg-brand-100 text-brand-700 rounded-xl flex items-center justify-center mb-5 shrink-0">
+        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
+          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Domain Reports</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-4">Three purpose-built reporting domains aligned to how companies are structured: <strong>Commerce Atlas</strong> (go-to-market, unit economics), <strong>Finance Atlas</strong> (margins, financial operations), and <strong>Operations Atlas</strong> (utilisation, capacity). Each delivers periodic dashboards and trend analysis tailored to the domain's owners and targets.</p>
-          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Domain+Reports" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-800 transition-colors">View in docs →</a>
+          <h3 class="text-base font-bold text-ink mb-2">Domain Reports</h3>
+          <p class="text-ink/60 text-sm leading-relaxed mb-4">Three purpose-built reporting domains aligned to how companies are structured: <strong>Commerce Atlas</strong> (go-to-market, unit economics), <strong>Finance Atlas</strong> (margins, financial operations), and <strong>Operations Atlas</strong> (utilisation, capacity). Each delivers periodic dashboards and trend analysis tailored to the domain's owners and targets.</p>
+          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Domain+Reports" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">View in docs →</a>
         </div>
 
         <!-- MCP Server -->
-        <div class="bg-slate-50 rounded-2xl p-7 flex flex-col">
-          <div class="w-11 h-11 bg-brand-100 text-brand-700 rounded-xl flex items-center justify-center mb-5 shrink-0">
+        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
+          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">MCP Server</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-4">A Model Context Protocol server that connects your semantic layer directly to AI agents and large language models. Query your live data model in natural language through Claude and other AI systems — bridging structured analytics with conversational intelligence without leaving your existing data infrastructure.</p>
-          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-800 transition-colors">View in docs →</a>
+          <h3 class="text-base font-bold text-ink mb-2">MCP Server</h3>
+          <p class="text-ink/60 text-sm leading-relaxed mb-4">A Model Context Protocol server that connects your semantic layer directly to AI agents and large language models. Query your live data model in natural language through Claude and other AI systems — bridging structured analytics with conversational intelligence without leaving your existing data infrastructure.</p>
+          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">View in docs →</a>
         </div>
 
       </div>
@@ -231,32 +281,33 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Frameworks -->
-  <section id="frameworks" class="py-24 px-6 bg-brand-950 text-white">
+  <section id="frameworks" class="py-24 px-6 bg-ink text-cream">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-4">Three core frameworks</h2>
-        <p class="text-xl text-white/60 max-w-2xl mx-auto">The Semantic Nexus is underpinned by three frameworks that cover architecture, performance tracking, and security.</p>
+        <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-4">Frameworks</div>
+        <h2 class="text-4xl font-bold mb-4" style="letter-spacing: -0.02em">Three core frameworks</h2>
+        <p class="text-lg text-cream/55 max-w-2xl mx-auto">The Semantic Nexus is underpinned by three frameworks that cover architecture, performance tracking, and security.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-3 gap-4">
 
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col">
-          <div class="text-brand-300 text-sm font-semibold uppercase tracking-wider mb-3">SDA</div>
-          <h3 class="text-xl font-bold mb-3">Standardised Data Architecture</h3>
-          <p class="text-white/60 leading-relaxed text-sm mb-5">Best practices for building a data pipeline and data model that is robust, flexible, and low cost — refined over years of real client work.</p>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-8 flex flex-col">
+          <div class="text-brand-300 text-xs font-mono font-semibold uppercase tracking-widest mb-3">SDA</div>
+          <h3 class="text-lg font-bold mb-3">Standardised Data Architecture</h3>
+          <p class="text-cream/55 leading-relaxed text-sm mb-5">Best practices for building a data pipeline and data model that is robust, flexible, and low cost — refined over years of real client work.</p>
           <a href="https://docs.maxqanalytics.io/Design/Frameworks#Standardised%20Data%20Architecture" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-300 hover:text-white transition-colors">View in docs →</a>
         </div>
 
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col">
-          <div class="text-brand-300 text-sm font-semibold uppercase tracking-wider mb-3">IPF</div>
-          <h3 class="text-xl font-bold mb-3">Integrated Performance Framework</h3>
-          <p class="text-white/60 leading-relaxed text-sm mb-5">A systematised way of presenting the data model that strikes the right balance between simplicity and depth for all stakeholders.</p>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-8 flex flex-col">
+          <div class="text-brand-300 text-xs font-mono font-semibold uppercase tracking-widest mb-3">IPF</div>
+          <h3 class="text-lg font-bold mb-3">Integrated Performance Framework</h3>
+          <p class="text-cream/55 leading-relaxed text-sm mb-5">A systematised way of presenting the data model that strikes the right balance between simplicity and depth for all stakeholders.</p>
           <a href="https://docs.maxqanalytics.io/Design/Frameworks#Integrated%20Performance%20Framework" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-300 hover:text-white transition-colors">View in docs →</a>
         </div>
 
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col">
-          <div class="text-brand-300 text-sm font-semibold uppercase tracking-wider mb-3">MSP</div>
-          <h3 class="text-xl font-bold mb-3">Modular Security Protocol</h3>
-          <p class="text-white/60 leading-relaxed text-sm mb-5">A structured set of security checks designed for client-side and open-core architectures, where the security environment is inherently more complex.</p>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-8 flex flex-col">
+          <div class="text-brand-300 text-xs font-mono font-semibold uppercase tracking-widest mb-3">MSP</div>
+          <h3 class="text-lg font-bold mb-3">Modular Security Protocol</h3>
+          <p class="text-cream/55 leading-relaxed text-sm mb-5">A structured set of security checks designed for client-side and open-core architectures, where the security environment is inherently more complex.</p>
           <a href="https://docs.maxqanalytics.io/Design/Frameworks#Modular%20Security%20Protocol" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-300 hover:text-white transition-colors">View in docs →</a>
         </div>
 
@@ -265,11 +316,12 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Tech Stack -->
-  <section id="stack" class="py-24 px-6 bg-slate-50">
+  <section id="stack" class="py-24 px-6 bg-cream border-t border-ink/10">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-slate-900 mb-4">Built on best-in-class tooling</h2>
-        <p class="text-xl text-slate-500 max-w-2xl mx-auto">We work with the leading modern data stack tools, keeping clients in full control of their own infrastructure.</p>
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Tech stack</div>
+        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Built on best-in-class tooling</h2>
+        <p class="text-lg text-ink/55 max-w-2xl mx-auto">We work with the leading modern data stack tools, keeping clients in full control of their own infrastructure.</p>
       </div>
 
       <!-- Pipeline stages -->
@@ -318,22 +370,22 @@ import Layout from '../layouts/Layout.astro';
           },
         ].map((group, i) => (
           <div class="flex md:flex-row items-stretch flex-1">
-            <div class={`flex-1 h-full border ${group.color} rounded-2xl p-8 flex flex-col`}>
-              <span class={`text-xs font-bold uppercase tracking-widest ${group.labelColor}`}>{group.stage}</span>
+            <div class={`flex-1 h-full border ${group.color} rounded-xl p-8 flex flex-col`}>
+              <span class={`text-xs font-mono font-bold uppercase tracking-widest ${group.labelColor}`}>{group.stage}</span>
               <div class="flex-1 flex flex-row md:flex-col gap-4 items-center justify-center mt-4">
                 {group.tools.map(tool => (
-                  <a href={tool.url} target="_blank" rel="noopener" class="relative group/tip bg-white/70 rounded-xl px-4 h-14 flex items-center justify-center shadow-sm hover:shadow-md hover:bg-white transition-all duration-200">
+                  <a href={tool.url} target="_blank" rel="noopener" class="relative group/tip bg-cream/70 rounded-xl px-4 h-14 flex items-center justify-center shadow-sm hover:shadow-md hover:bg-cream transition-all duration-200">
                     <img src={tool.src} alt={tool.alt} class={tool.cls ?? 'h-8 w-auto object-contain max-w-[120px]'} />
-                    <div class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-slate-900 text-white text-xs rounded-lg px-3 py-2 leading-relaxed opacity-0 group-hover/tip:opacity-100 transition-opacity duration-200 z-10 text-center shadow-lg">
+                    <div class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-ink text-cream text-xs rounded-lg px-3 py-2 leading-relaxed opacity-0 group-hover/tip:opacity-100 transition-opacity duration-200 z-10 text-center shadow-lg">
                       {tool.tip}
-                      <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900"></div>
+                      <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-ink"></div>
                     </div>
                   </a>
                 ))}
               </div>
             </div>
             {i < 3 && (
-              <div class="hidden md:flex items-center px-2 text-slate-300">
+              <div class="hidden md:flex items-center px-2 text-ink/20">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
@@ -345,93 +397,94 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <!-- GitHub version control bar -->
-      <div class="mt-3 border border-slate-200 bg-slate-100 rounded-2xl px-8 py-4 flex items-center justify-between gap-4">
-        <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Version Control</span>
-        <a href="https://github.com" target="_blank" rel="noopener" class="relative group/tip bg-white/70 rounded-xl px-4 py-2.5 flex items-center justify-center shadow-sm hover:shadow-md hover:bg-white transition-all duration-200">
+      <div class="mt-3 border border-ink/10 bg-warm rounded-xl px-8 py-4 flex items-center justify-between gap-4">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-ink/40">Version Control</span>
+        <a href="https://github.com" target="_blank" rel="noopener" class="relative group/tip bg-cream/70 rounded-xl px-4 py-2.5 flex items-center justify-center shadow-sm hover:shadow-md hover:bg-cream transition-all duration-200">
           <img src="/logos/github.png" alt="GitHub" class="h-8 w-auto object-contain" />
-          <div class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-slate-900 text-white text-xs rounded-lg px-3 py-2 leading-relaxed opacity-0 group-hover/tip:opacity-100 transition-opacity duration-200 z-10 text-center shadow-lg">
+          <div class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-ink text-cream text-xs rounded-lg px-3 py-2 leading-relaxed opacity-0 group-hover/tip:opacity-100 transition-opacity duration-200 z-10 text-center shadow-lg">
             Version control platform where all pipeline code, transformations, and semantic models are stored and tracked.
-            <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900"></div>
+            <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-ink"></div>
           </div>
         </a>
         <span></span>
       </div>
 
-      <p class="text-center text-sm text-slate-400 mt-6">All repositories are version-controlled and client-owned — no vendor lock-in, full portability.</p>
+      <p class="text-center text-sm text-ink/40 font-mono mt-6">All repositories are version-controlled and client-owned — no vendor lock-in, full portability.</p>
     </div>
   </section>
 
   <!-- Case Studies -->
-  <section id="case-studies" class="py-24 px-6 bg-slate-50">
+  <section id="case-studies" class="py-24 px-6 bg-warm">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-slate-900 mb-4">Case studies</h2>
-        <p class="text-xl text-slate-500 max-w-2xl mx-auto">How the Semantic Nexus has been deployed across different industries and business models.</p>
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Proven across industries</div>
+        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Case studies</h2>
+        <p class="text-lg text-ink/55 max-w-2xl mx-auto">How the Semantic Nexus has been deployed across different industries and business models.</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid md:grid-cols-2 gap-4">
 
         <!-- ClubCollect -->
-        <a href="https://docs.maxqanalytics.io/Case+Studies/ClubCollect" target="_blank" rel="noopener" class="group bg-white rounded-2xl p-8 flex flex-col hover:shadow-md transition-shadow">
+        <a href="https://docs.maxqanalytics.io/Case+Studies/ClubCollect" target="_blank" rel="noopener" class="group bg-cream rounded-xl p-8 flex flex-col border border-ink/10 border-t-[3px] border-t-transparent hover:border-t-brand-600 transition-all duration-200 hover:shadow-md">
           <div class="flex items-center justify-between mb-6">
             <img src="https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/6242c6d49b1ad2fcefbd8d2d_logo-clubcollect%20(1).png" alt="ClubCollect" class="h-7 w-auto object-contain" />
-            <span class="text-xs font-medium text-slate-400 bg-slate-100 px-3 py-1 rounded-full">Financial services</span>
+            <span class="text-xs font-mono font-medium text-ink/40 bg-warm px-3 py-1 rounded-full uppercase tracking-wider">Financial services</span>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">From rigid SiSense to a flexible modern data stack</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-6">ClubCollect replaced a costly, inflexible reporting setup with a Hevo → BigQuery → dbt → Looker Studio pipeline — unlocking cohort analysis, CAC/ARR tracking, and shareholder reporting.</p>
-          <ul class="space-y-1.5 text-sm text-slate-600 mb-6">
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Deeper visibility into customer behaviour and financial health</li>
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Significantly lower reporting overhead and costs</li>
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Real-time analytics enabling faster, data-driven decisions</li>
+          <h3 class="text-base font-bold text-ink mb-2">From rigid SiSense to a flexible modern data stack</h3>
+          <p class="text-ink/60 text-sm leading-relaxed mb-6">ClubCollect replaced a costly, inflexible reporting setup with a Hevo → BigQuery → dbt → Looker Studio pipeline — unlocking cohort analysis, CAC/ARR tracking, and shareholder reporting.</p>
+          <ul class="space-y-1.5 text-sm text-ink/60 mb-6">
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Deeper visibility into customer behaviour and financial health</li>
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Significantly lower reporting overhead and costs</li>
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Real-time analytics enabling faster, data-driven decisions</li>
           </ul>
-          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-800 transition-colors">Read case study →</span>
+          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Read case study →</span>
         </a>
 
         <!-- C-Job -->
-        <a href="https://docs.maxqanalytics.io/Case+Studies/C-Job+Naval+Architects" target="_blank" rel="noopener" class="group bg-white rounded-2xl p-8 flex flex-col hover:shadow-md transition-shadow">
+        <a href="https://docs.maxqanalytics.io/Case+Studies/C-Job+Naval+Architects" target="_blank" rel="noopener" class="group bg-cream rounded-xl p-8 flex flex-col border border-ink/10 border-t-[3px] border-t-transparent hover:border-t-brand-600 transition-all duration-200 hover:shadow-md">
           <div class="flex items-center justify-between mb-6">
             <img src="/cjob-logo.jpeg" alt="C-Job Naval Architects" class="h-7 w-auto object-contain" />
-            <span class="text-xs font-medium text-slate-400 bg-slate-100 px-3 py-1 rounded-full">Maritime engineering</span>
+            <span class="text-xs font-mono font-medium text-ink/40 bg-warm px-3 py-1 rounded-full uppercase tracking-wider">Maritime engineering</span>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Replacing four siloed Power BI sources with one unified model</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-6">C-Job consolidated hour-tracking, planning, bookkeeping, and sales data into a single BigQuery dimensional star schema — removing complex Power BI transformations and delivering consistent cross-departmental reporting.</p>
-          <ul class="space-y-1.5 text-sm text-slate-600 mb-6">
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Single source of truth across all four data domains</li>
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Faster query performance with a dimensional star schema</li>
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Clearer dashboards driving adoption across finance and project teams</li>
+          <h3 class="text-base font-bold text-ink mb-2">Replacing four siloed Power BI sources with one unified model</h3>
+          <p class="text-ink/60 text-sm leading-relaxed mb-6">C-Job consolidated hour-tracking, planning, bookkeeping, and sales data into a single BigQuery dimensional star schema — removing complex Power BI transformations and delivering consistent cross-departmental reporting.</p>
+          <ul class="space-y-1.5 text-sm text-ink/60 mb-6">
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Single source of truth across all four data domains</li>
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Faster query performance with a dimensional star schema</li>
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Clearer dashboards driving adoption across finance and project teams</li>
           </ul>
-          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-800 transition-colors">Read case study →</span>
+          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Read case study →</span>
         </a>
 
         <!-- DELTA Safety Training -->
-        <a href="https://docs.maxqanalytics.io/Case+Studies/DELTA+Safety+Training" target="_blank" rel="noopener" class="group bg-white rounded-2xl p-8 flex flex-col hover:shadow-md transition-shadow">
+        <a href="https://docs.maxqanalytics.io/Case+Studies/DELTA+Safety+Training" target="_blank" rel="noopener" class="group bg-cream rounded-xl p-8 flex flex-col border border-ink/10 border-t-[3px] border-t-transparent hover:border-t-brand-600 transition-all duration-200 hover:shadow-md">
           <div class="flex items-center justify-between mb-6">
             <img src="https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/6242c6dc816b4f62d5c56f90_Delta-Safety-Training.png" alt="DELTA Safety Training" class="h-7 w-auto object-contain" />
-            <span class="text-xs font-medium text-slate-400 bg-slate-100 px-3 py-1 rounded-full">Safety certification</span>
+            <span class="text-xs font-mono font-medium text-ink/40 bg-warm px-3 py-1 rounded-full uppercase tracking-wider">Safety certification</span>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Building a full analytics ecosystem from the ground up</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-6">DELTA went from fragmented ERP, CRM and bookkeeping data to a fully integrated stack — including 30+ custom HR reports for clients, a REST API for marketplace sync, and embedded analytics via Cube.</p>
-          <ul class="space-y-1.5 text-sm text-slate-600 mb-6">
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Real-time certification and training data for clients and HR teams</li>
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Automated marketplace updates via REST API</li>
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Proactive CRM outreach for overdue certifications</li>
+          <h3 class="text-base font-bold text-ink mb-2">Building a full analytics ecosystem from the ground up</h3>
+          <p class="text-ink/60 text-sm leading-relaxed mb-6">DELTA went from fragmented ERP, CRM and bookkeeping data to a fully integrated stack — including 30+ custom HR reports for clients, a REST API for marketplace sync, and embedded analytics via Cube.</p>
+          <ul class="space-y-1.5 text-sm text-ink/60 mb-6">
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Real-time certification and training data for clients and HR teams</li>
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Automated marketplace updates via REST API</li>
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Proactive CRM outreach for overdue certifications</li>
           </ul>
-          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-800 transition-colors">Read case study →</span>
+          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Read case study →</span>
         </a>
 
         <!-- Freeday -->
-        <a href="https://docs.maxqanalytics.io/Case+Studies/Freeday" target="_blank" rel="noopener" class="group bg-white rounded-2xl p-8 flex flex-col hover:shadow-md transition-shadow">
+        <a href="https://docs.maxqanalytics.io/Case+Studies/Freeday" target="_blank" rel="noopener" class="group bg-cream rounded-xl p-8 flex flex-col border border-ink/10 border-t-[3px] border-t-transparent hover:border-t-brand-600 transition-all duration-200 hover:shadow-md">
           <div class="flex items-center justify-between mb-6">
             <img src="https://cdn.prod.website-files.com/5fe86bb8d7bed24c79daf68d/64e9b09b165f6871809ceb5e_Freeday-logo.png" alt="Freeday" class="h-7 w-auto object-contain" />
-            <span class="text-xs font-medium text-slate-400 bg-slate-100 px-3 py-1 rounded-full">AI workforce</span>
+            <span class="text-xs font-mono font-medium text-ink/40 bg-warm px-3 py-1 rounded-full uppercase tracking-wider">AI workforce</span>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Standardising SaaS metrics for investor readiness</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-6">Freeday needed consistent SaaS metrics — NRR, CAC payback, ARR growth — ahead of an investment round. We built a unified Airbyte → Snowflake → dbt → Cube stack with embedded analytics for their client portal.</p>
-          <ul class="space-y-1.5 text-sm text-slate-600 mb-6">
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Investor-ready reporting with structured, data-backed insights</li>
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Consistent SaaS metric definitions across all teams</li>
-            <li class="flex gap-2"><span class="text-brand-500 font-bold shrink-0">—</span>Embedded client portal analytics via the Semantics API</li>
+          <h3 class="text-base font-bold text-ink mb-2">Standardising SaaS metrics for investor readiness</h3>
+          <p class="text-ink/60 text-sm leading-relaxed mb-6">Freeday needed consistent SaaS metrics — NRR, CAC payback, ARR growth — ahead of an investment round. We built a unified Airbyte → Snowflake → dbt → Cube stack with embedded analytics for their client portal.</p>
+          <ul class="space-y-1.5 text-sm text-ink/60 mb-6">
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Investor-ready reporting with structured, data-backed insights</li>
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Consistent SaaS metric definitions across all teams</li>
+            <li class="flex gap-2"><span class="text-brand-600 font-bold shrink-0">—</span>Embedded client portal analytics via the Semantics API</li>
           </ul>
-          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-800 transition-colors">Read case study →</span>
+          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Read case study →</span>
         </a>
 
       </div>
@@ -439,19 +492,20 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="py-24 px-6 bg-white">
+  <section id="pricing" class="py-24 px-6 bg-ink text-cream">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-4xl font-bold text-slate-900 mb-6">Pricing</h2>
-      <div class="bg-white border border-slate-200 rounded-2xl p-12 shadow-sm">
-        <div class="text-5xl font-extrabold text-brand-600 mb-2">Free</div>
-        <p class="text-slate-500 text-lg mb-8">The Semantic Nexus and all its components are included at no charge for all our clients.</p>
-        <p class="text-slate-700 text-base leading-relaxed max-w-xl mx-auto">
-          The Semantic Nexus is an open architecture framework — freely available to any organisation that wants to adopt it. Because we believe the architecture itself should never be a barrier, we only charge our <a href="https://docs.maxqanalytics.io/Financials/Financial+Policy#Pricing%20changes" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-brand-800 transition-colors">standard hourly rate</a> for implementation and maintenance. No licensing fees — just the time it takes to build and maintain it.
+      <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-4">Pricing</div>
+      <h2 class="text-4xl font-bold mb-6" style="letter-spacing: -0.02em">Pricing</h2>
+      <div class="bg-white/5 border border-white/10 rounded-xl p-12">
+        <div class="text-5xl font-black text-brand-300 mb-2" style="letter-spacing: -0.03em">Free</div>
+        <p class="text-cream/55 text-lg mb-8">The Semantic Nexus and all its components are included at no charge for all our clients.</p>
+        <p class="text-cream/70 text-base leading-relaxed max-w-xl mx-auto">
+          The Semantic Nexus is an open architecture framework — freely available to any organisation that wants to adopt it. Because we believe the architecture itself should never be a barrier, we only charge our <a href="https://docs.maxqanalytics.io/Financials/Financial+Policy#Pricing%20changes" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-white transition-colors">standard hourly rate</a> for implementation and maintenance. No licensing fees — just the time it takes to build and maintain it.
           <br /><br />
           Do keep in mind that the underlying tools in the data stack — such as your data warehouse, extraction platform, BI tooling and AI models — carry their own infrastructure and subscription costs. These vary depending on data volume, tooling choices, and usage, and are billed directly by the respective vendors.
         </p>
         <div class="mt-10">
-          <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="bg-brand-600 text-white font-semibold px-10 py-4 rounded-xl hover:bg-brand-700 transition-colors text-lg inline-block">
+          <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="bg-cream text-ink font-semibold px-10 py-4 rounded-full hover:bg-white transition-colors text-base inline-block">
             Start a conversation
           </a>
         </div>
@@ -460,7 +514,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Footer -->
-  <footer class="bg-brand-950 text-white pt-8 pb-6 px-6">
+  <footer class="bg-ink text-white pt-8 pb-6 px-6">
     <div class="max-w-6xl mx-auto">
 
       <!-- Link grid -->
@@ -468,8 +522,8 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Product Items -->
         <div>
-          <h4 class="text-white text-xs font-semibold uppercase tracking-widest mb-3">Product Items</h4>
-          <ul class="space-y-1.5 text-xs text-white/50">
+          <h4 class="text-white/40 text-xs font-mono font-semibold uppercase tracking-widest mb-3">Product Items</h4>
+          <ul class="space-y-1.5 text-xs text-white/40">
             <li><a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data%20Model%20Explorer" target="_blank" rel="noopener" class="hover:text-white transition-colors">Data Model Explorer</a></li>
             <li><a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Entry+Tests" target="_blank" rel="noopener" class="hover:text-white transition-colors">Data Entry Tests</a></li>
             <li><a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Freshness" target="_blank" rel="noopener" class="hover:text-white transition-colors">Pipeline Freshness</a></li>
@@ -480,8 +534,8 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Frameworks -->
         <div>
-          <h4 class="text-white text-xs font-semibold uppercase tracking-widest mb-3">Frameworks</h4>
-          <ul class="space-y-1.5 text-xs text-white/50">
+          <h4 class="text-white/40 text-xs font-mono font-semibold uppercase tracking-widest mb-3">Frameworks</h4>
+          <ul class="space-y-1.5 text-xs text-white/40">
             <li><a href="https://docs.maxqanalytics.io/Design/Frameworks#Standardised%20Data%20Architecture" target="_blank" rel="noopener" class="hover:text-white transition-colors">Standardised Data Architecture</a></li>
             <li><a href="https://docs.maxqanalytics.io/Design/Frameworks#Integrated%20Performance%20Framework" target="_blank" rel="noopener" class="hover:text-white transition-colors">Integrated Performance Framework</a></li>
             <li><a href="https://docs.maxqanalytics.io/Design/Frameworks#Modular%20Security%20Protocol" target="_blank" rel="noopener" class="hover:text-white transition-colors">Modular Security Protocol</a></li>
@@ -490,8 +544,8 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Case Studies -->
         <div>
-          <h4 class="text-white text-xs font-semibold uppercase tracking-widest mb-3">Case Studies</h4>
-          <ul class="space-y-1.5 text-xs text-white/50">
+          <h4 class="text-white/40 text-xs font-mono font-semibold uppercase tracking-widest mb-3">Case Studies</h4>
+          <ul class="space-y-1.5 text-xs text-white/40">
             <li><a href="https://docs.maxqanalytics.io/Case+Studies/ClubCollect" target="_blank" rel="noopener" class="hover:text-white transition-colors">ClubCollect</a></li>
             <li><a href="https://docs.maxqanalytics.io/Case+Studies/C-Job+Naval+Architects" target="_blank" rel="noopener" class="hover:text-white transition-colors">C-Job Naval Architects</a></li>
             <li><a href="https://docs.maxqanalytics.io/Case+Studies/DELTA+Safety+Training" target="_blank" rel="noopener" class="hover:text-white transition-colors">DELTA Safety Training</a></li>
@@ -501,8 +555,8 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Pricing -->
         <div>
-          <h4 class="text-white text-xs font-semibold uppercase tracking-widest mb-3">Pricing</h4>
-          <ul class="space-y-1.5 text-xs text-white/50">
+          <h4 class="text-white/40 text-xs font-mono font-semibold uppercase tracking-widest mb-3">Pricing</h4>
+          <ul class="space-y-1.5 text-xs text-white/40">
             <li><a href="https://docs.maxqanalytics.io/Financials/Financial+Policy#Pricing%20changes" target="_blank" rel="noopener" class="hover:text-white transition-colors">Hourly rates</a></li>
             <li><a href="https://docs.maxqanalytics.io/Financials/Financial+Policy#Sprints" target="_blank" rel="noopener" class="hover:text-white transition-colors">Sprints</a></li>
             <li><a href="https://docs.maxqanalytics.io/Financials/Financial+Policy#Capacities" target="_blank" rel="noopener" class="hover:text-white transition-colors">Capacity</a></li>
@@ -512,10 +566,10 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <!-- Bottom bar -->
-      <div class="pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
+      <div class="pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/25 font-mono">
         <span>&copy; {new Date().getFullYear()} Maxq Analytics. All rights reserved.</span>
-        <a href="https://www.maxqanalytics.io" target="_blank" rel="noopener" class="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
-          <span class="italic text-white/40">Fractional data engineering for dependable performance tracking.</span>
+        <a href="https://www.maxqanalytics.io" target="_blank" rel="noopener" class="flex items-center gap-2.5 hover:opacity-70 transition-opacity">
+          <span class="italic text-white/30">Fractional data engineering for dependable performance tracking.</span>
           <img src="/maxq-logo.png" alt="Maxq Analytics" class="h-6 w-6 rounded-md object-cover" />
         </a>
       </div>
