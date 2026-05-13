@@ -750,8 +750,8 @@ import Layout from '../layouts/Layout.astro';
         {[
           {
             stage: 'Extraction',
-            color: 'bg-violet-50 border-violet-200',
-            labelColor: 'text-violet-600',
+            color: 'bg-brand-50 border-brand-100',
+            labelColor: 'text-brand-600',
             tools: [
               { src: '/logos/hevo.png', alt: 'Hevo Data', tip: 'No-code pipeline platform for extracting and syncing data from 150+ sources into your warehouse.', url: 'https://hevodata.com' },
               { src: '/logos/airbyte.svg', alt: 'Airbyte', tip: 'Open-source data integration platform for syncing data from APIs, databases and files.', url: 'https://airbyte.com' },
@@ -760,8 +760,8 @@ import Layout from '../layouts/Layout.astro';
           },
           {
             stage: 'Warehouse',
-            color: 'bg-blue-50 border-blue-200',
-            labelColor: 'text-blue-600',
+            color: 'bg-brand-50 border-brand-100',
+            labelColor: 'text-brand-600',
             tools: [
               { src: '/logos/bigquery.png', alt: 'BigQuery', tip: "Google's serverless, scalable cloud data warehouse built for fast SQL analytics at any scale.", url: 'https://cloud.google.com/bigquery' },
               { src: '/logos/snowflake.png', alt: 'Snowflake', tip: 'Cloud data platform with separated storage and compute, enabling flexible and cost-efficient scaling.', url: 'https://www.snowflake.com' },
@@ -770,8 +770,8 @@ import Layout from '../layouts/Layout.astro';
           },
           {
             stage: 'Transformation & Semantics',
-            color: 'bg-emerald-50 border-emerald-200',
-            labelColor: 'text-emerald-600',
+            color: 'bg-brand-50 border-brand-100',
+            labelColor: 'text-brand-600',
             tools: [
               { src: '/logos/dbt.png', alt: 'dbt', tip: 'SQL-based transformation tool that lets analytics engineers build, test and document data models in version control.', url: 'https://www.getdbt.com' },
               { src: '/logos/cube.png', alt: 'Cube', tip: 'Semantic layer that defines business metrics centrally and exposes them consistently via API to any downstream tool.', url: 'https://cube.dev' },
@@ -780,8 +780,8 @@ import Layout from '../layouts/Layout.astro';
           },
           {
             stage: 'Data Consumption',
-            color: 'bg-orange-50 border-orange-200',
-            labelColor: 'text-orange-600',
+            color: 'bg-brand-50 border-brand-100',
+            labelColor: 'text-brand-600',
             tools: [
               { src: '/logos/data-studio.png', alt: 'Data Studio', cls: 'h-6 w-auto object-contain max-w-[140px]', tip: "Google's free BI tool for building interactive, shareable dashboards connected directly to your data sources.", url: 'https://lookerstudio.google.com' },
               { src: '/logos/powerbi.png', alt: 'Power BI', cls: 'h-8 w-auto object-contain max-w-[120px]', tip: "Microsoft's business intelligence platform for creating rich reports and dashboards across your organisation.", url: 'https://powerbi.microsoft.com' },
@@ -815,94 +815,6 @@ import Layout from '../layouts/Layout.astro';
         ))}
       </div>
 
-      <!-- Alternative designs -->
-      {(() => {
-        const stageNames = ['Extraction', 'Warehouse', 'Transformation & Semantics', 'Data Consumption'];
-        const toolsByStage = [
-          [
-            { src: '/logos/hevo.png',     alt: 'Hevo Data', tip: 'No-code pipeline platform for extracting and syncing data from 150+ sources into your warehouse.', url: 'https://hevodata.com' },
-            { src: '/logos/airbyte.svg',  alt: 'Airbyte',   tip: 'Open-source data integration platform for syncing data from APIs, databases and files.', url: 'https://airbyte.com' },
-            { src: '/logos/debezium.png', alt: 'Debezium',  tip: 'Open-source CDC platform that streams database changes in real time for event-driven data pipelines.', url: 'https://debezium.io' },
-          ],
-          [
-            { src: '/logos/bigquery.png',   alt: 'BigQuery',   tip: "Google's serverless, scalable cloud data warehouse built for fast SQL analytics at any scale.", url: 'https://cloud.google.com/bigquery' },
-            { src: '/logos/snowflake.png',  alt: 'Snowflake',  tip: 'Cloud data platform with separated storage and compute, enabling flexible and cost-efficient scaling.', url: 'https://www.snowflake.com' },
-            { src: '/logos/clickhouse.png', alt: 'ClickHouse', tip: 'High-performance columnar database optimised for real-time analytics on very large datasets.', url: 'https://clickhouse.com' },
-          ],
-          [
-            { src: '/logos/dbt.png',    alt: 'dbt',              tip: 'SQL-based transformation tool that lets analytics engineers build, test and document data models in version control.', url: 'https://www.getdbt.com' },
-            { src: '/logos/cube.png',   alt: 'Cube',             tip: 'Semantic layer that defines business metrics centrally and exposes them consistently via API to any downstream tool.', url: 'https://cube.dev' },
-            { src: '/logos/fabric.png', alt: 'Microsoft Fabric', tip: "Microsoft's all-in-one analytics platform combining data engineering, warehousing, and BI in a unified environment.", url: 'https://www.microsoft.com/en-us/microsoft-fabric' },
-          ],
-          [
-            { src: '/logos/data-studio.png', alt: 'Data Studio', cls: 'h-6 w-auto object-contain max-w-[140px]', tip: "Google's free BI tool for building interactive, shareable dashboards connected directly to your data sources.", url: 'https://lookerstudio.google.com' },
-            { src: '/logos/powerbi.png',     alt: 'Power BI',    cls: 'h-8 w-auto object-contain max-w-[120px]', tip: "Microsoft's business intelligence platform for creating rich reports and dashboards across your organisation.", url: 'https://powerbi.microsoft.com' },
-            { src: '/logos/claude.png',      alt: 'Claude',      cls: 'h-12 w-auto object-contain max-w-[160px]', tip: "Anthropic's AI assistant — connected to your semantic layer via MCP Server for natural language data querying.", url: 'https://claude.ai' },
-          ],
-        ];
-
-        const options = [
-          {
-            label: 'Option A — Warm neutral',
-            boxes:   ['bg-warm border border-ink/10', 'bg-warm border border-ink/10', 'bg-warm border border-ink/10', 'bg-warm border border-ink/10'],
-            lbls:    ['text-brand-600', 'text-brand-600', 'text-brand-600', 'text-brand-600'],
-            cards:   'bg-white hover:shadow-md',
-            arrow:   'text-ink/20',
-          },
-          {
-            label: 'Option B — Dark editorial',
-            boxes:   ['bg-ink border border-white/10', 'bg-ink border border-white/10', 'bg-ink border border-white/10', 'bg-ink border border-brand-600'],
-            lbls:    ['text-brand-300', 'text-brand-300', 'text-brand-300', 'text-brand-300'],
-            cards:   'bg-white/8 hover:bg-white/15',
-            arrow:   'text-white/20',
-          },
-          {
-            label: 'Option C — Progressive brand fill',
-            boxes:   ['bg-brand-50 border border-brand-100', 'bg-brand-100 border border-brand-200', 'bg-brand-200 border border-brand-300', 'bg-brand-600 border border-brand-700'],
-            lbls:    ['text-brand-600', 'text-brand-700', 'text-brand-800', 'text-white'],
-            cards:   'bg-white hover:shadow-md',
-            arrow:   'text-brand-300',
-          },
-        ];
-
-        return (
-          <div class="mt-16 pt-12 border-t border-ink/10 flex flex-col gap-12">
-            <p class="text-xs font-mono text-ink/30 uppercase tracking-widest">Alternative designs</p>
-            {options.map(opt => (
-              <div>
-                <p class="text-xs font-mono text-ink/40 uppercase tracking-wider mb-4">{opt.label}</p>
-                <div class="flex flex-col md:flex-row items-stretch gap-0 md:min-h-[200px]">
-                  {stageNames.map((stage, i) => (
-                    <div class="flex md:flex-row items-stretch flex-1">
-                      <div class={`flex-1 h-full ${opt.boxes[i]} rounded-xl p-6 flex flex-col`}>
-                        <span class={`text-xs font-mono font-bold uppercase tracking-widest ${opt.lbls[i]}`}>{stage}</span>
-                        <div class="flex-1 flex flex-row md:flex-col gap-3 items-center justify-center mt-4">
-                          {toolsByStage[i].map(tool => (
-                            <a href={tool.url} target="_blank" rel="noopener" class={`relative group/tip ${opt.cards} rounded-xl px-4 h-12 flex items-center justify-center shadow-sm transition-all duration-200`}>
-                              <img src={tool.src} alt={tool.alt} class={tool.cls ?? 'h-7 w-auto object-contain max-w-[110px]'} />
-                              <div class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-ink text-cream text-xs rounded-lg px-3 py-2 leading-relaxed opacity-0 group-hover/tip:opacity-100 transition-opacity duration-200 z-10 text-center shadow-lg">
-                                {tool.tip}
-                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-ink"></div>
-                              </div>
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                      {i < 3 && (
-                        <div class={`hidden md:flex items-center px-2 ${opt.arrow}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        );
-      })()}
 
     </div>
   </section>
