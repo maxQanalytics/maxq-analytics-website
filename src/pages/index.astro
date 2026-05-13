@@ -896,16 +896,20 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <div>
             <h4 class="text-white/40 text-xs font-mono font-semibold uppercase tracking-widest mb-3">Chamber of Commerce</h4>
-            <p class="text-xs text-white/40 leading-relaxed">MAXQ Analytics B.V.<br>95597166</p>
+            <p class="text-xs text-white/40 leading-relaxed">MAXQ Analytics B.V.<br>KvK 95597166<br>BTW NL866025545B01</p>
           </div>
         </div>
 
       </div>
 
       <!-- Bottom bar -->
-      <div class="pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/25 font-mono">
+      <div class="pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
         <span class="font-mono text-xs uppercase text-white/25" style="letter-spacing: 0.04em">&copy; {new Date().getFullYear()} Maxq Analytics. All rights reserved.</span>
-        <span class="font-mono text-xs uppercase text-white/30" style="letter-spacing: 0.04em">Fractional data engineering for dependable performance tracking.</span>
+        <div class="flex items-center gap-6 flex-wrap justify-center">
+          <a href="https://www.maxqanalytics.io/privacy-policy" target="_blank" rel="noopener" class="font-mono text-xs uppercase text-white/25 hover:text-white/60 transition-colors" style="letter-spacing: 0.04em">Privacy Policy</a>
+          <a href="https://www.maxqanalytics.io/terms-of-service" target="_blank" rel="noopener" class="font-mono text-xs uppercase text-white/25 hover:text-white/60 transition-colors" style="letter-spacing: 0.04em">Terms</a>
+          <span class="font-mono text-xs uppercase text-white/25" style="letter-spacing: 0.04em">Fractional data engineering for dependable performance tracking.</span>
+        </div>
       </div>
 
     </div>
