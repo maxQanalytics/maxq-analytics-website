@@ -512,24 +512,51 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="py-24 px-6 bg-ink text-cream">
-    <div class="max-w-3xl mx-auto text-center">
+  <section id="pricing" class="py-24 px-6 bg-ink text-cream overflow-hidden relative">
+    <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full border border-dashed border-brand-600/10 -translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto">
       <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-4">Pricing</div>
-      <h2 class="text-4xl font-bold mb-6" style="letter-spacing: -0.02em">Pricing</h2>
-      <div class="bg-white/5 border border-white/10 rounded-xl p-12">
-        <div class="text-5xl font-black text-brand-300 mb-2" style="letter-spacing: -0.03em">Free</div>
-        <p class="text-cream/55 text-lg mb-8">The Semantic Nexus and all its components are included at no charge for all our clients.</p>
-        <p class="text-cream/70 text-base leading-relaxed max-w-xl mx-auto">
-          The Semantic Nexus is an open architecture framework — freely available to any organisation that wants to adopt it. Because we believe the architecture itself should never be a barrier, we only charge our <a href="https://docs.maxqanalytics.io/Financials/Financial+Policy#Pricing%20changes" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-white transition-colors">standard hourly rate</a> for implementation and maintenance. No licensing fees — just the time it takes to build and maintain it.
-          <br /><br />
-          Do keep in mind that the underlying tools in the data stack — such as your data warehouse, extraction platform, BI tooling and AI models — carry their own infrastructure and subscription costs. These vary depending on data volume, tooling choices, and usage, and are billed directly by the respective vendors.
-        </p>
-        <div class="mt-10">
-          <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="bg-cream text-ink font-semibold px-10 py-4 rounded-full hover:bg-white transition-colors text-base inline-block">
-            Start a conversation
-          </a>
+      <h2 class="text-4xl font-bold mb-4" style="letter-spacing: -0.02em">The architecture is <span class="text-brand-300">free.</span><br>You pay for implementation.</h2>
+      <p class="text-lg text-cream/50 max-w-2xl mb-12">No licensing fees. No per-seat pricing. No vendor lock-in. The Semantic Nexus is an open architecture: you own everything we build. You only pay our standard rate for the time it takes to set up and maintain.</p>
+
+      <div class="grid md:grid-cols-3 gap-4">
+
+        <!-- Architecture — highlighted -->
+        <div class="bg-brand-600/10 border border-brand-600 rounded-xl p-9 flex flex-col transition-colors hover:border-brand-400">
+          <div class="w-10 h-10 rounded-lg bg-brand-600/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="text-base font-bold mb-1">Semantic Nexus Architecture</h3>
+          <div class="text-4xl font-black mb-1" style="letter-spacing: -0.03em">€0</div>
+          <div class="font-mono text-xs text-cream/35 uppercase tracking-wider mb-5">Free, always</div>
+          <p class="text-cream/55 text-sm leading-relaxed">The full architecture framework, all five product components, and the three core frameworks. Freely available. We believe architecture should never be a barrier.</p>
         </div>
+
+        <!-- Retainer -->
+        <div class="bg-white/4 border border-white/10 rounded-xl p-9 flex flex-col transition-colors hover:border-white/20">
+          <div class="w-10 h-10 rounded-lg bg-brand-600/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <h3 class="text-base font-bold mb-1">Retainer</h3>
+          <div class="text-4xl font-black mb-1" style="letter-spacing: -0.03em">From €3K<span class="text-lg font-normal opacity-40">/mo</span></div>
+          <div class="font-mono text-xs text-cream/35 uppercase tracking-wider mb-5">3 full working days per month</div>
+          <p class="text-cream/55 text-sm leading-relaxed">Ongoing implementation, maintenance, and data engineering. Scale up or down as needed. No long-term contracts required.</p>
+        </div>
+
+        <!-- Revenue-Based -->
+        <div class="bg-white/4 border border-white/10 rounded-xl p-9 flex flex-col transition-colors hover:border-white/20">
+          <div class="w-10 h-10 rounded-lg bg-brand-600/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3 class="text-base font-bold mb-1">Revenue-Based</h3>
+          <div class="text-4xl font-black mb-1" style="letter-spacing: -0.03em">0.5–2.5%</div>
+          <div class="font-mono text-xs text-cream/35 uppercase tracking-wider mb-5">Of trailing 12-month gross revenue</div>
+          <p class="text-cream/55 text-sm leading-relaxed">For companies that want budget predictability. The percentage is fixed for one calendar year. Budget scales with your business.</p>
+        </div>
+
       </div>
+
+      <p class="text-center mt-9 font-mono text-xs text-cream/25 uppercase tracking-wider">Underlying tool costs (warehouse, extraction, BI) billed directly by vendors</p>
     </div>
   </section>
 
