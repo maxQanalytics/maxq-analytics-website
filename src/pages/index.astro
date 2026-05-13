@@ -101,6 +101,25 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- Stats -->
+  <section class="py-12 px-6 bg-ink text-cream">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+        {[
+          { value: '8', label: 'Active clients' },
+          { value: '460+', label: 'FTE across clients' },
+          { value: '€63M+', label: 'Combined annual revenue' },
+          { value: '25k+', label: 'Analytics API requests / day' },
+        ].map(stat => (
+          <div class="flex flex-col gap-2">
+            <span class="text-4xl md:text-5xl font-black text-cream tracking-tight" style="letter-spacing: -0.03em">{stat.value}</span>
+            <span class="text-xs font-mono text-cream/40 leading-snug uppercase tracking-wider">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Client Logo Carousel -->
   <section class="py-12 bg-cream border-b border-ink/10 overflow-hidden">
     <p class="text-center text-xs font-mono font-medium text-ink/40 uppercase tracking-widest mb-8">Trusted by</p>
@@ -294,25 +313,6 @@ import Layout from '../layouts/Layout.astro';
       background: linear-gradient(to left, #f5f3f0, transparent);
     }
   </style>
-
-  <!-- Stats -->
-  <section class="py-12 px-6 bg-ink text-cream">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
-        {[
-          { value: '8', label: 'Active clients' },
-          { value: '460+', label: 'FTE across clients' },
-          { value: '€63M+', label: 'Combined annual revenue' },
-          { value: '25k+', label: 'Analytics API requests / day' },
-        ].map(stat => (
-          <div class="flex flex-col gap-2">
-            <span class="text-4xl md:text-5xl font-black text-cream tracking-tight" style="letter-spacing: -0.03em">{stat.value}</span>
-            <span class="text-xs font-mono text-cream/40 leading-snug uppercase tracking-wider">{stat.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <!-- Business Impact -->
   <section id="impact" class="py-24 px-6 bg-warm">
