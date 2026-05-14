@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+---
+
+<Layout title="Deal Expander — Maxq Analytics">
+  <SiteNav />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-20 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <a href="/#add-ons" class="inline-flex items-center gap-2 font-mono text-xs text-white/40 hover:text-white/70 transition-colors mb-8">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        All add-ons
+      </a>
+      <div class="flex items-center gap-2 mb-6">
+        <span class="font-mono text-[10px] font-medium text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Grow</span>
+        <span class="font-mono text-[10px] font-medium text-brand-300 bg-brand-600/10 border border-brand-600/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+      </div>
+      <h1 class="font-black mb-6 leading-none" style="font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.04em">Deal Expander</h1>
+      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed">An AI agent built for customer success teams that surfaces upsell opportunities by analysing multiple leading indicators against benchmarks and client-specific trailing averages.</p>
+    </div>
+  </section>
+
+  <!-- Under construction -->
+  <section class="py-32 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 font-mono text-xs font-medium text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-full uppercase tracking-wider mb-8">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+        This page is under construction
+      </div>
+      <h2 class="text-3xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Full details coming soon.</h2>
+      <p class="text-ink/50 max-w-lg mx-auto leading-relaxed mb-10">We're working on the full page for this add-on. In the meantime, schedule a call and we'll walk you through how the Deal Expander works in practice.</p>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-ink text-cream font-semibold px-8 py-3.5 rounded-full hover:bg-ink/80 transition-colors text-sm">
+        Schedule a call
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <SiteFooter />
+</Layout>
