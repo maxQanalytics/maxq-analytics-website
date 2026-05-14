@@ -489,125 +489,157 @@ import SiteFooter from '../components/SiteFooter.astro';
         <p class="text-lg text-ink/55 max-w-2xl mx-auto">Optional modules that plug directly into the Semantic Nexus. Each one solves a specific high-value problem — built on top of the same single source of truth.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-4">
+      <!-- GROW -->
+      <div class="mb-14">
+        <div class="flex items-center gap-4 mb-6">
+          <h3 class="text-lg font-black text-ink shrink-0" style="letter-spacing:-0.02em">Grow</h3>
+          <div class="flex-1 h-px bg-ink/10"></div>
+          <span class="font-mono text-xs text-ink/30 uppercase tracking-wider shrink-0">Revenue from existing clients</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
 
-        <!-- Upsell Calculator -->
-        <a href="/add-ons/upsell-calculator" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-              </svg>
+          <!-- Upsell Calculator -->
+          <a href="/add-ons/upsell-calculator" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
             </div>
-            <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
-          </div>
-          <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Revenue intelligence</p>
-          <h3 class="text-base font-bold text-ink mb-2">Upsell Calculator</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-5">Surfaces clients with the highest expansion potential by combining CRM data, usage patterns, and financial metrics. Each account is scored against configurable criteria and outputs a ranked list with projected revenue impact per opportunity — giving your team a data-backed reason to have the conversation.</p>
-          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
-        </a>
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Revenue intelligence</p>
+            <h4 class="text-base font-bold text-ink mb-2">Upsell Calculator</h4>
+            <p class="text-ink/60 text-sm leading-relaxed mb-5">Surfaces clients with the highest expansion potential by combining CRM data, usage patterns, and financial metrics. Each account is scored against configurable criteria and outputs a ranked list with projected revenue impact per opportunity — giving your team a data-backed reason to have the conversation.</p>
+            <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
+          </a>
 
-        <!-- Deal Expander -->
-        <a href="/add-ons/deal-expander" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-              </svg>
+          <!-- Deal Expander -->
+          <a href="/add-ons/deal-expander" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                </svg>
+              </div>
+              <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
             </div>
-            <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
-          </div>
-          <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Account expansion</p>
-          <h3 class="text-base font-bold text-ink mb-2">Deal Expander</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-5">Maps the white space within your current client base by overlaying contract scope, actual usage, and available product surface area. Each account gets specific expansion recommendations — which products fit their profile, what the data says about timing, and what similar clients have added at this stage.</p>
-          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
-        </a>
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Account expansion</p>
+            <h4 class="text-base font-bold text-ink mb-2">Deal Expander</h4>
+            <p class="text-ink/60 text-sm leading-relaxed mb-5">Maps the white space within your current client base by overlaying contract scope, actual usage, and available product surface area. Each account gets specific expansion recommendations — which products fit their profile, what the data says about timing, and what similar clients have added at this stage.</p>
+            <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
+          </a>
 
-        <!-- Data Quality Guardian -->
-        <a href="/add-ons/data-quality-guardian" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
-          </div>
-          <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Data integrity</p>
-          <h3 class="text-base font-bold text-ink mb-2">Data Quality Guardian</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-5">A continuously running quality layer that monitors semantic consistency, completeness thresholds, and business rule adherence across your live data. When anomalies are detected, alerts are routed to the right owner with full context — what broke, where it originates, and a direct link to fix it at source before it reaches a decision-maker.</p>
-          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
-        </a>
-
-        <!-- MetricsRouter -->
-        <a href="/add-ons/metricsrouter" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-              </svg>
-            </div>
-            <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
-          </div>
-          <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Open metrics exchange</p>
-          <h3 class="text-base font-bold text-ink mb-2">MetricsRouter</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-5">Maxq's open metrics exchange — an inter-entity protocol that enables organisations to share standardised performance metrics across company boundaries. Built for investor reporting, board-level benchmarking, and cross-portfolio analytics where consistent metric definitions matter most.</p>
-          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
-        </a>
-
-        <!-- Firefighter -->
-        <a href="/add-ons/firefighter" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
-            </div>
-            <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
-          </div>
-          <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Risk intelligence</p>
-          <h3 class="text-base font-bold text-ink mb-2">Firefighter</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-5">An AI agent that continuously monitors client behaviour patterns and surfaces high-risk signals before they escalate. When risk is detected, Firefighter proposes concrete remediation actions — giving your team a clear playbook with prioritised next steps instead of a vague warning to act on.</p>
-          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
-        </a>
-
-        <!-- Enterprise Valuator -->
-        <a href="/add-ons/enterprise-valuator" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-            </div>
-            <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
-          </div>
-          <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Business valuation</p>
-          <h3 class="text-base font-bold text-ink mb-2">Enterprise Valuator</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-5">Generates data-driven business valuations directly from the metrics flowing through MetricsRouter. Applies recognised valuation methodologies to live data — reducing the manual effort of valuation exercises and giving founders, CFOs, and investors a repeatable, defensible number at any point in time.</p>
-          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
-        </a>
-
-        <!-- Weekly OKR Tracker -->
-        <a href="/add-ons/weekly-okr-tracker" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="12" cy="12" r="6" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="12" cy="12" r="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
-          </div>
-          <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Goal management</p>
-          <h3 class="text-base font-bold text-ink mb-2">Weekly OKR Tracker</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-5">A structured OKR template that standardises how clients set, track, and review objectives across teams. Weekly check-ins surface progress and blockers early — with future iterations adding automations, escalation workflows, and call-to-action triggers wired directly into your live metrics.</p>
-          <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
-        </a>
-
+        </div>
       </div>
 
-      <p class="text-center text-sm text-ink/40 mt-10">Need something specific? We build bespoke add-ons for custom workflows. <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="text-brand-600 hover:text-ink transition-colors font-medium">Let's talk →</a></p>
+      <!-- PROTECT -->
+      <div class="mb-14">
+        <div class="flex items-center gap-4 mb-6">
+          <h3 class="text-lg font-black text-ink shrink-0" style="letter-spacing:-0.02em">Protect</h3>
+          <div class="flex-1 h-px bg-ink/10"></div>
+          <span class="font-mono text-xs text-ink/30 uppercase tracking-wider shrink-0">Data quality &amp; risk control</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <!-- Data Quality Guardian -->
+          <a href="/add-ons/data-quality-guardian" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+            </div>
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Data integrity</p>
+            <h4 class="text-base font-bold text-ink mb-2">Data Quality Guardian</h4>
+            <p class="text-ink/60 text-sm leading-relaxed mb-5">A continuously running quality layer that monitors semantic consistency, completeness thresholds, and business rule adherence across your live data. When anomalies are detected, alerts are routed to the right owner with full context — what broke, where it originates, and a direct link to fix it at source before it reaches a decision-maker.</p>
+            <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
+          </a>
+
+          <!-- Firefighter -->
+          <a href="/add-ons/firefighter" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+              <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+            </div>
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Risk intelligence</p>
+            <h4 class="text-base font-bold text-ink mb-2">Firefighter</h4>
+            <p class="text-ink/60 text-sm leading-relaxed mb-5">An AI agent that continuously monitors client behaviour patterns and surfaces high-risk signals before they escalate. When risk is detected, Firefighter proposes concrete remediation actions — giving your team a clear playbook with prioritised next steps instead of a vague warning to act on.</p>
+            <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- REPORT -->
+      <div class="mb-10">
+        <div class="flex items-center gap-4 mb-6">
+          <h3 class="text-lg font-black text-ink shrink-0" style="letter-spacing:-0.02em">Report</h3>
+          <div class="flex-1 h-px bg-ink/10"></div>
+          <span class="font-mono text-xs text-ink/30 uppercase tracking-wider shrink-0">Metrics, valuation &amp; goals</span>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4">
+
+          <!-- MetricsRouter -->
+          <a href="/add-ons/metricsrouter" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                </svg>
+              </div>
+              <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+            </div>
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Open metrics exchange</p>
+            <h4 class="text-base font-bold text-ink mb-2">MetricsRouter</h4>
+            <p class="text-ink/60 text-sm leading-relaxed mb-5">Maxq's open metrics exchange — an inter-entity protocol that enables organisations to share standardised performance metrics across company boundaries. Built for investor reporting, board-level benchmarking, and cross-portfolio analytics where consistent metric definitions matter most.</p>
+            <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
+          </a>
+
+          <!-- Enterprise Valuator -->
+          <a href="/add-ons/enterprise-valuator" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+            </div>
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Business valuation</p>
+            <h4 class="text-base font-bold text-ink mb-2">Enterprise Valuator</h4>
+            <p class="text-ink/60 text-sm leading-relaxed mb-5">Generates data-driven business valuations directly from the metrics flowing through MetricsRouter. Applies recognised valuation methodologies to live data — reducing the manual effort of valuation exercises and giving founders, CFOs, and investors a repeatable, defensible number at any point in time.</p>
+            <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
+          </a>
+
+          <!-- Weekly OKR Tracker -->
+          <a href="/add-ons/weekly-okr-tracker" class="group bg-cream rounded-xl p-7 flex flex-col border border-ink/10 border-t-[3px] border-t-brand-600 hover:shadow-md transition-all duration-200">
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="font-mono text-[10px] font-medium text-brand-600 bg-brand-50 border border-brand-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+            </div>
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wider mb-2">Goal management</p>
+            <h4 class="text-base font-bold text-ink mb-2">Weekly OKR Tracker</h4>
+            <p class="text-ink/60 text-sm leading-relaxed mb-5">A structured OKR template that standardises how clients set, track, and review objectives across teams. Weekly check-ins surface progress and blockers early — with future iterations adding automations, escalation workflows, and call-to-action triggers wired directly into your live metrics.</p>
+            <span class="mt-auto text-xs font-semibold text-brand-600 group-hover:text-brand-700 transition-colors">Explore add-on →</span>
+          </a>
+
+        </div>
+      </div>
+
+      <p class="text-center text-sm text-ink/40 mt-4">Need something specific? We build bespoke add-ons for custom workflows. <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="text-brand-600 hover:text-ink transition-colors font-medium">Let's talk →</a></p>
     </div>
   </section>
 
