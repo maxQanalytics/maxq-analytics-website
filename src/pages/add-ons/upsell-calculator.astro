@@ -69,7 +69,15 @@ import SiteFooter from '../../components/SiteFooter.astro';
     <div class="max-w-5xl mx-auto">
       <div class="mb-10">
         <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Example output</div>
-        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">What the calculator produces.</h2>
+        <h2 class="text-3xl font-bold text-ink mb-2" style="letter-spacing: -0.02em">What the calculator produces.</h2>
+        <p class="text-ink/50 text-sm">Click a company to see how the output changes per client.</p>
+      </div>
+
+      <!-- Company selector -->
+      <div class="flex flex-wrap gap-2 mb-5">
+        <button data-company-btn="0" class="px-4 py-2 rounded-full text-sm font-medium border transition-all duration-150 bg-ink text-cream border-ink">DXM Manufacturing Ltd.</button>
+        <button data-company-btn="1" class="px-4 py-2 rounded-full text-sm font-medium border transition-all duration-150 bg-cream text-ink/60 border-ink/15 hover:border-ink/40">Northfield Logistics B.V.</button>
+        <button data-company-btn="2" class="px-4 py-2 rounded-full text-sm font-medium border transition-all duration-150 bg-cream text-ink/60 border-ink/15 hover:border-ink/40">Sparck Innovations</button>
       </div>
 
       <!-- Mockup -->
@@ -80,10 +88,10 @@ import SiteFooter from '../../components/SiteFooter.astro';
           <div class="flex items-center gap-3">
             <span class="font-mono text-[10px] text-ink/30 uppercase tracking-wider">Client</span>
             <div class="flex items-center gap-2 bg-warm border border-ink/10 rounded-lg px-3 py-1.5">
-              <span class="text-sm font-medium text-ink">DXM Manufacturing Ltd.</span>
+              <span class="text-sm font-medium text-ink" data-calc="client-name">DXM Manufacturing Ltd.</span>
               <svg class="w-3.5 h-3.5 text-ink/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
-            <span class="font-mono text-[10px] text-ink/25 uppercase tracking-wider">Org #6266</span>
+            <span class="font-mono text-[10px] text-ink/25 uppercase tracking-wider" data-calc="org-id">Org #2847</span>
           </div>
           <div class="flex items-center gap-6">
             <div class="text-right">
@@ -92,11 +100,11 @@ import SiteFooter from '../../components/SiteFooter.astro';
             </div>
             <div class="text-right">
               <p class="font-mono text-[10px] text-ink/30 uppercase tracking-wider">Current plan</p>
-              <p class="font-mono text-sm font-semibold text-ink">Standard</p>
+              <p class="font-mono text-sm font-semibold text-ink" data-calc="current-plan">Standard</p>
             </div>
             <div class="text-right">
               <p class="font-mono text-[10px] text-ink/30 uppercase tracking-wider">Actual revenue (LTM)</p>
-              <p class="font-black text-ink text-lg" style="letter-spacing: -0.02em">€4,122</p>
+              <p class="font-black text-ink text-lg" style="letter-spacing: -0.02em" data-calc="actual-revenue">€4,122</p>
             </div>
           </div>
         </div>
@@ -107,49 +115,58 @@ import SiteFooter from '../../components/SiteFooter.astro';
           <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
 
             <!-- Standard -->
-            <div class="rounded-xl border border-ink/10 p-4">
+            <div data-plan-card="0" class="rounded-xl border border-ink/10 p-4 relative transition-all duration-200">
+              <div data-plan-badge="0" class="hidden absolute -top-2.5 left-3">
+                <span class="font-mono text-[10px] font-semibold text-white bg-brand-600 px-2 py-0.5 rounded-full uppercase tracking-wider">Best uplift</span>
+              </div>
               <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-3">Standard</p>
-              <p class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em">€4,514</p>
+              <p class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em" data-plan-rev="0">€4,514</p>
               <div class="flex items-center gap-2 mt-2">
-                <span class="font-mono text-xs text-emerald-600 font-semibold">+€391</span>
+                <span class="font-mono text-xs font-semibold text-emerald-600" data-plan-delta-eur="0">+€391</span>
                 <span class="font-mono text-xs text-ink/30">·</span>
-                <span class="font-mono text-xs text-ink/50">+9%</span>
+                <span class="font-mono text-xs text-ink/50" data-plan-delta-pct="0">+9%</span>
               </div>
             </div>
 
             <!-- Plus -->
-            <div class="rounded-xl border border-ink/10 p-4">
+            <div data-plan-card="1" class="rounded-xl border border-ink/10 p-4 relative transition-all duration-200">
+              <div data-plan-badge="1" class="hidden absolute -top-2.5 left-3">
+                <span class="font-mono text-[10px] font-semibold text-white bg-brand-600 px-2 py-0.5 rounded-full uppercase tracking-wider">Best uplift</span>
+              </div>
               <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-3">Plus</p>
-              <p class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em">€4,402</p>
+              <p class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em" data-plan-rev="1">€4,402</p>
               <div class="flex items-center gap-2 mt-2">
-                <span class="font-mono text-xs text-emerald-600 font-semibold">+€279</span>
+                <span class="font-mono text-xs font-semibold text-emerald-600" data-plan-delta-eur="1">+€279</span>
                 <span class="font-mono text-xs text-ink/30">·</span>
-                <span class="font-mono text-xs text-ink/50">+7%</span>
+                <span class="font-mono text-xs text-ink/50" data-plan-delta-pct="1">+7%</span>
               </div>
             </div>
 
-            <!-- All-in — highlighted -->
-            <div class="rounded-xl border-2 border-brand-600 bg-brand-50 p-4 relative">
-              <div class="absolute -top-2.5 left-3">
+            <!-- All-in -->
+            <div data-plan-card="2" class="rounded-xl border-2 border-brand-600 bg-brand-50 p-4 relative transition-all duration-200">
+              <div data-plan-badge="2" class="absolute -top-2.5 left-3">
                 <span class="font-mono text-[10px] font-semibold text-white bg-brand-600 px-2 py-0.5 rounded-full uppercase tracking-wider">Best uplift</span>
               </div>
               <p class="font-mono text-[10px] text-brand-600 uppercase tracking-wider mb-3 mt-1">All-in</p>
-              <p class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em">€8,425</p>
+              <p class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em" data-plan-rev="2">€8,425</p>
               <div class="flex items-center gap-2 mt-2">
-                <span class="font-mono text-xs text-brand-600 font-bold">+€4,303</span>
+                <span class="font-mono text-xs font-bold text-brand-600" data-plan-delta-eur="2">+€4,303</span>
                 <span class="font-mono text-xs text-ink/30">·</span>
-                <span class="font-mono text-xs text-brand-600 font-semibold">+104%</span>
+                <span class="font-mono text-xs font-semibold text-brand-600" data-plan-delta-pct="2">+104%</span>
               </div>
             </div>
 
             <!-- Custom -->
-            <div class="rounded-xl border border-ink/10 bg-ink/2 p-4">
+            <div data-plan-card="3" class="rounded-xl border border-ink/10 p-4 relative transition-all duration-200">
+              <div data-plan-badge="3" class="hidden absolute -top-2.5 left-3">
+                <span class="font-mono text-[10px] font-semibold text-white bg-brand-600 px-2 py-0.5 rounded-full uppercase tracking-wider">Best uplift</span>
+              </div>
               <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-3">Custom</p>
-              <p class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em">€9,379</p>
+              <p class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em" data-plan-rev="3">€9,379</p>
               <div class="flex items-center gap-2 mt-2">
-                <span class="font-mono text-xs text-emerald-600 font-semibold">+€5,257</span>
+                <span class="font-mono text-xs font-semibold text-emerald-600" data-plan-delta-eur="3">+€5,257</span>
                 <span class="font-mono text-xs text-ink/30">·</span>
-                <span class="font-mono text-xs text-ink/50">+128%</span>
+                <span class="font-mono text-xs text-ink/50" data-plan-delta-pct="3">+128%</span>
               </div>
             </div>
 
@@ -161,16 +178,16 @@ import SiteFooter from '../../components/SiteFooter.astro';
           <p class="font-mono text-[10px] text-ink/30 uppercase tracking-wider mb-3">Key usage volumes (LTM)</p>
           <div class="grid grid-cols-3 gap-3">
             <div class="bg-warm rounded-lg px-4 py-3">
-              <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-1">Members</p>
-              <p class="font-black text-ink text-lg" style="letter-spacing: -0.02em">1,037</p>
+              <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-1" data-vol-label="0">Active users</p>
+              <p class="font-black text-ink text-lg" style="letter-spacing: -0.02em" data-vol-value="0">1,037</p>
             </div>
             <div class="bg-warm rounded-lg px-4 py-3">
-              <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-1">Payments</p>
-              <p class="font-black text-ink text-lg" style="letter-spacing: -0.02em">1,235</p>
+              <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-1" data-vol-label="1">Transactions</p>
+              <p class="font-black text-ink text-lg" style="letter-spacing: -0.02em" data-vol-value="1">1,235</p>
             </div>
             <div class="bg-warm rounded-lg px-4 py-3">
-              <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-1">Communications</p>
-              <p class="font-black text-ink text-lg" style="letter-spacing: -0.02em">2,118</p>
+              <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-1" data-vol-label="2">Events</p>
+              <p class="font-black text-ink text-lg" style="letter-spacing: -0.02em" data-vol-value="2">2,118</p>
             </div>
           </div>
         </div>
@@ -195,7 +212,7 @@ import SiteFooter from '../../components/SiteFooter.astro';
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 0v10m0-10a2 2 0 012 2h2a2 2 0 012-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
           </div>
           <h3 class="font-bold text-ink mb-2">Per-client LTM usage profile</h3>
-          <p class="text-ink/60 text-sm leading-relaxed">Members, payment volumes by method, communication activity, and add-on usage — all pulled live from the Semantic Nexus per selected client. No manual data entry.</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Active user counts, transaction volumes, feature adoption, and any usage that maps to your pricing structure — all pulled live from the Semantic Nexus per selected client. No manual data entry.</p>
         </div>
         <div class="bg-warm rounded-xl p-7 border border-ink/8">
           <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
@@ -253,3 +270,136 @@ import SiteFooter from '../../components/SiteFooter.astro';
 
   <SiteFooter />
 </Layout>
+
+<script>
+  const companies = [
+    {
+      name: 'DXM Manufacturing Ltd.',
+      orgId: 'Org #2847',
+      plan: 'Standard',
+      actual: '€4,122',
+      plans: [
+        { rev: '€4,514', deltaEur: '+€391',  deltaPct: '+9%',   positive: true,  best: false },
+        { rev: '€4,402', deltaEur: '+€279',  deltaPct: '+7%',   positive: true,  best: false },
+        { rev: '€8,425', deltaEur: '+€4,303',deltaPct: '+104%', positive: true,  best: true  },
+        { rev: '€9,379', deltaEur: '+€5,257',deltaPct: '+128%', positive: true,  best: false },
+      ],
+      volumes: [
+        { label: 'Active users',  value: '1,037' },
+        { label: 'Transactions',  value: '1,235' },
+        { label: 'Events',        value: '2,118' },
+      ],
+    },
+    {
+      name: 'Northfield Logistics B.V.',
+      orgId: 'Org #5512',
+      plan: 'Standard',
+      actual: '€3,240',
+      plans: [
+        { rev: '€3,890', deltaEur: '+€650',  deltaPct: '+20%',  positive: true,  best: false },
+        { rev: '€5,120', deltaEur: '+€1,880',deltaPct: '+58%',  positive: true,  best: true  },
+        { rev: '€4,780', deltaEur: '+€1,540',deltaPct: '+48%',  positive: true,  best: false },
+        { rev: '€6,210', deltaEur: '+€2,970',deltaPct: '+92%',  positive: true,  best: false },
+      ],
+      volumes: [
+        { label: 'Active users',  value: '2,841' },
+        { label: 'Transactions',  value: '4,203' },
+        { label: 'Events',        value: '847'   },
+      ],
+    },
+    {
+      name: 'Sparck Innovations',
+      orgId: 'Org #1094',
+      plan: 'Plus',
+      actual: '€5,890',
+      plans: [
+        { rev: '€4,120', deltaEur: '-€1,770',deltaPct: '-30%',  positive: false, best: false },
+        { rev: '€5,890', deltaEur: '+€0',    deltaPct: '0%',    positive: true,  best: false },
+        { rev: '€9,340', deltaEur: '+€3,450',deltaPct: '+59%',  positive: true,  best: true  },
+        { rev: '€11,200',deltaEur: '+€5,310',deltaPct: '+90%',  positive: true,  best: false },
+      ],
+      volumes: [
+        { label: 'Active users',  value: '389'   },
+        { label: 'Transactions',  value: '8,740' },
+        { label: 'Events',        value: '1,204' },
+      ],
+    },
+  ];
+
+  function updateCalculator(index) {
+    const c = companies[index];
+
+    // Header
+    document.querySelector('[data-calc="client-name"]').textContent = c.name;
+    document.querySelector('[data-calc="org-id"]').textContent = c.orgId;
+    document.querySelector('[data-calc="current-plan"]').textContent = c.plan;
+    document.querySelector('[data-calc="actual-revenue"]').textContent = c.actual;
+
+    // Plan cards
+    c.plans.forEach((plan, i) => {
+      const card    = document.querySelector(`[data-plan-card="${i}"]`);
+      const badge   = document.querySelector(`[data-plan-badge="${i}"]`);
+      const revEl   = document.querySelector(`[data-plan-rev="${i}"]`);
+      const eurEl   = document.querySelector(`[data-plan-delta-eur="${i}"]`);
+      const pctEl   = document.querySelector(`[data-plan-delta-pct="${i}"]`);
+      const label   = card.querySelector('p.font-mono');
+
+      revEl.textContent = plan.rev;
+      eurEl.textContent = plan.deltaEur;
+      pctEl.textContent = plan.deltaPct;
+
+      // Delta colours
+      const positiveClasses = ['text-emerald-600', 'font-semibold'];
+      const negativeClasses = ['text-red-500',     'font-semibold'];
+      const bestEurClasses  = ['text-brand-600',   'font-bold'];
+      const bestPctClasses  = ['text-brand-600',   'font-semibold'];
+      const neutralPctClass = ['text-ink/50'];
+
+      eurEl.className = 'font-mono text-xs';
+      pctEl.className = 'font-mono text-xs';
+
+      if (plan.best) {
+        eurEl.classList.add(...bestEurClasses);
+        pctEl.classList.add(...bestPctClasses);
+      } else if (plan.positive) {
+        eurEl.classList.add(...positiveClasses);
+        pctEl.classList.add(...neutralPctClass);
+      } else {
+        eurEl.classList.add(...negativeClasses);
+        pctEl.classList.add(...negativeClasses);
+      }
+
+      // Card highlight
+      if (plan.best) {
+        card.style.border         = '2px solid #1a4fff';
+        card.style.backgroundColor= 'rgb(238,242,255)';
+        label.style.color         = '#1a4fff';
+        badge.classList.remove('hidden');
+      } else {
+        card.style.border         = '1px solid rgba(10,10,15,0.1)';
+        card.style.backgroundColor= '';
+        label.style.color         = '';
+        badge.classList.add('hidden');
+      }
+    });
+
+    // Volumes
+    c.volumes.forEach((vol, i) => {
+      document.querySelector(`[data-vol-label="${i}"]`).textContent = vol.label;
+      document.querySelector(`[data-vol-value="${i}"]`).textContent = vol.value;
+    });
+
+    // Selector buttons
+    document.querySelectorAll('[data-company-btn]').forEach((btn, i) => {
+      if (i === index) {
+        btn.className = 'px-4 py-2 rounded-full text-sm font-medium border transition-all duration-150 bg-ink text-cream border-ink';
+      } else {
+        btn.className = 'px-4 py-2 rounded-full text-sm font-medium border transition-all duration-150 bg-cream text-ink/60 border-ink/15 hover:border-ink/40';
+      }
+    });
+  }
+
+  document.querySelectorAll('[data-company-btn]').forEach((btn) => {
+    btn.addEventListener('click', () => updateCalculator(Number(btn.dataset.companyBtn)));
+  });
+</script>
