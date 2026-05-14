@@ -34,6 +34,7 @@ import Layout from '../layouts/Layout.astro';
           <a href="#frameworks" class="hover:text-white transition-colors">Frameworks</a>
           <a href="#case-studies" class="hover:text-white transition-colors">Case Studies</a>
           <a href="#team" class="hover:text-white transition-colors">Team</a>
+          <a href="#partners" class="hover:text-white transition-colors">Partners</a>
           <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
         </div>
       </div>
@@ -55,6 +56,7 @@ import Layout from '../layouts/Layout.astro';
         <a href="#frameworks" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Frameworks</a>
         <a href="#case-studies" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Case Studies</a>
         <a href="#team" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Team</a>
+        <a href="#partners" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Partners</a>
         <a href="#pricing" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Pricing</a>
         <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="my-2 bg-white text-ink px-5 py-2 rounded-full text-sm font-semibold text-center hover:bg-cream transition-colors">
           Talk to us
@@ -753,6 +755,50 @@ import Layout from '../layouts/Layout.astro';
             </a>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section id="partners" class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Partners</div>
+        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Who we <span class="text-brand-600">build</span> with.</h2>
+        <p class="text-lg text-ink/55 max-w-2xl mx-auto">A select group of platforms, investors, and specialists who share our standards for data quality and long-term thinking.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+
+        <!-- Platforms -->
+        <div class="bg-ink border border-white/10 rounded-xl p-8 flex flex-col">
+          <div class="text-brand-300 text-xs font-mono font-semibold uppercase tracking-widest mb-6">Platforms</div>
+          <div class="flex flex-col gap-5 mb-6">
+            <img src="/logos/clubcollect.png" alt="ClubCollect" class="h-6 w-auto object-contain object-left" style="filter: brightness(0) invert(1); opacity: 0.85" />
+            <img src="/twelve-logo.svg" alt="Twelve" class="h-5 w-auto object-contain object-left" style="filter: brightness(0) invert(1); opacity: 0.85" />
+          </div>
+          <p class="text-cream/55 text-sm leading-relaxed">We integrate directly into their product to give their clients custom dashboards, agentic workflows, and reports — without needing an in-house data team.</p>
+        </div>
+
+        <!-- Investors -->
+        <div class="bg-ink border border-white/10 rounded-xl p-8 flex flex-col">
+          <div class="text-brand-300 text-xs font-mono font-semibold uppercase tracking-widest mb-6">Investors</div>
+          <div class="mb-6">
+            <img src="/logos/ish.svg" alt="Invisible Software Holdings" class="h-10 w-auto object-contain object-left" />
+          </div>
+          <p class="text-cream/55 text-sm leading-relaxed">As the data & analytics partner for ISH's portfolio, we implement the Semantic Nexus across their holdings — turning fragmented data into a shared standard.</p>
+          <a href="https://www.invsholdings.co.uk/" target="_blank" rel="noopener" class="mt-auto pt-5 text-xs font-semibold text-brand-300 hover:text-white transition-colors">Visit ISH →</a>
+        </div>
+
+        <!-- Specialists -->
+        <div class="bg-ink border border-white/10 rounded-xl p-8 flex flex-col">
+          <div class="text-brand-300 text-xs font-mono font-semibold uppercase tracking-widest mb-6">Specialists</div>
+          <div class="mb-6">
+            <img src="/logos/sparck.svg" alt="Sparck Finance" class="h-6 w-auto object-contain object-left" />
+          </div>
+          <p class="text-cream/55 text-sm leading-relaxed">Domain specialists who deepen our work in financial modelling and reporting, extending our capabilities where deep expertise matters most.</p>
+          <a href="https://www.sparckfinance.nl/" target="_blank" rel="noopener" class="mt-auto pt-5 text-xs font-semibold text-brand-300 hover:text-white transition-colors">Visit Sparck Finance →</a>
+        </div>
+
       </div>
     </div>
   </section>
