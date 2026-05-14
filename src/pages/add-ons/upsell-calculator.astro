@@ -1,0 +1,231 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+---
+
+<Layout title="Upsell Calculator — Maxq Analytics">
+  <SiteNav />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-20 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <a href="/#add-ons" class="inline-flex items-center gap-2 font-mono text-xs text-white/40 hover:text-white/70 transition-colors mb-8">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        All add-ons
+      </a>
+      <div class="flex items-center gap-2 mb-6">
+        <span class="font-mono text-[10px] font-medium text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Grow</span>
+        <span class="font-mono text-[10px] font-medium text-brand-300 bg-brand-600/10 border border-brand-600/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+      </div>
+      <h1 class="font-black mb-6 leading-none" style="font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.04em">Upsell Calculator</h1>
+      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed mb-10">Your clients are growing. Most pricing conversations start too late — or never happen at all — because no one had the numbers to justify them. The Upsell Calculator changes that.</p>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        See it for your client base
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">How it works</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">Three steps from data to conversation.</h2>
+      </div>
+      <div class="flex flex-col gap-0">
+
+        <div class="flex gap-8 pb-12 border-b border-ink/8">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-brand-100 text-brand-600 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">1</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">Connect to your usage data</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">The calculator pulls historic usage metrics directly from the Semantic Nexus — volume, frequency, feature adoption, and growth trends per client. No manual exports, no stale spreadsheets. The data is live and client-specific from the moment you open it.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-8 py-12 border-b border-ink/8">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-brand-100 text-brand-600 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">2</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">Model pricing scenarios</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">A configurable spreadsheet lets you adjust pricing assumptions — tiers, seat counts, usage thresholds — and see the projected revenue impact per client in real time. Built for your pricing model, not a generic template.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-8 pt-12">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-brand-100 text-brand-600 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">3</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">Prioritise by opportunity</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">The calculator scores and ranks each account by upsell readiness and projected ARR uplift. Your team gets a clear order of play for the quarter — every conversation backed by data that already lives in your system.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Example output -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Example output</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">What the calculator produces.</h2>
+      </div>
+
+      <!-- Mockup -->
+      <div class="bg-cream rounded-2xl border border-ink/10 overflow-hidden shadow-sm">
+        <!-- Mockup topbar -->
+        <div class="px-6 py-4 border-b border-ink/8 flex items-center justify-between">
+          <div>
+            <p class="font-mono text-xs text-ink/40 uppercase tracking-wider">Q2 2025 · Upsell opportunities</p>
+          </div>
+          <div class="flex items-center gap-6">
+            <div class="text-right">
+              <p class="font-mono text-[10px] text-ink/30 uppercase tracking-wider">Total opportunity</p>
+              <p class="font-black text-ink text-lg" style="letter-spacing: -0.02em">€47,100<span class="text-ink/30 font-normal text-sm">/yr</span></p>
+            </div>
+            <div class="text-right">
+              <p class="font-mono text-[10px] text-ink/30 uppercase tracking-wider">Accounts scored</p>
+              <p class="font-black text-ink text-lg" style="letter-spacing: -0.02em">12</p>
+            </div>
+          </div>
+        </div>
+        <!-- Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-ink/8">
+                <th class="text-left px-6 py-3 font-mono text-[10px] text-ink/40 uppercase tracking-wider font-medium">Client</th>
+                <th class="text-right px-4 py-3 font-mono text-[10px] text-ink/40 uppercase tracking-wider font-medium">Avg monthly usage</th>
+                <th class="text-right px-4 py-3 font-mono text-[10px] text-ink/40 uppercase tracking-wider font-medium">Trend</th>
+                <th class="text-right px-4 py-3 font-mono text-[10px] text-ink/40 uppercase tracking-wider font-medium">Score</th>
+                <th class="text-right px-6 py-3 font-mono text-[10px] text-ink/40 uppercase tracking-wider font-medium">Proj. uplift</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-ink/5 bg-brand-50/40">
+                <td class="px-6 py-3.5 font-medium text-ink">Acme Corp</td>
+                <td class="px-4 py-3.5 text-right font-mono text-ink/70">42,300 events</td>
+                <td class="px-4 py-3.5 text-right font-mono text-emerald-600 font-medium">+34%</td>
+                <td class="px-4 py-3.5 text-right">
+                  <span class="inline-flex items-center justify-center w-8 h-6 bg-brand-600 text-white rounded font-mono text-xs font-bold">9.2</span>
+                </td>
+                <td class="px-6 py-3.5 text-right font-mono font-semibold text-ink">€18,400/yr</td>
+              </tr>
+              <tr class="border-b border-ink/5">
+                <td class="px-6 py-3.5 font-medium text-ink">Northfield B.V.</td>
+                <td class="px-4 py-3.5 text-right font-mono text-ink/70">28,100 events</td>
+                <td class="px-4 py-3.5 text-right font-mono text-emerald-600 font-medium">+21%</td>
+                <td class="px-4 py-3.5 text-right">
+                  <span class="inline-flex items-center justify-center w-8 h-6 bg-brand-600/80 text-white rounded font-mono text-xs font-bold">7.8</span>
+                </td>
+                <td class="px-6 py-3.5 text-right font-mono font-semibold text-ink">€12,200/yr</td>
+              </tr>
+              <tr class="border-b border-ink/5">
+                <td class="px-6 py-3.5 font-medium text-ink">Delta Services</td>
+                <td class="px-4 py-3.5 text-right font-mono text-ink/70">19,400 events</td>
+                <td class="px-4 py-3.5 text-right font-mono text-emerald-600 font-medium">+18%</td>
+                <td class="px-4 py-3.5 text-right">
+                  <span class="inline-flex items-center justify-center w-8 h-6 bg-brand-600/60 text-white rounded font-mono text-xs font-bold">6.5</span>
+                </td>
+                <td class="px-6 py-3.5 text-right font-mono font-semibold text-ink">€8,600/yr</td>
+              </tr>
+              <tr class="border-b border-ink/5">
+                <td class="px-6 py-3.5 font-medium text-ink">Vertex Group</td>
+                <td class="px-4 py-3.5 text-right font-mono text-ink/70">31,200 events</td>
+                <td class="px-4 py-3.5 text-right font-mono text-ink/40">+8%</td>
+                <td class="px-4 py-3.5 text-right">
+                  <span class="inline-flex items-center justify-center w-8 h-6 bg-ink/15 text-ink rounded font-mono text-xs font-bold">5.1</span>
+                </td>
+                <td class="px-6 py-3.5 text-right font-mono font-semibold text-ink/60">€5,800/yr</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-3.5 font-medium text-ink/50">Solaris AG</td>
+                <td class="px-4 py-3.5 text-right font-mono text-ink/40">15,800 events</td>
+                <td class="px-4 py-3.5 text-right font-mono text-ink/40">+3%</td>
+                <td class="px-4 py-3.5 text-right">
+                  <span class="inline-flex items-center justify-center w-8 h-6 bg-ink/8 text-ink/50 rounded font-mono text-xs font-bold">3.4</span>
+                </td>
+                <td class="px-6 py-3.5 text-right font-mono text-ink/40">€2,100/yr</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="px-6 py-3 border-t border-ink/8">
+          <p class="font-mono text-[10px] text-ink/25 uppercase tracking-wider">Showing 5 of 12 accounts · Sorted by upsell score · Data refreshed from Semantic Nexus</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">What you get</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">Everything your team needs to act.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 0v10m0-10a2 2 0 012 2h2a2 2 0 012-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Connected spreadsheet</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Pre-wired to your usage metrics from day one. No manual data entry — the calculator pulls live from the Semantic Nexus every time it's opened.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Configurable pricing models</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Built around your actual pricing structure — tiered, seat-based, or usage-based. Adjust assumptions and see projected impact update in real time.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Ranked account list</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Every client scored by upsell readiness and sorted by projected ARR uplift. Your team knows exactly who to call first and what number to walk in with.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Repeatable quarterly workflow</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Designed to be run independently by your CS or sales team each quarter — no analyst needed, no one-off project. Refresh the data, re-run the model, update the list.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="py-20 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Who it's for</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 280px">The right fit.</h2>
+        </div>
+        <div class="space-y-4 text-ink/60 leading-relaxed max-w-xl pt-1">
+          <p>B2B companies with recurring clients where pricing reflects usage or scope — typically SaaS businesses, professional services firms, or any account-based model where client data is already flowing through the Semantic Nexus.</p>
+          <p>Works best when you have at least 6 months of usage history per client and a pricing structure with room to move — flat-fee-only contracts won't benefit as much as usage-tiered or seat-expandable ones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 bg-ink text-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-6">Get started</div>
+      <h2 class="text-4xl font-black mb-4" style="letter-spacing: -0.03em">Know which clients are ready <span class="text-brand-300">before they leave.</span></h2>
+      <p class="text-cream/50 mb-10 leading-relaxed">We'll set up the calculator against your live data and run the first ranking together — so your team walks out of the first session with an actual list.</p>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        Schedule a call
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <SiteFooter />
+</Layout>
