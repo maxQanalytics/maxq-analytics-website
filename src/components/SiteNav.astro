@@ -26,7 +26,29 @@
       <div class="flex items-center gap-8 text-sm text-white/80 font-medium">
         <a href="/#impact" class="hover:text-white transition-colors">Impact</a>
         <a href="/#features" class="hover:text-white transition-colors">Features</a>
-        <a href="/#add-ons" class="hover:text-white transition-colors">Add-ons</a>
+        <div class="relative group/addons">
+          <a href="/#add-ons" class="hover:text-white transition-colors flex items-center gap-1">
+            Add-ons
+            <svg class="w-3 h-3 opacity-50 group-hover/addons:opacity-100 transition-all duration-150 group-hover/addons:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <!-- Dropdown -->
+          <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 hidden group-hover/addons:block z-50">
+            <div class="bg-ink border border-white/10 rounded-xl shadow-2xl p-4 w-56">
+              <p class="font-mono text-[10px] text-emerald-500 uppercase tracking-wider mb-1.5 px-2">Grow</p>
+              <a href="/add-ons/upsell-calculator" class="block px-2 py-1.5 text-sm text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Upsell Calculator</a>
+              <a href="/add-ons/deal-expander" class="block px-2 py-1.5 text-sm text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Deal Expander</a>
+              <div class="my-2 border-t border-white/8"></div>
+              <p class="font-mono text-[10px] text-amber-500 uppercase tracking-wider mb-1.5 px-2">Protect</p>
+              <a href="/add-ons/data-quality-guardian" class="block px-2 py-1.5 text-sm text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Quality Guardian</a>
+              <a href="/add-ons/firefighter" class="block px-2 py-1.5 text-sm text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Firefighter</a>
+              <div class="my-2 border-t border-white/8"></div>
+              <p class="font-mono text-[10px] text-violet-400 uppercase tracking-wider mb-1.5 px-2">Report</p>
+              <a href="/add-ons/metricsrouter" class="block px-2 py-1.5 text-sm text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors">MetricsRouter</a>
+              <a href="/add-ons/enterprise-valuator" class="block px-2 py-1.5 text-sm text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Enterprise Valuator</a>
+              <a href="/add-ons/weekly-okr-tracker" class="block px-2 py-1.5 text-sm text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Weekly OKR Tracker</a>
+            </div>
+          </div>
+        </div>
         <a href="/#frameworks" class="hover:text-white transition-colors">Frameworks</a>
         <a href="/#case-studies" class="hover:text-white transition-colors">Case Studies</a>
         <a href="/#team" class="hover:text-white transition-colors">Team</a>
@@ -49,7 +71,19 @@
     <div class="px-6 py-2 flex flex-col">
       <a href="/#impact" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Impact</a>
       <a href="/#features" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Features</a>
-      <a href="/#add-ons" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Add-ons</a>
+      <a href="/#add-ons" class="mobile-nav-link py-2 text-sm text-white/60 font-medium hover:text-white transition-colors">Add-ons</a>
+      <div class="pl-4 pb-2 flex flex-col border-b border-white/8">
+        <p class="font-mono text-[10px] text-emerald-500 uppercase tracking-wider mt-1 mb-1">Grow</p>
+        <a href="/add-ons/upsell-calculator" class="mobile-nav-link py-1 text-sm text-white/40 hover:text-white/70 transition-colors">Upsell Calculator</a>
+        <a href="/add-ons/deal-expander" class="mobile-nav-link py-1 text-sm text-white/40 hover:text-white/70 transition-colors">Deal Expander</a>
+        <p class="font-mono text-[10px] text-amber-500 uppercase tracking-wider mt-2 mb-1">Protect</p>
+        <a href="/add-ons/data-quality-guardian" class="mobile-nav-link py-1 text-sm text-white/40 hover:text-white/70 transition-colors">Quality Guardian</a>
+        <a href="/add-ons/firefighter" class="mobile-nav-link py-1 text-sm text-white/40 hover:text-white/70 transition-colors">Firefighter</a>
+        <p class="font-mono text-[10px] text-violet-400 uppercase tracking-wider mt-2 mb-1">Report</p>
+        <a href="/add-ons/metricsrouter" class="mobile-nav-link py-1 text-sm text-white/40 hover:text-white/70 transition-colors">MetricsRouter</a>
+        <a href="/add-ons/enterprise-valuator" class="mobile-nav-link py-1 text-sm text-white/40 hover:text-white/70 transition-colors">Enterprise Valuator</a>
+        <a href="/add-ons/weekly-okr-tracker" class="mobile-nav-link py-1 text-sm text-white/40 hover:text-white/70 transition-colors">Weekly OKR Tracker</a>
+      </div>
       <a href="/#frameworks" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Frameworks</a>
       <a href="/#case-studies" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Case Studies</a>
       <a href="/#team" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Team</a>
