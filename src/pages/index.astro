@@ -24,11 +24,11 @@ import Layout from '../layouts/Layout.astro';
   <!-- Nav -->
   <nav class="fixed top-0 w-full z-50 bg-ink/95 backdrop-blur border-b border-white/10">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-8">
-        <a href="/" class="flex items-center">
-          <img src="/maxq-analytics-logo.png" alt="Maxq Analytics" class="h-20 w-auto object-contain" />
-        </a>
-        <div class="hidden md:flex items-center gap-8 text-sm text-white/55 font-medium">
+      <a href="/" class="flex items-center">
+        <img src="/maxq-analytics-logo.png" alt="Maxq Analytics" class="h-20 w-auto object-contain" />
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <div class="flex items-center gap-8 text-sm text-white/80 font-medium">
           <a href="#impact" class="hover:text-white transition-colors">Impact</a>
           <a href="/features" class="hover:text-white transition-colors">Features</a>
           <a href="#frameworks" class="hover:text-white transition-colors">Frameworks</a>
@@ -37,10 +37,10 @@ import Layout from '../layouts/Layout.astro';
           <a href="#partners" class="hover:text-white transition-colors">Partners</a>
           <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
         </div>
+        <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="bg-white text-ink px-5 py-2 rounded-full text-sm font-semibold hover:bg-cream transition-colors">
+          Talk to us
+        </a>
       </div>
-      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="hidden md:inline-flex bg-white text-ink px-5 py-2 rounded-full text-sm font-semibold hover:bg-cream transition-colors">
-        Talk to us
-      </a>
       <!-- Mobile hamburger -->
       <button id="mobileMenuBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5" aria-label="Open menu" aria-expanded="false">
         <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
