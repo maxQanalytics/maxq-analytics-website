@@ -40,8 +40,55 @@ import Layout from '../layouts/Layout.astro';
       <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="hidden md:inline-flex bg-white text-ink px-5 py-2 rounded-full text-sm font-semibold hover:bg-cream transition-colors">
         Talk to us
       </a>
+      <!-- Mobile hamburger -->
+      <button id="mobileMenuBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden bg-ink border-t border-white/10">
+      <div class="px-6 py-4 flex flex-col gap-1">
+        <a href="#impact" class="mobile-nav-link py-3 text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Impact</a>
+        <a href="/features" class="mobile-nav-link py-3 text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Features</a>
+        <a href="#frameworks" class="mobile-nav-link py-3 text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Frameworks</a>
+        <a href="#case-studies" class="mobile-nav-link py-3 text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Case Studies</a>
+        <a href="#team" class="mobile-nav-link py-3 text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Team</a>
+        <a href="#pricing" class="mobile-nav-link py-3 text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Pricing</a>
+        <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="mt-3 bg-white text-ink px-5 py-3 rounded-full text-sm font-semibold text-center hover:bg-cream transition-colors">
+          Talk to us
+        </a>
+      </div>
     </div>
   </nav>
+  <script>
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    const lines = btn.querySelectorAll('.hamburger-line');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!open));
+      if (!menu.classList.contains('hidden')) {
+        lines[0].style.transform = 'translateY(8px) rotate(45deg)';
+        lines[1].style.opacity = '0';
+        lines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+      } else {
+        lines[0].style.transform = '';
+        lines[1].style.opacity = '';
+        lines[2].style.transform = '';
+      }
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        lines[0].style.transform = '';
+        lines[1].style.opacity = '';
+        lines[2].style.transform = '';
+      });
+    });
+  </script>
 
   <!-- Hero -->
   <section class="pt-32 pb-20 px-6 bg-ink text-cream relative overflow-hidden">
