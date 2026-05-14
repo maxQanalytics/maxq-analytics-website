@@ -24,7 +24,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- Nav -->
   <nav class="fixed top-0 w-full z-50 bg-ink/95 backdrop-blur border-b border-white/10">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center">
+      <a href="/" onclick="event.preventDefault(); window.scrollTo({top:0, behavior:'smooth'})" class="flex items-center">
         <img src="/maxq-analytics-logo.png" alt="Maxq Analytics" class="h-20 w-auto object-contain" />
       </a>
       <div class="hidden md:flex items-center gap-8">
