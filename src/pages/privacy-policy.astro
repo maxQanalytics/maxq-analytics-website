@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+
+<Layout title="Privacy Policy — Maxq Analytics">
+  <SiteNav />
+
+  <div class="bg-white min-h-screen pt-24 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Legal</div>
+      <h1 class="text-4xl font-bold text-ink mb-2" style="letter-spacing: -0.02em">Privacy Policy</h1>
+      <p class="text-ink/40 font-mono text-sm mb-16">Last updated: May 2026</p>
+
+      <div class="space-y-12 text-ink/70 leading-relaxed">
+
+        <section>
+          <h2 class="text-xl font-semibold text-ink mb-4">1. Who we are</h2>
+          <p>MAXQ Analytics B.V. ("Maxq Analytics", "we", "us") is a data engineering and analytics consultancy registered in the Netherlands (KvK 95597166, VAT NL867198461B01), with offices at De Holle Bilt 25, 3732 HM De Bilt.</p>
+          <p class="mt-3">We are the data controller for personal data collected through this website and in the context of our services. Questions about this policy can be directed to <a href="mailto:privacy@maxqanalytics.io" class="text-brand-600 hover:text-ink transition-colors">privacy@maxqanalytics.io</a>.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-ink mb-4">2. What data we collect</h2>
+          <p>We collect data in two ways:</p>
+          <ul class="mt-3 space-y-2 list-disc list-inside">
+            <li><span class="text-ink font-medium">Contact data</span> — name, email address, and any information you voluntarily share when booking a call or reaching out to us.</li>
+            <li><span class="text-ink font-medium">Usage data</span> — anonymised page view and interaction data collected via Vercel Analytics to understand how visitors use this site. No cookies are set for this purpose.</li>
+          </ul>
+          <p class="mt-3">We do not collect sensitive personal data and we do not use third-party advertising trackers.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-ink mb-4">3. How we use your data</h2>
+          <ul class="space-y-2 list-disc list-inside">
+            <li>To respond to enquiries and schedule calls (legitimate interest / contract performance)</li>
+            <li>To improve our website based on anonymised usage patterns (legitimate interest)</li>
+            <li>To fulfil legal obligations, such as invoicing and tax records</li>
+          </ul>
+          <p class="mt-3">We do not sell, rent, or share your personal data with third parties for marketing purposes.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-ink mb-4">4. Data retention</h2>
+          <p>Contact data is retained for as long as necessary to maintain the business relationship, plus a maximum of 2 years thereafter. Financial records are kept for 7 years as required by Dutch law. Anonymised analytics data has no expiry.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-ink mb-4">5. Your rights (GDPR)</h2>
+          <p>Under the General Data Protection Regulation you have the right to:</p>
+          <ul class="mt-3 space-y-2 list-disc list-inside">
+            <li>Access the personal data we hold about you</li>
+            <li>Correct inaccurate data</li>
+            <li>Request erasure ("right to be forgotten")</li>
+            <li>Object to or restrict processing</li>
+            <li>Data portability</li>
+            <li>Lodge a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens, <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener" class="text-brand-600 hover:text-ink transition-colors">autoriteitpersoonsgegevens.nl</a>)</li>
+          </ul>
+          <p class="mt-3">To exercise any of these rights, contact us at <a href="mailto:privacy@maxqanalytics.io" class="text-brand-600 hover:text-ink transition-colors">privacy@maxqanalytics.io</a>. We will respond within 30 days.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-ink mb-4">6. Cookies</h2>
+          <p>This website does not use cookies. No tracking cookies, analytics cookies, or advertising cookies are set when you visit this site.</p>
+          <p class="mt-3">The only third-party interaction that may set cookies is Calendly, which is loaded exclusively when you explicitly click "Schedule a call". Calendly's cookies are set on the <span class="font-mono text-sm">calendly.com</span> domain and are governed by <a href="https://calendly.com/privacy" target="_blank" rel="noopener" class="text-brand-600 hover:text-ink transition-colors">Calendly's privacy policy</a>.</p>
+          <p class="mt-3">Because no cookies are placed on your device without a direct, intentional action on your part, no cookie consent banner is required or displayed on this site.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-ink mb-4">7. Third-party services</h2>
+          <p>This site uses the following sub-processors:</p>
+          <ul class="mt-3 space-y-2 list-disc list-inside">
+            <li><span class="text-ink font-medium">Vercel</span> — hosting and anonymised analytics (US, EU Standard Contractual Clauses)</li>
+            <li><span class="text-ink font-medium">Cloudflare</span> — DNS and network security (US, EU Standard Contractual Clauses)</li>
+            <li><span class="text-ink font-medium">Calendly</span> — meeting scheduling, loaded only on user request (US, SCCs)</li>
+          </ul>
+          <p class="mt-3">All fonts and static assets are served directly from our own infrastructure — no third-party font or CDN requests are made when you visit this site.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-ink mb-4">8. Changes to this policy</h2>
+          <p>We may update this policy from time to time. The "last updated" date at the top of this page will reflect any changes. Continued use of the site after changes constitutes acceptance of the updated policy.</p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <SiteFooter />
+</Layout>

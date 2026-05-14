@@ -1,0 +1,88 @@
+<!-- Calendly Modal -->
+<div id="calendlyModal" style="position:fixed;inset:0;background:rgba(10,10,15,0.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease;">
+  <div id="calendlyContainer" style="background:#f5f3f0;border-radius:16px;width:100%;max-width:680px;max-height:90vh;overflow:hidden;transform:translateY(20px) scale(0.97);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);box-shadow:0 24px 80px rgba(0,0,0,0.25);">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(10,10,15,0.08);">
+      <div>
+        <div style="font-size:16px;font-weight:700;letter-spacing:-0.01em;color:#0a0a0f">Schedule a call with Philip</div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;color:#6b6560;text-transform:uppercase;letter-spacing:0.04em;margin-top:2px">30 min · no pitch deck · just data talk</div>
+      </div>
+      <button id="calendlyClose" aria-label="Close" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(10,10,15,0.12);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div style="height:640px;overflow:hidden;">
+      <iframe id="calendlyFrame" src="about:blank" title="Schedule a call with Philip Boontje" loading="lazy" style="width:100%;height:100%;border:none;"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-ink/95 backdrop-blur border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center">
+      <img src="/maxq-analytics-logo.png" alt="Maxq Analytics" class="h-20 w-auto object-contain" />
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <div class="flex items-center gap-8 text-sm text-white/80 font-medium">
+        <a href="/#impact" class="hover:text-white transition-colors">Impact</a>
+        <a href="/#features" class="hover:text-white transition-colors">Features</a>
+        <a href="/#frameworks" class="hover:text-white transition-colors">Frameworks</a>
+        <a href="/#case-studies" class="hover:text-white transition-colors">Case Studies</a>
+        <a href="/#team" class="hover:text-white transition-colors">Team</a>
+        <a href="/#partners" class="hover:text-white transition-colors">Partners</a>
+        <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+      </div>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="bg-white text-ink px-5 py-2 rounded-full text-sm font-semibold hover:bg-cream transition-colors">
+        Talk to us
+      </a>
+    </div>
+    <!-- Mobile hamburger -->
+    <button id="mobileMenuBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5" aria-label="Open menu" aria-expanded="false">
+      <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="md:hidden hidden bg-ink border-t border-white/10">
+    <div class="px-6 py-2 flex flex-col">
+      <a href="/#impact" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Impact</a>
+      <a href="/#features" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Features</a>
+      <a href="/#frameworks" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Frameworks</a>
+      <a href="/#case-studies" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Case Studies</a>
+      <a href="/#team" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Team</a>
+      <a href="/#partners" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Partners</a>
+      <a href="/#pricing" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Pricing</a>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="my-2 bg-white text-ink px-5 py-2 rounded-full text-sm font-semibold text-center hover:bg-cream transition-colors">
+        Talk to us
+      </a>
+    </div>
+  </div>
+</nav>
+<script>
+  const btn = document.getElementById('mobileMenuBtn');
+  const menu = document.getElementById('mobileMenu');
+  const lines = btn.querySelectorAll('.hamburger-line');
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!open));
+    if (!menu.classList.contains('hidden')) {
+      lines[0].style.transform = 'translateY(8px) rotate(45deg)';
+      lines[1].style.opacity = '0';
+      lines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+    } else {
+      lines[0].style.transform = '';
+      lines[1].style.opacity = '';
+      lines[2].style.transform = '';
+    }
+  });
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      lines[0].style.transform = '';
+      lines[1].style.opacity = '';
+      lines[2].style.transform = '';
+    });
+  });
+</script>

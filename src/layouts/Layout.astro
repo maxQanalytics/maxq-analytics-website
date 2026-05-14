@@ -1,8 +1,10 @@
 ---
+import { Analytics } from '@vercel/analytics/astro';
+import '../styles/fonts.css';
 interface Props {
   title?: string;
 }
-const { title = 'Semantic Nexus — Maxq Analytics' } = Astro.props;
+const { title = 'Maxq Analytics' } = Astro.props;
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth bg-ink">
@@ -11,9 +13,6 @@ const { title = 'Semantic Nexus — Maxq Analytics' } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Semantic Nexus — the flagship data architecture framework by Maxq Analytics. A single source of truth for company KPIs, metrics, and domain reporting." />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
   <body class="bg-cream text-ink font-sans antialiased">

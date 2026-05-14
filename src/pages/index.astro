@@ -1,96 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 ---
 
 <Layout>
-  <!-- Calendly Modal -->
-  <div id="calendlyModal" style="position:fixed;inset:0;background:rgba(10,10,15,0.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease;">
-    <div id="calendlyContainer" style="background:#f5f3f0;border-radius:16px;width:100%;max-width:680px;max-height:90vh;overflow:hidden;transform:translateY(20px) scale(0.97);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);box-shadow:0 24px 80px rgba(0,0,0,0.25);">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(10,10,15,0.08);">
-        <div>
-          <div style="font-size:16px;font-weight:700;letter-spacing:-0.01em;color:#0a0a0f">Schedule a call with Philip</div>
-          <div style="font-family:'DM Mono',monospace;font-size:11px;color:#6b6560;text-transform:uppercase;letter-spacing:0.04em;margin-top:2px">30 min · no pitch deck · just data talk</div>
-        </div>
-        <button id="calendlyClose" aria-label="Close" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(10,10,15,0.12);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-      <div style="height:640px;overflow:hidden;">
-        <iframe id="calendlyFrame" src="about:blank" title="Schedule a call with Philip Boontje" loading="lazy" style="width:100%;height:100%;border:none;"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- Nav -->
-  <nav class="fixed top-0 w-full z-50 bg-ink/95 backdrop-blur border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="/" onclick="event.preventDefault(); window.scrollTo({top:0, behavior:'smooth'})" class="flex items-center">
-        <img src="/maxq-analytics-logo.png" alt="Maxq Analytics" class="h-20 w-auto object-contain" />
-      </a>
-      <div class="hidden md:flex items-center gap-8">
-        <div class="flex items-center gap-8 text-sm text-white/80 font-medium">
-          <a href="#impact" class="hover:text-white transition-colors">Impact</a>
-          <a href="#product-items" class="hover:text-white transition-colors">Features</a>
-          <a href="#frameworks" class="hover:text-white transition-colors">Frameworks</a>
-          <a href="#case-studies" class="hover:text-white transition-colors">Case Studies</a>
-          <a href="#team" class="hover:text-white transition-colors">Team</a>
-          <a href="#partners" class="hover:text-white transition-colors">Partners</a>
-          <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
-        </div>
-        <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="bg-white text-ink px-5 py-2 rounded-full text-sm font-semibold hover:bg-cream transition-colors">
-          Talk to us
-        </a>
-      </div>
-      <!-- Mobile hamburger -->
-      <button id="mobileMenuBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5" aria-label="Open menu" aria-expanded="false">
-        <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
-        <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
-        <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
-      </button>
-    </div>
-    <!-- Mobile menu -->
-    <div id="mobileMenu" class="md:hidden hidden bg-ink border-t border-white/10">
-      <div class="px-6 py-2 flex flex-col">
-        <a href="#impact" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Impact</a>
-        <a href="/features" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Features</a>
-        <a href="#frameworks" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Frameworks</a>
-        <a href="#case-studies" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Case Studies</a>
-        <a href="#team" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Team</a>
-        <a href="#partners" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Partners</a>
-        <a href="#pricing" class="mobile-nav-link py-2 text-sm text-white/60 font-medium border-b border-white/8 hover:text-white transition-colors">Pricing</a>
-        <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="my-2 bg-white text-ink px-5 py-2 rounded-full text-sm font-semibold text-center hover:bg-cream transition-colors">
-          Talk to us
-        </a>
-      </div>
-    </div>
-  </nav>
-  <script>
-    const btn = document.getElementById('mobileMenuBtn');
-    const menu = document.getElementById('mobileMenu');
-    const lines = btn.querySelectorAll('.hamburger-line');
-    btn.addEventListener('click', () => {
-      const open = menu.classList.toggle('hidden');
-      btn.setAttribute('aria-expanded', String(!open));
-      if (!menu.classList.contains('hidden')) {
-        lines[0].style.transform = 'translateY(8px) rotate(45deg)';
-        lines[1].style.opacity = '0';
-        lines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
-      } else {
-        lines[0].style.transform = '';
-        lines[1].style.opacity = '';
-        lines[2].style.transform = '';
-      }
-    });
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.add('hidden');
-        btn.setAttribute('aria-expanded', 'false');
-        lines[0].style.transform = '';
-        lines[1].style.opacity = '';
-        lines[2].style.transform = '';
-      });
-    });
-  </script>
+  <SiteNav />
 
   <!-- Hero -->
   <section class="pt-32 pb-20 px-6 bg-ink text-cream relative overflow-hidden">
@@ -172,9 +87,9 @@ import Layout from '../layouts/Layout.astro';
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
         {[
-          { value: '8', label: 'Active clients' },
+          { value: '9', label: 'Active clients' },
           { value: '460+', label: 'FTE across clients' },
-          { value: '€63M+', label: 'Combined annual revenue' },
+          { value: '€65M+', label: 'Combined annual revenue' },
           { value: '25k+', label: 'Analytics API requests / day' },
         ].map(stat => (
           <div class="flex flex-col gap-2">
@@ -200,6 +115,8 @@ import Layout from '../layouts/Layout.astro';
             { src: '/logos/cjob.png', alt: 'C-Job Naval Architects', href: 'https://c-job.com' },
             { src: '/logos/rebelsai.png', alt: 'RebelsAI', href: 'https://www.rebelsai.nl' },
             { src: '/twelve-logo.svg', alt: 'Twelve', href: 'https://www.twelve.eu', h: 'h-6' },
+            { src: '/logos/wyngaard.svg', alt: 'Wyngaard Kaas', href: 'https://www.wijngaardkaas.nl/nl_NL/', h: 'h-8' },
+            { src: '/logos/twizzit.png', alt: 'Twizzit', href: 'https://www.twizzit.com/nl-be/', h: 'h-7' },
           ];
           return [...logos, ...logos, ...logos, ...logos].map((logo, i) => (
             <a href={logo.href} target="_blank" rel="noopener" class="inline-flex items-center shrink-0">
@@ -241,8 +158,10 @@ import Layout from '../layouts/Layout.astro';
       animation: marquee 35s linear infinite;
       width: max-content;
     }
-    .animate-marquee:hover {
-      animation-play-state: paused;
+    @media (hover: hover) {
+      .animate-marquee:hover {
+        animation-play-state: paused;
+      }
     }
     /* Dashboard mockup */
     .hero-visual {
@@ -480,7 +399,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Product Items -->
-  <section id="product-items" class="py-24 px-6 bg-cream">
+  <section id="features" class="py-24 px-6 bg-cream">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
         <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">What you get</div>
@@ -565,7 +484,7 @@ import Layout from '../layouts/Layout.astro';
   <section id="frameworks" class="py-24 px-6 bg-ink text-cream">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16">
-        <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-4">Frameworks</div>
+        <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-4">Frameworks Used</div>
         <h2 class="text-4xl font-bold mb-4" style="letter-spacing: -0.02em">Built on <span class="text-brand-300">method.</span> Not improvisation.</h2>
         <p class="text-lg text-cream/55 max-w-2xl mx-auto">The Semantic Nexus is underpinned by three frameworks that cover architecture, performance tracking, and security.</p>
       </div>
@@ -698,7 +617,7 @@ import Layout from '../layouts/Layout.astro';
   <section id="team" class="py-24 px-6 bg-cream">
     <div class="max-w-6xl mx-auto">
       <div class="mb-16">
-        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">The team</div>
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">People involved</div>
         <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">From first model<br>to <span class="text-brand-600">mature</span> operations.</h2>
         <p class="text-lg text-ink/55" style="max-width: 560px">Our team combines backgrounds in data engineering, financial operations, and software development. We work across the full data stack — from extraction to semantic layer — and stay involved from design till operations.</p>
       </div>
@@ -762,7 +681,7 @@ import Layout from '../layouts/Layout.astro';
   <section id="partners" class="py-24 px-6 bg-warm">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16">
-        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Partners</div>
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Partner Ecosystem</div>
         <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Who we <span class="text-brand-600">build</span> with.</h2>
         <p class="text-lg text-ink/55 max-w-2xl mx-auto">A select group of platforms, investors, and specialists who share our standards for data quality and long-term thinking.</p>
       </div>
@@ -1003,131 +922,5 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-ink text-white pt-8 pb-6 px-6">
-    <div class="max-w-6xl mx-auto">
-
-      <!-- Link grid -->
-      <div class="grid grid-cols-2 md:grid-cols-6 gap-x-6 gap-y-10 py-8 border-b border-white/10">
-
-        <!-- Product Items -->
-        <div>
-          <h4 class="text-white/40 text-xs font-mono font-semibold uppercase tracking-widest mb-3">Features</h4>
-          <ul class="space-y-1.5 text-xs text-white/40">
-            <li><a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data%20Model%20Explorer" target="_blank" rel="noopener" class="hover:text-white transition-colors">Data Model Explorer</a></li>
-            <li><a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Entry+Tests" target="_blank" rel="noopener" class="hover:text-white transition-colors">Data Entry Tests</a></li>
-            <li><a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Freshness" target="_blank" rel="noopener" class="hover:text-white transition-colors">Pipeline Freshness</a></li>
-            <li><a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Domain+Reports" target="_blank" rel="noopener" class="hover:text-white transition-colors">Domain Reports</a></li>
-            <li><a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus" target="_blank" rel="noopener" class="hover:text-white transition-colors">MCP Server</a></li>
-          </ul>
-        </div>
-
-        <!-- Frameworks -->
-        <div>
-          <h4 class="text-white/40 text-xs font-mono font-semibold uppercase tracking-widest mb-3">Frameworks</h4>
-          <ul class="space-y-1.5 text-xs text-white/40">
-            <li><a href="https://docs.maxqanalytics.io/Design/Frameworks#Standardised%20Data%20Architecture" target="_blank" rel="noopener" class="hover:text-white transition-colors">Standardised Data Architecture</a></li>
-            <li><a href="https://docs.maxqanalytics.io/Design/Frameworks#Integrated%20Performance%20Framework" target="_blank" rel="noopener" class="hover:text-white transition-colors">Integrated Performance Framework</a></li>
-            <li><a href="https://docs.maxqanalytics.io/Design/Frameworks#Modular%20Security%20Protocol" target="_blank" rel="noopener" class="hover:text-white transition-colors">Modular Security Protocol</a></li>
-          </ul>
-        </div>
-
-        <!-- Case Studies -->
-        <div>
-          <h4 class="text-white/40 text-xs font-mono font-semibold uppercase tracking-widest mb-3">Case Studies</h4>
-          <ul class="space-y-1.5 text-xs text-white/40">
-            <li><a href="https://docs.maxqanalytics.io/Case+Studies/ClubCollect" target="_blank" rel="noopener" class="hover:text-white transition-colors">ClubCollect</a></li>
-            <li><a href="https://docs.maxqanalytics.io/Case+Studies/C-Job+Naval+Architects" target="_blank" rel="noopener" class="hover:text-white transition-colors">C-Job Naval Architects</a></li>
-            <li><a href="https://docs.maxqanalytics.io/Case+Studies/DELTA+Safety+Training" target="_blank" rel="noopener" class="hover:text-white transition-colors">DELTA Safety Training</a></li>
-            <li><a href="https://docs.maxqanalytics.io/Case+Studies/Freeday" target="_blank" rel="noopener" class="hover:text-white transition-colors">Freeday</a></li>
-          </ul>
-        </div>
-
-        <!-- Pricing -->
-        <div>
-          <h4 class="text-white/40 text-xs font-mono font-semibold uppercase tracking-widest mb-3">Pricing</h4>
-          <ul class="space-y-1.5 text-xs text-white/40">
-            <li><a href="https://docs.maxqanalytics.io/Financials/Financial+Policy#Pricing%20changes" target="_blank" rel="noopener" class="hover:text-white transition-colors">Hourly rates</a></li>
-            <li><a href="https://docs.maxqanalytics.io/Financials/Financial+Policy#Capacities" target="_blank" rel="noopener" class="hover:text-white transition-colors">Capacity</a></li>
-            <li><a href="https://docs.maxqanalytics.io/Financials/Financial+Policy#Sprints" target="_blank" rel="noopener" class="hover:text-white transition-colors">Sprints</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact -->
-        <div class="md:col-span-1">
-          <h4 class="text-white/40 text-xs font-mono font-semibold uppercase tracking-widest mb-3">Chamber of Commerce</h4>
-          <p class="text-xs text-white/40 leading-relaxed">MAXQ Analytics B.V.<br>KvK 95597166<br>VAT NL867198461B01</p>
-        </div>
-
-        <!-- Come Visit Us -->
-        <div class="md:col-span-1 flex flex-col gap-4">
-          <div>
-            <h4 class="text-white/40 text-xs font-mono font-semibold uppercase tracking-widest mb-3">Come visit us</h4>
-            <p class="text-xs text-white/40 leading-relaxed">De Holle Bilt 25<br>3732 HM De Bilt<br>Netherlands</p>
-          </div>
-          <div class="flex items-center gap-4">
-            <a href="https://www.linkedin.com/company/maxq-analytics/" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-white/40 hover:text-white transition-colors">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="https://www.youtube.com/@maxq-analytics" target="_blank" rel="noopener" aria-label="YouTube" class="text-white/40 hover:text-white transition-colors">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Bottom bar -->
-      <div class="pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div class="flex items-center gap-6 flex-wrap">
-          <span class="font-mono text-xs uppercase text-white/25" style="letter-spacing: 0.04em">&copy; {new Date().getFullYear()} Maxq Analytics. All rights reserved.</span>
-          <a href="https://www.maxqanalytics.io/privacy-policy" target="_blank" rel="noopener" class="font-mono text-xs uppercase text-white/25 hover:text-white/60 transition-colors" style="letter-spacing: 0.04em">Privacy Policy</a>
-          <a href="https://www.maxqanalytics.io/terms-of-service" target="_blank" rel="noopener" class="font-mono text-xs uppercase text-white/25 hover:text-white/60 transition-colors" style="letter-spacing: 0.04em">Terms</a>
-        </div>
-        <span class="font-mono text-xs uppercase text-white/25" style="letter-spacing: 0.04em">Fractional data engineering for dependable performance tracking.</span>
-      </div>
-
-    </div>
-  </footer>
-  <script>
-    (function () {
-      const overlay   = document.getElementById('calendlyModal');
-      const container = document.getElementById('calendlyContainer');
-      const frame     = document.getElementById('calendlyFrame');
-      const closeBtn  = document.getElementById('calendlyClose');
-      const CALENDLY  = 'https://calendly.com/philip-boontje?hide_gdpr_banner=1&background_color=f5f3f0&text_color=0a0a0f&primary_color=1a4fff';
-
-      function openModal() {
-        frame.src = CALENDLY;
-        overlay.style.opacity = '1';
-        overlay.style.visibility = 'visible';
-        container.style.transform = 'translateY(0) scale(1)';
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        overlay.style.opacity = '0';
-        overlay.style.visibility = 'hidden';
-        container.style.transform = 'translateY(20px) scale(0.97)';
-        document.body.style.overflow = '';
-        setTimeout(function () { frame.src = 'about:blank'; }, 300);
-      }
-
-      // Intercept all Calendly links
-      document.querySelectorAll('a[href*="calendly.com"]').forEach(function (link) {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          openModal();
-        });
-      });
-
-      closeBtn.addEventListener('click', closeModal);
-      overlay.addEventListener('click', function (e) {
-        if (e.target === overlay) closeModal();
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && overlay.style.visibility === 'visible') closeModal();
-      });
-    })();
-  </script>
+  <SiteFooter />
 </Layout>
