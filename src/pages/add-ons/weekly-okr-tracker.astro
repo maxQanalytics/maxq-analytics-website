@@ -55,70 +55,211 @@ import SiteFooter from '../../components/SiteFooter.astro';
 
       <!-- Dashboard mockup -->
       <div class="overflow-x-auto rounded-2xl">
-      <div class="rounded-2xl overflow-hidden shadow-sm border border-white/10" style="background: #1A2744; padding: 28px 32px 24px; min-width: 700px;">
+      <div class="rounded-2xl border border-white/10" style="background: #1A2744; padding: 22px 26px 18px; min-width: 680px;">
 
         <!-- Header -->
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
           <div>
-            <p style="font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.2px;">Q2 2026 OKR Weekly Check-in</p>
-            <p style="font-size: 11px; color: #8DA5C4; margin-top: 4px;">Week of May 4, 2026 &nbsp;·&nbsp; 5 of 13 weeks tracked</p>
+            <p style="font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -0.2px;">Q2 2026 OKR Weekly Check-in</p>
+            <p style="font-size: 11px; color: #8DA5C4; margin-top: 3px;">Week of May 4, 2026 &nbsp;·&nbsp; 5 of 13 weeks tracked</p>
           </div>
-          <p style="font-size: 11px; color: #8DA5C4; padding-top: 2px;">Example Co.</p>
+          <p style="font-size: 11px; color: #8DA5C4; padding-top: 2px;">Northfield Logistics</p>
         </div>
-        <div style="height: 1px; background: #2E4070; margin: 10px 0 16px;"></div>
+        <div style="height: 1px; background: #2E4070; margin: 10px 0 14px;"></div>
 
         <!-- Three cards -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
 
           <!-- Card 1: CSAT -->
-          <div style="background: #243156; border: 1px solid #2E4070; border-radius: 4px; padding: 14px 16px 12px;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+          <div style="background: #243156; border: 1px solid #2E4070; border-radius: 4px; padding: 12px 14px 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
               <div>
-                <p style="font-size: 13px; font-weight: 700; color: #fff;">Implementation CSAT</p>
-                <p style="font-size: 9.5px; color: #8DA5C4; margin-top: 3px;">Target: ≥ 9.0 &nbsp;·&nbsp; Operations</p>
+                <p style="font-size: 12px; font-weight: 700; color: #fff;">Implementation CSAT</p>
+                <p style="font-size: 9px; color: #8DA5C4; margin-top: 2px;">Target: ≥ 9.0 &nbsp;·&nbsp; Operations</p>
               </div>
-              <div style="text-align: center; border-radius: 3px; padding: 5px 10px 4px; min-width: 62px; border: 1.5px solid #4FC3F7; background: #1A3A5C;">
-                <div style="font-size: 17px; font-weight: 700; color: #4FC3F7; line-height: 1.1;">7.3</div>
-                <div style="font-size: 7.5px; color: #8DA5C4; margin-top: 2px;">this wk</div>
+              <div style="text-align: center; border-radius: 3px; padding: 4px 8px 3px; min-width: 56px; border: 1.5px solid #4FC3F7; background: #1A3A5C; flex-shrink:0; margin-left:6px;">
+                <div style="font-size: 15px; font-weight: 700; color: #4FC3F7; line-height: 1.1;">7.3</div>
+                <div style="font-size: 7px; color: #8DA5C4; margin-top: 1px;">this wk</div>
               </div>
             </div>
-            <div style="position: relative; height: 180px;">
-              <canvas id="okrCsatChart"></canvas>
-            </div>
+            <!-- CSAT SVG chart -->
+            <svg viewBox="0 0 260 125" style="width:100%;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
+              <!-- Legend -->
+              <line x1="28" y1="6" x2="46" y2="6" stroke="#FF6B35" stroke-width="1.8" stroke-dasharray="4,3"/>
+              <text x="49" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Target</text>
+              <line x1="88" y1="6" x2="106" y2="6" stroke="#4FC3F7" stroke-width="2.2"/>
+              <text x="109" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Actual</text>
+              <!-- Grid lines y=0,2,4,6,8,10 → svg 96,81,66,51,36,21 -->
+              <line x1="28" y1="96" x2="252" y2="96" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="81" x2="252" y2="81" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="66" x2="252" y2="66" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="51" x2="252" y2="51" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="36" x2="252" y2="36" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="21" x2="252" y2="21" stroke="#2E4070" stroke-width="0.7"/>
+              <!-- Y labels -->
+              <text x="23" y="99" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">0</text>
+              <text x="23" y="84" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">2</text>
+              <text x="23" y="69" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">4</text>
+              <text x="23" y="54" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">6</text>
+              <text x="23" y="39" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">8</text>
+              <text x="23" y="24" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">10</text>
+              <!-- Target line (9 → svg 29) -->
+              <line x1="28" y1="29" x2="252" y2="29" stroke="#FF6B35" stroke-width="2" stroke-dasharray="5,4"/>
+              <!-- Area fill under actual -->
+              <polygon points="28,55 84,51 140,53 196,62 252,42 252,96 28,96" fill="#4FC3F710"/>
+              <!-- Actual line: 5.5→55, 6.0→51, 5.8→53, 4.6→62, 7.3→42 -->
+              <polyline points="28,55 84,51 140,53 196,62 252,42" fill="none" stroke="#4FC3F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Data points -->
+              <circle cx="28"  cy="55" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="84"  cy="51" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="140" cy="53" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="196" cy="62" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="252" cy="42" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <!-- X-axis labels -->
+              <text x="28"  y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 6</text>
+              <text x="84"  y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 13</text>
+              <text x="140" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 20</text>
+              <text x="196" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 27</text>
+              <text x="252" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">May 4</text>
+              <!-- Callout: Outage at (196,62) -->
+              <line x1="196" y1="62" x2="162" y2="49" stroke="#FFB347" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
+              <rect x="54" y="37" width="107" height="14" rx="3" fill="rgba(10,22,46,0.95)" stroke="#FFB347" stroke-width="1.3"/>
+              <text x="61" y="47" fill="#FFB347" font-size="7.5" font-weight="bold" font-family="sans-serif">⚠ Outage — 5 hrs (Tue)</text>
+              <!-- Callout: Skill update at (252,42) -->
+              <line x1="252" y1="42" x2="216" y2="28" stroke="#4FC3F7" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
+              <rect x="112" y="15" width="103" height="14" rx="3" fill="rgba(10,22,46,0.95)" stroke="#4FC3F7" stroke-width="1.3"/>
+              <text x="119" y="25" fill="#4FC3F7" font-size="7.5" font-weight="bold" font-family="sans-serif">★ Major skill update pushed</text>
+            </svg>
           </div>
 
           <!-- Card 2: MQLs weekly -->
-          <div style="background: #243156; border: 1px solid #2E4070; border-radius: 4px; padding: 14px 16px 12px;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+          <div style="background: #243156; border: 1px solid #2E4070; border-radius: 4px; padding: 12px 14px 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
               <div>
-                <p style="font-size: 13px; font-weight: 700; color: #fff;">MQLs per Week</p>
-                <p style="font-size: 9.5px; color: #8DA5C4; margin-top: 3px;">Target: 10 &nbsp;·&nbsp; Marketing</p>
+                <p style="font-size: 12px; font-weight: 700; color: #fff;">MQLs per Week</p>
+                <p style="font-size: 9px; color: #8DA5C4; margin-top: 2px;">Target: 10 &nbsp;·&nbsp; Marketing</p>
               </div>
-              <div style="text-align: center; border-radius: 3px; padding: 5px 10px 4px; min-width: 62px; border: 1.5px solid #02C39A; background: #0A3020;">
-                <div style="font-size: 17px; font-weight: 700; color: #02C39A; line-height: 1.1;">12</div>
-                <div style="font-size: 7.5px; color: #02C39A; margin-top: 2px;">this wk ✓</div>
+              <div style="text-align: center; border-radius: 3px; padding: 4px 8px 3px; min-width: 56px; border: 1.5px solid #02C39A; background: #0A3020; flex-shrink:0; margin-left:6px;">
+                <div style="font-size: 15px; font-weight: 700; color: #02C39A; line-height: 1.1;">12</div>
+                <div style="font-size: 7px; color: #02C39A; margin-top: 1px;">this wk ✓</div>
               </div>
             </div>
-            <div style="position: relative; height: 180px;">
-              <canvas id="okrMqlChart"></canvas>
-            </div>
+            <!-- MQL SVG chart -->
+            <svg viewBox="0 0 260 125" style="width:100%;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
+              <!-- Legend -->
+              <line x1="28" y1="6" x2="46" y2="6" stroke="#FF6B35" stroke-width="1.8" stroke-dasharray="4,3"/>
+              <text x="49" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Target</text>
+              <line x1="88" y1="6" x2="106" y2="6" stroke="#4FC3F7" stroke-width="2.2"/>
+              <text x="109" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Actual</text>
+              <!-- Grid lines y=0,2,4,6,8,10,12,14 → svg 96,84,73,61,49,37,26,14 -->
+              <line x1="28" y1="96" x2="252" y2="96" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="84" x2="252" y2="84" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="73" x2="252" y2="73" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="61" x2="252" y2="61" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="49" x2="252" y2="49" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="37" x2="252" y2="37" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="26" x2="252" y2="26" stroke="#2E4070" stroke-width="0.7"/>
+              <!-- Y labels -->
+              <text x="23" y="99" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">0</text>
+              <text x="23" y="76" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">4</text>
+              <text x="23" y="52" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">8</text>
+              <text x="23" y="29" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">12</text>
+              <!-- Target line (10 → svg 37) -->
+              <line x1="28" y1="37" x2="252" y2="37" stroke="#FF6B35" stroke-width="2" stroke-dasharray="5,4"/>
+              <!-- Area fill: 7→55, 8→49, 5→67, 6→61, 12→26 -->
+              <polygon points="28,55 84,49 140,67 196,61 252,26 252,96 28,96" fill="#4FC3F710"/>
+              <!-- Actual line -->
+              <polyline points="28,55 84,49 140,67 196,61 252,26" fill="none" stroke="#4FC3F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Data points -->
+              <circle cx="28"  cy="55" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="84"  cy="49" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="140" cy="67" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="196" cy="61" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="252" cy="26" r="3.5" fill="#02C39A" stroke="#243156" stroke-width="1.5"/>
+              <!-- X-axis labels -->
+              <text x="28"  y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 6</text>
+              <text x="84"  y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 13</text>
+              <text x="140" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 20</text>
+              <text x="196" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 27</text>
+              <text x="252" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">May 4</text>
+              <!-- Callout: LinkedIn spike at (252,26) -->
+              <line x1="252" y1="26" x2="170" y2="23" stroke="#02C39A" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
+              <rect x="68" y="15" width="100" height="14" rx="3" fill="rgba(10,22,46,0.95)" stroke="#02C39A" stroke-width="1.3"/>
+              <text x="75" y="25" fill="#02C39A" font-size="7.5" font-weight="bold" font-family="sans-serif">♦ LinkedIn post spike</text>
+            </svg>
           </div>
 
           <!-- Card 3: MQLs cumulative -->
-          <div style="background: #243156; border: 1px solid #2E4070; border-radius: 4px; padding: 14px 16px 12px;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+          <div style="background: #243156; border: 1px solid #2E4070; border-radius: 4px; padding: 12px 14px 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
               <div>
-                <p style="font-size: 13px; font-weight: 700; color: #fff;">MQLs — Cumulative Q2</p>
-                <p style="font-size: 9.5px; color: #8DA5C4; margin-top: 3px;">Running total vs. cumulative target &nbsp;·&nbsp; Marketing</p>
+                <p style="font-size: 12px; font-weight: 700; color: #fff;">MQLs — Cumulative Q2</p>
+                <p style="font-size: 9px; color: #8DA5C4; margin-top: 2px;">Running total vs. cumulative target &nbsp;·&nbsp; Marketing</p>
               </div>
-              <div style="text-align: center; border-radius: 3px; padding: 5px 10px 4px; min-width: 62px; border: 1.5px solid #FFB347; background: #3A2010;">
-                <div style="font-size: 17px; font-weight: 700; color: #FFB347; line-height: 1.1;">38</div>
-                <div style="font-size: 7.5px; color: #FFB347; margin-top: 2px;">−12 vs target</div>
+              <div style="text-align: center; border-radius: 3px; padding: 4px 8px 3px; min-width: 56px; border: 1.5px solid #FFB347; background: #3A2010; flex-shrink:0; margin-left:6px;">
+                <div style="font-size: 15px; font-weight: 700; color: #FFB347; line-height: 1.1;">38</div>
+                <div style="font-size: 7px; color: #FFB347; margin-top: 1px;">−12 vs target</div>
               </div>
             </div>
-            <div style="position: relative; height: 180px;">
-              <canvas id="okrCumulChart"></canvas>
-            </div>
+            <!-- Cumulative SVG chart (13 week x-axis, 5 actuals) -->
+            <svg viewBox="0 0 260 125" style="width:100%;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
+              <!-- Legend -->
+              <line x1="28" y1="6" x2="46" y2="6" stroke="#FF6B35" stroke-width="1.8" stroke-dasharray="4,3"/>
+              <text x="49" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Cumul. Target</text>
+              <line x1="128" y1="6" x2="146" y2="6" stroke="#4FC3F7" stroke-width="2.2"/>
+              <text x="149" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Cumul. Actual</text>
+              <!-- Grid lines at 0,20,40,60,80,100,120,140 → svg 96,84,73,61,49,37,26,14 -->
+              <line x1="28" y1="96" x2="252" y2="96" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="84" x2="252" y2="84" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="73" x2="252" y2="73" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="61" x2="252" y2="61" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="49" x2="252" y2="49" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="37" x2="252" y2="37" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="26" x2="252" y2="26" stroke="#2E4070" stroke-width="0.7"/>
+              <!-- Y labels -->
+              <text x="23" y="99" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">0</text>
+              <text x="23" y="52" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">60</text>
+              <text x="23" y="17" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">120</text>
+              <!-- Cumulative target: 13 weeks, x step=224/12=18.67 from 28
+                   vals: 10→90, 20→84, 30→78, 40→73, 50→67, 60→61, 70→55, 80→49, 90→43, 100→37, 110→31, 120→26, 130→20
+                   x:   28,   47,   65,   84,  103,  121,  140,  159,  177,  196,  215,  233,  252 -->
+              <polyline points="28,90 47,84 65,78 84,73 103,67 121,61 140,55 159,49 177,43 196,37 215,31 233,26 252,20"
+                fill="none" stroke="#FF6B35" stroke-width="1.8" stroke-dasharray="5,4" stroke-linecap="round"/>
+              <!-- Target dots at each of 13 weeks -->
+              <circle cx="28"  cy="90" r="2.5" fill="#FF6B35"/>
+              <circle cx="47"  cy="84" r="2.5" fill="#FF6B35"/>
+              <circle cx="65"  cy="78" r="2.5" fill="#FF6B35"/>
+              <circle cx="84"  cy="73" r="2.5" fill="#FF6B35"/>
+              <circle cx="103" cy="67" r="2.5" fill="#FF6B35"/>
+              <circle cx="121" cy="61" r="2.5" fill="#FF6B35"/>
+              <circle cx="140" cy="55" r="2.5" fill="#FF6B35"/>
+              <circle cx="159" cy="49" r="2.5" fill="#FF6B35"/>
+              <circle cx="177" cy="43" r="2.5" fill="#FF6B35"/>
+              <circle cx="196" cy="37" r="2.5" fill="#FF6B35"/>
+              <circle cx="215" cy="31" r="2.5" fill="#FF6B35"/>
+              <circle cx="233" cy="26" r="2.5" fill="#FF6B35"/>
+              <circle cx="252" cy="20" r="2.5" fill="#FF6B35"/>
+              <!-- Cumulative actual: 5 weeks only
+                   vals: 7→92, 15→87, 20→84, 26→81, 38→74
+                   x:   28,   47,    65,   84,   103 -->
+              <polygon points="28,92 47,87 65,84 84,81 103,74 103,96 28,96" fill="#4FC3F710"/>
+              <polyline points="28,92 47,87 65,84 84,81 103,74" fill="none" stroke="#4FC3F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="28"  cy="92" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="47"  cy="87" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="65"  cy="84" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="84"  cy="81" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="103" cy="74" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <!-- X-axis labels (4 of 13) -->
+              <text x="28"  y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 6</text>
+              <text x="103" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">May 4</text>
+              <text x="177" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Jun 1</text>
+              <text x="252" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Jun 29</text>
+              <!-- Callout: LinkedIn spike (+12) at last actual point (103,74) -->
+              <line x1="103" y1="74" x2="103" y2="61" stroke="#02C39A" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
+              <rect x="2" y="43" width="100" height="26" rx="3" fill="rgba(10,22,46,0.95)" stroke="#02C39A" stroke-width="1.3"/>
+              <text x="9" y="55" fill="#02C39A" font-size="7.5" font-weight="bold" font-family="sans-serif">♦ LinkedIn spike (+12)</text>
+              <text x="9" y="66" fill="#DDEEFF" font-size="7" font-family="sans-serif">38 total · −12 vs target</text>
+            </svg>
           </div>
 
         </div>
@@ -219,167 +360,3 @@ import SiteFooter from '../../components/SiteFooter.astro';
   <SiteFooter />
 </Layout>
 
-<script>
-// Load Chart.js from CDN then render
-(function() {
-  const script = document.createElement('script');
-  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js';
-  script.onload = initCharts;
-  document.head.appendChild(script);
-
-  function roundedRect(ctx, x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y);
-    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-    ctx.lineTo(x + w, y + h - r);
-    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-    ctx.lineTo(x + r, y + h);
-    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-    ctx.lineTo(x, y + r);
-    ctx.quadraticCurveTo(x, y, x + r, y);
-    ctx.closePath();
-  }
-
-  function drawCallout(ctx, px, py, item) {
-    const { lines, color, side } = item;
-    const pad = { x: 7, y: 5 }, fs = 8, lh = 12, gap = 16, r = 4;
-    ctx.save();
-    ctx.font = `bold ${fs}px 'Segoe UI',sans-serif`;
-    const maxW = Math.max(...lines.map(l => ctx.measureText(l).width));
-    const bw = maxW + pad.x * 2, bh = lines.length * lh + pad.y * 2;
-    let bx, by, lx1, ly1, lx2, ly2;
-    if (side === 'above') {
-      bx = px - bw / 2; by = py - gap - bh;
-      lx1 = px; ly1 = py - 7; lx2 = px; ly2 = by + bh;
-    } else if (side === 'above-left') {
-      bx = px - bw - 6; by = py - gap - bh;
-      lx1 = px; ly1 = py - 7; lx2 = bx + bw; ly2 = by + bh;
-    } else if (side === 'left') {
-      bx = px - gap - bw; by = py - bh / 2;
-      lx1 = px - 7; ly1 = py; lx2 = bx + bw; ly2 = py;
-    }
-    ctx.strokeStyle = color; ctx.lineWidth = 1.5;
-    ctx.globalAlpha = 0.6; ctx.setLineDash([4, 3]);
-    ctx.beginPath(); ctx.moveTo(lx1, ly1); ctx.lineTo(lx2, ly2); ctx.stroke();
-    ctx.setLineDash([]); ctx.globalAlpha = 1;
-    roundedRect(ctx, bx, by, bw, bh, r);
-    ctx.fillStyle = 'rgba(10, 22, 46, 0.96)'; ctx.fill();
-    roundedRect(ctx, bx, by, bw, bh, r);
-    ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.stroke();
-    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-    lines.forEach((line, i) => {
-      ctx.font = `bold ${fs}px 'Segoe UI',sans-serif`;
-      ctx.fillStyle = i === 0 ? color : '#DDEEFF';
-      ctx.fillText(line, bx + pad.x, by + pad.y + i * lh);
-    });
-    ctx.restore();
-  }
-
-  function initCharts() {
-    const calloutPlugin = {
-      id: 'callouts',
-      afterDraw(chart) {
-        const items = chart.config.options.callouts;
-        if (!items || !items.length) return;
-        const xs = chart.scales.x, ys = chart.scales.y;
-        items.forEach(item => {
-          drawCallout(chart.ctx, xs.getPixelForValue(item.xi), ys.getPixelForValue(item.y), item);
-        });
-      }
-    };
-    Chart.register(calloutPlugin);
-
-    const weeks13 = ["Apr 6","Apr 13","Apr 20","Apr 27","May 4","May 11","May 18","May 25","Jun 1","Jun 8","Jun 15","Jun 22","Jun 29"];
-    const weeks5  = weeks13.slice(0, 5);
-
-    function makeDS(label, data, color, dashed, spanGaps = false) {
-      return {
-        label, data, spanGaps,
-        borderColor: color, backgroundColor: color,
-        borderWidth: dashed ? 2 : 2.8,
-        borderDash: dashed ? [5, 4] : [],
-        pointBackgroundColor: data.map(v => v === null ? 'transparent' : color),
-        pointBorderColor: data.map(v => v === null ? 'transparent' : '#243156'),
-        pointBorderWidth: 1.5,
-        pointRadius: data.map(v => v === null ? 0 : 5),
-        pointHoverRadius: data.map(v => v === null ? 0 : 7),
-        tension: 0.1,
-        fill: (!dashed && !spanGaps) ? { target: 'origin', above: color + '12' } : false,
-      };
-    }
-
-    function baseOpts(yMax, yStep) {
-      return {
-        responsive: true, maintainAspectRatio: false,
-        animation: { duration: 700 },
-        layout: { padding: { top: 6, right: 18, bottom: 4, left: 4 } },
-        plugins: {
-          legend: {
-            position: 'top', align: 'start',
-            labels: { color: '#AABBD0', font: { size: 9 }, boxWidth: 22, boxHeight: 2, padding: 8, usePointStyle: false }
-          },
-          tooltip: {
-            backgroundColor: '#0E1C36', borderColor: '#2E4070', borderWidth: 1,
-            titleColor: '#AABBD0', bodyColor: '#FFFFFF', padding: 8,
-            callbacks: { label: ctx => ctx.parsed.y === null ? '' : ` ${ctx.dataset.label}: ${ctx.parsed.y}` }
-          },
-        },
-        scales: {
-          x: {
-            grid: { display: false }, border: { display: false },
-            ticks: { color: '#8DA5C4', font: { size: 9 }, maxRotation: 0 }
-          },
-          y: {
-            min: 0, max: yMax, border: { display: false },
-            grid: { color: '#2E4070', lineWidth: 0.8 },
-            ticks: { color: '#8DA5C4', font: { size: 9 }, stepSize: yStep, maxTicksLimit: 8 }
-          }
-        }
-      };
-    }
-
-    // CSAT chart
-    const csatOpts = baseOpts(11, 2);
-    csatOpts.callouts = [
-      { xi: 3, y: 4.6, side: 'above',      color: '#FFB347', lines: ['⚠ Outage — 5 hrs (Tue)'] },
-      { xi: 4, y: 7.3, side: 'above-left', color: '#4FC3F7', lines: ['★ Major skill update pushed'] },
-    ];
-    const csatActual = [5.5, 6.0, 5.8, 4.6, 7.3];
-    const csatDS = makeDS('Actual', csatActual, '#4FC3F7', false);
-    csatDS.pointBackgroundColor = csatActual.map(v => v >= 9 ? '#02C39A' : '#4FC3F7');
-    csatDS.pointBorderColor = csatActual.map(() => '#243156');
-    csatDS.segment = { borderColor: ctx => ctx.p1.parsed.y >= 9 ? '#02C39A' : '#4FC3F7' };
-    new Chart(document.getElementById('okrCsatChart'), {
-      type: 'line',
-      data: { labels: weeks5, datasets: [makeDS('Target', [9,9,9,9,9], '#FF6B35', true), csatDS] },
-      options: csatOpts,
-    });
-
-    // MQL weekly chart
-    const mqlOpts = baseOpts(14, 2);
-    mqlOpts.callouts = [{ xi: 4, y: 12, side: 'left', color: '#02C39A', lines: ['♦ LinkedIn post spike'] }];
-    new Chart(document.getElementById('okrMqlChart'), {
-      type: 'line',
-      data: { labels: weeks5, datasets: [makeDS('Target', [10,10,10,10,10], '#FF6B35', true), makeDS('Actual', [7,8,5,6,12], '#4FC3F7', false)] },
-      options: mqlOpts,
-    });
-
-    // MQL cumulative chart
-    const cumulOpts = baseOpts(140, 20);
-    cumulOpts.callouts = [{ xi: 4, y: 38, side: 'above-left', color: '#02C39A', lines: ['♦ LinkedIn spike (+12)', '38 total  ·  −12 vs target'] }];
-    cumulOpts.scales.x.ticks.callback = function(val, i) { return [0,4,8,12].includes(i) ? this.getLabelForValue(val) : ''; };
-    const mqlCumul = [7,15,20,26,38];
-    new Chart(document.getElementById('okrCumulChart'), {
-      type: 'line',
-      data: {
-        labels: weeks13,
-        datasets: [
-          makeDS('Cumul. Target', weeks13.map((_, i) => (i+1)*10), '#FF6B35', true, false),
-          makeDS('Cumul. Actual', [...mqlCumul, ...Array(8).fill(null)], '#4FC3F7', false, false),
-        ]
-      },
-      options: cumulOpts,
-    });
-  }
-})();
-</script>
