@@ -50,11 +50,12 @@ import SiteFooter from '../../components/SiteFooter.astro';
       <div class="mb-10">
         <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Example output</div>
         <h2 class="text-3xl font-bold text-ink mb-2" style="letter-spacing: -0.02em">What a weekly check-in looks like.</h2>
-        <p class="text-ink/50 text-sm">Q2 2026 · Week 5 of 13 · Freeday implementation funnel metrics.</p>
+        <p class="text-ink/50 text-sm">Q2 2026 · Week 5 of 13 · Three key results tracked across operations and marketing.</p>
       </div>
 
       <!-- Dashboard mockup -->
-      <div class="rounded-2xl overflow-hidden shadow-sm border border-white/10" style="background: #1A2744; padding: 28px 32px 24px;">
+      <div class="overflow-x-auto rounded-2xl">
+      <div class="rounded-2xl overflow-hidden shadow-sm border border-white/10" style="background: #1A2744; padding: 28px 32px 24px; min-width: 700px;">
 
         <!-- Header -->
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
@@ -62,7 +63,7 @@ import SiteFooter from '../../components/SiteFooter.astro';
             <p style="font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.2px;">Q2 2026 OKR Weekly Check-in</p>
             <p style="font-size: 11px; color: #8DA5C4; margin-top: 4px;">Week of May 4, 2026 &nbsp;·&nbsp; 5 of 13 weeks tracked</p>
           </div>
-          <p style="font-size: 11px; color: #8DA5C4; padding-top: 2px;">Freeday</p>
+          <p style="font-size: 11px; color: #8DA5C4; padding-top: 2px;">Example Co.</p>
         </div>
         <div style="height: 1px; background: #2E4070; margin: 10px 0 16px;"></div>
 
@@ -122,24 +123,36 @@ import SiteFooter from '../../components/SiteFooter.astro';
 
         </div>
       </div>
+      </div>
 
       <p class="text-xs text-ink/40 mt-4 text-center font-mono">Illustrative output — metrics and key results are configured per client context.</p>
     </div>
   </section>
 
-  <!-- Live at Freeday -->
+  <!-- Roadmap -->
   <section class="py-24 px-6 bg-ink text-cream">
     <div class="max-w-5xl mx-auto">
       <div class="mb-14">
-        <div class="text-xs font-mono font-medium text-violet-400 uppercase tracking-widest mb-4">In active use</div>
-        <h2 class="text-3xl font-bold text-cream" style="letter-spacing: -0.02em">Live at Freeday.</h2>
+        <div class="text-xs font-mono font-medium text-violet-400 uppercase tracking-widest mb-4">Roadmap</div>
+        <h2 class="text-3xl font-bold text-cream" style="letter-spacing: -0.02em">Where we're taking it.</h2>
       </div>
-      <div class="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10">
-        <div class="flex flex-wrap items-center gap-4 mb-8">
-          <img src="/logos/freeday.png" alt="Freeday" class="h-6 object-contain brightness-0 invert opacity-60" />
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">1</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">In progress</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Active development at Freeday</h3>
+          <p class="text-white/50 text-sm leading-relaxed">We are actively developing the OKR Tracker with Freeday to support their weekly team check-in for their implementation funnel. The report tracks key metrics that directly reflect the reliability and performance of their implementation process — giving the team a consistent, data-backed view every week and surfacing blockers before they compound.</p>
         </div>
-        <h3 class="font-bold text-cream text-lg mb-3">Weekly implementation funnel check-in</h3>
-        <p class="text-white/50 text-sm leading-relaxed max-w-2xl">We are actively implementing the OKR Tracker at Freeday to support their weekly team check-in for their implementation funnel. The report tracks key metrics that directly reflect the reliability and performance of their implementation process — giving the team a consistent, data-backed view every week and surfacing blockers before they compound.</p>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">2</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">Coming next</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Plug-and-play template</h3>
+          <p class="text-white/50 text-sm leading-relaxed">The goal is to make the OKR Tracker accessible without a weeks-long implementation. We're working towards a template-based setup that lets clients define their key results, connect their data source, and have a working weekly check-in report running within a few hours — rather than a bespoke build from scratch each time.</p>
+        </div>
       </div>
     </div>
   </section>
