@@ -107,7 +107,7 @@
       container.style.transform = 'translateY(0) scale(1)';
       document.body.style.overflow = 'hidden';
 
-      var addon = ADDON_SLUGS[window.location.pathname.replace(/\/$/, '')];
+      var addon = ADDON_SLUGS[window.location.pathname.replace(/^(.+)\/$/, '$1')];
       if (addon) {
         fetch('/api/track-cta', {
           method: 'POST',
@@ -165,7 +165,7 @@
         try { data = JSON.parse(data); } catch (err) { return; }
       }
       if (!data || data.event !== 'calendly.event_scheduled') return;
-      var addon = ADDON_SLUGS[window.location.pathname.replace(/\/$/, '')];
+      var addon = ADDON_SLUGS[window.location.pathname.replace(/^(.+)\/$/, '$1')];
       if (!addon) return;
       var payload = data.payload || {};
       var eventUri   = payload.event   && (payload.event.uri   || payload.event);
