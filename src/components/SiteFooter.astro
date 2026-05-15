@@ -139,17 +139,22 @@
       '/add-ons/weekly-okr-tracker':  'okr-tracker',
     };
     window.addEventListener('message', function (e) {
-      if (!e.data || e.data.event !== 'calendly.event_scheduled') return;
+      // Calendly may send data as a JSON string or as an object depending on version
+      var data = e.data;
+      if (typeof data === 'string') {
+        try { data = JSON.parse(data); } catch (err) { return; }
+      }
+      if (!data || data.event !== 'calendly.event_scheduled') return;
       var addon = ADDON_SLUGS[window.location.pathname];
       if (!addon) return;
+      var payload = data.payload || {};
+      var eventUri   = payload.event   && (payload.event.uri   || payload.event);
+      var inviteeUri = payload.invitee && (payload.invitee.uri || payload.invitee);
+      if (!eventUri || !inviteeUri) return;
       fetch('/api/calendly-event', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          addon:       addon,
-          eventUri:    e.data.payload.event.uri,
-          inviteeUri:  e.data.payload.invitee.uri,
-        }),
+        body: JSON.stringify({ addon: addon, eventUri: eventUri, inviteeUri: inviteeUri }),
       }).catch(function () {});
     });
   })();
