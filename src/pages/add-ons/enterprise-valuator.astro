@@ -7,6 +7,7 @@ import SiteFooter from '../../components/SiteFooter.astro';
 <Layout title="Enterprise Valuator — Maxq Analytics">
   <SiteNav />
 
+  <!-- Hero -->
   <section class="pt-32 pb-20 px-6 bg-ink text-cream">
     <div class="max-w-5xl mx-auto">
       <a href="/#add-ons" class="inline-flex items-center gap-2 font-mono text-xs text-white/40 hover:text-white/70 transition-colors mb-8">
@@ -14,24 +15,388 @@ import SiteFooter from '../../components/SiteFooter.astro';
         All add-ons
       </a>
       <div class="flex items-center gap-2 mb-6">
-        <span class="font-mono text-[10px] font-medium text-violet-400 bg-violet-400/10 border border-violet-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Report</span>
         <span class="font-mono text-[10px] font-medium text-brand-300 bg-brand-600/10 border border-brand-600/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+        <span class="font-mono text-[10px] font-medium text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Proof of concept</span>
       </div>
       <h1 class="font-black mb-6 leading-none" style="font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.04em">Enterprise Valuator</h1>
-      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed">Generates data-driven business valuations directly from the metrics flowing through Metricsrouter. Applies recognised valuation methodologies to live data — giving founders, CFOs, and investors a repeatable, defensible number at any point in time.</p>
+      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed mb-10">A periodic business valuation report built directly on the metrics inside your Semantic Nexus. No manual input, no spreadsheet gymnastics — your live operational data drives a defensible valuation at any point in time.</p>
+      <a href="https://calendly.com/philip-boontje?utm_content=enterprise-valuator" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        Explore the proof of concept
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
   </section>
 
-  <section class="py-32 px-6 bg-cream" style="min-height: 60vh">
-    <div class="max-w-5xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 font-mono text-xs font-medium text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-full uppercase tracking-wider mb-8">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-        This page is under construction
+  <!-- How it works -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">How it works</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 280px">Your metrics. A valuation you can actually defend.</h2>
+        </div>
+        <div class="space-y-4 text-ink/60 leading-relaxed max-w-xl pt-1">
+          <p>Most business valuations are one-off exercises: a financial model built manually in a spreadsheet, using whatever numbers the finance team could pull together at that moment. They take weeks, go stale the day they're finished, and are almost impossible to reproduce consistently.</p>
+          <p>The Enterprise Valuator takes a different approach. Because your key financial and operational metrics already live inside the Semantic Nexus — defined, maintained, and always current — we can apply recognised valuation methodologies directly to that live data.</p>
+          <p>The result is a valuation report that refreshes automatically as your metrics move. You can see how revenue growth, gross margin, and retention translate into enterprise value, run scenarios by adjusting assumptions, and produce a consistent, defensible number whenever a board meeting, fundraise, or acquisition discussion requires it.</p>
+        </div>
       </div>
-      <h2 class="text-3xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Full details coming soon.</h2>
-      <p class="text-ink/50 max-w-lg mx-auto leading-relaxed mb-10">We're working on the full page for this add-on. In the meantime, schedule a call and we'll walk you through how the Enterprise Valuator works in practice.</p>
-      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-ink text-cream font-semibold px-8 py-3.5 rounded-full hover:bg-ink/80 transition-colors text-sm">
-        Generate your first valuation
+    </div>
+  </section>
+
+  <!-- Mockup -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Example output</div>
+        <h2 class="text-3xl font-bold text-ink mb-2" style="letter-spacing: -0.02em">Valuation driven by your live metrics.</h2>
+        <p class="text-ink/50 text-sm">Adjust the metric inputs to see how operational changes affect your enterprise value trajectory.</p>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl">
+        <div style="background:#0F1C38; padding:24px 28px 22px; border-radius:16px; min-width:780px;">
+
+          <!-- Header -->
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
+            <div>
+              <p style="font-size:15px; font-weight:700; color:#fff; letter-spacing:-0.2px;">Enterprise Valuator</p>
+              <p style="font-size:11px; color:#6B87A8; margin-top:3px;">Northfield Logistics B.V. · Updated Q2 2026</p>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <div style="font-size:9px; color:#A78BFA; background:rgba(167,139,250,0.12); border:1px solid rgba(167,139,250,0.25); padding:3px 10px; border-radius:20px; font-family:monospace; text-transform:uppercase; letter-spacing:0.05em;">Revenue Multiple</div>
+              <div style="font-size:9px; color:#8DA5C4; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:3px 10px; border-radius:20px; font-family:monospace; text-transform:uppercase; letter-spacing:0.05em;">ARR-based</div>
+            </div>
+          </div>
+
+          <!-- Top KPI cards -->
+          <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:12px; margin-bottom:14px;">
+
+            <div style="background:#1E3A6E; border-radius:10px; padding:16px 18px; border:1px solid #2E5090;">
+              <p style="font-size:9px; color:#7A9CC0; font-family:monospace; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">Estimated Enterprise Value</p>
+              <p style="font-size:28px; font-weight:900; color:#fff; letter-spacing:-0.04em; line-height:1;">€4.2M</p>
+              <p style="font-size:10px; color:#02C39A; margin-top:4px;">↑ +12% vs Q1 2026</p>
+              <p style="font-size:9px; color:#4B6A8A; margin-top:3px; font-family:monospace;">Revenue multiple: 3.2×</p>
+            </div>
+
+            <div style="background:#162040; border-radius:10px; padding:16px 18px; border:1px solid #1E3060;">
+              <p style="font-size:9px; color:#7A9CC0; font-family:monospace; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">Revenue Growth (YoY)</p>
+              <p style="font-size:22px; font-weight:900; color:#4FC3F7; letter-spacing:-0.03em; line-height:1;">18%</p>
+              <p style="font-size:9px; color:#02C39A; margin-top:4px;">↑ +3pp year-over-year</p>
+              <p style="font-size:9px; color:#4B6A8A; margin-top:3px; font-family:monospace;">ARR: €1.31M</p>
+            </div>
+
+            <div style="background:#162040; border-radius:10px; padding:16px 18px; border:1px solid #1E3060;">
+              <p style="font-size:9px; color:#7A9CC0; font-family:monospace; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">Gross Profit Margin</p>
+              <p style="font-size:22px; font-weight:900; color:#02C39A; letter-spacing:-0.03em; line-height:1;">67%</p>
+              <p style="font-size:9px; color:#8DA5C4; margin-top:4px;">→ Stable vs prior quarter</p>
+              <p style="font-size:9px; color:#4B6A8A; margin-top:3px; font-family:monospace;">GP: €288K / quarter</p>
+            </div>
+
+            <div style="background:#162040; border-radius:10px; padding:16px 18px; border:1px solid #1E3060;">
+              <p style="font-size:9px; color:#7A9CC0; font-family:monospace; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">Ann. Revenue per Account</p>
+              <p style="font-size:22px; font-weight:900; color:#A78BFA; letter-spacing:-0.03em; line-height:1;">€4,800</p>
+              <p style="font-size:9px; color:#02C39A; margin-top:4px;">↑ +€240 vs prior year</p>
+              <p style="font-size:9px; color:#4B6A8A; margin-top:3px; font-family:monospace;">273 active accounts</p>
+            </div>
+          </div>
+
+          <!-- Chart + Scenario row -->
+          <div style="display:grid; grid-template-columns:2.2fr 1fr; gap:12px;">
+
+            <!-- Chart -->
+            <div style="background:#132040; border-radius:10px; padding:16px 18px; border:1px solid #1E3060;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <p style="font-size:11px; font-weight:600; color:#D0DFF0;">Revenue & Valuation Trajectory</p>
+                <div style="display:flex; gap:14px; align-items:center;">
+                  <div style="display:flex; align-items:center; gap:4px;">
+                    <div style="width:10px; height:10px; background:#3B82F6; border-radius:2px; opacity:0.7;"></div>
+                    <span style="font-size:8px; color:#8DA5C4; font-family:monospace;">Revenue</span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:4px;">
+                    <div style="width:10px; height:10px; background:#02C39A; border-radius:2px; opacity:0.7;"></div>
+                    <span style="font-size:8px; color:#8DA5C4; font-family:monospace;">Gross Profit</span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:4px;">
+                    <div style="width:18px; height:2px; background:#F59E0B;"></div>
+                    <span style="font-size:8px; color:#8DA5C4; font-family:monospace;">Enterprise Value</span>
+                  </div>
+                </div>
+              </div>
+              <svg viewBox="0 0 420 185" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg">
+                <!-- Grid lines -->
+                <line x1="36" y1="15"  x2="390" y2="15"  stroke="#1E3060" stroke-width="0.6"/>
+                <line x1="36" y1="50"  x2="390" y2="50"  stroke="#1E3060" stroke-width="0.6"/>
+                <line x1="36" y1="85"  x2="390" y2="85"  stroke="#1E3060" stroke-width="0.6"/>
+                <line x1="36" y1="120" x2="390" y2="120" stroke="#1E3060" stroke-width="0.6"/>
+                <line x1="36" y1="155" x2="390" y2="155" stroke="#1E3060" stroke-width="0.6"/>
+                <!-- Left Y labels (revenue) -->
+                <text x="32" y="158" fill="#4B6A8A" font-size="7" font-family="monospace" text-anchor="end">€0</text>
+                <text x="32" y="123" fill="#4B6A8A" font-size="7" font-family="monospace" text-anchor="end">100K</text>
+                <text x="32" y="88"  fill="#4B6A8A" font-size="7" font-family="monospace" text-anchor="end">200K</text>
+                <text x="32" y="53"  fill="#4B6A8A" font-size="7" font-family="monospace" text-anchor="end">300K</text>
+                <text x="32" y="18"  fill="#4B6A8A" font-size="7" font-family="monospace" text-anchor="end">400K</text>
+                <!-- Right Y labels (valuation) -->
+                <text x="394" y="18"  fill="#F59E0B" font-size="7" font-family="monospace">€5M</text>
+                <text x="394" y="53"  fill="#F59E0B" font-size="7" font-family="monospace">€4M</text>
+                <text x="394" y="88"  fill="#F59E0B" font-size="7" font-family="monospace">€3M</text>
+                <text x="394" y="123" fill="#F59E0B" font-size="7" font-family="monospace">€2M</text>
+                <text x="394" y="158" fill="#F59E0B" font-size="7" font-family="monospace">€1M</text>
+
+                <!-- Bar groups: centers at 68, 128, 188, 248, 308, 368 -->
+                <!-- Revenue bars (width 22, left side of center) -->
+                <!-- Heights: 280K=98, 310K=109, 340K=119, 365K=128, 390K=137, 430K=151 (scale: 400K=140px) -->
+                <rect x="43"  y="57"  width="22" height="98"  fill="#3B82F6" opacity="0.55" rx="2"/>
+                <rect x="103" y="46"  width="22" height="109" fill="#3B82F6" opacity="0.55" rx="2"/>
+                <rect x="163" y="36"  width="22" height="119" fill="#3B82F6" opacity="0.55" rx="2"/>
+                <rect x="223" y="27"  width="22" height="128" fill="#3B82F6" opacity="0.65" rx="2"/>
+                <rect x="283" y="18"  width="22" height="137" fill="#3B82F6" opacity="0.75" rx="2"/>
+                <rect x="343" y="4"   width="22" height="151" fill="#3B82F6" opacity="0.85" rx="2"/>
+                <!-- GP bars (width 22, right side of center) -->
+                <!-- Heights: 188K=66, 208K=73, 228K=80, 245K=86, 262K=92, 288K=101 -->
+                <rect x="69"  y="89"  width="22" height="66"  fill="#02C39A" opacity="0.55" rx="2"/>
+                <rect x="129" y="82"  width="22" height="73"  fill="#02C39A" opacity="0.55" rx="2"/>
+                <rect x="189" y="75"  width="22" height="80"  fill="#02C39A" opacity="0.55" rx="2"/>
+                <rect x="249" y="69"  width="22" height="86"  fill="#02C39A" opacity="0.65" rx="2"/>
+                <rect x="309" y="63"  width="22" height="92"  fill="#02C39A" opacity="0.75" rx="2"/>
+                <rect x="369" y="54"  width="22" height="101" fill="#02C39A" opacity="0.85" rx="2"/>
+
+                <!-- Valuation line (right axis: 5M=y15, 1M=y155 → 4M=140px → 1M=35px) -->
+                <!-- 3.2M: 155-(3.2-1)*35=155-77=78 | 3.5M:67 | 3.8M:57 | 4.0M:50 | 4.1M:46 | 4.2M:43 -->
+                <polygon points="68,78 128,67 188,57 248,50 308,46 368,43 368,155 68,155" fill="rgba(245,158,11,0.07)"/>
+                <polyline points="68,78 128,67 188,57 248,50 308,46 368,43" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="68"  cy="78" r="3"   fill="#F59E0B" stroke="#132040" stroke-width="1.5"/>
+                <circle cx="128" cy="67" r="3"   fill="#F59E0B" stroke="#132040" stroke-width="1.5"/>
+                <circle cx="188" cy="57" r="3"   fill="#F59E0B" stroke="#132040" stroke-width="1.5"/>
+                <circle cx="248" cy="50" r="3"   fill="#F59E0B" stroke="#132040" stroke-width="1.5"/>
+                <circle cx="308" cy="46" r="3"   fill="#F59E0B" stroke="#132040" stroke-width="1.5"/>
+                <circle cx="368" cy="43" r="3.5" fill="#F59E0B" stroke="#132040" stroke-width="1.5"/>
+                <!-- Label at last valuation point -->
+                <rect x="339" y="30" width="46" height="13" rx="3" fill="rgba(10,22,46,0.95)" stroke="#F59E0B" stroke-width="1.2"/>
+                <text x="362" y="40" fill="#F59E0B" font-size="7.5" font-weight="bold" font-family="sans-serif" text-anchor="middle">€4.2M</text>
+                <!-- X labels -->
+                <text x="68"  y="172" fill="#4B6A8A" font-size="7" font-family="monospace" text-anchor="middle">Q1 '25</text>
+                <text x="128" y="172" fill="#4B6A8A" font-size="7" font-family="monospace" text-anchor="middle">Q2 '25</text>
+                <text x="188" y="172" fill="#4B6A8A" font-size="7" font-family="monospace" text-anchor="middle">Q3 '25</text>
+                <text x="248" y="172" fill="#4B6A8A" font-size="7" font-family="monospace" text-anchor="middle">Q4 '25</text>
+                <text x="308" y="172" fill="#4B6A8A" font-size="7" font-family="monospace" text-anchor="middle">Q1 '26</text>
+                <text x="368" y="172" fill="#4B6A8A" font-size="7" font-family="monospace" text-anchor="middle">Q2 '26</text>
+              </svg>
+            </div>
+
+            <!-- Scenario adjusters -->
+            <div style="background:#132040; border-radius:10px; padding:16px 18px; border:1px solid #1E3060; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <p style="font-size:11px; font-weight:600; color:#D0DFF0; margin-bottom:16px;">Scenario Adjustments</p>
+
+                <!-- Revenue Growth -->
+                <div style="margin-bottom:14px;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                    <span style="font-size:8px; color:#8DA5C4; font-family:monospace; text-transform:uppercase; letter-spacing:0.04em;">Revenue Growth</span>
+                    <span style="font-size:9px; color:#4FC3F7; font-family:monospace; font-weight:700;">18%</span>
+                  </div>
+                  <div style="background:#1E3060; border-radius:4px; height:5px; position:relative;">
+                    <div style="background:linear-gradient(90deg,#3B82F6,#60A5FA); width:45%; height:100%; border-radius:4px;"></div>
+                    <div style="position:absolute; top:50%; left:45%; transform:translate(-50%,-50%); width:9px; height:9px; background:#4FC3F7; border-radius:50%; border:2px solid #132040;"></div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; margin-top:3px;">
+                    <span style="font-size:7px; color:#2E4070; font-family:monospace;">0%</span>
+                    <span style="font-size:7px; color:#2E4070; font-family:monospace;">40%</span>
+                  </div>
+                </div>
+
+                <!-- Gross Profit Margin -->
+                <div style="margin-bottom:14px;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                    <span style="font-size:8px; color:#8DA5C4; font-family:monospace; text-transform:uppercase; letter-spacing:0.04em;">Gross Profit Margin</span>
+                    <span style="font-size:9px; color:#02C39A; font-family:monospace; font-weight:700;">67%</span>
+                  </div>
+                  <div style="background:#1E3060; border-radius:4px; height:5px; position:relative;">
+                    <div style="background:linear-gradient(90deg,#02C39A,#34D399); width:67%; height:100%; border-radius:4px;"></div>
+                    <div style="position:absolute; top:50%; left:67%; transform:translate(-50%,-50%); width:9px; height:9px; background:#02C39A; border-radius:50%; border:2px solid #132040;"></div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; margin-top:3px;">
+                    <span style="font-size:7px; color:#2E4070; font-family:monospace;">0%</span>
+                    <span style="font-size:7px; color:#2E4070; font-family:monospace;">100%</span>
+                  </div>
+                </div>
+
+                <!-- ARPA -->
+                <div style="margin-bottom:16px;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                    <span style="font-size:8px; color:#8DA5C4; font-family:monospace; text-transform:uppercase; letter-spacing:0.04em;">Ann. Rev. per Account</span>
+                    <span style="font-size:9px; color:#A78BFA; font-family:monospace; font-weight:700;">€4,800</span>
+                  </div>
+                  <div style="background:#1E3060; border-radius:4px; height:5px; position:relative;">
+                    <div style="background:linear-gradient(90deg,#8B5CF6,#A78BFA); width:48%; height:100%; border-radius:4px;"></div>
+                    <div style="position:absolute; top:50%; left:48%; transform:translate(-50%,-50%); width:9px; height:9px; background:#A78BFA; border-radius:50%; border:2px solid #132040;"></div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; margin-top:3px;">
+                    <span style="font-size:7px; color:#2E4070; font-family:monospace;">€0</span>
+                    <span style="font-size:7px; color:#2E4070; font-family:monospace;">€10K</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scenario result -->
+              <div style="background:#1A3060; border-radius:8px; padding:12px 14px; border:1px solid #2E5090;">
+                <p style="font-size:8px; color:#7A9CC0; font-family:monospace; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">Scenario Valuation</p>
+                <p style="font-size:20px; font-weight:900; color:#F59E0B; letter-spacing:-0.03em; line-height:1;">€5.8M</p>
+                <p style="font-size:9px; color:#02C39A; margin-top:4px;">↑ +38% vs current</p>
+                <p style="font-size:8px; color:#4B6A8A; margin-top:4px; font-family:monospace;">Based on adjusted inputs above</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <p class="text-xs text-ink/40 mt-4 text-center font-mono">Illustrative output — valuation methodology and metrics are configured per company context.</p>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">What you get</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">A valuation that moves<br>with your business.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Live metric input</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">Connected directly to your Semantic Nexus, the valuator reads your latest metrics automatically. No manual data preparation required — the numbers are always current.</p>
+        </div>
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Valuation trajectory</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">See how your enterprise value has moved over time — not just a point-in-time number. Track the trend alongside revenue and profitability to understand what's driving the valuation.</p>
+        </div>
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Scenario modelling</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">Adjust revenue growth, gross margin, and retention assumptions to model scenarios. See instantly how operational decisions translate into valuation impact before a board meeting or fundraise.</p>
+        </div>
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Periodic reports</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">The valuator runs on a schedule — quarterly, monthly, or whenever you need it. Each report is consistent, reproducible, and versioned so you can compare valuations over time.</p>
+        </div>
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Recognised methodology</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">The valuation applies established methodologies — revenue multiples, ARR-based approaches, profitability adjustments — so the output is grounded in something you can present to investors or a board.</p>
+        </div>
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Simple and accessible</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">The goal of the proof of concept is to prove that complex valuation logic can be made accessible to founders and operators — not just to M&A advisors. No finance background required to read the output.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="py-24 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-4">Roadmap</div>
+        <h2 class="text-3xl font-bold text-cream" style="letter-spacing: -0.02em">Where we're taking it.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">1</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">In progress</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Proof of concept with first clients</h3>
+          <p class="text-white/50 text-sm leading-relaxed">The current phase is about validating the core question: can we build a simple, easy-to-use business valuator that produces a meaningful result from the metrics already inside the Semantic Nexus? We're running the PoC with a small group of early clients to test the methodology, the interface, and whether the output is useful in practice.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">2</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">Coming next</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Beta, then production</h3>
+          <p class="text-white/50 text-sm leading-relaxed">Once the PoC validates the approach, the beta phase will expand the methodology coverage, refine the scenario modelling, and test the reporting format with a wider group. The production version will be offered as a monthly subscription — pricing will depend on the features and complexity of the valuator as it takes shape.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Pricing</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 260px">Free while we build it together.</h2>
+        </div>
+        <div class="max-w-xl pt-1">
+          <p class="text-ink/60 leading-relaxed mb-5">The Enterprise Valuator is in proof of concept phase. While we're validating the approach and refining the methodology with early clients, there's no cost to participate. The PoC and beta will remain free.</p>
+          <p class="text-ink/60 leading-relaxed mb-8">Once the production version launches, it will be offered as a monthly licence fee. The exact pricing — and what's included at each tier — will be shaped by what we learn during the PoC and beta. Early participants will have direct input into that process.</p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-warm border border-ink/10 rounded-xl p-6">
+              <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">PoC &amp; beta</p>
+              <p class="font-black text-ink text-2xl" style="letter-spacing: -0.02em">Free</p>
+              <p class="text-ink/50 text-sm mt-1">While we validate and refine together.</p>
+            </div>
+            <div class="bg-warm border border-ink/10 rounded-xl p-6">
+              <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Production</p>
+              <p class="font-black text-ink text-2xl" style="letter-spacing: -0.02em">TBD</p>
+              <p class="text-ink/50 text-sm mt-1">Monthly licence — shaped by the PoC findings.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Built and maintained by</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">The people behind the Enterprise Valuator.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-2xl">
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <img src="/team/philip.png" alt="Philip Boontje" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Philip Boontje</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-1">Product Owner · Maintainer</p>
+          <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-4">Founder · Maxq Analytics</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Philip is leading the Enterprise Valuator proof of concept. He designed the valuation methodology, the data model connecting it to Semantic Nexus, and is working directly with early clients to test whether the approach holds up in practice.</p>
+        </div>
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <img src="/team/daniel.png" alt="Daniel Laurentius" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Daniel Laurentius</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-1">Developer</p>
+          <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-4">Full member · Maxq Analytics</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Daniel is building the Enterprise Valuator alongside Philip. He handles the technical implementation — wiring the valuation logic to live client data in Semantic Nexus, building the report output, and developing the scenario modelling layer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 bg-ink text-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-6">Get started</div>
+      <h2 class="text-4xl font-black mb-4" style="letter-spacing: -0.03em">Know what your business is <span class="text-brand-300">worth right now.</span></h2>
+      <p class="text-cream/50 mb-10 leading-relaxed">We'll walk you through the current proof of concept, connect it to your metrics, and run the first valuation together — so you leave with a number you can actually use.</p>
+      <a href="https://calendly.com/philip-boontje?utm_content=enterprise-valuator" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        Explore the proof of concept
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
