@@ -829,42 +829,6 @@ import SiteFooter from '../components/SiteFooter.astro';
         ))}
       </div>
 
-      <!-- Associate members -->
-      <div class="mt-16 pt-12 border-t border-ink/8">
-        <div class="text-xs font-mono font-medium text-ink/35 uppercase tracking-widest mb-8">Associate members</div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 max-w-2xl">
-          {[
-            {
-              photo: '/team/sarah.png',
-              name: 'Sarah Thiébault',
-              role: 'Developer',
-              bio: 'Maintains and develops the Quality Guardian. Drives ongoing improvements and leads the roadmap for Slack-native data correction workflows.',
-            },
-            {
-              photo: '/team/valentin.png',
-              name: 'Valentin Cathelain',
-              role: 'Developer',
-              bio: 'Contributes to the development of the Deal Expander, working alongside the team on implementation and ongoing improvements.',
-            },
-            {
-              photo: '/team/conno.png',
-              name: 'Conno Kuyt',
-              role: 'Data Engineer',
-              bio: 'Contributes to the data engineering work behind the Quality Guardian — supporting check configuration and client-side implementation.',
-            },
-          ].map(person => (
-            <div class="flex flex-col">
-              <div class="aspect-square rounded-xl overflow-hidden mb-4 bg-warm">
-                <img src={person.photo} alt={person.name} class="w-full h-full object-cover" />
-              </div>
-              <div class="text-xs font-mono font-medium text-ink/40 uppercase tracking-wider mb-1">{person.role}</div>
-              <div class="text-base font-bold text-ink mb-2">{person.name}</div>
-              <p class="text-xs text-ink/55 leading-relaxed">{person.bio}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
     </div>
   </section>
 
