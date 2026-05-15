@@ -83,52 +83,52 @@ import SiteFooter from '../../components/SiteFooter.astro';
               </div>
             </div>
             <!-- CSAT SVG chart -->
-            <svg viewBox="0 0 260 125" style="width:100%;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 260 215" style="width:100%;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
               <!-- Legend -->
               <line x1="28" y1="6" x2="46" y2="6" stroke="#FF6B35" stroke-width="1.8" stroke-dasharray="4,3"/>
               <text x="49" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Target</text>
               <line x1="88" y1="6" x2="106" y2="6" stroke="#4FC3F7" stroke-width="2.2"/>
               <text x="109" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Actual</text>
-              <!-- Grid lines y=0,2,4,6,8,10 → svg 96,81,66,51,36,21 -->
-              <line x1="28" y1="96" x2="252" y2="96" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="81" x2="252" y2="81" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="66" x2="252" y2="66" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="51" x2="252" y2="51" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="36" x2="252" y2="36" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="21" x2="252" y2="21" stroke="#2E4070" stroke-width="0.7"/>
+              <!-- Grid lines y=0,2,4,6,8,10 → svg 178,148,118,89,59,29 -->
+              <line x1="28" y1="178" x2="252" y2="178" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="148" x2="252" y2="148" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="118" x2="252" y2="118" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="89"  x2="252" y2="89"  stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="59"  x2="252" y2="59"  stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="29"  x2="252" y2="29"  stroke="#2E4070" stroke-width="0.7"/>
               <!-- Y labels -->
-              <text x="23" y="99" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">0</text>
-              <text x="23" y="84" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">2</text>
-              <text x="23" y="69" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">4</text>
-              <text x="23" y="54" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">6</text>
-              <text x="23" y="39" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">8</text>
-              <text x="23" y="24" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">10</text>
-              <!-- Target line (9 → svg 29) -->
-              <line x1="28" y1="29" x2="252" y2="29" stroke="#FF6B35" stroke-width="2" stroke-dasharray="5,4"/>
-              <!-- Area fill under actual -->
-              <polygon points="28,55 84,51 140,53 196,62 252,42 252,96 28,96" fill="#4FC3F710"/>
-              <!-- Actual line: 5.5→55, 6.0→51, 5.8→53, 4.6→62, 7.3→42 -->
-              <polyline points="28,55 84,51 140,53 196,62 252,42" fill="none" stroke="#4FC3F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="23" y="181" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">0</text>
+              <text x="23" y="151" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">2</text>
+              <text x="23" y="121" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">4</text>
+              <text x="23" y="92"  fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">6</text>
+              <text x="23" y="62"  fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">8</text>
+              <text x="23" y="32"  fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">10</text>
+              <!-- Target line (9 → svg 44) -->
+              <line x1="28" y1="44" x2="252" y2="44" stroke="#FF6B35" stroke-width="2" stroke-dasharray="5,4"/>
+              <!-- Area fill: 5.5→96, 6.0→89, 5.8→92, 4.6→109, 7.3→69 -->
+              <polygon points="28,96 84,89 140,92 196,109 252,69 252,178 28,178" fill="#4FC3F710"/>
+              <!-- Actual line -->
+              <polyline points="28,96 84,89 140,92 196,109 252,69" fill="none" stroke="#4FC3F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
               <!-- Data points -->
-              <circle cx="28"  cy="55" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="84"  cy="51" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="140" cy="53" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="196" cy="62" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="252" cy="42" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="28"  cy="96"  r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="84"  cy="89"  r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="140" cy="92"  r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="196" cy="109" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="252" cy="69"  r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
               <!-- X-axis labels -->
-              <text x="28"  y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 6</text>
-              <text x="84"  y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 13</text>
-              <text x="140" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 20</text>
-              <text x="196" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 27</text>
-              <text x="252" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">May 4</text>
-              <!-- Callout: Outage at (196,62) -->
-              <line x1="196" y1="62" x2="162" y2="49" stroke="#FFB347" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
-              <rect x="54" y="37" width="107" height="14" rx="3" fill="rgba(10,22,46,0.95)" stroke="#FFB347" stroke-width="1.3"/>
-              <text x="61" y="47" fill="#FFB347" font-size="7.5" font-weight="bold" font-family="sans-serif">⚠ Outage — 5 hrs (Tue)</text>
-              <!-- Callout: Skill update at (252,42) -->
-              <line x1="252" y1="42" x2="216" y2="28" stroke="#4FC3F7" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
-              <rect x="112" y="15" width="103" height="14" rx="3" fill="rgba(10,22,46,0.95)" stroke="#4FC3F7" stroke-width="1.3"/>
-              <text x="119" y="25" fill="#4FC3F7" font-size="7.5" font-weight="bold" font-family="sans-serif">★ Major skill update pushed</text>
+              <text x="28"  y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 6</text>
+              <text x="84"  y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 13</text>
+              <text x="140" y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 20</text>
+              <text x="196" y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 27</text>
+              <text x="252" y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">May 4</text>
+              <!-- Callout: Outage at (196,109) -->
+              <line x1="196" y1="109" x2="162" y2="93" stroke="#FFB347" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
+              <rect x="54" y="79" width="107" height="14" rx="3" fill="rgba(10,22,46,0.95)" stroke="#FFB347" stroke-width="1.3"/>
+              <text x="61" y="89" fill="#FFB347" font-size="7.5" font-weight="bold" font-family="sans-serif">⚠ Outage — 5 hrs (Tue)</text>
+              <!-- Callout: Skill update at (252,69) -->
+              <line x1="252" y1="69" x2="216" y2="54" stroke="#4FC3F7" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
+              <rect x="112" y="40" width="103" height="14" rx="3" fill="rgba(10,22,46,0.95)" stroke="#4FC3F7" stroke-width="1.3"/>
+              <text x="119" y="50" fill="#4FC3F7" font-size="7.5" font-weight="bold" font-family="sans-serif">★ Major skill update pushed</text>
             </svg>
           </div>
 
@@ -145,47 +145,47 @@ import SiteFooter from '../../components/SiteFooter.astro';
               </div>
             </div>
             <!-- MQL SVG chart -->
-            <svg viewBox="0 0 260 125" style="width:100%;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 260 215" style="width:100%;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
               <!-- Legend -->
               <line x1="28" y1="6" x2="46" y2="6" stroke="#FF6B35" stroke-width="1.8" stroke-dasharray="4,3"/>
               <text x="49" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Target</text>
               <line x1="88" y1="6" x2="106" y2="6" stroke="#4FC3F7" stroke-width="2.2"/>
               <text x="109" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Actual</text>
-              <!-- Grid lines y=0,2,4,6,8,10,12,14 → svg 96,84,73,61,49,37,26,14 -->
-              <line x1="28" y1="96" x2="252" y2="96" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="84" x2="252" y2="84" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="73" x2="252" y2="73" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="61" x2="252" y2="61" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="49" x2="252" y2="49" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="37" x2="252" y2="37" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="26" x2="252" y2="26" stroke="#2E4070" stroke-width="0.7"/>
+              <!-- Grid lines y=0,2,4,6,8,10,12,14 → svg 178,155,131,108,84,61,37,14 -->
+              <line x1="28" y1="178" x2="252" y2="178" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="155" x2="252" y2="155" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="131" x2="252" y2="131" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="108" x2="252" y2="108" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="84"  x2="252" y2="84"  stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="61"  x2="252" y2="61"  stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="37"  x2="252" y2="37"  stroke="#2E4070" stroke-width="0.7"/>
               <!-- Y labels -->
-              <text x="23" y="99" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">0</text>
-              <text x="23" y="76" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">4</text>
-              <text x="23" y="52" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">8</text>
-              <text x="23" y="29" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">12</text>
-              <!-- Target line (10 → svg 37) -->
-              <line x1="28" y1="37" x2="252" y2="37" stroke="#FF6B35" stroke-width="2" stroke-dasharray="5,4"/>
-              <!-- Area fill: 7→55, 8→49, 5→67, 6→61, 12→26 -->
-              <polygon points="28,55 84,49 140,67 196,61 252,26 252,96 28,96" fill="#4FC3F710"/>
+              <text x="23" y="181" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">0</text>
+              <text x="23" y="134" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">4</text>
+              <text x="23" y="87"  fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">8</text>
+              <text x="23" y="40"  fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">12</text>
+              <!-- Target line (10 → svg 61) -->
+              <line x1="28" y1="61" x2="252" y2="61" stroke="#FF6B35" stroke-width="2" stroke-dasharray="5,4"/>
+              <!-- Area: 7→96, 8→84, 5→119, 6→108, 12→37 -->
+              <polygon points="28,96 84,84 140,119 196,108 252,37 252,178 28,178" fill="#4FC3F710"/>
               <!-- Actual line -->
-              <polyline points="28,55 84,49 140,67 196,61 252,26" fill="none" stroke="#4FC3F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="28,96 84,84 140,119 196,108 252,37" fill="none" stroke="#4FC3F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
               <!-- Data points -->
-              <circle cx="28"  cy="55" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="84"  cy="49" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="140" cy="67" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="196" cy="61" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="252" cy="26" r="3.5" fill="#02C39A" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="28"  cy="96"  r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="84"  cy="84"  r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="140" cy="119" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="196" cy="108" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="252" cy="37"  r="3.5" fill="#02C39A" stroke="#243156" stroke-width="1.5"/>
               <!-- X-axis labels -->
-              <text x="28"  y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 6</text>
-              <text x="84"  y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 13</text>
-              <text x="140" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 20</text>
-              <text x="196" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 27</text>
-              <text x="252" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">May 4</text>
-              <!-- Callout: LinkedIn spike at (252,26) -->
-              <line x1="252" y1="26" x2="170" y2="23" stroke="#02C39A" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
-              <rect x="68" y="15" width="100" height="14" rx="3" fill="rgba(10,22,46,0.95)" stroke="#02C39A" stroke-width="1.3"/>
-              <text x="75" y="25" fill="#02C39A" font-size="7.5" font-weight="bold" font-family="sans-serif">♦ LinkedIn post spike</text>
+              <text x="28"  y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 6</text>
+              <text x="84"  y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 13</text>
+              <text x="140" y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 20</text>
+              <text x="196" y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 27</text>
+              <text x="252" y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">May 4</text>
+              <!-- Callout: LinkedIn spike at (252,37) -->
+              <line x1="252" y1="37" x2="170" y2="35" stroke="#02C39A" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
+              <rect x="68" y="28" width="100" height="14" rx="3" fill="rgba(10,22,46,0.95)" stroke="#02C39A" stroke-width="1.3"/>
+              <text x="75" y="38" fill="#02C39A" font-size="7.5" font-weight="bold" font-family="sans-serif">♦ LinkedIn post spike</text>
             </svg>
           </div>
 
@@ -202,63 +202,61 @@ import SiteFooter from '../../components/SiteFooter.astro';
               </div>
             </div>
             <!-- Cumulative SVG chart (13 week x-axis, 5 actuals) -->
-            <svg viewBox="0 0 260 125" style="width:100%;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 260 215" style="width:100%;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
               <!-- Legend -->
               <line x1="28" y1="6" x2="46" y2="6" stroke="#FF6B35" stroke-width="1.8" stroke-dasharray="4,3"/>
               <text x="49" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Cumul. Target</text>
               <line x1="128" y1="6" x2="146" y2="6" stroke="#4FC3F7" stroke-width="2.2"/>
               <text x="149" y="9" fill="#AABBD0" font-size="7.5" font-family="sans-serif">Cumul. Actual</text>
-              <!-- Grid lines at 0,20,40,60,80,100,120,140 → svg 96,84,73,61,49,37,26,14 -->
-              <line x1="28" y1="96" x2="252" y2="96" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="84" x2="252" y2="84" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="73" x2="252" y2="73" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="61" x2="252" y2="61" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="49" x2="252" y2="49" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="37" x2="252" y2="37" stroke="#2E4070" stroke-width="0.7"/>
-              <line x1="28" y1="26" x2="252" y2="26" stroke="#2E4070" stroke-width="0.7"/>
+              <!-- Grid lines 0,20,40,60,80,100,120,140 → svg 178,155,131,108,84,61,37,14 -->
+              <line x1="28" y1="178" x2="252" y2="178" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="155" x2="252" y2="155" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="131" x2="252" y2="131" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="108" x2="252" y2="108" stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="84"  x2="252" y2="84"  stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="61"  x2="252" y2="61"  stroke="#2E4070" stroke-width="0.7"/>
+              <line x1="28" y1="37"  x2="252" y2="37"  stroke="#2E4070" stroke-width="0.7"/>
               <!-- Y labels -->
-              <text x="23" y="99" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">0</text>
-              <text x="23" y="52" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">60</text>
-              <text x="23" y="17" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">120</text>
-              <!-- Cumulative target: 13 weeks, x step=224/12=18.67 from 28
-                   vals: 10→90, 20→84, 30→78, 40→73, 50→67, 60→61, 70→55, 80→49, 90→43, 100→37, 110→31, 120→26, 130→20
-                   x:   28,   47,   65,   84,  103,  121,  140,  159,  177,  196,  215,  233,  252 -->
-              <polyline points="28,90 47,84 65,78 84,73 103,67 121,61 140,55 159,49 177,43 196,37 215,31 233,26 252,20"
+              <text x="23" y="181" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">0</text>
+              <text x="23" y="111" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">60</text>
+              <text x="23" y="40"  fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="end">120</text>
+              <!-- Cumulative target: 13 weeks
+                   vals: 10→166,20→155,30→143,40→131,50→119,60→108,70→96,80→84,90→73,100→61,110→49,120→37,130→26
+                   x:    28,  47,  65,  84,  103, 121, 140, 159, 177, 196, 215, 233, 252 -->
+              <polyline points="28,166 47,155 65,143 84,131 103,119 121,108 140,96 159,84 177,73 196,61 215,49 233,37 252,26"
                 fill="none" stroke="#FF6B35" stroke-width="1.8" stroke-dasharray="5,4" stroke-linecap="round"/>
-              <!-- Target dots at each of 13 weeks -->
-              <circle cx="28"  cy="90" r="2.5" fill="#FF6B35"/>
-              <circle cx="47"  cy="84" r="2.5" fill="#FF6B35"/>
-              <circle cx="65"  cy="78" r="2.5" fill="#FF6B35"/>
-              <circle cx="84"  cy="73" r="2.5" fill="#FF6B35"/>
-              <circle cx="103" cy="67" r="2.5" fill="#FF6B35"/>
-              <circle cx="121" cy="61" r="2.5" fill="#FF6B35"/>
-              <circle cx="140" cy="55" r="2.5" fill="#FF6B35"/>
-              <circle cx="159" cy="49" r="2.5" fill="#FF6B35"/>
-              <circle cx="177" cy="43" r="2.5" fill="#FF6B35"/>
-              <circle cx="196" cy="37" r="2.5" fill="#FF6B35"/>
-              <circle cx="215" cy="31" r="2.5" fill="#FF6B35"/>
-              <circle cx="233" cy="26" r="2.5" fill="#FF6B35"/>
-              <circle cx="252" cy="20" r="2.5" fill="#FF6B35"/>
-              <!-- Cumulative actual: 5 weeks only
-                   vals: 7→92, 15→87, 20→84, 26→81, 38→74
-                   x:   28,   47,    65,   84,   103 -->
-              <polygon points="28,92 47,87 65,84 84,81 103,74 103,96 28,96" fill="#4FC3F710"/>
-              <polyline points="28,92 47,87 65,84 84,81 103,74" fill="none" stroke="#4FC3F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="28"  cy="92" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="47"  cy="87" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="65"  cy="84" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="84"  cy="81" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
-              <circle cx="103" cy="74" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <!-- Target dots -->
+              <circle cx="28"  cy="166" r="2.5" fill="#FF6B35"/>
+              <circle cx="47"  cy="155" r="2.5" fill="#FF6B35"/>
+              <circle cx="65"  cy="143" r="2.5" fill="#FF6B35"/>
+              <circle cx="84"  cy="131" r="2.5" fill="#FF6B35"/>
+              <circle cx="103" cy="119" r="2.5" fill="#FF6B35"/>
+              <circle cx="121" cy="108" r="2.5" fill="#FF6B35"/>
+              <circle cx="140" cy="96"  r="2.5" fill="#FF6B35"/>
+              <circle cx="159" cy="84"  r="2.5" fill="#FF6B35"/>
+              <circle cx="177" cy="73"  r="2.5" fill="#FF6B35"/>
+              <circle cx="196" cy="61"  r="2.5" fill="#FF6B35"/>
+              <circle cx="215" cy="49"  r="2.5" fill="#FF6B35"/>
+              <circle cx="233" cy="37"  r="2.5" fill="#FF6B35"/>
+              <circle cx="252" cy="26"  r="2.5" fill="#FF6B35"/>
+              <!-- Actual: 5 weeks — 7→170,15→160,20→155,26→148,38→133 -->
+              <polygon points="28,170 47,160 65,155 84,148 103,133 103,178 28,178" fill="#4FC3F710"/>
+              <polyline points="28,170 47,160 65,155 84,148 103,133" fill="none" stroke="#4FC3F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="28"  cy="170" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="47"  cy="160" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="65"  cy="155" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="84"  cy="148" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
+              <circle cx="103" cy="133" r="3.5" fill="#4FC3F7" stroke="#243156" stroke-width="1.5"/>
               <!-- X-axis labels (4 of 13) -->
-              <text x="28"  y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 6</text>
-              <text x="103" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">May 4</text>
-              <text x="177" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Jun 1</text>
-              <text x="252" y="110" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Jun 29</text>
-              <!-- Callout: LinkedIn spike (+12) at last actual point (103,74) -->
-              <line x1="103" y1="74" x2="103" y2="61" stroke="#02C39A" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
-              <rect x="2" y="43" width="100" height="26" rx="3" fill="rgba(10,22,46,0.95)" stroke="#02C39A" stroke-width="1.3"/>
-              <text x="9" y="55" fill="#02C39A" font-size="7.5" font-weight="bold" font-family="sans-serif">♦ LinkedIn spike (+12)</text>
-              <text x="9" y="66" fill="#DDEEFF" font-size="7" font-family="sans-serif">38 total · −12 vs target</text>
+              <text x="28"  y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Apr 6</text>
+              <text x="103" y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">May 4</text>
+              <text x="177" y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Jun 1</text>
+              <text x="252" y="193" fill="#8DA5C4" font-size="7.5" font-family="sans-serif" text-anchor="middle">Jun 29</text>
+              <!-- Callout at last actual point (103,133) -->
+              <line x1="103" y1="133" x2="103" y2="120" stroke="#02C39A" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.65"/>
+              <rect x="2" y="96" width="100" height="26" rx="3" fill="rgba(10,22,46,0.95)" stroke="#02C39A" stroke-width="1.3"/>
+              <text x="9" y="108" fill="#02C39A" font-size="7.5" font-weight="bold" font-family="sans-serif">♦ LinkedIn spike (+12)</text>
+              <text x="9" y="119" fill="#DDEEFF" font-size="7" font-family="sans-serif">38 total · −12 vs target</text>
             </svg>
           </div>
 
