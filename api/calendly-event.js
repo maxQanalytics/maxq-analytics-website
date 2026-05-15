@@ -1,6 +1,4 @@
-// Receives a Calendly booking event from the browser postMessage listener,
-// fetches full invitee + event details from the Calendly API,
-// then writes a GTM Asset Event record to Airtable.
+// ES module — required because package.json has "type": "module"
 
 const ADDON_RECORDS = {
   'upsell-calculator': 'recHqlKE23xal0Ftw',
@@ -14,24 +12,19 @@ const AIRTABLE_URL = 'https://api.airtable.com/v0/appF0pxDtxF1fVm6O/tbljccwTddUb
 
 async function calendlyGet(uri) {
   const res = await fetch(uri, {
-    headers: { 'Authorization': 'Bearer ' + process.env.CALENDLY_API_TOKEN },
+    headers: { Authorization: 'Bearer ' + process.env.CALENDLY_API_TOKEN },
   });
-  if (!res.ok) throw new Error('Calendly API ' + res.status + ' for ' + uri);
+  if (!res.ok) throw new Error('Calendly API ' + res.status);
   return res.json();
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
-  // Vercel auto-parses JSON bodies into req.body
   const { addon, eventUri, inviteeUri } = req.body || {};
-
   const assetRecordId = ADDON_RECORDS[addon];
-  if (!assetRecordId) {
-    return res.status(200).json({ ok: true, skipped: true });
-  }
+  if (!assetRecordId) return res.status(200).json({ ok: true, skipped: true });
 
-  // Fetch invitee and event details from Calendly in parallel
   let invitee = {}, event = {};
   try {
     const [inviteeData, eventData] = await Promise.all([
@@ -49,7 +42,7 @@ module.exports = async function handler(req, res) {
   const startTime = event.start_time || '';
   const eventDate = startTime ? startTime.split('T')[0] : new Date().toISOString().split('T')[0];
   const notes     = (invitee.questions_and_answers || [])
-    .map(function (qa) { return qa.question + ':\n' + qa.answer; })
+    .map(qa => qa.question + ':\n' + qa.answer)
     .join('\n\n');
 
   const comment = [
@@ -63,7 +56,7 @@ module.exports = async function handler(req, res) {
   const airtableRes = await fetch(AIRTABLE_URL, {
     method: 'POST',
     headers: {
-      'Authorization': 'Bearer ' + process.env.AIRTABLE_API_KEY,
+      Authorization:  'Bearer ' + process.env.AIRTABLE_API_KEY,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
@@ -77,10 +70,9 @@ module.exports = async function handler(req, res) {
   });
 
   if (!airtableRes.ok) {
-    const err = await airtableRes.text();
-    console.error('Airtable error:', err);
+    console.error('Airtable error:', await airtableRes.text());
     return res.status(500).json({ error: 'Airtable write failed' });
   }
 
   return res.status(200).json({ ok: true, recorded: addon, name, email });
-};
+}
