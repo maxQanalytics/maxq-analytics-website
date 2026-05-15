@@ -156,20 +156,7 @@
       '/add-ons/weekly-okr-tracker':  'okr-tracker',
     };
     window.addEventListener('message', function (e) {
-      // Debug: log any message from Calendly to Airtable so we can inspect the payload
-      if (e.origin === 'https://calendly.com') {
-        var debugAddon = ADDON_SLUGS[window.location.pathname.replace(/\/$/, '')];
-        if (debugAddon) {
-          var raw = typeof e.data === 'string' ? e.data : JSON.stringify(e.data);
-          fetch('/api/track-cta', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ addon: debugAddon, page: window.location.pathname, btnText: 'MSG: ' + raw.substring(0, 300) }),
-          }).catch(function () {});
-        }
-      }
-
-      // Calendly may send data as a JSON string or as an object depending on version
+      if (e.origin !== 'https://calendly.com') return;
       var data = e.data;
       if (typeof data === 'string') {
         try { data = JSON.parse(data); } catch (err) { return; }
