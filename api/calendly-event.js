@@ -16,42 +16,32 @@ async function calendlyGet(uri) {
   const res = await fetch(uri, {
     headers: { 'Authorization': 'Bearer ' + process.env.CALENDLY_API_TOKEN },
   });
-  if (!res.ok) throw new Error('Calendly API error: ' + res.status + ' for ' + uri);
+  if (!res.ok) throw new Error('Calendly API ' + res.status + ' for ' + uri);
   return res.json();
 }
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
-  const chunks = [];
-  for await (const chunk of req) chunks.push(Buffer.from(chunk));
-  let body;
-  try {
-    body = JSON.parse(Buffer.concat(chunks).toString('utf8'));
-  } catch (e) {
-    return res.status(400).json({ error: 'Invalid JSON' });
-  }
+  // Vercel auto-parses JSON bodies into req.body
+  const { addon, eventUri, inviteeUri } = req.body || {};
 
-  const { addon, eventUri, inviteeUri } = body;
   const assetRecordId = ADDON_RECORDS[addon];
   if (!assetRecordId) {
     return res.status(200).json({ ok: true, skipped: true });
   }
 
   // Fetch invitee and event details from Calendly in parallel
-  let invitee, event;
+  let invitee = {}, event = {};
   try {
     const [inviteeData, eventData] = await Promise.all([
       calendlyGet(inviteeUri),
       calendlyGet(eventUri),
     ]);
-    invitee = inviteeData.resource;
-    event   = eventData.resource;
+    invitee = inviteeData.resource || {};
+    event   = eventData.resource   || {};
   } catch (err) {
     console.error('Calendly fetch error:', err.message);
-    // Fall back to writing a minimal record rather than failing entirely
-    invitee = {};
-    event   = {};
   }
 
   const name      = invitee.name  || '';
@@ -59,7 +49,7 @@ module.exports = async function handler(req, res) {
   const startTime = event.start_time || '';
   const eventDate = startTime ? startTime.split('T')[0] : new Date().toISOString().split('T')[0];
   const notes     = (invitee.questions_and_answers || [])
-    .map(function (qa) { return qa.question + '\n' + qa.answer; })
+    .map(function (qa) { return qa.question + ':\n' + qa.answer; })
     .join('\n\n');
 
   const comment = [
