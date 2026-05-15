@@ -127,7 +127,7 @@
         e.preventDefault();
         var utmContent = '';
         try { utmContent = new URL(link.href).searchParams.get('utm_content') || ''; } catch (err) {}
-        var btnText = link.textContent.trim();
+        var btnText = (link.innerText || link.textContent || '').replace(/\s+/g, ' ').trim();
         openModal(utmContent, btnText);
       });
     });
