@@ -25,7 +25,7 @@ export default async function handler(req, res) {
   const assetRecordId = ADDON_RECORDS[addon];
   if (!assetRecordId) return res.status(200).json({ ok: true, skipped: true });
 
-  let invitee = {}, event = {};
+  let invitee = {}, event = {}, calendlyError = null;
   try {
     const [inviteeData, eventData] = await Promise.all([
       calendlyGet(inviteeUri),
@@ -34,7 +34,8 @@ export default async function handler(req, res) {
     invitee = inviteeData.resource || {};
     event   = eventData.resource   || {};
   } catch (err) {
-    console.error('Calendly fetch error:', err.message);
+    calendlyError = err.message;
+    console.error('Calendly fetch error:', err.message, '| eventUri:', eventUri, '| inviteeUri:', inviteeUri);
   }
 
   const name      = invitee.name  || '';
@@ -51,6 +52,7 @@ export default async function handler(req, res) {
     startTime ? 'Scheduled: ' + startTime : '',
     notes     ? 'Notes:\n'    + notes     : '',
     'Add-on: ' + addon,
+    calendlyError ? 'Calendly fetch error: ' + calendlyError : '',
   ].filter(Boolean).join('\n');
 
   const airtableRes = await fetch(AIRTABLE_URL, {
