@@ -17,23 +17,288 @@ import SiteFooter from '../../components/SiteFooter.astro';
       <div class="flex items-center gap-2 mb-6">
         <span class="font-mono text-[10px] font-medium text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Grow</span>
         <span class="font-mono text-[10px] font-medium text-brand-300 bg-brand-600/10 border border-brand-600/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+        <span class="font-mono text-[10px] font-medium text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Beta</span>
       </div>
       <h1 class="font-black mb-6 leading-none" style="font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.04em">Deal Expander</h1>
-      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed">An AI agent built for customer success teams that surfaces upsell opportunities by analysing multiple leading indicators against benchmarks and client-specific trailing averages.</p>
+      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed mb-10">Sits in your Slack channel and delivers daily and weekly opportunity lists — surfacing upsell and cross-sell signals based on leading indicators, before your clients bring the conversation to you.</p>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        See it for your client base
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
   </section>
 
-  <!-- Under construction -->
-  <section class="py-32 px-6 bg-cream" style="min-height: 60vh">
-    <div class="max-w-5xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 font-mono text-xs font-medium text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-full uppercase tracking-wider mb-8">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-        This page is under construction
+  <!-- How it works -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">How it works</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">Signals in, opportunities out — straight to Slack.</h2>
       </div>
-      <h2 class="text-3xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Full details coming soon.</h2>
-      <p class="text-ink/50 max-w-lg mx-auto leading-relaxed mb-10">We're working on the full page for this add-on. In the meantime, schedule a call and we'll walk you through how the Deal Expander works in practice.</p>
-      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-ink text-cream font-semibold px-8 py-3.5 rounded-full hover:bg-ink/80 transition-colors text-sm">
-        Find your first expansion signal
+      <div class="flex flex-col gap-0">
+
+        <div class="flex gap-8 pb-12 border-b border-ink/8">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-brand-100 text-brand-600 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">1</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">Leading indicators are monitored</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">The Deal Expander continuously tracks key signals across your client base — payment failure rates, usage patterns, feature adoption gaps, and engagement trends. Each metric is evaluated against both cross-client benchmarks and the client's own trailing average, so you catch deviations early.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-8 py-12 border-b border-ink/8">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-brand-100 text-brand-600 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">2</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">Opportunities are scored and prioritised</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">When a signal crosses a threshold, it's flagged as an upsell or cross-sell opportunity. Each flag includes the triggering metric, how far it deviates from the benchmark or trailing average, and a priority level — so your CS team knows where to start.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-8 pt-12">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-brand-100 text-brand-600 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">3</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">Your team gets the list in Slack</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">A formatted opportunity list is posted directly to your Slack channel — daily or weekly, depending on your cadence. No dashboards to open, no reports to pull. The Deal Expander comes to your team, not the other way around.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Example output -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Example output</div>
+        <h2 class="text-3xl font-bold text-ink mb-2" style="letter-spacing: -0.02em">What lands in your Slack channel.</h2>
+        <p class="text-ink/50 text-sm">A weekly opportunity list, formatted for quick scanning and action.</p>
+      </div>
+
+      <!-- Slack mockup -->
+      <div class="rounded-2xl overflow-hidden shadow-sm border border-ink/10" style="background: #1a1d21;">
+
+        <!-- Slack channel bar -->
+        <div class="flex items-center gap-3 px-4 py-3 border-b" style="border-color: rgba(255,255,255,0.08);">
+          <div class="flex items-center gap-2">
+            <div class="w-3.5 h-3.5 rounded-sm flex items-center justify-center" style="background: #4a154b;">
+              <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.687 8.834a2.528 2.528 0 0 1-2.521 2.521 2.527 2.527 0 0 1-2.521-2.521V2.522A2.527 2.527 0 0 1 15.166 0a2.528 2.528 0 0 1 2.521 2.522v6.312zM15.166 18.956a2.528 2.528 0 0 1 2.521 2.522A2.528 2.528 0 0 1 15.166 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zM15.166 17.687a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.312A2.527 2.527 0 0 1 24 15.166a2.528 2.528 0 0 1-2.522 2.521h-6.312z"/></svg>
+            </div>
+            <span class="text-xs font-medium" style="color: rgba(255,255,255,0.5)">#customer-success</span>
+          </div>
+        </div>
+
+        <!-- Message -->
+        <div class="px-5 py-5">
+          <div class="flex gap-3">
+            <div class="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center text-white font-black text-sm" style="background: linear-gradient(135deg, #1a4fff 0%, #7c3aed 100%); letter-spacing: -0.02em">DX</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-baseline gap-2 mb-1">
+                <span class="font-bold text-sm" style="color: #fff">Deal Expander</span>
+                <span class="text-xs" style="color: rgba(255,255,255,0.3)">Today at 9:00 AM</span>
+              </div>
+
+              <!-- Message card -->
+              <div class="rounded-lg border-l-4 p-4 mt-1" style="background: rgba(255,255,255,0.04); border-left-color: #1a4fff;">
+                <p class="font-semibold text-sm mb-1" style="color: #fff">📊 Weekly Opportunity List — Week 22, 2025</p>
+                <p class="text-xs mb-4" style="color: rgba(255,255,255,0.4)">5 clients flagged across your base · Ranked by deviation from trailing average</p>
+
+                <p class="font-mono text-[10px] uppercase tracking-wider mb-2" style="color: #f87171">⬤ High priority</p>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center justify-between rounded px-3 py-2" style="background: rgba(248,113,113,0.08);">
+                    <div>
+                      <p class="text-sm font-medium" style="color: rgba(255,255,255,0.85)">Sportclub Amsterdam</p>
+                      <p class="font-mono text-[10px]" style="color: rgba(255,255,255,0.35)">Payment failure rate · 18% · +12pp vs trailing avg</p>
+                    </div>
+                    <span class="font-mono text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background: rgba(248,113,113,0.15); color: #f87171">↑ High</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded px-3 py-2" style="background: rgba(248,113,113,0.08);">
+                    <div>
+                      <p class="text-sm font-medium" style="color: rgba(255,255,255,0.85)">FC Rotterdam United</p>
+                      <p class="font-mono text-[10px]" style="color: rgba(255,255,255,0.35)">Payment failure rate · 22% · +15pp vs benchmark</p>
+                    </div>
+                    <span class="font-mono text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background: rgba(248,113,113,0.15); color: #f87171">↑ High</span>
+                  </div>
+                </div>
+
+                <p class="font-mono text-[10px] uppercase tracking-wider mb-2" style="color: #fbbf24">⬤ Monitor</p>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center justify-between rounded px-3 py-2" style="background: rgba(251,191,36,0.06);">
+                    <div>
+                      <p class="text-sm font-medium" style="color: rgba(255,255,255,0.85)">Volleybal Den Haag</p>
+                      <p class="font-mono text-[10px]" style="color: rgba(255,255,255,0.35)">Payment failure rate · 11% · +6pp vs trailing avg</p>
+                    </div>
+                    <span class="font-mono text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background: rgba(251,191,36,0.12); color: #fbbf24">↑ Monitor</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded px-3 py-2" style="background: rgba(251,191,36,0.06);">
+                    <div>
+                      <p class="text-sm font-medium" style="color: rgba(255,255,255,0.85)">Tennis Utrecht B.V.</p>
+                      <p class="font-mono text-[10px]" style="color: rgba(255,255,255,0.35)">Payment failure rate · 9% · crossing benchmark</p>
+                    </div>
+                    <span class="font-mono text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background: rgba(251,191,36,0.12); color: #fbbf24">↑ Monitor</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded px-3 py-2" style="background: rgba(251,191,36,0.06);">
+                    <div>
+                      <p class="text-sm font-medium" style="color: rgba(255,255,255,0.85)">Zwemclub Haarlem</p>
+                      <p class="font-mono text-[10px]" style="color: rgba(255,255,255,0.35)">Payment failure rate · 8% · +4pp vs trailing avg</p>
+                    </div>
+                    <span class="font-mono text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background: rgba(251,191,36,0.12); color: #fbbf24">↑ Monitor</span>
+                  </div>
+                </div>
+
+                <p class="font-mono text-[10px]" style="color: rgba(255,255,255,0.2)">Powered by Deal Expander · Semantic Nexus · Data refreshed weekly</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">What you get</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">Opportunity intelligence, where your team already is.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Daily and weekly Slack alerts</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Opportunity lists delivered directly to your chosen Slack channel on your preferred cadence — daily for high-velocity teams, weekly for structured review cycles.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Leading indicator scoring</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Each flagged client includes the specific metric that triggered the alert, how far it deviates from the benchmark, and how it compares to that client's own trailing average — context, not just rank.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Upsell and cross-sell signals</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Surfaces both upsell opportunities — clients growing beyond their current plan — and cross-sell opportunities, where clients show adoption gaps for add-ons they don't yet use.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Prioritised, not just listed</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Clients are ranked by signal severity so your CS team acts on the highest-value opportunities first. No scrolling through noise — the most urgent accounts are always at the top.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="py-20 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Who it's for</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 280px">The right fit.</h2>
+        </div>
+        <div class="space-y-4 text-ink/60 leading-relaxed max-w-xl pt-1">
+          <p>B2B platforms with a customer success or account management team that manages a recurring client base — and where client behaviour generates measurable signals that correlate with expansion or churn risk.</p>
+          <p>Works best when your CS team operates reactively today — waiting for clients to raise concerns — and you want to flip that to proactive. The Deal Expander gives them a structured starting point for every week, without adding reporting overhead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live deployment / Beta -->
+  <section class="py-24 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="text-xs font-mono font-medium text-amber-400 uppercase tracking-widest">Currently in beta</div>
+          <span class="font-mono text-[10px] font-medium text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Beta</span>
+        </div>
+        <h2 class="text-3xl font-bold text-cream" style="letter-spacing: -0.02em">Live at ClubCollect.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <img src="/logos/clubcollect.png" alt="ClubCollect" class="h-6 object-contain brightness-0 invert opacity-60" />
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Weekly payment failure rate monitoring</h3>
+          <p class="text-white/50 text-sm leading-relaxed">The Deal Expander is currently deployed at ClubCollect, where it runs a weekly opportunity list based on payment failure rates across their club client base. Clubs with failure rates that exceed their own trailing average or cross a benchmark threshold are surfaced to the CS team every week — before the client has noticed a problem.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-6" style="background: rgba(251,191,36,0.15);">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">On the roadmap</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-4">Right now the Deal Expander produces a list: clients ranked by signal, with the triggering metrics attached. That's a strong starting point — but we know CS teams need more than a list to act effectively.</p>
+          <p class="text-white/50 text-sm leading-relaxed">The next phase adds <span class="text-white/80 font-medium">suggested follow-up actions</span> alongside each flagged client — tailored to the specific signal that triggered the alert. Instead of "here's who to call," it becomes "here's who to call, and here's the angle to open with."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Built and maintained by</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">The people behind the Deal Expander.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-warm rounded-2xl p-8 border border-ink/8">
+          <img src="/team/philip.png" alt="Philip Boontje" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Philip Boontje</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-4">Co-founder · Original developer</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Philip originally built the Deal Expander — designing the signal detection logic, the scoring model, and the first Slack integration. He shaped the add-on around the real workflows of B2B SaaS customer success teams.</p>
+        </div>
+        <div class="bg-warm rounded-2xl p-8 border border-ink/8">
+          <img src="/team/daniel.png" alt="Daniel Laurentius" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Daniel Laurentius</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-4">Co-developer · Maintainer</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Daniel now co-develops and maintains the Deal Expander alongside Philip. He drives ongoing improvements, client-specific adaptations, and is leading the roadmap work on adding follow-up action guidance for CS teams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Pricing</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 260px">Free in beta. Outcome-based next.</h2>
+        </div>
+        <div class="max-w-xl pt-1">
+          <p class="text-ink/60 leading-relaxed mb-5">The Deal Expander is currently in beta. While we're building out the add-on and refining it with early clients, we're developing it free of charge — no implementation fee, no monthly cost.</p>
+          <p class="text-ink/60 leading-relaxed mb-8">Once out of beta, we intend to move to <span class="text-ink font-medium">outcome-based pricing</span> — where we take a percentage of the upsell value the Deal Expander directly contributes to closing. If it doesn't create value, you don't pay. The details of that model are still being shaped with our early clients.</p>
+          <div class="bg-cream border border-ink/10 rounded-xl p-6 flex flex-col sm:flex-row sm:items-center gap-5">
+            <div class="flex-1">
+              <span class="font-mono text-[10px] font-medium text-amber-600 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full uppercase tracking-wider">Beta</span>
+              <p class="font-black text-ink text-xl mt-2" style="letter-spacing: -0.02em">Free during beta</p>
+              <p class="text-ink/50 text-sm mt-1">Outcome-based pricing planned post-beta.</p>
+            </div>
+            <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="shrink-0 inline-flex items-center gap-2 bg-ink text-cream font-semibold px-6 py-3 rounded-full hover:bg-ink/80 transition-colors text-sm">
+              Join the beta
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 bg-ink text-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-6">Get started</div>
+      <h2 class="text-4xl font-black mb-4" style="letter-spacing: -0.03em">Stop waiting for clients <span class="text-brand-300">to tell you.</span></h2>
+      <p class="text-cream/50 mb-10 leading-relaxed">We'll walk you through the current beta, map your leading indicators, and set up the first opportunity list for your client base — so your CS team has something to act on from week one.</p>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        Join the beta
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
