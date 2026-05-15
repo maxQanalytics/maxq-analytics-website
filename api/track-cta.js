@@ -15,8 +15,10 @@ export default async function handler(req, res) {
   const assetRecordId = ADDON_RECORDS[addon];
   if (!assetRecordId) return res.status(200).json({ ok: true, skipped: true });
 
-  const today = new Date().toISOString().split('T')[0];
-  const comment = `CTA clicked: Schedule a call\nAdd-on: ${addon}\nPage: ${page || 'unknown'}`;
+  const now   = new Date();
+  const today = now.toISOString().split('T')[0];
+  const time  = now.toISOString().replace('T', ' ').replace(/\.\d+Z$/, ' UTC');
+  const comment = `CTA clicked: Schedule a call\nAdd-on: ${addon}\nPage: ${page || 'unknown'}\nClicked at: ${time}`;
 
   const airtableRes = await fetch(AIRTABLE_URL, {
     method: 'POST',
