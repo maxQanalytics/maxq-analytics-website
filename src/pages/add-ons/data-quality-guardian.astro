@@ -7,6 +7,7 @@ import SiteFooter from '../../components/SiteFooter.astro';
 <Layout title="Quality Guardian — Maxq Analytics">
   <SiteNav />
 
+  <!-- Hero -->
   <section class="pt-32 pb-20 px-6 bg-ink text-cream">
     <div class="max-w-5xl mx-auto">
       <a href="/#add-ons" class="inline-flex items-center gap-2 font-mono text-xs text-white/40 hover:text-white/70 transition-colors mb-8">
@@ -18,19 +19,368 @@ import SiteFooter from '../../components/SiteFooter.astro';
         <span class="font-mono text-[10px] font-medium text-brand-300 bg-brand-600/10 border border-brand-600/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
       </div>
       <h1 class="font-black mb-6 leading-none" style="font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.04em">Quality Guardian</h1>
-      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed">An AI automation that continuously scans your data for anomalies and surfaces them to the relevant data entry test owners with proposed corrections — before a bad number reaches a report or a decision.</p>
+      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed mb-10">An AI agent that continuously monitors your data for quality failures and surfaces them directly in Slack — with proposed corrections and one-click confirmation, so bad data gets fixed before it reaches a report or a decision.</p>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        Catch your first bad number
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
   </section>
 
-  <section class="py-32 px-6 bg-cream" style="min-height: 60vh">
-    <div class="max-w-5xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 font-mono text-xs font-medium text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-full uppercase tracking-wider mb-8">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-        This page is under construction
+  <!-- How it works -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">How it works</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">Catch it, flag it, fix it.</h2>
       </div>
-      <h2 class="text-3xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Full details coming soon.</h2>
-      <p class="text-ink/50 max-w-lg mx-auto leading-relaxed mb-10">We're working on the full page for this add-on. In the meantime, schedule a call and we'll walk you through how the Quality Guardian works in practice.</p>
-      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-ink text-cream font-semibold px-8 py-3.5 rounded-full hover:bg-ink/80 transition-colors text-sm">
+      <div class="flex flex-col gap-0">
+
+        <div class="flex gap-8 pb-12 border-b border-ink/8">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-amber-100 text-amber-700 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">1</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">Quality checks run continuously</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">The Quality Guardian executes a configurable set of data entry tests against your live data — checking for missing values, out-of-range figures, format violations, referential integrity failures, and custom business rules. Checks run on a schedule you define.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-8 py-12 border-b border-ink/8">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-amber-100 text-amber-700 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">2</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">Failures are surfaced to the right person</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">When a check fails, the guardian identifies the responsible data entry test owner and routes the alert directly to them in Slack — either in a shared channel or as a direct message. No support ticket, no email thread. The right person knows immediately.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-8 pt-12">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-amber-100 text-amber-700 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">3</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">Corrections are proposed and confirmed</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">The agent proposes a corrected field value alongside the alert. The owner can confirm, edit, or dismiss the fix directly from Slack — no system login required. Every action is logged, so there's a full audit trail of what was flagged, proposed, and resolved.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Slack interaction visualisation -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">How it looks</div>
+        <h2 class="text-3xl font-bold text-ink mb-2" style="letter-spacing: -0.02em">A quality failure, caught and resolved in Slack.</h2>
+        <p class="text-ink/50 text-sm">The guardian flags the issue, proposes a fix, and the owner confirms — without leaving Slack.</p>
+      </div>
+
+      <!-- Slack mockup -->
+      <div class="rounded-2xl overflow-hidden shadow-sm border border-ink/10" style="background: #1a1d21;">
+
+        <!-- Channel bar -->
+        <div class="flex items-center gap-3 px-4 py-3 border-b" style="border-color: rgba(255,255,255,0.08);">
+          <div class="flex items-center gap-2">
+            <div class="w-3.5 h-3.5 rounded-sm flex items-center justify-center" style="background: #4a154b;">
+              <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.687 8.834a2.528 2.528 0 0 1-2.521 2.521 2.527 2.527 0 0 1-2.521-2.521V2.522A2.527 2.527 0 0 1 15.166 0a2.528 2.528 0 0 1 2.521 2.522v6.312zM15.166 18.956a2.528 2.528 0 0 1 2.521 2.522A2.528 2.528 0 0 1 15.166 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zM15.166 17.687a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.312A2.527 2.527 0 0 1 24 15.166a2.528 2.528 0 0 1-2.522 2.521h-6.312z"/></svg>
+            </div>
+            <span class="text-xs font-medium" style="color: rgba(255,255,255,0.5)">#data-quality-alerts</span>
+          </div>
+        </div>
+
+        <div class="px-5 py-5 space-y-6">
+
+          <!-- Step 1: Guardian flags the issue -->
+          <div class="flex gap-3">
+            <div class="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center text-white font-black text-sm" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%); letter-spacing: -0.02em">QG</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-baseline gap-2 mb-2">
+                <span class="font-bold text-sm" style="color: #fff">Quality Guardian</span>
+                <span class="text-xs" style="color: rgba(255,255,255,0.3)">Today at 7:14 AM</span>
+              </div>
+              <!-- Alert card -->
+              <div class="rounded-lg border-l-4 p-4" style="background: rgba(255,255,255,0.04); border-left-color: #f87171;">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="font-mono text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: rgba(248,113,113,0.15); color: #f87171">⚠ Quality failure</span>
+                  <span class="font-mono text-[10px]" style="color: rgba(255,255,255,0.3)">Check #47 · members.subscription_end_date</span>
+                </div>
+                <p class="text-sm font-medium mb-1" style="color: rgba(255,255,255,0.9)">Missing required field detected</p>
+                <p class="text-xs mb-4" style="color: rgba(255,255,255,0.45)">3 records in <span style="color: rgba(255,255,255,0.65)">members</span> have a null <span style="color: rgba(255,255,255,0.65)">subscription_end_date</span> — expected for all active subscribers.</p>
+
+                <!-- Failing records -->
+                <div class="rounded-lg overflow-hidden mb-4" style="background: rgba(0,0,0,0.25);">
+                  <div class="grid grid-cols-3 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.06);">
+                    <span class="font-mono text-[9px] uppercase tracking-wider" style="color: rgba(255,255,255,0.3)">member_id</span>
+                    <span class="font-mono text-[9px] uppercase tracking-wider" style="color: rgba(255,255,255,0.3)">name</span>
+                    <span class="font-mono text-[9px] uppercase tracking-wider" style="color: rgba(255,255,255,0.3)">subscription_end_date</span>
+                  </div>
+                  <div class="grid grid-cols-3 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.04);">
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">MBR-1042</span>
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">J. Hoffman</span>
+                    <span class="font-mono text-xs font-semibold" style="color: #f87171">NULL</span>
+                  </div>
+                  <div class="grid grid-cols-3 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.04);">
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">MBR-1089</span>
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">A. Visser</span>
+                    <span class="font-mono text-xs font-semibold" style="color: #f87171">NULL</span>
+                  </div>
+                  <div class="grid grid-cols-3 px-3 py-1.5">
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">MBR-1103</span>
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">T. de Boer</span>
+                    <span class="font-mono text-xs font-semibold" style="color: #f87171">NULL</span>
+                  </div>
+                </div>
+
+                <!-- Proposed fix -->
+                <div class="rounded-lg p-3 mb-4" style="background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.15);">
+                  <p class="font-mono text-[10px] uppercase tracking-wider mb-1.5" style="color: rgba(34,197,94,0.7)">Proposed correction</p>
+                  <p class="text-xs mb-1" style="color: rgba(255,255,255,0.6)">Based on their last payment date + standard 12-month term:</p>
+                  <div class="space-y-1 mt-2">
+                    <div class="flex items-center gap-3">
+                      <span class="font-mono text-xs w-20" style="color: rgba(255,255,255,0.4)">MBR-1042</span>
+                      <span class="font-mono text-xs" style="color: rgba(255,255,255,0.35)">NULL</span>
+                      <svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="rgba(34,197,94,0.6)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      <span class="font-mono text-xs font-semibold" style="color: #4ade80">2026-01-15</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span class="font-mono text-xs w-20" style="color: rgba(255,255,255,0.4)">MBR-1089</span>
+                      <span class="font-mono text-xs" style="color: rgba(255,255,255,0.35)">NULL</span>
+                      <svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="rgba(34,197,94,0.6)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      <span class="font-mono text-xs font-semibold" style="color: #4ade80">2025-11-30</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span class="font-mono text-xs w-20" style="color: rgba(255,255,255,0.4)">MBR-1103</span>
+                      <span class="font-mono text-xs" style="color: rgba(255,255,255,0.35)">NULL</span>
+                      <svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="rgba(34,197,94,0.6)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      <span class="font-mono text-xs font-semibold" style="color: #4ade80">2026-03-08</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="flex flex-wrap gap-2">
+                  <button class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors" style="background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.25);">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    Confirm all corrections
+                  </button>
+                  <button class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    Edit values
+                  </button>
+                  <button class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Dismiss
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider with label -->
+          <div class="flex items-center gap-3 px-1">
+            <div class="flex-1 h-px" style="background: rgba(255,255,255,0.06)"></div>
+            <span class="font-mono text-[10px] uppercase tracking-wider" style="color: rgba(255,255,255,0.2)">Owner confirms</span>
+            <div class="flex-1 h-px" style="background: rgba(255,255,255,0.06)"></div>
+          </div>
+
+          <!-- Step 2: Owner confirms -->
+          <div class="flex gap-3">
+            <div class="shrink-0 w-9 h-9 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.1);">
+              <div class="w-full h-full flex items-center justify-center font-bold text-sm" style="color: rgba(255,255,255,0.6); background: linear-gradient(135deg, #6366f1, #8b5cf6)">LM</div>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-baseline gap-2 mb-1.5">
+                <span class="font-bold text-sm" style="color: #fff">Lisa Maarten</span>
+                <span class="text-xs" style="color: rgba(255,255,255,0.3)">Today at 7:18 AM</span>
+              </div>
+              <p class="text-sm" style="color: rgba(255,255,255,0.55)">Looks right — these were all migrated last week without the renewal date. Confirming.</p>
+            </div>
+          </div>
+
+          <!-- Step 3: Guardian confirms resolution -->
+          <div class="flex gap-3">
+            <div class="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center text-white font-black text-sm" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%); letter-spacing: -0.02em">QG</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-baseline gap-2 mb-2">
+                <span class="font-bold text-sm" style="color: #fff">Quality Guardian</span>
+                <span class="text-xs" style="color: rgba(255,255,255,0.3)">Today at 7:18 AM</span>
+              </div>
+              <div class="rounded-lg border-l-4 px-4 py-3" style="background: rgba(255,255,255,0.04); border-left-color: #4ade80;">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="font-mono text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: rgba(74,222,128,0.12); color: #4ade80">✓ Resolved</span>
+                  <span class="font-mono text-[10px]" style="color: rgba(255,255,255,0.3)">Check #47 · confirmed by Lisa Maarten</span>
+                </div>
+                <p class="text-xs mt-1.5" style="color: rgba(255,255,255,0.4)">3 records updated · <span style="color: rgba(255,255,255,0.55)">members.subscription_end_date</span> · logged to audit trail</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="text-xs text-ink/40 mt-4 text-center font-mono">This is a visualisation of the planned Slack interaction — currently on the roadmap.</p>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">What you get</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">Continuous protection, without the overhead.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-amber-100 text-amber-700 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Configurable quality checks</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Define the rules that matter for your data: required fields, value ranges, format constraints, cross-table consistency checks, and custom business logic. Checks run on a schedule and scale with your data volume.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-amber-100 text-amber-700 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Routed Slack alerts</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Failures go directly to the person responsible for that data area — in a shared channel or as a direct message. No manual triage, no group emails. The right person is notified the moment a check fails.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-amber-100 text-amber-700 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">AI-proposed corrections</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">For each failing record, the guardian proposes a corrected value based on surrounding data and business rules. Owners review and confirm — rather than hunting through the source system to figure out what the right value should be.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-amber-100 text-amber-700 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Full audit trail</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Every failure, every proposed correction, every confirmation or dismissal is logged. You get a complete record of what was flagged, who resolved it, and when — useful for compliance, data governance reviews, and root cause analysis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="py-20 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Who it's for</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 280px">The right fit.</h2>
+        </div>
+        <div class="space-y-4 text-ink/60 leading-relaxed max-w-xl pt-1">
+          <p>Platforms and operations teams where data quality failures have downstream consequences — inaccurate invoices, wrong reports, broken automations, or compliance exposure. If a bad value in a field can cause a real problem, the Quality Guardian is designed for that context.</p>
+          <p>Works best when you have defined data entry ownership — specific people responsible for specific data areas — and enough volume of records that manual spot-checking is no longer realistic.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="py-24 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-amber-400 uppercase tracking-widest mb-4">Roadmap</div>
+        <h2 class="text-3xl font-bold text-cream" style="letter-spacing: -0.02em">What's coming next.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">1</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">Next up</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Priority field failure list</h3>
+          <p class="text-white/50 text-sm leading-relaxed">Instead of treating all failing checks equally, the guardian will generate a ranked list of the fields most frequently failing — weighted by failure rate, downstream impact, and how many records are affected. Gives teams a clear place to start when there's more to fix than time allows.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">2</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">Coming later</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Slack-native correction confirmation</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-3">The guardian will propose the specific corrected field value directly in Slack — and let the responsible owner confirm, edit, or dismiss the fix with a single interaction, either in a dedicated channel or a direct message. No system login, no ticket, no back-and-forth.</p>
+          <p class="text-white/40 text-xs">This is the interaction visualised in the mockup above.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Pricing</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 260px">Implementation plus managed service.</h2>
+        </div>
+        <div class="max-w-xl pt-1">
+          <p class="text-ink/60 leading-relaxed mb-5">The Quality Guardian pricing model is still being shaped. What we know is that it will involve two components: an initial implementation fee to set up and configure the checks for your data model, and an ongoing licence fee for running and managing the agent.</p>
+          <p class="text-ink/60 leading-relaxed mb-8">The licence component is likely to scale with the number of quality checks being actively monitored — so smaller, well-defined setups pay less than broad, multi-table coverage. We'll scope the exact structure together based on your context.</p>
+          <div class="bg-warm border border-ink/10 rounded-xl p-6">
+            <div class="flex flex-col sm:flex-row sm:items-start gap-5">
+              <div class="flex-1 space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-md bg-brand-100 text-brand-600 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-ink text-sm">Implementation fee</p>
+                    <p class="text-ink/50 text-xs mt-0.5">Setup, configuration, and initial check definitions.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-md bg-brand-100 text-brand-600 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-ink text-sm">Licence fee</p>
+                    <p class="text-ink/50 text-xs mt-0.5">Ongoing managed agent, scaled by number of active quality checks.</p>
+                  </div>
+                </div>
+              </div>
+              <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="shrink-0 inline-flex items-center gap-2 bg-ink text-cream font-semibold px-6 py-3 rounded-full hover:bg-ink/80 transition-colors text-sm">
+                Get a scope
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Built and maintained by</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">The people behind the Quality Guardian.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <img src="/team/philip.png" alt="Philip Boontje" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Philip Boontje</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-4">Co-developer · Original developer</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Philip originally built the Quality Guardian — designing the check architecture, the alert routing logic, and the Slack integration. He shaped the add-on around the real data quality challenges faced by B2B SaaS operations teams.</p>
+        </div>
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <img src="/team/sarah.png" alt="Sarah Thiébault" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Sarah Thiébault</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-1">Maintainer · Developer</p>
+          <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-4">Associate member · Maxq Analytics</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Sarah now maintains and develops the Quality Guardian. She manages ongoing improvements, drives the roadmap forward — including the priority failure list and the Slack-native correction workflow — and is the main point of contact for the add-on post-implementation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 bg-ink text-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-6">Get started</div>
+      <h2 class="text-4xl font-black mb-4" style="letter-spacing: -0.03em">Stop trusting data <span class="text-brand-300">you haven't checked.</span></h2>
+      <p class="text-cream/50 mb-10 leading-relaxed">We'll map your most critical data entry points, define the first set of quality checks, and set up the guardian — so bad data gets caught before it reaches a report or a decision.</p>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
         Catch your first bad number
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
