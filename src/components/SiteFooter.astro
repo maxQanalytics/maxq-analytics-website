@@ -103,6 +103,15 @@
       overlay.style.visibility = 'visible';
       container.style.transform = 'translateY(0) scale(1)';
       document.body.style.overflow = 'hidden';
+
+      var addon = ADDON_SLUGS[window.location.pathname.replace(/\/$/, '')];
+      if (addon) {
+        fetch('/api/track-cta', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ addon: addon, page: window.location.pathname }),
+        }).catch(function () {});
+      }
     }
 
     function closeModal() {
