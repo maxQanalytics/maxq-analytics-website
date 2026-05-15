@@ -7,6 +7,7 @@ import SiteFooter from '../../components/SiteFooter.astro';
 <Layout title="Metricsrouter — Maxq Analytics">
   <SiteNav />
 
+  <!-- Hero -->
   <section class="pt-32 pb-20 px-6 bg-ink text-cream">
     <div class="max-w-5xl mx-auto">
       <a href="/#add-ons" class="inline-flex items-center gap-2 font-mono text-xs text-white/40 hover:text-white/70 transition-colors mb-8">
@@ -14,23 +15,286 @@ import SiteFooter from '../../components/SiteFooter.astro';
         All add-ons
       </a>
       <div class="flex items-center gap-2 mb-6">
-        <span class="font-mono text-[10px] font-medium text-violet-400 bg-violet-400/10 border border-violet-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Report</span>
         <span class="font-mono text-[10px] font-medium text-brand-300 bg-brand-600/10 border border-brand-600/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+        <span class="font-mono text-[10px] font-medium text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Exchange</span>
       </div>
       <h1 class="font-black mb-6 leading-none" style="font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.04em">Metricsrouter</h1>
-      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed">Maxq's open metrics exchange — an inter-entity protocol that enables organisations to share standardised performance metrics across company boundaries. Built for investor reporting, board-level benchmarking, and cross-portfolio analytics.</p>
+      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed mb-10">An open metrics exchange that lets you decide which performance metrics to share with which external parties — investors, partners, or regulators — through standardised, auditable exchange contracts.</p>
+      <a href="https://calendly.com/philip-boontje?utm_content=metricsrouter" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        Set up your metrics exchange
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
   </section>
 
-  <section class="py-32 px-6 bg-cream" style="min-height: 60vh">
-    <div class="max-w-5xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 font-mono text-xs font-medium text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-full uppercase tracking-wider mb-8">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-        This page is under construction
+  <!-- How it works -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">How it works</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 280px">Your data. Your rules. Shared on your terms.</h2>
+        </div>
+        <div class="space-y-4 text-ink/60 leading-relaxed max-w-xl pt-1">
+          <p>Most performance data stays locked inside a company. When investors ask for numbers, you export a spreadsheet. When a regulator requires reporting, someone builds a custom extract. The same data gets shared in different formats, at different times, with no consistency or audit trail.</p>
+          <p>Metricsrouter changes that. You define a set of standardised metrics — connected to your live Semantic Nexus data model — and then control exactly who sees what, for how long, and at what level of detail. Each sharing arrangement is formalised as a metric exchange contract.</p>
+          <p>The result is a single source of truth that flows outward on controlled terms. Investors get a live view with the metrics you've approved. Partners get the signals they need to work with you. No manual exports, no version confusion, and a full audit log of who accessed what and when.</p>
+        </div>
       </div>
-      <h2 class="text-3xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Full details coming soon.</h2>
-      <p class="text-ink/50 max-w-lg mx-auto leading-relaxed mb-10">We're working on the full page for this add-on. In the meantime, schedule a call and we'll walk you through how Metricsrouter works in practice.</p>
-      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-ink text-cream font-semibold px-8 py-3.5 rounded-full hover:bg-ink/80 transition-colors text-sm">
+    </div>
+  </section>
+
+  <!-- Mockup -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Example configuration</div>
+        <h2 class="text-3xl font-bold text-ink mb-2" style="letter-spacing: -0.02em">You decide what gets shared with whom.</h2>
+        <p class="text-ink/50 text-sm">Each row is a metric. Each column is an external party. You control access per combination.</p>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl">
+        <div class="rounded-2xl border border-white/10" style="background: #0F1C38; padding: 24px 28px 22px; min-width: 740px;">
+
+          <!-- Header -->
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+            <div>
+              <p style="font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.2px;">Metrics Exchange — Access Configuration</p>
+              <p style="font-size: 11px; color: #6B87A8; margin-top: 3px;">Northfield Logistics · 6 active exchange contracts</p>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <div style="font-size: 10px; color: #02C39A; background: rgba(2,195,154,0.12); border: 1px solid rgba(2,195,154,0.25); padding: 3px 10px; border-radius: 20px; font-family: monospace; text-transform: uppercase; letter-spacing: 0.05em;">3 live</div>
+              <div style="font-size: 10px; color: #8DA5C4; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 3px 10px; border-radius: 20px; font-family: monospace; text-transform: uppercase; letter-spacing: 0.05em;">+ Add party</div>
+            </div>
+          </div>
+
+          <!-- Column headers -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 0; padding-bottom: 8px; border-bottom: 1px solid #1E3060; margin-bottom: 4px;">
+            <div style="font-size: 9px; color: #4B6080; font-family: monospace; text-transform: uppercase; letter-spacing: 0.06em;">Metric</div>
+            <div style="font-size: 9px; color: #4B6080; font-family: monospace; text-transform: uppercase; letter-spacing: 0.06em; text-align: center;">Sequoia Capital</div>
+            <div style="font-size: 9px; color: #4B6080; font-family: monospace; text-transform: uppercase; letter-spacing: 0.06em; text-align: center;">DHL Supply</div>
+            <div style="font-size: 9px; color: #4B6080; font-family: monospace; text-transform: uppercase; letter-spacing: 0.06em; text-align: center;">AFM</div>
+            <div style="font-size: 9px; color: #4B6080; font-family: monospace; text-transform: uppercase; letter-spacing: 0.06em; text-align: center;">Accenture</div>
+          </div>
+
+          <!-- Row 1 -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 10px 0; border-bottom: 1px solid #162040; align-items: center;">
+            <div>
+              <p style="font-size: 12px; color: #D0DFF0; font-weight: 600;">Monthly Recurring Revenue</p>
+              <p style="font-size: 9px; color: #4B6080; margin-top: 2px; font-family: monospace;">finance · monthly</p>
+            </div>
+            <div style="text-align: center;"><span style="display: inline-flex; align-items: center; gap: 4px; font-size: 9px; color: #02C39A; background: rgba(2,195,154,0.1); border: 1px solid rgba(2,195,154,0.2); padding: 2px 8px; border-radius: 4px; font-family: monospace;">✓ read</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+          </div>
+
+          <!-- Row 2 -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 10px 0; border-bottom: 1px solid #162040; align-items: center;">
+            <div>
+              <p style="font-size: 12px; color: #D0DFF0; font-weight: 600;">ARR Growth Rate</p>
+              <p style="font-size: 9px; color: #4B6080; margin-top: 2px; font-family: monospace;">finance · quarterly</p>
+            </div>
+            <div style="text-align: center;"><span style="display: inline-flex; align-items: center; gap: 4px; font-size: 9px; color: #02C39A; background: rgba(2,195,154,0.1); border: 1px solid rgba(2,195,154,0.2); padding: 2px 8px; border-radius: 4px; font-family: monospace;">✓ read</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+          </div>
+
+          <!-- Row 3 -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 10px 0; border-bottom: 1px solid #162040; align-items: center;">
+            <div>
+              <p style="font-size: 12px; color: #D0DFF0; font-weight: 600;">Active Customer Count</p>
+              <p style="font-size: 9px; color: #4B6080; margin-top: 2px; font-family: monospace;">operations · monthly</p>
+            </div>
+            <div style="text-align: center;"><span style="display: inline-flex; align-items: center; gap: 4px; font-size: 9px; color: #02C39A; background: rgba(2,195,154,0.1); border: 1px solid rgba(2,195,154,0.2); padding: 2px 8px; border-radius: 4px; font-family: monospace;">✓ read</span></div>
+            <div style="text-align: center;"><span style="display: inline-flex; align-items: center; gap: 4px; font-size: 9px; color: #4FC3F7; background: rgba(79,195,247,0.1); border: 1px solid rgba(79,195,247,0.2); padding: 2px 8px; border-radius: 4px; font-family: monospace;">✓ read</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+            <div style="text-align: center;"><span style="display: inline-flex; align-items: center; gap: 4px; font-size: 9px; color: #4FC3F7; background: rgba(79,195,247,0.1); border: 1px solid rgba(79,195,247,0.2); padding: 2px 8px; border-radius: 4px; font-family: monospace;">✓ read</span></div>
+          </div>
+
+          <!-- Row 4 -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 10px 0; border-bottom: 1px solid #162040; align-items: center;">
+            <div>
+              <p style="font-size: 12px; color: #D0DFF0; font-weight: 600;">Churn Rate</p>
+              <p style="font-size: 9px; color: #4B6080; margin-top: 2px; font-family: monospace;">finance · monthly</p>
+            </div>
+            <div style="text-align: center;"><span style="display: inline-flex; align-items: center; gap: 4px; font-size: 9px; color: #02C39A; background: rgba(2,195,154,0.1); border: 1px solid rgba(2,195,154,0.2); padding: 2px 8px; border-radius: 4px; font-family: monospace;">✓ read</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+          </div>
+
+          <!-- Row 5 -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 10px 0; border-bottom: 1px solid #162040; align-items: center;">
+            <div>
+              <p style="font-size: 12px; color: #D0DFF0; font-weight: 600;">On-Time Delivery Rate</p>
+              <p style="font-size: 9px; color: #4B6080; margin-top: 2px; font-family: monospace;">operations · weekly</p>
+            </div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+            <div style="text-align: center;"><span style="display: inline-flex; align-items: center; gap: 4px; font-size: 9px; color: #4FC3F7; background: rgba(79,195,247,0.1); border: 1px solid rgba(79,195,247,0.2); padding: 2px 8px; border-radius: 4px; font-family: monospace;">✓ read</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+            <div style="text-align: center;"><span style="display: inline-flex; align-items: center; gap: 4px; font-size: 9px; color: #4FC3F7; background: rgba(79,195,247,0.1); border: 1px solid rgba(79,195,247,0.2); padding: 2px 8px; border-radius: 4px; font-family: monospace;">✓ read</span></div>
+          </div>
+
+          <!-- Row 6 -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 10px 0; align-items: center;">
+            <div>
+              <p style="font-size: 12px; color: #D0DFF0; font-weight: 600;">Carbon Emissions Index</p>
+              <p style="font-size: 9px; color: #4B6080; margin-top: 2px; font-family: monospace;">sustainability · quarterly</p>
+            </div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+            <div style="text-align: center;"><span style="display: inline-flex; align-items: center; gap: 4px; font-size: 9px; color: #A78BFA; background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.2); padding: 2px 8px; border-radius: 4px; font-family: monospace;">✓ read</span></div>
+            <div style="text-align: center;"><span style="font-size: 10px; color: #2E4070;">—</span></div>
+          </div>
+
+        </div>
+      </div>
+      <p class="text-xs text-ink/40 mt-4 text-center font-mono">Illustrative configuration — metrics, parties, and access rules are defined per organisation.</p>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">What you get</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">Controlled visibility.<br>Zero manual effort.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Metric exchange contracts</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">Each sharing arrangement is formalised with a defined set of metrics, an access level, a date range, and a counterparty. Nothing gets shared without a contract in place.</p>
+        </div>
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Live data, not exports</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">Connected to your Semantic Nexus, the metrics your partners see are always current. No manual refreshes, no out-of-date spreadsheets sent by email.</p>
+        </div>
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Per-party access control</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">Your investor sees revenue and growth. Your supply chain partner sees delivery and operations. Your regulator sees compliance metrics. Each party only sees what you've explicitly approved.</p>
+        </div>
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Full audit log</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">Every access event is logged. You can see who queried which metrics, when, and how often — giving you full visibility into how your data is being used by external parties.</p>
+        </div>
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Standardised metric definitions</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">Built on the Semantic Nexus, every shared metric has a documented definition, a clean lineage, and a consistent calculation. No ambiguity about what the number means.</p>
+        </div>
+        <div class="bg-warm border border-ink/8 rounded-2xl p-6">
+          <div class="w-8 h-8 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Open source protocol</h3>
+          <p class="text-ink/55 text-sm leading-relaxed">The Metricsrouter protocol is publicly documented and open source. Any company can implement it — meaning the more organisations join, the richer and more valuable the exchange becomes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="py-24 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-4">Roadmap</div>
+        <h2 class="text-3xl font-bold text-cream" style="letter-spacing: -0.02em">Where we're taking it.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">1</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">In progress</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Live exchange between clients and one investor</h3>
+          <p class="text-white/50 text-sm leading-relaxed">The first milestone is getting Metricsrouter operational between multiple client companies and a shared investor or stakeholder. This proves out the core protocol — standardised metrics flowing from multiple sources into a single, controlled view for one external party. The first users of this exchange shape how the product develops from here.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">2</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">Coming next</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Expanded metrics and dimensions</h3>
+          <p class="text-white/50 text-sm leading-relaxed">Once the core exchange is running, we'll extend the protocol to support a wider range of metrics — operational, environmental, production — and richer dimensions like regional breakdowns, product segments, or time-period granularity. The goal is to make Metricsrouter the default infrastructure for any cross-company data relationship.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Pricing</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 260px">Simple monthly subscription.</h2>
+        </div>
+        <div class="max-w-xl pt-1">
+          <p class="text-ink/60 leading-relaxed mb-5">Metricsrouter is priced as a monthly subscription — covering your connection to the metrics exchange and full interoperability with all other companies on the network. One fee, and your standardised metrics become accessible to every external party you approve.</p>
+          <p class="text-ink/60 leading-relaxed mb-8">The first five clients to join pay <span class="text-ink font-medium">80% of the standard rate</span> as a founding discount. They're taking the earliest position in the exchange — before the network effect is fully realised — and the pricing reflects that commitment.</p>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            <div class="bg-warm border border-ink/10 rounded-xl p-6">
+              <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Standard rate</p>
+              <p class="font-black text-ink text-2xl" style="letter-spacing: -0.02em">€50 <span class="text-base font-medium text-ink/40">/ month</span></p>
+              <p class="text-ink/50 text-sm mt-1">Per company on the exchange.</p>
+            </div>
+            <div class="bg-brand-50 border border-brand-200 rounded-xl p-6">
+              <p class="font-mono text-[10px] text-brand-600 uppercase tracking-wider mb-2">First 5 clients</p>
+              <p class="font-black text-brand-700 text-2xl" style="letter-spacing: -0.02em">€10 <span class="text-base font-medium text-brand-400">/ month</span></p>
+              <p class="text-brand-600/70 text-sm mt-1">80% founding discount — locked in.</p>
+            </div>
+          </div>
+          <a href="https://calendly.com/philip-boontje?utm_content=metricsrouter" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-ink text-cream font-semibold px-6 py-3 rounded-full hover:bg-ink/80 transition-colors text-sm">
+            Join the exchange
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Built and maintained by</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">The person behind Metricsrouter.</h2>
+      </div>
+      <div class="max-w-sm">
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <img src="/team/philip.png" alt="Philip Boontje" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Philip Boontje</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-1">Product Owner · Maintainer & developer</p>
+          <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-4">Founder · Maxq Analytics</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Philip is the architect and developer behind Metricsrouter. He designed the exchange protocol, built the integration with Semantic Nexus, and works directly with the first clients to set up their metric exchange contracts and onboard their external counterparties.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 bg-ink text-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-6">Get started</div>
+      <h2 class="text-4xl font-black mb-4" style="letter-spacing: -0.03em">Share your metrics <span class="text-brand-300">on your terms.</span></h2>
+      <p class="text-cream/50 mb-10 leading-relaxed">We'll map your key metrics, set up your first exchange contract, and get your external parties connected — so your investors, partners, and stakeholders always have access to live, reliable data.</p>
+      <a href="https://calendly.com/philip-boontje?utm_content=metricsrouter" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
         Set up your metrics exchange
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
