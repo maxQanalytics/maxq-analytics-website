@@ -61,7 +61,7 @@ export default async function handler(req, res) {
     },
     body: JSON.stringify({
       fields: {
-        'GTM Assets':               [{ id: assetRecordId }],
+        'GTM Assets':               [assetRecordId],
         'GTM Asset Event Date':      eventDate,
         'GTM Asset Event Category':  'CTA - Schedule call',
         'GTM Asset Events comments': comment,
