@@ -129,5 +129,24 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && overlay.style.visibility === 'visible') closeModal();
     });
+
+    // Track completed Calendly bookings → Airtable GTM Asset Events
+    var ADDON_SLUGS = {
+      '/add-ons/upsell-calculator':  'upsell-calculator',
+      '/add-ons/deal-expander':       'deal-expander',
+      '/add-ons/quality-guardian':    'quality-guardian',
+      '/add-ons/firefighter':         'firefighter',
+      '/add-ons/weekly-okr-tracker':  'okr-tracker',
+    };
+    window.addEventListener('message', function (e) {
+      if (!e.data || e.data.event !== 'calendly.event_scheduled') return;
+      var addon = ADDON_SLUGS[window.location.pathname];
+      if (!addon) return;
+      fetch('/api/calendly-event', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ addon: addon }),
+      }).catch(function () {});
+    });
   })();
 </script>
