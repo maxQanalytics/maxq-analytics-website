@@ -16,14 +16,20 @@ import SiteFooter from '../../components/SiteFooter.astro';
       </a>
       <div class="flex items-center gap-2 mb-6">
         <span class="font-mono text-[10px] font-medium text-brand-300 bg-brand-600/10 border border-brand-600/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
-        <span class="font-mono text-[10px] font-medium text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Exchange</span>
+        <span class="font-mono text-[10px] font-medium text-violet-400 bg-violet-400/10 border border-violet-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Report</span>
       </div>
       <h1 class="font-black mb-6 leading-none" style="font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.04em">Metricsrouter</h1>
       <p class="text-xl text-cream/55 max-w-2xl leading-relaxed mb-10">An open metrics exchange that lets you decide which performance metrics to share with which external parties — investors, partners, or regulators — through standardised, auditable exchange contracts.</p>
-      <a href="https://calendly.com/philip-boontje?utm_content=metricsrouter" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+      <div class="flex items-center gap-6 mb-10">
+        <a href="https://calendly.com/philip-boontje?utm_content=metricsrouter" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
         Set up your metrics exchange
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
+        <a href="https://www.metricsrouter.com" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 font-mono text-xs text-white/40 hover:text-white/70 transition-colors">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          metricsrouter.com
+        </a>
+      </div>
     </div>
   </section>
 
@@ -223,7 +229,13 @@ import SiteFooter from '../../components/SiteFooter.astro';
             <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">In progress</span>
           </div>
           <h3 class="font-bold text-cream text-lg mb-3">Live exchange between clients and one investor</h3>
-          <p class="text-white/50 text-sm leading-relaxed">The first milestone is getting Metricsrouter operational between multiple client companies and a shared investor or stakeholder. This proves out the core protocol — standardised metrics flowing from multiple sources into a single, controlled view for one external party. The first users of this exchange shape how the product develops from here.</p>
+          <p class="text-white/50 text-sm leading-relaxed mb-5">The first milestone is getting Metricsrouter operational between multiple client companies and a shared investor or stakeholder. This proves out the core protocol — standardised metrics flowing from multiple sources into a single, controlled view for one external party.</p>
+          <p class="text-white/50 text-sm leading-relaxed mb-5">The following companies are already on the metrics exchange:</p>
+          <div class="flex items-center gap-4 flex-wrap">
+            <img src="/logos/rebelsai.png" alt="RebelsAI" class="h-6 object-contain brightness-0 invert opacity-50" />
+            <img src="/logos/freeday.png" alt="Freeday" class="h-6 object-contain brightness-0 invert opacity-50" />
+            <img src="/logos/clubcollect.png" alt="ClubCollect" class="h-6 object-contain brightness-0 invert opacity-50" />
+          </div>
         </div>
         <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
           <div class="flex items-center gap-3 mb-5">
@@ -274,15 +286,22 @@ import SiteFooter from '../../components/SiteFooter.astro';
     <div class="max-w-5xl mx-auto">
       <div class="mb-14">
         <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Built and maintained by</div>
-        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">The person behind Metricsrouter.</h2>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">The people behind Metricsrouter.</h2>
       </div>
-      <div class="max-w-sm">
+      <div class="grid md:grid-cols-2 gap-6 max-w-2xl">
         <div class="bg-cream rounded-2xl p-8 border border-ink/8">
           <img src="/team/philip.png" alt="Philip Boontje" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
           <h3 class="font-bold text-ink text-lg mb-1">Philip Boontje</h3>
-          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-1">Product Owner · Maintainer & developer</p>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-1">Product Owner · Maintainer</p>
           <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-4">Founder · Maxq Analytics</p>
-          <p class="text-ink/60 text-sm leading-relaxed">Philip is the architect and developer behind Metricsrouter. He designed the exchange protocol, built the integration with Semantic Nexus, and works directly with the first clients to set up their metric exchange contracts and onboard their external counterparties.</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Philip is the architect and product owner behind Metricsrouter. He designed the exchange protocol, built the integration with Semantic Nexus, and works directly with the first clients to set up their metric exchange contracts and onboard their external counterparties.</p>
+        </div>
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <img src="/team/daniel.png" alt="Daniel Laurentius" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Daniel Laurentius</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-1">Maintainer & developer</p>
+          <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-4">Full member · Maxq Analytics</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Daniel now owns, maintains, and expands Metricsrouter. He handles client-specific adaptations, ongoing improvements, and is the primary point of contact for anything related to the add-on post-implementation.</p>
         </div>
       </div>
     </div>
