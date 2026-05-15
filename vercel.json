@@ -1,6 +1,5 @@
 {
   "framework": "astro",
-  "functions": { "api/calendly-event.js": { "runtime": "nodejs18.x" } },
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
