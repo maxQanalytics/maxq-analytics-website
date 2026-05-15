@@ -15,8 +15,8 @@ import SiteFooter from '../../components/SiteFooter.astro';
         All add-ons
       </a>
       <div class="flex items-center gap-2 mb-6">
-        <span class="font-mono text-[10px] font-medium text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Protect</span>
         <span class="font-mono text-[10px] font-medium text-brand-300 bg-brand-600/10 border border-brand-600/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+        <span class="font-mono text-[10px] font-medium text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Protect</span>
       </div>
       <h1 class="font-black mb-6 leading-none" style="font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.04em">Quality Guardian</h1>
       <p class="text-xl text-cream/55 max-w-2xl leading-relaxed mb-10">An AI agent that continuously monitors your data for quality failures and surfaces them directly in Slack — with proposed corrections and one-click confirmation, so bad data gets fixed before it reaches a report or a decision.</p>
@@ -100,30 +100,34 @@ import SiteFooter from '../../components/SiteFooter.astro';
               <div class="rounded-lg border-l-4 p-4" style="background: rgba(255,255,255,0.04); border-left-color: #f87171;">
                 <div class="flex items-center gap-2 mb-3">
                   <span class="font-mono text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: rgba(248,113,113,0.15); color: #f87171">⚠ Quality failure</span>
-                  <span class="font-mono text-[10px]" style="color: rgba(255,255,255,0.3)">Check #47 · clients.subscription_end_date</span>
+                  <span class="font-mono text-[10px]" style="color: rgba(255,255,255,0.3)">Check #47 · deals.subscription_end_date</span>
                 </div>
                 <p class="text-sm font-medium mb-1" style="color: rgba(255,255,255,0.9)">Missing required field detected</p>
-                <p class="text-xs mb-4" style="color: rgba(255,255,255,0.45)">3 records in <span style="color: rgba(255,255,255,0.65)">clients</span> have a null <span style="color: rgba(255,255,255,0.65)">subscription_end_date</span> — expected for all active subscribers.</p>
+                <p class="text-xs mb-4" style="color: rgba(255,255,255,0.45)">3 records in <span style="color: rgba(255,255,255,0.65)">deals</span> have a null <span style="color: rgba(255,255,255,0.65)">subscription_end_date</span> — expected for all active subscribers.</p>
 
                 <!-- Failing records -->
                 <div class="rounded-lg overflow-hidden mb-4" style="background: rgba(0,0,0,0.25);">
-                  <div class="grid grid-cols-3 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.06);">
-                    <span class="font-mono text-[9px] uppercase tracking-wider" style="color: rgba(255,255,255,0.3)">client_id</span>
-                    <span class="font-mono text-[9px] uppercase tracking-wider" style="color: rgba(255,255,255,0.3)">name</span>
+                  <div class="grid grid-cols-4 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.06);">
+                    <span class="font-mono text-[9px] uppercase tracking-wider" style="color: rgba(255,255,255,0.3)">deal_id</span>
+                    <span class="font-mono text-[9px] uppercase tracking-wider" style="color: rgba(255,255,255,0.3)">deal_name</span>
+                    <span class="font-mono text-[9px] uppercase tracking-wider" style="color: rgba(255,255,255,0.3)">client_name</span>
                     <span class="font-mono text-[9px] uppercase tracking-wider" style="color: rgba(255,255,255,0.3)">subscription_end_date</span>
                   </div>
-                  <div class="grid grid-cols-3 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.04);">
-                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">CLT-1042</span>
+                  <div class="grid grid-cols-4 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.04);">
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">DL-1042</span>
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">Renewal Q1</span>
                     <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">J. Hoffman</span>
                     <span class="font-mono text-xs font-semibold" style="color: #f87171">NULL</span>
                   </div>
-                  <div class="grid grid-cols-3 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.04);">
-                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">CLT-1089</span>
+                  <div class="grid grid-cols-4 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.04);">
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">DL-1089</span>
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">Upsell Plus</span>
                     <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">A. Visser</span>
                     <span class="font-mono text-xs font-semibold" style="color: #f87171">NULL</span>
                   </div>
-                  <div class="grid grid-cols-3 px-3 py-1.5">
-                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">CLT-1103</span>
+                  <div class="grid grid-cols-4 px-3 py-1.5">
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">DL-1103</span>
+                    <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">Expansion FY26</span>
                     <span class="font-mono text-xs" style="color: rgba(255,255,255,0.5)">T. de Boer</span>
                     <span class="font-mono text-xs font-semibold" style="color: #f87171">NULL</span>
                   </div>
@@ -135,21 +139,21 @@ import SiteFooter from '../../components/SiteFooter.astro';
                   <p class="text-xs mb-3" style="color: rgba(255,255,255,0.6)">End dates pulled from open support tickets for each client — the CS rep confirmed the renewal terms in conversation with the client. Dates extracted from those ticket threads:</p>
                   <div class="space-y-1 mt-2">
                     <div class="flex items-center gap-3">
-                      <span class="font-mono text-xs w-20" style="color: rgba(255,255,255,0.4)">CLT-1042</span>
+                      <span class="font-mono text-xs w-20" style="color: rgba(255,255,255,0.4)">DL-1042</span>
                       <span class="font-mono text-xs" style="color: rgba(255,255,255,0.35)">NULL</span>
                       <svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="rgba(34,197,94,0.6)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                       <span class="font-mono text-xs font-semibold" style="color: #4ade80">2026-01-15</span>
                       <span class="font-mono text-[10px]" style="color: rgba(255,255,255,0.25)">· ticket #TKT-8821</span>
                     </div>
                     <div class="flex items-center gap-3">
-                      <span class="font-mono text-xs w-20" style="color: rgba(255,255,255,0.4)">CLT-1089</span>
+                      <span class="font-mono text-xs w-20" style="color: rgba(255,255,255,0.4)">DL-1089</span>
                       <span class="font-mono text-xs" style="color: rgba(255,255,255,0.35)">NULL</span>
                       <svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="rgba(34,197,94,0.6)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                       <span class="font-mono text-xs font-semibold" style="color: #4ade80">2025-11-30</span>
                       <span class="font-mono text-[10px]" style="color: rgba(255,255,255,0.25)">· ticket #TKT-8834</span>
                     </div>
                     <div class="flex items-center gap-3">
-                      <span class="font-mono text-xs w-20" style="color: rgba(255,255,255,0.4)">CLT-1103</span>
+                      <span class="font-mono text-xs w-20" style="color: rgba(255,255,255,0.4)">DL-1103</span>
                       <span class="font-mono text-xs" style="color: rgba(255,255,255,0.35)">NULL</span>
                       <svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="rgba(34,197,94,0.6)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                       <span class="font-mono text-xs font-semibold" style="color: #4ade80">2026-03-08</span>
