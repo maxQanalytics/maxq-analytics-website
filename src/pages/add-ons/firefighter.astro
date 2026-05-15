@@ -7,6 +7,7 @@ import SiteFooter from '../../components/SiteFooter.astro';
 <Layout title="Firefighter — Maxq Analytics">
   <SiteNav />
 
+  <!-- Hero -->
   <section class="pt-32 pb-20 px-6 bg-ink text-cream">
     <div class="max-w-5xl mx-auto">
       <a href="/#add-ons" class="inline-flex items-center gap-2 font-mono text-xs text-white/40 hover:text-white/70 transition-colors mb-8">
@@ -14,24 +15,147 @@ import SiteFooter from '../../components/SiteFooter.astro';
         All add-ons
       </a>
       <div class="flex items-center gap-2 mb-6">
-        <span class="font-mono text-[10px] font-medium text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Protect</span>
         <span class="font-mono text-[10px] font-medium text-brand-300 bg-brand-600/10 border border-brand-600/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+        <span class="font-mono text-[10px] font-medium text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Protect</span>
+        <span class="font-mono text-[10px] font-medium text-red-400 bg-red-400/10 border border-red-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">POC</span>
       </div>
       <h1 class="font-black mb-6 leading-none" style="font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.04em">Firefighter</h1>
-      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed">An AI agent that continuously monitors client behaviour patterns and surfaces high-risk signals before they escalate — giving your team a clear playbook with prioritised next steps instead of a vague warning to act on.</p>
+      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed mb-10">Tracks metrics that signal a client is drifting toward churn or has stopped using a feature — and surfaces that as a flag before the situation becomes irreversible.</p>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        Discuss the POC
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
   </section>
 
-  <section class="py-32 px-6 bg-cream" style="min-height: 60vh">
-    <div class="max-w-5xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 font-mono text-xs font-medium text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-full uppercase tracking-wider mb-8">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-        This page is under construction
+  <!-- What it does -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">What it does</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 280px">Catch the slow decline before it becomes a loss.</h2>
+        </div>
+        <div class="space-y-4 text-ink/60 leading-relaxed max-w-xl pt-1">
+          <p>Churn rarely happens overnight. A client stops using a feature, transaction volumes quietly decline, logins drop off week by week — the signal is there, but it doesn't get noticed until the cancellation email arrives.</p>
+          <p>The Firefighter monitors those leading indicators continuously. When a client's usage pattern crosses a threshold that correlates with deprecation or churn, it raises a flag — giving your customer success and operations teams enough lead time to act.</p>
+          <p>It takes input directly from the <a href="/add-ons/quality-guardian" class="text-brand-600 hover:text-brand-700 transition-colors font-medium">Quality Guardian</a>, so the signals it monitors are grounded in clean, validated data — not raw numbers that may contain gaps or entry errors.</p>
+        </div>
       </div>
-      <h2 class="text-3xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Full details coming soon.</h2>
-      <p class="text-ink/50 max-w-lg mx-auto leading-relaxed mb-10">We're working on the full page for this add-on. In the meantime, schedule a call and we'll walk you through how Firefighter works in practice.</p>
-      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-ink text-cream font-semibold px-8 py-3.5 rounded-full hover:bg-ink/80 transition-colors text-sm">
-        See what Firefighter flags first
+    </div>
+  </section>
+
+  <!-- POC status -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-2 h-2 rounded-full bg-red-400"></div>
+            <span class="font-mono text-[10px] text-red-500 uppercase tracking-wider font-semibold">Proof of concept</span>
+          </div>
+          <h3 class="font-bold text-ink text-lg mb-3">Early stage, actively being shaped</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">The Firefighter is currently in POC mode. The core detection logic is being defined and tested — what signals matter, what thresholds make sense, and how the output is most useful for a CS or operations team. We're building this with direct client input from the ground up.</p>
+        </div>
+
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-5 bg-brand-100 text-brand-600">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+          </div>
+          <h3 class="font-bold text-ink text-lg mb-3">Built on top of the Quality Guardian</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">The Firefighter takes its input from the Quality Guardian — using the same validated, clean dataset that the guardian monitors. This means the deprecation signals it surfaces are based on data that has already passed quality checks, not raw figures that might skew the picture.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="py-24 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-red-400 uppercase tracking-widest mb-4">Roadmap</div>
+        <h2 class="text-3xl font-bold text-cream" style="letter-spacing: -0.02em">Where we're taking it.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">1</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">First delivery</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Deprecations list</h3>
+          <p class="text-white/50 text-sm leading-relaxed">A simple, regularly updated list of clients showing deprecation signals — ranked by severity. Which clients have stopped using a feature, which have seen the sharpest usage decline, and which are trending in the wrong direction. A clear starting point for CS and operations without noise.</p>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">2</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">Ongoing expansion</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Conversation preparation for CS and operations</h3>
+          <p class="text-white/50 text-sm leading-relaxed">Beyond the list, the Firefighter will expand to give customer success and operations teams the context and talking points they need to have an effective conversation with the client — a data-backed angle to open with, a proposal they can act on, and enough background to turn around a deprecating relationship before it becomes a lost one.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Pricing</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 260px">To be determined with clients.</h2>
+        </div>
+        <div class="max-w-xl pt-1">
+          <p class="text-ink/60 leading-relaxed mb-5">The Firefighter is in POC mode, so its pricing model hasn't been fixed yet. We're building this alongside early clients, and the right model will depend on what the add-on actually delivers in practice.</p>
+          <p class="text-ink/60 leading-relaxed mb-8">Our expectation is that it will be a mix of an <span class="text-ink font-medium">implementation fee</span> for the initial setup and configuration, combined with <span class="text-ink font-medium">usage or volume-based pricing</span> for ongoing monitoring — scaled to the number of clients being tracked or the number of signals being evaluated. We'll define the specifics with input from the first clients who run it.</p>
+          <div class="bg-warm border border-ink/10 rounded-xl p-6 flex flex-col sm:flex-row sm:items-center gap-5">
+            <div class="flex-1">
+              <span class="font-mono text-[10px] font-medium text-red-500 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full uppercase tracking-wider">POC</span>
+              <p class="font-black text-ink text-xl mt-2" style="letter-spacing: -0.02em">Pricing TBD</p>
+              <p class="text-ink/50 text-sm mt-1">Shaped together with early clients.</p>
+            </div>
+            <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="shrink-0 inline-flex items-center gap-2 bg-ink text-cream font-semibold px-6 py-3 rounded-full hover:bg-ink/80 transition-colors text-sm">
+              Join the POC
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Built by</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">The person behind the Firefighter.</h2>
+      </div>
+      <div class="max-w-sm">
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <img src="/team/philip.png" alt="Philip Boontje" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Philip Boontje</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-1">Product Owner · Sole contributor</p>
+          <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-4">Founder · Maxq Analytics</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Philip is the product owner and sole contributor on the Firefighter. He is defining the signal detection approach, the deprecation thresholds, and the output format — with the aim of giving CS and operations teams something genuinely actionable when a client starts to drift.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 bg-ink text-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-6">Get involved</div>
+      <h2 class="text-4xl font-black mb-4" style="letter-spacing: -0.03em">See a client slipping away <span class="text-brand-300">before they're gone.</span></h2>
+      <p class="text-cream/50 mb-10 leading-relaxed">If you're dealing with clients quietly reducing their usage, we'd like to talk. The Firefighter is being shaped around exactly that problem — and early input directly influences what gets built next.</p>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        Discuss the POC
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
