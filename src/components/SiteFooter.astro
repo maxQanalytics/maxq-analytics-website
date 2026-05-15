@@ -95,7 +95,7 @@
     const closeBtn  = document.getElementById('calendlyClose');
     const CALENDLY  = 'https://calendly.com/philip-boontje?hide_gdpr_banner=1&background_color=f5f3f0&text_color=0a0a0f&primary_color=1a4fff';
 
-    function openModal(utmContent) {
+    function openModal(utmContent, btnText) {
       var url = CALENDLY;
       if (utmContent) url += '&utm_content=' + encodeURIComponent(utmContent);
       frame.src = url;
@@ -109,7 +109,7 @@
         fetch('/api/track-cta', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ addon: addon, page: window.location.pathname }),
+          body: JSON.stringify({ addon: addon, page: window.location.pathname, btnText: btnText || '' }),
         }).catch(function () {});
       }
     }
@@ -127,7 +127,8 @@
         e.preventDefault();
         var utmContent = '';
         try { utmContent = new URL(link.href).searchParams.get('utm_content') || ''; } catch (err) {}
-        openModal(utmContent);
+        var btnText = link.textContent.trim();
+        openModal(utmContent, btnText);
       });
     });
 
