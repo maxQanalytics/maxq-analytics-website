@@ -89,16 +89,19 @@
 </footer>
 <script>
   (function () {
-    const overlay   = document.getElementById('calendlyModal');
-    const container = document.getElementById('calendlyContainer');
-    const frame     = document.getElementById('calendlyFrame');
-    const closeBtn  = document.getElementById('calendlyClose');
-    const CALENDLY  = 'https://calendly.com/philip-boontje?hide_gdpr_banner=1&background_color=f5f3f0&text_color=0a0a0f&primary_color=1a4fff';
+    const overlay    = document.getElementById('calendlyModal');
+    const container  = document.getElementById('calendlyContainer');
+    const widgetHost = document.getElementById('calendlyWidgetHost');
+    const closeBtn   = document.getElementById('calendlyClose');
+    const CALENDLY   = 'https://calendly.com/philip-boontje?hide_gdpr_banner=1&background_color=f5f3f0&text_color=0a0a0f&primary_color=1a4fff';
 
     function openModal(utmContent, btnText) {
       var url = CALENDLY;
       if (utmContent) url += '&utm_content=' + encodeURIComponent(utmContent);
-      frame.src = url;
+
+      widgetHost.innerHTML = '';
+      Calendly.initInlineWidget({ url: url, parentElement: widgetHost });
+
       overlay.style.opacity = '1';
       overlay.style.visibility = 'visible';
       container.style.transform = 'translateY(0) scale(1)';
@@ -119,7 +122,7 @@
       overlay.style.visibility = 'hidden';
       container.style.transform = 'translateY(20px) scale(0.97)';
       document.body.style.overflow = '';
-      setTimeout(function () { frame.src = 'about:blank'; }, 300);
+      setTimeout(function () { widgetHost.innerHTML = ''; }, 300);
     }
 
     document.querySelectorAll('a[href*="calendly.com"]').forEach(function (link) {
