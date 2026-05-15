@@ -149,11 +149,14 @@
 
     // Track completed Calendly bookings → Airtable GTM Asset Events
     var ADDON_SLUGS = {
-      '/add-ons/upsell-calculator':  'upsell-calculator',
-      '/add-ons/deal-expander':       'deal-expander',
-      '/add-ons/quality-guardian':    'quality-guardian',
-      '/add-ons/firefighter':         'firefighter',
-      '/add-ons/weekly-okr-tracker':  'okr-tracker',
+      '/':                              'homepage',
+      '/add-ons/upsell-calculator':     'upsell-calculator',
+      '/add-ons/deal-expander':         'deal-expander',
+      '/add-ons/quality-guardian':      'quality-guardian',
+      '/add-ons/firefighter':           'firefighter',
+      '/add-ons/weekly-okr-tracker':    'okr-tracker',
+      '/add-ons/metricsrouter':         'metricsrouter',
+      '/add-ons/enterprise-valuator':   'enterprise-valuator',
     };
     window.addEventListener('message', function (e) {
       if (e.origin !== 'https://calendly.com') return;

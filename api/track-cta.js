@@ -1,9 +1,12 @@
 const ADDON_RECORDS = {
-  'upsell-calculator': 'recHqlKE23xal0Ftw',
-  'deal-expander':     'receXZmoT6rkZsD4E',
-  'quality-guardian':  'recK0xnWqXYQy0l5E',
-  'firefighter':       'recMsyuFZ274RVMYo',
-  'okr-tracker':       'recUugZ3YnXqUak0Y',
+  'homepage':            'recTBc0ON8jroAbSh',
+  'upsell-calculator':   'recHqlKE23xal0Ftw',
+  'deal-expander':       'receXZmoT6rkZsD4E',
+  'quality-guardian':    'recK0xnWqXYQy0l5E',
+  'firefighter':         'recMsyuFZ274RVMYo',
+  'okr-tracker':         'recUugZ3YnXqUak0Y',
+  'metricsrouter':       'reccCs29A0JrRPz4M',
+  'enterprise-valuator': 'rec9vWjyzz818OVsL',
 };
 
 const AIRTABLE_URL = 'https://api.airtable.com/v0/appF0pxDtxF1fVm6O/tbljccwTddUb1F2Ia';
