@@ -127,7 +127,11 @@
         e.preventDefault();
         var utmContent = '';
         try { utmContent = new URL(link.href).searchParams.get('utm_content') || ''; } catch (err) {}
-        var btnText = (link.innerText || link.textContent || '').replace(/\s+/g, ' ').trim();
+        var btnText = Array.from(link.childNodes)
+          .filter(function(n) { return n.nodeType === 3; })
+          .map(function(n) { return n.textContent.trim(); })
+          .filter(Boolean)
+          .join(' ');
         openModal(utmContent, btnText);
       });
     });
