@@ -1,5 +1,6 @@
-// Called client-side when Calendly fires 'calendly.event_scheduled' postMessage.
-// Receives the add-on slug and writes a GTM Asset Event to Airtable.
+// Receives a Calendly booking event from the browser postMessage listener,
+// fetches full invitee + event details from the Calendly API,
+// then writes a GTM Asset Event record to Airtable.
 
 const ADDON_RECORDS = {
   'upsell-calculator': 'recHqlKE23xal0Ftw',
@@ -10,6 +11,14 @@ const ADDON_RECORDS = {
 };
 
 const AIRTABLE_URL = 'https://api.airtable.com/v0/appF0pxDtxF1fVm6O/tbljccwTddUb1F2Ia';
+
+async function calendlyGet(uri) {
+  const res = await fetch(uri, {
+    headers: { 'Authorization': 'Bearer ' + process.env.CALENDLY_API_TOKEN },
+  });
+  if (!res.ok) throw new Error('Calendly API error: ' + res.status + ' for ' + uri);
+  return res.json();
+}
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
@@ -23,14 +32,45 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid JSON' });
   }
 
-  const assetRecordId = ADDON_RECORDS[body.addon];
+  const { addon, eventUri, inviteeUri } = body;
+  const assetRecordId = ADDON_RECORDS[addon];
   if (!assetRecordId) {
     return res.status(200).json({ ok: true, skipped: true });
   }
 
-  const today = new Date().toISOString().split('T')[0];
+  // Fetch invitee and event details from Calendly in parallel
+  let invitee, event;
+  try {
+    const [inviteeData, eventData] = await Promise.all([
+      calendlyGet(inviteeUri),
+      calendlyGet(eventUri),
+    ]);
+    invitee = inviteeData.resource;
+    event   = eventData.resource;
+  } catch (err) {
+    console.error('Calendly fetch error:', err.message);
+    // Fall back to writing a minimal record rather than failing entirely
+    invitee = {};
+    event   = {};
+  }
 
-  const response = await fetch(AIRTABLE_URL, {
+  const name      = invitee.name  || '';
+  const email     = invitee.email || '';
+  const startTime = event.start_time || '';
+  const eventDate = startTime ? startTime.split('T')[0] : new Date().toISOString().split('T')[0];
+  const notes     = (invitee.questions_and_answers || [])
+    .map(function (qa) { return qa.question + '\n' + qa.answer; })
+    .join('\n\n');
+
+  const comment = [
+    name      ? 'Name: '      + name      : '',
+    email     ? 'Email: '     + email     : '',
+    startTime ? 'Scheduled: ' + startTime : '',
+    notes     ? 'Notes:\n'    + notes     : '',
+    'Add-on: ' + addon,
+  ].filter(Boolean).join('\n');
+
+  const airtableRes = await fetch(AIRTABLE_URL, {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer ' + process.env.AIRTABLE_API_KEY,
@@ -39,18 +79,18 @@ module.exports = async function handler(req, res) {
     body: JSON.stringify({
       fields: {
         'GTM Assets':               [{ id: assetRecordId }],
-        'GTM Asset Event Date':      today,
+        'GTM Asset Event Date':      eventDate,
         'GTM Asset Event Category':  'CTA - Schedule call',
-        'GTM Asset Events comments': 'Booking via add-on page: ' + body.addon,
+        'GTM Asset Events comments': comment,
       },
     }),
   });
 
-  if (!response.ok) {
-    const err = await response.text();
+  if (!airtableRes.ok) {
+    const err = await airtableRes.text();
     console.error('Airtable error:', err);
     return res.status(500).json({ error: 'Airtable write failed' });
   }
 
-  return res.status(200).json({ ok: true, recorded: body.addon });
+  return res.status(200).json({ ok: true, recorded: addon, name, email });
 };

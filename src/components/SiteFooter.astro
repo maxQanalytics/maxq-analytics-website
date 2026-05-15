@@ -145,7 +145,11 @@
       fetch('/api/calendly-event', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ addon: addon }),
+        body: JSON.stringify({
+          addon:       addon,
+          eventUri:    e.data.payload.event.uri,
+          inviteeUri:  e.data.payload.invitee.uri,
+        }),
       }).catch(function () {});
     });
   })();
