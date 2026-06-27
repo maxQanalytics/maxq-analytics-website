@@ -118,6 +118,13 @@
         e.preventDefault();
         var utmContent = '';
         try { utmContent = new URL(link.href).searchParams.get('utm_content') || ''; } catch (err) {}
+        if (window.posthog) {
+          posthog.capture('cta_click', Object.assign(
+            { label: (link.textContent || '').trim(), path: window.location.pathname },
+            window.__maxq_utm || {}
+          ));
+          posthog.capture('booking_started', window.__maxq_utm || {});
+        }
         openModal(utmContent);
       });
     });
@@ -145,6 +152,8 @@
         try { data = JSON.parse(data); } catch (err) { return; }
       }
       if (!data || data.event !== 'calendly.event_scheduled') return;
+      // Conversion goal: fire on every page, broken down by UTM
+      if (window.posthog) posthog.capture('booking_completed', window.__maxq_utm || {});
       var addon = ADDON_SLUGS[window.location.pathname];
       if (!addon) return;
       var payload = data.payload || {};
