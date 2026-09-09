@@ -293,24 +293,6 @@ import SiteFooter from '../components/SiteFooter.astro';
       </div>
 
 
-      <!-- Numbered benefits -->
-      <div class="border-t border-ink/10">
-        {[
-          { n: '01', h: 'Every metric, defined once', p: 'Every KPI gets its own scorecard with the formula, the source, and the business context. No more debates about what "revenue" means.' },
-          { n: '02', h: 'Bad data caught automatically', p: 'Problems get caught before they reach a decision-maker. Each test has an owner, a direct link to fix the issue at source, and a clear description.' },
-          { n: '03', h: 'See exactly where your data is', p: 'A live view of your full data pipeline: extraction, transformation, delivery. Every stakeholder can see how data flows, which systems are involved, what\'s current, and where bottlenecks sit.' },
-          { n: '04', h: 'Each department gets their own view', p: 'Finance sees margins and cash flow. Sales sees pipeline and unit economics. Operations sees utilisation and capacity. Same data, purpose-built views for the people who need them.' },
-          { n: '05', h: 'Ask your data questions in plain English', p: 'An AI layer connected directly to your data model. Query live data through Claude and other AI systems. No SQL, no waiting for a developer. Your single source of truth, accessible through conversation.' },
-          { n: '06', h: 'KPIs straight to the boardroom', p: 'Monthly company KPIs shared directly with shareholders through an automated metrics exchange. No manual exports, no slide decks cobbled together at midnight. Always current, always consistent.' },
-        ].map(row => (
-          <div class="grid md:grid-cols-[64px_1fr_1.2fr] gap-6 py-10 border-b border-ink/8 last:border-0 items-start">
-            <span class="font-mono text-sm font-medium text-brand-600">{row.n}</span>
-            <h3 class="text-lg font-bold text-ink" style="letter-spacing: -0.01em">{row.h}</h3>
-            <p class="text-sm text-ink/60 leading-relaxed">{row.p}</p>
-          </div>
-        ))}
-      </div>
-
     </div>
   </section>
 
