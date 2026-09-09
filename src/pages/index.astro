@@ -36,49 +36,6 @@ import SiteFooter from '../components/SiteFooter.astro';
         </a>
       </div>
       <!-- Dashboard mockup -->
-      <div class="hero-visual">
-        <div class="hero-dashboard">
-          <div class="dash-topbar">
-            <span class="dash-dot" style="background: rgba(96,165,250,0.5)"></span>
-            <span class="dash-dot"></span>
-            <span class="dash-dot"></span>
-            <span class="dash-tab dash-tab-active">Overview</span>
-            <span class="dash-tab">Revenue</span>
-            <span class="dash-tab">Pipeline</span>
-          </div>
-          <div class="dash-grid">
-            <div class="dash-metric">
-              <div class="dash-metric-label">Monthly Revenue</div>
-              <div class="dash-metric-value">&euro;847K</div>
-              <div class="dash-metric-change">+12.4% vs last month</div>
-            </div>
-            <div class="dash-metric">
-              <div class="dash-metric-label">Gross Margin</div>
-              <div class="dash-metric-value">68.2%</div>
-              <div class="dash-metric-change">+3.1pp vs target</div>
-            </div>
-            <div class="dash-metric">
-              <div class="dash-metric-label">Active Contracts</div>
-              <div class="dash-metric-value">142</div>
-              <div class="dash-metric-change">+14 vs. last month</div>
-            </div>
-          </div>
-          <div class="dash-chart">
-            <div class="dash-bar" style="height: 35%"></div>
-            <div class="dash-bar" style="height: 42%"></div>
-            <div class="dash-bar" style="height: 38%"></div>
-            <div class="dash-bar" style="height: 55%"></div>
-            <div class="dash-bar" style="height: 48%"></div>
-            <div class="dash-bar" style="height: 62%"></div>
-            <div class="dash-bar" style="height: 58%"></div>
-            <div class="dash-bar" style="height: 71%"></div>
-            <div class="dash-bar" style="height: 65%"></div>
-            <div class="dash-bar" style="height: 78%"></div>
-            <div class="dash-bar" style="height: 72%"></div>
-            <div class="dash-bar" style="height: 85%"></div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -94,7 +51,7 @@ import SiteFooter from '../components/SiteFooter.astro';
         ].map(stat => (
           <div class="flex flex-col gap-2">
             <span class="text-4xl md:text-5xl font-black text-cream tracking-tight" style="letter-spacing: -0.03em">{stat.value}</span>
-            <span class="text-xs font-mono text-cream/40 leading-snug uppercase tracking-wider">{stat.label}</span>
+            <span class="text-xs font-mono text-cream leading-snug uppercase tracking-wider">{stat.label}</span>
           </div>
         ))}
       </div>
