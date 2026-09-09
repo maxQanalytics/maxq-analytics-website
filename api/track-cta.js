@@ -7,6 +7,7 @@ const ADDON_RECORDS = {
   'okr-tracker':         'recUugZ3YnXqUak0Y',
   'metricsrouter':       'reccCs29A0JrRPz4M',
   'enterprise-valuator': 'rec9vWjyzz818OVsL',
+  'analytics-assistant': 'rec9VVRtQLFX7CM2i',
 };
 
 const AIRTABLE_URL = 'https://api.airtable.com/v0/appF0pxDtxF1fVm6O/tbljccwTddUb1F2Ia';

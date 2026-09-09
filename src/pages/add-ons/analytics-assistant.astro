@@ -1,0 +1,394 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+---
+
+<Layout title="Analytics Assistant — Maxq Analytics">
+  <SiteNav />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-20 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <a href="/add-ons" class="inline-flex items-center gap-2 font-mono text-xs text-white/40 hover:text-white/70 transition-colors mb-8">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        All add-ons
+      </a>
+      <div class="flex items-center gap-2 mb-6">
+        <span class="font-mono text-[10px] font-medium text-brand-300 bg-brand-600/10 border border-brand-600/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+        <span class="font-mono text-[10px] font-medium text-sky-400 bg-sky-400/10 border border-sky-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Ask</span>
+      </div>
+      <h1 class="font-black mb-6 leading-none" style="font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.04em">Analytics Assistant</h1>
+      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed mb-10">An AI analyst for your whole company. Ask a question in Slack, in a chat window, or straight from Claude — and get an accurate, chart-backed answer in seconds, grounded in one governed context layer built on your Semantic Nexus.</p>
+      <div class="flex flex-wrap items-center gap-5">
+        <a href="https://calendly.com/philip-boontje?utm_content=analytics-assistant" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+          Ask your first question
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <span class="font-mono text-xs text-white/35 uppercase tracking-wider">Built on nao · open source</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">How it works</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">One context layer. Three ways to ask.</h2>
+      </div>
+      <div class="flex flex-col gap-0">
+
+        <div class="flex gap-8 pb-12 border-b border-ink/8">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-700 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">1</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">The context layer is built from your Semantic Nexus</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">We sync your dbt models, Cube definitions, metric glossary and business rules into the assistant's context: which table is the source of truth, how revenue is defined, which time column to filter on, which clients are archived. The assistant knows what your best analyst knows — and a weekly sync keeps that knowledge current.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-8 py-12 border-b border-ink/8">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-700 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">2</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">Anyone asks, wherever they already work</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">Mention the assistant in a Slack channel, open the web chat, or add it to Claude as a connector with a single URL. Threads keep their memory, so a follow-up like “now by store” or “top five products in June” just works. No SQL, no ticket, no queue.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-8 pt-12">
+          <div class="shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-700 font-black text-lg flex items-center justify-center" style="letter-spacing: -0.02em">3</div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-ink mb-2">Every answer is accurate, explained and shareable</h3>
+            <p class="text-ink/60 leading-relaxed max-w-xl">Each answer comes with a chart, the CSV behind it, and a short note on scope and methodology. The generated SQL is one click away for anyone who wants to check the logic. A thumbs-down goes straight to the context owner, so the context improves question by question.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Slack interaction visualisation -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Example output</div>
+        <h2 class="text-3xl font-bold text-ink mb-2" style="letter-spacing: -0.02em">A question asked in Slack, answered in the thread.</h2>
+        <p class="text-ink/50 text-sm">Illustrative example using a fictional coffee-shop chain. The assistant answers with a chart, the data behind it, and how it got there.</p>
+      </div>
+
+      <!-- Slack mockup -->
+      <div class="rounded-2xl overflow-hidden shadow-sm border border-ink/10" style="background: #1a1d21;">
+
+        <!-- Channel bar -->
+        <div class="flex items-center gap-3 px-4 py-3 border-b" style="border-color: rgba(255,255,255,0.08);">
+          <div class="flex items-center gap-2">
+            <div class="w-3.5 h-3.5 rounded-sm flex items-center justify-center" style="background: #4a154b;">
+              <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>
+            </div>
+            <span class="text-xs font-medium" style="color: rgba(255,255,255,0.5)">#analytics</span>
+          </div>
+        </div>
+
+        <div class="px-5 py-5 space-y-6">
+
+          <!-- Question -->
+          <div class="flex gap-3">
+            <div class="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center text-white font-black text-sm" style="background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); letter-spacing: -0.02em">MK</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-baseline gap-2 mb-1">
+                <span class="font-bold text-sm" style="color: #fff">Maya K.</span>
+                <span class="text-xs" style="color: rgba(255,255,255,0.3)">Customer Success · 9:12 AM</span>
+              </div>
+              <p class="text-sm" style="color: rgba(255,255,255,0.85)"><span class="px-1 rounded" style="background: rgba(96,165,250,0.18); color: #93c5fd">@assistant</span> what was total revenue in June, broken down by store?</p>
+            </div>
+          </div>
+
+          <!-- Answer -->
+          <div class="flex gap-3">
+            <div class="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center text-white font-black text-sm" style="background: linear-gradient(135deg, #1a4fff 0%, #102880 100%); letter-spacing: -0.02em">AA</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-baseline gap-2 mb-2">
+                <span class="font-bold text-sm" style="color: #fff">Analytics Assistant</span>
+                <span class="font-mono text-[10px] px-1.5 py-0.5 rounded" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4)">APP</span>
+                <span class="text-xs" style="color: rgba(255,255,255,0.3)">9:12 AM</span>
+              </div>
+              <p class="text-sm mb-4" style="color: rgba(255,255,255,0.85)">Total revenue in June was <span class="font-semibold" style="color: #fff">€175.3K</span> across three stores. Hell's Kitchen led at €62.1K; Astoria and Lower Manhattan were within €2K of each other.</p>
+
+              <!-- Chart card -->
+              <div class="rounded-lg p-4 mb-3" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="font-mono text-[10px] uppercase tracking-wider" style="color: rgba(255,255,255,0.4)">Revenue · June · by store</span>
+                  <span class="font-mono text-[10px]" style="color: rgba(255,255,255,0.3)">EUR</span>
+                </div>
+                <div class="grid grid-cols-3 gap-4 items-end" style="height: 120px;">
+                  <div class="flex flex-col items-center justify-end h-full gap-2">
+                    <span class="font-mono text-[10px]" style="color: rgba(255,255,255,0.6)">€57.4K</span>
+                    <div class="w-full rounded-t" style="height: 68%; background: #1e3a8a;"></div>
+                  </div>
+                  <div class="flex flex-col items-center justify-end h-full gap-2">
+                    <span class="font-mono text-[10px]" style="color: rgba(255,255,255,0.6)">€62.1K</span>
+                    <div class="w-full rounded-t" style="height: 76%; background: #1e3a8a;"></div>
+                  </div>
+                  <div class="flex flex-col items-center justify-end h-full gap-2">
+                    <span class="font-mono text-[10px]" style="color: rgba(255,255,255,0.6)">€55.8K</span>
+                    <div class="w-full rounded-t" style="height: 65%; background: #1e3a8a;"></div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mt-2">
+                  <span class="font-mono text-[9px] text-center uppercase tracking-wider" style="color: rgba(255,255,255,0.35)">Lower Manhattan</span>
+                  <span class="font-mono text-[9px] text-center uppercase tracking-wider" style="color: rgba(255,255,255,0.35)">Hell's Kitchen</span>
+                  <span class="font-mono text-[9px] text-center uppercase tracking-wider" style="color: rgba(255,255,255,0.35)">Astoria</span>
+                </div>
+              </div>
+
+              <!-- Scope & methodology -->
+              <div class="border-l-2 pl-3 mb-3 space-y-1" style="border-color: rgba(255,255,255,0.15);">
+                <p class="text-xs" style="color: rgba(255,255,255,0.5)">🧠 <span class="font-semibold" style="color: rgba(255,255,255,0.7)">Scope &amp; metric</span> · Gross allocated turnover in EUR, 1–30 June, no-sales excluded, active stores only.</p>
+                <p class="text-xs" style="color: rgba(255,255,255,0.5)">📐 <span class="font-semibold" style="color: rgba(255,255,255,0.7)">Methodology</span> · Sum of order-line turnover per store, rounded in SQL. Query available in nao.</p>
+              </div>
+
+              <!-- Attachment + actions -->
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] px-2 py-1 rounded" style="background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5)">
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  revenue_by_store_june.csv
+                </span>
+                <span class="font-mono text-[10px] px-2 py-1 rounded border" style="border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.7)">Open in nao</span>
+                <span class="font-mono text-[10px] px-2 py-1 rounded" style="background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5)">👍 2</span>
+                <span class="font-mono text-[10px] px-2 py-1 rounded" style="background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5)">👎</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider with label -->
+          <div class="flex items-center gap-3">
+            <div class="flex-1 h-px" style="background: rgba(255,255,255,0.06);"></div>
+            <span class="font-mono text-[10px] uppercase tracking-wider" style="color: rgba(255,255,255,0.25)">Follow-up in the same thread</span>
+            <div class="flex-1 h-px" style="background: rgba(255,255,255,0.06);"></div>
+          </div>
+
+          <!-- Follow-up question -->
+          <div class="flex gap-3">
+            <div class="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center text-white font-black text-sm" style="background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); letter-spacing: -0.02em">MK</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-baseline gap-2 mb-1">
+                <span class="font-bold text-sm" style="color: #fff">Maya K.</span>
+                <span class="text-xs" style="color: rgba(255,255,255,0.3)">9:14 AM</span>
+              </div>
+              <p class="text-sm" style="color: rgba(255,255,255,0.85)">and the top 5 products that month, with units sold?</p>
+            </div>
+          </div>
+
+          <!-- Follow-up answer -->
+          <div class="flex gap-3">
+            <div class="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center text-white font-black text-sm" style="background: linear-gradient(135deg, #1a4fff 0%, #102880 100%); letter-spacing: -0.02em">AA</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-baseline gap-2 mb-2">
+                <span class="font-bold text-sm" style="color: #fff">Analytics Assistant</span>
+                <span class="font-mono text-[10px] px-1.5 py-0.5 rounded" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4)">APP</span>
+                <span class="text-xs" style="color: rgba(255,255,255,0.3)">9:14 AM</span>
+              </div>
+              <p class="text-sm mb-3" style="color: rgba(255,255,255,0.85)">Top 5 products in June, all stores. Latte alone is 18% of revenue.</p>
+              <div class="rounded-lg overflow-hidden" style="background: rgba(0,0,0,0.25);">
+                <div class="grid grid-cols-3 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.06);">
+                  <span class="font-mono text-[9px] uppercase tracking-wider" style="color: rgba(255,255,255,0.3)">product</span>
+                  <span class="font-mono text-[9px] uppercase tracking-wider text-right" style="color: rgba(255,255,255,0.3)">revenue</span>
+                  <span class="font-mono text-[9px] uppercase tracking-wider text-right" style="color: rgba(255,255,255,0.3)">units</span>
+                </div>
+                <div class="grid grid-cols-3 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.04);"><span class="font-mono text-xs" style="color: rgba(255,255,255,0.6)">Latte</span><span class="font-mono text-xs text-right" style="color: rgba(255,255,255,0.6)">€31.6K</span><span class="font-mono text-xs text-right" style="color: rgba(255,255,255,0.6)">6,740</span></div>
+                <div class="grid grid-cols-3 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.04);"><span class="font-mono text-xs" style="color: rgba(255,255,255,0.6)">Cappuccino</span><span class="font-mono text-xs text-right" style="color: rgba(255,255,255,0.6)">€24.9K</span><span class="font-mono text-xs text-right" style="color: rgba(255,255,255,0.6)">5,410</span></div>
+                <div class="grid grid-cols-3 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.04);"><span class="font-mono text-xs" style="color: rgba(255,255,255,0.6)">Chai latte</span><span class="font-mono text-xs text-right" style="color: rgba(255,255,255,0.6)">€17.2K</span><span class="font-mono text-xs text-right" style="color: rgba(255,255,255,0.6)">3,580</span></div>
+                <div class="grid grid-cols-3 px-3 py-1.5 border-b" style="border-color: rgba(255,255,255,0.04);"><span class="font-mono text-xs" style="color: rgba(255,255,255,0.6)">Cold brew</span><span class="font-mono text-xs text-right" style="color: rgba(255,255,255,0.6)">€14.8K</span><span class="font-mono text-xs text-right" style="color: rgba(255,255,255,0.6)">3,290</span></div>
+                <div class="grid grid-cols-3 px-3 py-1.5"><span class="font-mono text-xs" style="color: rgba(255,255,255,0.6)">Espresso</span><span class="font-mono text-xs text-right" style="color: rgba(255,255,255,0.6)">€11.3K</span><span class="font-mono text-xs text-right" style="color: rgba(255,255,255,0.6)">4,120</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">What you get</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">Everyone data-driven. One source of truth.</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7z"/><path stroke-linecap="round" d="M8 9h8M8 13h5"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Governed context layer</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Metric definitions, business rules and table knowledge from your dbt and Cube models, synced weekly. Two people asking the same question get the same number — and a new colleague is onboarded the moment they ask.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M21 12c0 4.418-4.03 8-9 8a9.9 9.9 0 01-4-.8L3 20l1.3-3.9A7.6 7.6 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Slack-native answers</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Mention the assistant in any channel and get the answer in the thread, with a chart image and CSV, visible to everyone. Threads remember context. Scheduled posts deliver recurring numbers, like Monday's gross turnover, without anyone asking.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Claude connector</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Add the assistant to Claude as an MCP connector by pasting one URL. Brainstorm with your data in a full conversation — “which product grew most between Q1 and Q2?” — and get the same numbers as in Slack, because it's the same context layer.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Tested accuracy</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Your key metrics are covered by tests that run plain-language questions through the assistant and compare the result with the expected SQL. Every answer exposes its query, and a thumbs-down routes to the context owner for review.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v11H4zM8 21h8M12 16v5M7 13l3-3 2 2 4-4"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Stories: shared live dashboards</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Turn a conversation into a dashboard. Reorder or drop charts, add commentary, and share it with the team or keep it private. The story stays live against your data, so it's a page that updates rather than a screenshot that ages.</p>
+        </div>
+        <div class="bg-warm rounded-xl p-7 border border-ink/8">
+          <div class="w-8 h-8 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="font-bold text-ink mb-2">Your infrastructure, your model</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Self-hosted on Google Cloud Run in your region, with invite-only access and role-based shielding of sensitive slices. Built on nao, an open-source framework, with any LLM behind it via your own API key. No per-seat licence, no vendor lock-in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="py-20 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Who it's for</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 280px">The right fit.</h2>
+        </div>
+        <div class="space-y-4 text-ink/60 leading-relaxed max-w-xl pt-1">
+          <p>Companies that have a Semantic Nexus, or are building one, and far more people with data questions than people who can write SQL. Sales and customer success preparing for a client conversation. Leadership working through a strategic question and wanting the number in twenty seconds, not next week. Support and operations checking what the client said against what the system actually recorded.</p>
+          <p>It works best when the metric definitions are already agreed. The assistant makes them accessible to everyone; it doesn't invent them. That's exactly what the Semantic Nexus is for.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="py-24 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-4">Roadmap</div>
+        <h2 class="text-3xl font-bold text-cream" style="letter-spacing: -0.02em">What's coming next.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">1</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">Next up</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Direct Cube connection</h3>
+          <p class="text-white/50 text-sm leading-relaxed">Today the assistant reads your Cube definitions into its context and queries the warehouse. Next it plugs straight into the Cube semantic layer, so measures, dimensions and access rules live in exactly one place and the assistant inherits them automatically.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">2</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">Coming later</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Specialised agents on one context</h3>
+          <p class="text-white/50 text-sm leading-relaxed">From a general-purpose analyst to a set of focused assistants for finance, customer success and operations, each with its own skills and shielding, all sharing the same governed context layer. The governance stays central; the expertise gets specific.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Pricing</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 260px">Implementation plus a flat licence.</h2>
+        </div>
+        <div class="max-w-xl pt-1">
+          <p class="text-ink/60 leading-relaxed mb-5">Two components. An implementation fee covers building the context layer from your Semantic Nexus, writing the accuracy tests for your key metrics, and wiring up Slack and Claude. A monthly licence covers hosting, model usage, and keeping the context maintained and in sync.</p>
+          <p class="text-ink/60 leading-relaxed mb-8">There is no per-seat pricing. The assistant is meant to be used by everyone in the company, so the licence is flat rather than per user. We scope the exact structure together based on your data model and the number of metrics under test.</p>
+          <div class="bg-warm border border-ink/10 rounded-xl p-6">
+            <div class="flex flex-col sm:flex-row sm:items-start gap-5">
+              <div class="flex-1 space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-md bg-brand-100 text-brand-600 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-ink text-sm">Implementation fee</p>
+                    <p class="text-ink/50 text-xs mt-0.5">Context layer, metric tests, Slack and Claude setup.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-md bg-brand-100 text-brand-600 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-ink text-sm">Monthly licence</p>
+                    <p class="text-ink/50 text-xs mt-0.5">Hosting, model usage, context maintenance. Flat, not per seat.</p>
+                  </div>
+                </div>
+              </div>
+              <a href="https://calendly.com/philip-boontje?utm_content=analytics-assistant" target="_blank" rel="noopener" class="shrink-0 inline-flex items-center gap-2 bg-ink text-cream font-semibold px-6 py-3 rounded-full hover:bg-ink/80 transition-colors text-sm">
+                Get a scope
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Built and maintained by</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">The people behind the Analytics Assistant.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-3xl">
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <img src="/team/sarah.png" alt="Sarah Thiébault" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Sarah Thiébault</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-1">Product Owner · Maintainer</p>
+          <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-4">Medior Data Engineer · Maxq Analytics</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Sarah leads the Analytics Assistant end to end. She built and deployed the first version, runs the context layer and its accuracy tests, and owns the roadmap and client rollouts. She is the main point of contact for the add-on after implementation.</p>
+        </div>
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <img src="/team/philip.png" alt="Philip Boontje" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Philip Boontje</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-1">Product direction</p>
+          <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-4">Guild Master · Maxq Analytics</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Philip shapes how the assistant answers — short, consistent, chart-first — and connects it to the Semantic Nexus architecture it runs on, so the context layer is a by-product of the data model rather than a second thing to maintain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 bg-ink text-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-6">Get started</div>
+      <h2 class="text-4xl font-black mb-4" style="letter-spacing: -0.03em">Give everyone a data analyst.</h2>
+      <p class="text-cream/50 mb-10 leading-relaxed">We connect the assistant to your Semantic Nexus, load the context layer, write the first accuracy tests and put it in your Slack — so the first questions get answered within days, not quarters.</p>
+      <a href="https://calendly.com/philip-boontje?utm_content=analytics-assistant" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        Ask your first question
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <SiteFooter />
+</Layout>
