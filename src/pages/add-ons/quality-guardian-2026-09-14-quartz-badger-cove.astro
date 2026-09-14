@@ -458,27 +458,27 @@ const calendly = 'https://calendly.com/philip-boontje?utm_content=quality-guardi
         </div>
         <div class="grid sm:grid-cols-2 gap-x-10 gap-y-6 flex-1">
           <div>
-            <p class="font-mono text-[10px] text-brand-300 uppercase tracking-wider mb-1.5">Warehouse access</p>
+            <h3 class="text-xl font-bold text-brand-300 mb-2" style="letter-spacing: -0.01em">Warehouse access</h3>
             <p class="text-white/85 text-sm leading-relaxed">Read-only, end to end. A SQL guard limits the agent to single SELECT statements over a fixed allow-list of curated tables, with a row limit appended automatically. Snowflake and BigQuery are supported.</p>
           </div>
           <div>
-            <p class="font-mono text-[10px] text-brand-300 uppercase tracking-wider mb-1.5">Model</p>
+            <h3 class="text-xl font-bold text-brand-300 mb-2" style="letter-spacing: -0.01em">Model</h3>
             <p class="text-white/85 text-sm leading-relaxed">Claude Sonnet 5 by default, Sonnet 4.6 selectable, routed through the Vercel AI Gateway. No static API keys in the deployment.</p>
           </div>
           <div>
-            <p class="font-mono text-[10px] text-brand-300 uppercase tracking-wider mb-1.5">Writes and notifications</p>
+            <h3 class="text-xl font-bold text-brand-300 mb-2" style="letter-spacing: -0.01em">Writes and notifications</h3>
             <p class="text-white/85 text-sm leading-relaxed">The model has no working write or messaging tool. Write-back and the Slack report are separate, code-controlled steps that run after the conclusion, each behind its own switch.</p>
           </div>
           <div>
-            <p class="font-mono text-[10px] text-brand-300 uppercase tracking-wider mb-1.5">Hosting and storage</p>
+            <h3 class="text-xl font-bold text-brand-300 mb-2" style="letter-spacing: -0.01em">Hosting and storage</h3>
             <p class="text-white/85 text-sm leading-relaxed">Next.js on Vercel, fully managed. Run history, settings, jobs and accounts live in Vercel Blob storage with versioned keys. No database to run, nothing to install on your side.</p>
           </div>
           <div>
-            <p class="font-mono text-[10px] text-brand-300 uppercase tracking-wider mb-1.5">Scheduling</p>
+            <h3 class="text-xl font-bold text-brand-300 mb-2" style="letter-spacing: -0.01em">Scheduling</h3>
             <p class="text-white/85 text-sm leading-relaxed">Hourly cron ticks, each checking which job is due. The cron endpoint is protected by its own secret and is the only route that bypasses the login.</p>
           </div>
           <div>
-            <p class="font-mono text-[10px] text-brand-300 uppercase tracking-wider mb-1.5">Concurrency and limits</p>
+            <h3 class="text-xl font-bold text-brand-300 mb-2" style="letter-spacing: -0.01em">Concurrency and limits</h3>
             <p class="text-white/85 text-sm leading-relaxed">Up to three records investigated in parallel, each with its own warehouse connection. Configurable record limit and step cap per record, with one reserved step so a capped record still ends with a verdict.</p>
           </div>
         </div>
