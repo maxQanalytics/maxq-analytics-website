@@ -28,7 +28,7 @@ const OK = { fill: '#f0fdf4', stroke: '#bbf7d0', badge: '#16a34a', text: '#16653
 const WARN = { fill: '#fffbeb', stroke: '#fde68a', badge: '#d97706', text: '#92400e' };
 const BADGE = '#f59e0b';
 
-const CANVAS = { w: 1210, h: 410 };
+const CANVAS = { w: 1240, h: 420 };
 const ROW_Y = 110; // top of the main-flow nodes
 const NODE_H = 130;
 const NODE_W = 230;
@@ -37,8 +37,8 @@ const nodes = {
   tests:   { x: 30,  y: ROW_Y, w: NODE_W, h: NODE_H, n: '1',  kicker: 'Your warehouse',      title: ['Data-entry', 'tests fail'] },
   agent:   { x: 340, y: ROW_Y, w: NODE_W, h: NODE_H, n: '2',  kicker: 'Per failing record',  title: ['The agent', 'investigates'] },
   verdict: { x: 650, y: ROW_Y, w: NODE_W, h: NODE_H, n: '3',  kicker: 'Always',              title: ['A verdict with a', 'confidence score'] },
-  fix:     { x: 950, y: 20,    w: 230,    h: 140,    n: '4a', kicker: 'High confidence, own data', title: ['Fix written to the', 'source system'], tone: OK },
-  card:    { x: 950, y: 190,   w: 230,    h: 140,    n: '4b', kicker: 'Everything else',     title: ['Action card to the', 'test owner'], tone: WARN },
+  fix:     { x: 950, y: 40,    w: 230,    h: 140,    n: '4a', kicker: 'High confidence, own data', title: ['Fix written to the', 'source system'], tone: OK },
+  card:    { x: 950, y: 210,   w: 230,    h: 140,    n: '4b', kicker: 'Everything else',     title: ['Action card to the', 'test owner'], tone: WARN },
 };
 
 // satellite pills hanging under a node (label, optional number)
@@ -140,7 +140,7 @@ parts.push(arrow(right(verdict), cy(verdict) - 8, fix.x, cy(fix), { bend: 50 }))
 parts.push(arrow(right(verdict), cy(verdict) + 8, card.x, cy(card), { bend: 50 }));
 
 // feedback loop: both outcomes come back to the tests on the next build
-const laneX = 1196;
+const laneX = 1222;
 const topY = 12;
 parts.push(returnLoop(right(card), cy(card), laneX, topY, cx(tests), tests.y));
 parts.push(`<path d="M${right(fix)},${cy(fix)} L${laneX - 14},${cy(fix)}" fill="none" stroke="${LINE}" stroke-width="2" stroke-dasharray="6 4"/>`);
