@@ -142,24 +142,6 @@ const calendly = 'https://calendly.com/philip-boontje?utm_content=quality-guardi
         </div>
       </div>
 
-      <!-- Final node: both outcomes land in the dashboard -->
-      <div class="flex justify-center my-3 text-ink/30">
-        <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </div>
-      <div class="rounded-2xl border border-ink/10 bg-ink text-cream p-5 relative md:flex md:items-center md:gap-6">
-        <span class="absolute -top-3 left-5 w-7 h-7 rounded-full bg-cream text-ink font-black text-xs flex items-center justify-center ring-4 ring-cream">5</span>
-        <div class="mt-2 md:mt-0 md:w-64 shrink-0">
-          <p class="font-mono text-[10px] text-white/40 uppercase tracking-wider mb-1">Every run, every record</p>
-          <h3 class="font-bold leading-snug">Logged in the dashboard</h3>
-        </div>
-        <div class="flex flex-wrap gap-1.5 mt-3 md:mt-0">
-          <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white/10 border border-white/15 text-white/80">verdict + write-back state</span>
-          <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white/10 border border-white/15 text-white/80">full investigation trace</span>
-          <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white/10 border border-white/15 text-white/80">PDF per run or per period</span>
-          <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white/10 border border-white/15 text-white/80">next run on schedule</span>
-        </div>
-      </div>
-
       <!-- Explainers keyed to the nodes -->
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 mt-12 text-sm">
         <div class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-black text-[11px] flex items-center justify-center mt-0.5">1</span><p class="text-ink/60 leading-relaxed">Each test is one plain question about one object: <em>is every unpaid invoice past its due date marked overdue?</em> It has a named owner and runs with your normal dbt build.</p></div>
@@ -169,7 +151,6 @@ const calendly = 'https://calendly.com/philip-boontje?utm_content=quality-guardi
         <div class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-black text-[11px] flex items-center justify-center mt-0.5">3</span><p class="text-ink/60 leading-relaxed">The verdict names one candidate or none, scores it high, medium or low, and gives the reasoning. Internal test and demo objects are flagged and set aside.</p></div>
         <div class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-700 font-black text-[11px] flex items-center justify-center mt-0.5">4a</span><p class="text-ink/60 leading-relaxed">Write-back is a switch per system (Airtable, HubSpot, your operations database), off until you turn it on. While off, the run still shows what it would have written. A duplicate check runs before any row is created.</p></div>
         <div class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-black text-[11px] flex items-center justify-center mt-0.5">4b</span><p class="text-ink/60 leading-relaxed">One Slack section per owner, one card per record: what the issue is, what was found, what to do, and where the record lives, with a link.</p></div>
-        <div class="flex gap-3"><span class="shrink-0 w-6 h-6 rounded-full bg-ink text-cream font-black text-[11px] flex items-center justify-center mt-0.5">5</span><p class="text-ink/60 leading-relaxed">Every run is kept with its full trace, so any fix or verdict can be checked afterwards. The next run starts on the schedule you set.</p></div>
       </div>
     </div>
   </section>
