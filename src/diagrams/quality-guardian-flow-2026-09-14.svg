@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1210 410" role="img" aria-labelledby="qg-flow-title" style="width:100%;height:auto;display:block">
+  <title id="qg-flow-title">How the Quality Guardian works: data-entry tests fail in the warehouse, the agent investigates each record, reaches a verdict with a confidence score, then either writes the fix to the source system or sends an action card to the test owner; the next build re-tests the record.</title>
+  <defs>
+    <marker id="qg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b6762"/>
+    </marker>
+  </defs>
+  <path d="M260,175 L276,175 C288.8,175 311.2,175 324,175 L340,175" fill="none" stroke="#6b6762" stroke-width="2" marker-end="url(#qg-arrow)"/>
+  <path d="M570,175 L586,175 C598.8,175 621.2,175 634,175 L650,175" fill="none" stroke="#6b6762" stroke-width="2" marker-end="url(#qg-arrow)"/>
+  <path d="M880,167 C930,167 900,90 950,90" fill="none" stroke="#6b6762" stroke-width="2" marker-end="url(#qg-arrow)"/>
+  <path d="M880,183 C930,183 900,260 950,260" fill="none" stroke="#6b6762" stroke-width="2" marker-end="url(#qg-arrow)"/>
+  <path d="M1180,260 L1182,260 Q1196,260 1196,246 L1196,26 Q1196,12 1182,12 L159,12 Q145,12 145,26 L145,110" fill="none" stroke="#6b6762" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#qg-arrow)"/>
+  <path d="M1180,90 L1182,90" fill="none" stroke="#6b6762" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="430.5" y="2" width="480" height="20" fill="#f5f3f0"/>
+  <text x="670.5" y="16" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" letter-spacing="0.06em" fill="#7a766f">NEXT BUILD RE-TESTS THE RECORD · FIXED BY THE AGENT OR BY THE OWNER</text>
+  <rect x="30" y="110" width="230" height="130" rx="16" fill="#ebe7e1" stroke="#d6d1c8" stroke-width="1.5"/>
+  <circle cx="52" cy="110" r="13" fill="#f59e0b"/>
+  <text x="52" y="114" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff">1</text>
+  <text x="50" y="140" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="9.5" letter-spacing="0.08em" fill="#7a766f">YOUR WAREHOUSE</text>
+  <text x="50" y="164" font-family="'Outfit', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0a0a0f" letter-spacing="-0.01em">Data-entry</text>
+  <text x="50" y="185" font-family="'Outfit', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0a0a0f" letter-spacing="-0.01em">tests fail</text>
+  <rect x="340" y="110" width="230" height="130" rx="16" fill="#ebe7e1" stroke="#d6d1c8" stroke-width="1.5"/>
+  <circle cx="362" cy="110" r="13" fill="#f59e0b"/>
+  <text x="362" y="114" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff">2</text>
+  <text x="360" y="140" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="9.5" letter-spacing="0.08em" fill="#7a766f">PER FAILING RECORD</text>
+  <text x="360" y="164" font-family="'Outfit', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0a0a0f" letter-spacing="-0.01em">The agent</text>
+  <text x="360" y="185" font-family="'Outfit', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0a0a0f" letter-spacing="-0.01em">investigates</text>
+  <rect x="650" y="110" width="230" height="130" rx="16" fill="#ebe7e1" stroke="#d6d1c8" stroke-width="1.5"/>
+  <circle cx="672" cy="110" r="13" fill="#f59e0b"/>
+  <text x="672" y="114" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff">3</text>
+  <text x="670" y="140" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="9.5" letter-spacing="0.08em" fill="#7a766f">ALWAYS</text>
+  <text x="670" y="164" font-family="'Outfit', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0a0a0f" letter-spacing="-0.01em">A verdict with a</text>
+  <text x="670" y="185" font-family="'Outfit', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0a0a0f" letter-spacing="-0.01em">confidence score</text>
+  <rect x="950" y="20" width="230" height="140" rx="16" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+  <circle cx="972" cy="20" r="13" fill="#16a34a"/>
+  <text x="972" y="24" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff">4a</text>
+  <text x="970" y="50" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="9.5" letter-spacing="0.08em" fill="#166534">HIGH CONFIDENCE, OWN DATA</text>
+  <text x="970" y="74" font-family="'Outfit', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0a0a0f" letter-spacing="-0.01em">Fix written to the</text>
+  <text x="970" y="95" font-family="'Outfit', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0a0a0f" letter-spacing="-0.01em">source system</text>
+  <rect x="950" y="190" width="230" height="140" rx="16" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
+  <circle cx="972" cy="190" r="13" fill="#d97706"/>
+  <text x="972" y="194" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="11" font-weight="800" fill="#ffffff">4b</text>
+  <text x="970" y="220" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="9.5" letter-spacing="0.08em" fill="#92400e">EVERYTHING ELSE</text>
+  <text x="970" y="244" font-family="'Outfit', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0a0a0f" letter-spacing="-0.01em">Action card to the</text>
+  <text x="970" y="265" font-family="'Outfit', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0a0a0f" letter-spacing="-0.01em">test owner</text>
+  <rect x="670" y="204" width="54" height="22" rx="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="697" y="219" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#166534">high</text>
+  <rect x="732" y="204" width="66" height="22" rx="6" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+  <text x="765" y="219" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#92400e">medium</text>
+  <rect x="806" y="204" width="46" height="22" rx="6" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+  <text x="829" y="219" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#991b1b">low</text>
+  <rect x="970" y="112" width="84" height="22" rx="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="1012" y="127" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#166534">fill a field</text>
+  <rect x="1062" y="112" width="88" height="22" rx="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="1106" y="127" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#166534">create a row</text>
+  <rect x="970" y="278" width="50" height="22" rx="6" fill="#ffffff" stroke="#fde68a" stroke-width="1"/>
+  <text x="995" y="293" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#92400e">Slack</text>
+  <rect x="1028" y="278" width="132" height="22" rx="6" fill="#ffffff" stroke="#fde68a" stroke-width="1"/>
+  <text x="1094" y="293" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#92400e">one card per record</text>
+  <rect x="970" y="304" width="200" height="22" rx="6" fill="#ffffff" stroke="#fde68a" stroke-width="1"/>
+  <text x="1070" y="319" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#92400e">Issue · Found · Action · Where</text>
+  <path d="M52,240 L52,369" fill="none" stroke="#6b6762" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <path d="M52,289 L66,289" fill="none" stroke="#6b6762" stroke-width="1.5"/>
+  <rect x="66" y="274" width="262" height="30" rx="8" fill="#ffffff" stroke="#d6d1c8" stroke-width="1"/>
+  <text x="78" y="293" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#0a0a0f">runs with your dbt build</text>
+  <path d="M52,329 L66,329" fill="none" stroke="#6b6762" stroke-width="1.5"/>
+  <rect x="66" y="314" width="262" height="30" rx="8" fill="#ffffff" stroke="#d6d1c8" stroke-width="1"/>
+  <text x="78" y="333" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#0a0a0f">one named owner per test</text>
+  <path d="M52,369 L66,369" fill="none" stroke="#6b6762" stroke-width="1.5"/>
+  <rect x="66" y="354" width="262" height="30" rx="8" fill="#ffffff" stroke="#d6d1c8" stroke-width="1"/>
+  <text x="78" y="373" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#0a0a0f">Snowflake or BigQuery</text>
+  <path d="M362,240 L362,369" fill="none" stroke="#6b6762" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <path d="M362,289 L376,289" fill="none" stroke="#6b6762" stroke-width="1.5"/>
+  <rect x="376" y="274" width="262" height="30" rx="8" fill="#ffffff" stroke="#d6d1c8" stroke-width="1"/>
+  <text x="388" y="293" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#0a0a0f">2a · read-only SQL over curated tables</text>
+  <path d="M362,329 L376,329" fill="none" stroke="#6b6762" stroke-width="1.5"/>
+  <rect x="376" y="314" width="262" height="30" rx="8" fill="#ffffff" stroke="#d6d1c8" stroke-width="1"/>
+  <text x="388" y="333" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#0a0a0f">2b · web search as fallback</text>
+  <path d="M362,369 L376,369" fill="none" stroke="#6b6762" stroke-width="1.5"/>
+  <rect x="376" y="354" width="262" height="30" rx="8" fill="#ffffff" stroke="#d6d1c8" stroke-width="1"/>
+  <text x="388" y="373" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="10.5" fill="#0a0a0f">2c · step budget per record</text>
+  <text x="950" y="364" font-family="'Outfit', system-ui, sans-serif" font-size="12.5" fill="#7a766f">Write-back is off until you switch it on;</text>
+  <text x="950" y="382" font-family="'Outfit', system-ui, sans-serif" font-size="12.5" fill="#7a766f">while off, the run shows what it would write.</text>
+</svg>

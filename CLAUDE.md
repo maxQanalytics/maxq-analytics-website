@@ -32,6 +32,7 @@ prospect, before it replaces the public page. Full procedure in
   wide; reference them with absolute paths from the page.
 - **Never overwrite a previous edition**: a new iteration is a new dated slug
   and a new screenshot folder. Old editions stay until explicitly removed.
+- **Diagrams**: flow charts are generated SVGs (`scripts/render-*.mjs` -> `src/diagrams/*.svg`, explicit coordinates, same arrow helpers as `maxq-sales/scripts/render-sales-funnel.mjs`), inlined with `import x from '...svg?raw'` + `<Fragment set:html={x} />`. Regenerate and commit the SVG with any spec change.
 - **Registry**: every edition is listed in `docs/preview-pages.md` with its
   URL, date, source screenshots and status (preview / promoted / retired).
 - **Promoting**: copy the edition's content over the public page
