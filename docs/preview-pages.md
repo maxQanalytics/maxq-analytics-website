@@ -61,3 +61,4 @@ screenshots in place, and set the registry status to `promoted`.
 | Add-on | Edition URL | Built | Screenshots | Status |
 |---|---|---|---|---|
 | Quality Guardian | `/add-ons/quality-guardian-2026-09-14-granite-finch-knoll` | 2026-09-14 | `public/add-ons/quality-guardian/2026-09-14/` (from `quality_guardian/docs/screenshots/2026-09-14/`, rounds r2 and r3) | preview |
+| Quality Guardian | `/add-ons/quality-guardian-2026-09-14-juniper-osprey-cove` | 2026-09-14 | same folder as above (r4 files) | preview (feedback round 1 on granite-finch-knoll: lighter hero text, flow chart instead of how-it-works text, no cost/usage content, no multi-client mention, Sarah removed from team) |
