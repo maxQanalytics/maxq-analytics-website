@@ -3,8 +3,10 @@ import { Analytics } from '@vercel/analytics/astro';
 import '../styles/fonts.css';
 interface Props {
   title?: string;
+  /** Keep unlisted pages (preview versions) out of search engines. */
+  noindex?: boolean;
 }
-const { title = 'Maxq Analytics' } = Astro.props;
+const { title = 'Maxq Analytics', noindex = false } = Astro.props;
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth bg-ink">
@@ -13,6 +15,7 @@ const { title = 'Maxq Analytics' } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Semantic Nexus — the flagship data architecture framework by Maxq Analytics. A single source of truth for company KPIs, metrics, and domain reporting." />
     <title>{title}</title>
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/png" href="/favicon.png" />
     <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
