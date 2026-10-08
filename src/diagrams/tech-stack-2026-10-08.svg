@@ -99,9 +99,9 @@
   <path d="M197,131.5 L220,131.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
   <path d="M197,197 L197,643" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <path d="M197,294.5 L220,294.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <rect x="208" y="52" width="714" height="511" rx="8" fill="none" stroke="#1a4fff" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <rect x="208" y="52" width="714" height="511" rx="8" fill="#eef2ff" stroke="#1a4fff" stroke-width="1.2" stroke-dasharray="6 4"/>
   <text x="565" y="44" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" font-weight="500" letter-spacing="0.08em" fill="#1a4fff">SEMANTIC NEXUS</text>
-  <rect x="220" y="201" width="206" height="187" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1" stroke-dasharray="5 4"/>
+  <rect x="220" y="201" width="206" height="187" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
   <text x="323" y="220" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">EXTRACTION · BATCH</text>
   <a href="https://airbyte.com" target="_blank" rel="noopener">
     <title>Open-source data integration platform for syncing data from APIs, databases and files.</title>
@@ -116,7 +116,7 @@
     <text x="323" y="362" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">no-code · 150+ sources</text>
   </a>
   <path d="M426,294.5 L462,294.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <rect x="220" y="76" width="206" height="111" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1" stroke-dasharray="5 4"/>
+  <rect x="220" y="76" width="206" height="111" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
   <text x="323" y="95" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">EXTRACTION · STREAMING</text>
   <a href="https://debezium.io" target="_blank" rel="noopener">
     <title>Open-source CDC platform that streams database changes in real time for event-driven data pipelines.</title>
@@ -125,7 +125,7 @@
     <text x="323" y="161" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">change data capture</text>
   </a>
   <path d="M426,131.5 L462,131.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <rect x="462" y="76" width="206" height="342" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1" stroke-dasharray="5 4"/>
+  <rect x="462" y="76" width="206" height="342" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
   <text x="565" y="95" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">WAREHOUSE</text>
   <a href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">
     <title>Google's serverless, scalable cloud data warehouse built for fast SQL analytics at any scale.</title>
@@ -152,7 +152,7 @@
     <text x="565" y="392" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">data warehouse</text>
   </a>
   <path d="M668,247 L704,247" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <rect x="462" y="440" width="206" height="111" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1" stroke-dasharray="5 4"/>
+  <rect x="462" y="440" width="206" height="111" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
   <text x="565" y="459" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">TRANSFORMATION</text>
   <a href="https://www.getdbt.com" target="_blank" rel="noopener">
     <title>SQL-based transformation tool that lets analytics engineers build, test and document data models in version control. Runs as its own layer on top of the warehouse.</title>
@@ -161,7 +161,7 @@
     <text x="565" y="525" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">models · tests · docs in git</text>
   </a>
   <path d="M565,440 L565,418" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <rect x="704" y="76" width="206" height="342" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1" stroke-dasharray="5 4"/>
+  <rect x="704" y="76" width="206" height="342" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
   <text x="807" y="95" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">SEMANTIC LAYER</text>
   <a href="https://cube.dev" target="_blank" rel="noopener">
     <title>Semantic layer that defines business metrics centrally and exposes them consistently via API to any downstream tool.</title>

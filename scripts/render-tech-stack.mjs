@@ -229,7 +229,7 @@ function itemBox(x, y, it, w = CON.w) {
 }
 
 function band(x, y, w, h) {
-  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5" fill="#fafaf8" stroke="${LINE}" stroke-width="1" stroke-dasharray="5 4"/>`;
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5" fill="#fafaf8" stroke="${LINE}" stroke-width="1"/>`;
 }
 
 // elbow connector: horizontal, vertical, horizontal; turns at midX
@@ -269,7 +269,7 @@ parts.push(line(laneX, batchMidY, extX, batchMidY, { arrow: true }));
   const fx = extX - 12, fy = BAND.y - 24;
   const fw = semX + semW + 12 - fx;
   const fh = Math.max(TR.y + TR.h, BATCHBAND.y + BATCHBAND.h) + 12 - fy;
-  parts.push(`<rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" rx="8" fill="none" stroke="${BRAND}" stroke-width="1.2" stroke-dasharray="6 4"/>`);
+  parts.push(`<rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" rx="8" fill="#eef2ff" stroke="${BRAND}" stroke-width="1.2" stroke-dasharray="6 4"/>`);
   parts.push(`<text x="${fx + fw / 2}" y="${fy - 8}" text-anchor="middle" font-family="${MONO}" font-size="${FONT.label}" font-weight="500" letter-spacing="0.08em" fill="${BRAND}">SEMANTIC NEXUS</text>`);
 }
 
