@@ -114,7 +114,7 @@ const CONSUMER_GROUPS = [
   {
     label: 'MCPS',
     items: [
-      { name: 'nao analytics MCP', icon: '/logos/nao.png', url: '/add-ons/analytics-assistant', tip: 'Maxq add-on: the nao-based Analytics Assistant, an MCP server that answers data questions in Slack and in Claude.', self: true },
+      { name: 'nao analytics', icon: '/logos/nao.png', url: '/add-ons/analytics-assistant', tip: 'Maxq add-on: the nao-based Analytics Assistant, an MCP server that answers data questions in Slack and in Claude.', self: true },
     ],
   },
   {
@@ -127,7 +127,7 @@ const CONSUMER_GROUPS = [
   {
     label: 'REPORTS',
     items: [
-      { name: 'Data Studio', logo: '/logos/data-studio.png', url: 'https://lookerstudio.google.com', tip: "Google's free BI tool for building interactive, shareable dashboards connected directly to your data sources." },
+      { name: 'Data Studio', icon: '/logos/data-studio-icon.svg', url: 'https://lookerstudio.google.com', tip: "Google's free BI tool for building interactive, shareable dashboards connected directly to your data sources." },
       { name: 'Power BI', icon: '/logos/powerbi-icon.svg', url: 'https://powerbi.microsoft.com', tip: "Microsoft's business intelligence platform for creating rich reports and dashboards across your organisation." },
     ],
   },
@@ -324,7 +324,7 @@ conRows.forEach((r) => {
 });
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
-  <title id="ts-title">Tech stack: product databases (PostgreSQL, MySQL) are streamed with Debezium into the real-time warehouse (ClickHouse); bookkeeping (Exact Online, Yuki), CRM (HubSpot), ERP (Float, Infor), customer care (Freshdesk, Zendesk) and spreadsheets (Google Sheets, Excel) are loaded in batch with Airbyte or Hevo Data into the batch warehouse (BigQuery, Snowflake or the Microsoft Fabric data warehouse). dbt runs as a separate transformation layer underneath the batch warehouse. Both warehouses feed the semantic layer, Cube or Microsoft Fabric semantic models. Extraction, warehouses, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (the nao analytics MCP), AI agents (the Quality Guardian, your own LangChain agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
+  <title id="ts-title">Tech stack: product databases (PostgreSQL, MySQL) are streamed with Debezium into the real-time warehouse (ClickHouse); bookkeeping (Exact Online, Yuki), CRM (HubSpot), ERP (Float, Infor), customer care (Freshdesk, Zendesk) and spreadsheets (Google Sheets, Excel) are loaded in batch with Airbyte or Hevo Data into the batch warehouse (BigQuery, Snowflake or the Microsoft Fabric data warehouse). dbt runs as a separate transformation layer underneath the batch warehouse. Both warehouses feed the semantic layer, Cube or Microsoft Fabric semantic models. Extraction, warehouses, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (nao analytics), AI agents (the Quality Guardian, your own LangChain agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="${INK}"/>
