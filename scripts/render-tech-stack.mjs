@@ -57,27 +57,40 @@ const TRANSFORMATION = {
   tool: { name: 'dbt', logo: '/logos/dbt.png', sub: 'models · tests · docs in git', url: 'https://www.getdbt.com', tip: 'SQL-based transformation tool that lets analytics engineers build, test and document data models in version control. Runs as its own layer on top of the warehouse.' },
 };
 
-// all-in-one alternative for warehouse and transformation, under both
-const ALT = { name: 'Microsoft Fabric', logo: '/logos/fabric.png', sub: 'all-in-one alternative', url: 'https://www.microsoft.com/en-us/microsoft-fabric', tip: "Microsoft's all-in-one analytics platform combining data engineering, warehousing and BI in a unified environment." };
-
 const SEMANTIC = {
   label: 'SEMANTIC LAYER',
-  tool: { name: 'Cube', logo: '/logos/cube.png', sub: 'metrics defined once · API', url: 'https://cube.dev', tip: 'Semantic layer that defines business metrics centrally and exposes them consistently via API to any downstream tool.' },
+  tools: [
+    { name: 'Cube', logo: '/logos/cube.png', sub: 'metrics defined once · API', url: 'https://cube.dev', tip: 'Semantic layer that defines business metrics centrally and exposes them consistently via API to any downstream tool.' },
+    { name: 'Microsoft Fabric', logo: '/logos/fabric.png', logoH: 22, sub: 'semantic models', url: 'https://www.microsoft.com/en-us/microsoft-fabric', tip: "Microsoft Fabric semantic models, the semantic layer for Power BI and the rest of the Microsoft stack." },
+  ],
 };
 
 const CONSUMER_GROUPS = [
   {
     label: 'AI AGENTS',
     items: [
-      { name: 'Claude', icon: '/logos/claude-icon.svg', url: 'https://claude.ai', tip: "Anthropic's AI assistant, connected to your semantic layer through an MCP server for natural-language data questions." },
-      { name: 'OpenAI', icon: '/logos/openai.svg', url: 'https://openai.com', tip: 'OpenAI models and agents, reading the same metric definitions through the semantic layer API.' },
-      { name: 'Quality Guardian', url: '/add-ons/quality-guardian', tip: 'Maxq add-on: an agent that investigates failing data-entry tests and writes the fix back to the source system.', self: true },
+      { name: 'Quality Guardian', icon: '/logos/quality-guardian.png', url: '/add-ons/quality-guardian', tip: 'Maxq add-on: an agent that investigates failing data-entry tests and writes the fix back to the source system.', self: true },
+      { name: 'Client agents', tip: 'Your own agents, reading governed metrics through the semantic layer instead of raw tables.' },
+    ],
+  },
+  {
+    label: 'MCPS',
+    items: [
+      { name: 'nao analytics MCP', icon: '/logos/nao.png', url: '/add-ons/analytics-assistant', tip: 'Maxq add-on: the nao-based Analytics Assistant, an MCP server that answers data questions in Slack and in Claude.', self: true },
+    ],
+  },
+  {
+    label: 'AI MODELS',
+    items: [
+      { name: 'Claude', icon: '/logos/claude-icon.svg', url: 'https://claude.ai', tip: "Anthropic's models, connected to your semantic layer through an MCP server for natural-language data questions." },
+      { name: 'OpenAI', icon: '/logos/openai.svg', url: 'https://openai.com', tip: 'OpenAI models, reading the same metric definitions through the semantic layer API.' },
+      { name: 'Gemini', icon: '/logos/gemini.svg', url: 'https://gemini.google.com', tip: "Google's Gemini models, reading the same metric definitions through the semantic layer API." },
     ],
   },
   {
     label: 'REPORTS',
     items: [
-      { name: 'Looker Studio', logo: '/logos/looker-studio.png', url: 'https://lookerstudio.google.com', tip: "Google's free BI tool for building interactive, shareable dashboards connected directly to your data sources." },
+      { name: 'Data Studio', logo: '/logos/data-studio.png', url: 'https://lookerstudio.google.com', tip: "Google's free BI tool for building interactive, shareable dashboards connected directly to your data sources." },
       { name: 'Power BI', logo: '/logos/powerbi.png', url: 'https://powerbi.microsoft.com', tip: "Microsoft's business intelligence platform for creating rich reports and dashboards across your organisation." },
     ],
   },
@@ -101,7 +114,7 @@ const FONT = { label: 11, sub: 12, name: 13 };
 
 const extX = SRC.x + SRC.w + 50;
 const whX = extX + BAND.w + GAP;
-const semW = 176;
+const semW = BAND.w;
 const semX = whX + BAND.w + GAP;
 const busX = semX + semW + GAP / 2 + 6;
 const conX = semX + semW + GAP + 16;
@@ -113,7 +126,6 @@ const bandMidY = BAND.y + bandH / 2;
 const bandBottom = BAND.y + bandH;
 
 const TR = { y: bandBottom + 22, h: BAND.pad + 19 + TOOL.h + BAND.pad };   // transformation band
-const ALTBOX = { y: TR.y + TR.h + 12, h: 54 };
 
 // consumer rows
 const conRows = [];
@@ -128,7 +140,7 @@ const conRows = [];
 }
 const itemRows = conRows.filter((r) => r.kind === 'item');
 const conBottom = itemRows[itemRows.length - 1].y + CON.h;
-const CANVAS = { w: conX + CON.w + 14, h: Math.max(ALTBOX.y + ALTBOX.h, conBottom) + 14 };
+const CANVAS = { w: conX + CON.w + 14, h: Math.max(TR.y + TR.h, conBottom) + 14 };
 
 // ---------------------------------------------------------------- helpers
 
@@ -143,6 +155,7 @@ function image(href, cx, cy, w, h) {
 }
 
 function link(url, tip, inner) {
+  if (!url) return `<g>\n    <title>${esc(tip)}</title>\n    ${inner}\n  </g>`;
   const target = url.startsWith('/') ? '' : ' target="_blank" rel="noopener"';
   return `<a href="${esc(url)}"${target}>\n    <title>${esc(tip)}</title>\n    ${inner}\n  </a>`;
 }
@@ -159,14 +172,6 @@ function toolBox(x, y, w, tool) {
 function softBox(x, y, w, h, text) {
   return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#f5f3f0" stroke="${LINE}" stroke-width="1"/>
   <text x="${x + w / 2}" y="${y + h / 2 + 4}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" fill="${TEXT}">${esc(text)}</text>`;
-}
-
-function altBox(x, y, w, h) {
-  const cx = x + w / 2;
-  const inner = `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#f5f3f0" stroke="${LINE}" stroke-width="1"/>
-    ${image(ALT.logo, cx, y + 19, 120, 20)}
-    <text x="${cx}" y="${y + 44}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" fill="${TEXT}">${esc(ALT.sub)}</text>`;
-  return link(ALT.url, ALT.tip, inner);
 }
 
 function consumerBox(x, y, it) {
@@ -233,13 +238,14 @@ parts.push(colLabel(whX + BAND.w / 2, TR.y + 19, TRANSFORMATION.label));
 parts.push(toolBox(whX + BAND.pad, TR.y + BAND.pad + 19, toolW, TRANSFORMATION.tool));
 parts.push(line(whX + BAND.w / 2, TR.y, whX + BAND.w / 2, bandBottom, { arrow: true }));
 
-// all-in-one alternative under both
-parts.push(altBox(whX, ALTBOX.y, BAND.w, ALTBOX.h));
-
-// semantic layer band, single box centred on the band's middle
+// semantic layer band, boxes stacked around the band's middle
 parts.push(band(semX, BAND.y, semW, bandH));
 parts.push(colLabel(semX + semW / 2, BAND.labelY, SEMANTIC.label));
-parts.push(toolBox(semX + BAND.pad, bandMidY - TOOL.h / 2, semW - 2 * BAND.pad, SEMANTIC.tool));
+{
+  const n = SEMANTIC.tools.length;
+  const top = bandMidY - ((n - 1) * TOOL.pitch + TOOL.h) / 2;
+  SEMANTIC.tools.forEach((t, j) => parts.push(toolBox(semX + BAND.pad, top + j * TOOL.pitch, toolW, t)));
+}
 
 // consumers: one bus line from the semantic layer, ticks into each box
 parts.push(colLabel(conX + CON.w / 2, LABEL_Y, 'CONSUMERS'));
@@ -256,7 +262,7 @@ conRows.forEach((r) => {
 });
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
-  <title id="ts-title">Tech stack: your sources (ERP, CRM, bookkeeping, product database, spreadsheets, support tooling) are extracted with Airbyte, Hevo Data or Debezium into a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube serves the result as the semantic layer, and Microsoft Fabric is the all-in-one alternative for warehouse and transformation. Consumers read from the semantic layer in three groups: AI agents (Claude, OpenAI, the Quality Guardian), reports (Looker Studio, Power BI) and your own apps (Next.js, Django).</title>
+  <title id="ts-title">Tech stack: your sources (ERP, CRM, bookkeeping, product database, spreadsheets, support tooling) are extracted with Airbyte, Hevo Data or Debezium into a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube or Microsoft Fabric semantic models serve the result as the semantic layer. Consumers read from the semantic layer in five groups: AI agents (the Quality Guardian, your own client agents), MCPs (the nao analytics MCP), AI models (Claude, OpenAI, Gemini), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="${INK}"/>

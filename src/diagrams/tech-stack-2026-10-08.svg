@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1092 533" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
-  <title id="ts-title">Tech stack: your sources (ERP, CRM, bookkeeping, product database, spreadsheets, support tooling) are extracted with Airbyte, Hevo Data or Debezium into a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube serves the result as the semantic layer, and Microsoft Fabric is the all-in-one alternative for warehouse and transformation. Consumers read from the semantic layer in three groups: AI agents (Claude, OpenAI, the Quality Guardian), reports (Looker Studio, Power BI) and your own apps (Next.js, Django).</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1122 570" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
+  <title id="ts-title">Tech stack: your sources (ERP, CRM, bookkeeping, product database, spreadsheets, support tooling) are extracted with Airbyte, Hevo Data or Debezium into a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube or Microsoft Fabric semantic models serve the result as the semantic layer. Consumers read from the semantic layer in five groups: AI agents (the Quality Guardian, your own client agents), MCPs (the nao analytics MCP), AI models (Claude, OpenAI, Gemini), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#0a0a0f"/>
@@ -76,70 +76,93 @@
     <text x="551" y="427" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">models · tests · docs in git</text>
   </a>
   <path d="M551,342 L551,320" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <a href="https://www.microsoft.com/en-us/microsoft-fabric" target="_blank" rel="noopener">
-    <title>Microsoft's all-in-one analytics platform combining data engineering, warehousing and BI in a unified environment.</title>
-    <rect x="448" y="465" width="206" height="54" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/fabric.png" x="491" y="474" width="120" height="20" preserveAspectRatio="xMidYMid meet"/>
-    <text x="551" y="509" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">all-in-one alternative</text>
-  </a>
-  <rect x="690" y="54" width="176" height="266" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1" stroke-dasharray="5 4"/>
-  <text x="778" y="73" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">SEMANTIC LAYER</text>
+  <rect x="690" y="54" width="206" height="266" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="793" y="73" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">SEMANTIC LAYER</text>
   <a href="https://cube.dev" target="_blank" rel="noopener">
     <title>Semantic layer that defines business metrics centrally and exposes them consistently via API to any downstream tool.</title>
-    <rect x="704" y="155" width="148" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
-    <image href="/logos/cube.png" x="713" y="166" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
-    <text x="778" y="207" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">metrics defined once · API</text>
+    <rect x="704" y="117" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <image href="/logos/cube.png" x="728" y="128" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
+    <text x="793" y="169" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">metrics defined once · API</text>
   </a>
-  <text x="998" y="44" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">CONSUMERS</text>
-  <path d="M866,187 L890,187" fill="none" stroke="#0a0a0f" stroke-width="1.5"/>
-  <path d="M890,93 L890,373" fill="none" stroke="#5c5a56" stroke-width="1"/>
-  <text x="918" y="69" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">AI AGENTS</text>
-  <path d="M890,93 L918,93" fill="none" stroke="#5c5a56" stroke-width="1"/>
-  <a href="https://claude.ai" target="_blank" rel="noopener">
-    <title>Anthropic's AI assistant, connected to your semantic layer through an MCP server for natural-language data questions.</title>
-    <rect x="918" y="76" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/claude-icon.svg" x="963.4" y="84" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="989.4" y="97.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Claude</text>
+  <a href="https://www.microsoft.com/en-us/microsoft-fabric" target="_blank" rel="noopener">
+    <title>Microsoft Fabric semantic models, the semantic layer for Power BI and the rest of the Microsoft stack.</title>
+    <rect x="704" y="193" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <image href="/logos/fabric.png" x="728" y="205" width="130" height="22" preserveAspectRatio="xMidYMid meet"/>
+    <text x="793" y="245" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">semantic models</text>
   </a>
-  <path d="M890,131 L918,131" fill="none" stroke="#5c5a56" stroke-width="1"/>
-  <a href="https://openai.com" target="_blank" rel="noopener">
-    <title>OpenAI models and agents, reading the same metric definitions through the semantic layer API.</title>
-    <rect x="918" y="114" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/openai.svg" x="963.4" y="122" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="989.4" y="135.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">OpenAI</text>
-  </a>
-  <path d="M890,169 L918,169" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <text x="1028" y="44" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">CONSUMERS</text>
+  <path d="M896,187 L920,187" fill="none" stroke="#0a0a0f" stroke-width="1.5"/>
+  <path d="M920,93 L920,539" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <text x="948" y="69" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">AI AGENTS</text>
+  <path d="M920,93 L948,93" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <a href="/add-ons/quality-guardian">
     <title>Maxq add-on: an agent that investigates failing data-entry tests and writes the fix back to the source system.</title>
-    <rect x="918" y="152" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#1a4fff" stroke-width="1"/>
-    <text x="998" y="173.5" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Quality Guardian</text>
+    <rect x="948" y="76" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#1a4fff" stroke-width="1"/>
+    <image href="/logos/quality-guardian.png" x="957.4" y="84" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="983.4" y="97.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Quality Guardian</text>
   </a>
-  <text x="918" y="209" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">REPORTS</text>
-  <path d="M890,233 L918,233" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <path d="M920,131 L948,131" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <g>
+    <title>Your own agents, reading governed metrics through the semantic layer instead of raw tables.</title>
+    <rect x="948" y="114" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <text x="1028" y="135.5" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Client agents</text>
+  </g>
+  <text x="948" y="171" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">MCPS</text>
+  <path d="M920,195 L948,195" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <a href="/add-ons/analytics-assistant">
+    <title>Maxq add-on: the nao-based Analytics Assistant, an MCP server that answers data questions in Slack and in Claude.</title>
+    <rect x="948" y="178" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#1a4fff" stroke-width="1"/>
+    <image href="/logos/nao.png" x="953.8" y="186" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="979.8" y="199.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">nao analytics MCP</text>
+  </a>
+  <text x="948" y="235" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">AI MODELS</text>
+  <path d="M920,259 L948,259" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <a href="https://claude.ai" target="_blank" rel="noopener">
+    <title>Anthropic's models, connected to your semantic layer through an MCP server for natural-language data questions.</title>
+    <rect x="948" y="242" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/claude-icon.svg" x="993.4" y="250" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="1019.4" y="263.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Claude</text>
+  </a>
+  <path d="M920,297 L948,297" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <a href="https://openai.com" target="_blank" rel="noopener">
+    <title>OpenAI models, reading the same metric definitions through the semantic layer API.</title>
+    <rect x="948" y="280" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/openai.svg" x="993.4" y="288" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="1019.4" y="301.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">OpenAI</text>
+  </a>
+  <path d="M920,335 L948,335" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <a href="https://gemini.google.com" target="_blank" rel="noopener">
+    <title>Google's Gemini models, reading the same metric definitions through the semantic layer API.</title>
+    <rect x="948" y="318" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/gemini.svg" x="993.4" y="326" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="1019.4" y="339.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Gemini</text>
+  </a>
+  <text x="948" y="375" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">REPORTS</text>
+  <path d="M920,399 L948,399" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <a href="https://lookerstudio.google.com" target="_blank" rel="noopener">
     <title>Google's free BI tool for building interactive, shareable dashboards connected directly to your data sources.</title>
-    <rect x="918" y="216" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/looker-studio.png" x="939" y="223" width="118" height="20" preserveAspectRatio="xMidYMid meet"/>
+    <rect x="948" y="382" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/data-studio.png" x="969" y="389" width="118" height="20" preserveAspectRatio="xMidYMid meet"/>
   </a>
-  <path d="M890,271 L918,271" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <path d="M920,437 L948,437" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <a href="https://powerbi.microsoft.com" target="_blank" rel="noopener">
     <title>Microsoft's business intelligence platform for creating rich reports and dashboards across your organisation.</title>
-    <rect x="918" y="254" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/powerbi.png" x="939" y="261" width="118" height="20" preserveAspectRatio="xMidYMid meet"/>
+    <rect x="948" y="420" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/powerbi.png" x="969" y="427" width="118" height="20" preserveAspectRatio="xMidYMid meet"/>
   </a>
-  <text x="918" y="311" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">YOUR OWN APPS</text>
-  <path d="M890,335 L918,335" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <text x="948" y="477" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">YOUR OWN APPS</text>
+  <path d="M920,501 L948,501" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <a href="https://nextjs.org" target="_blank" rel="noopener">
     <title>React framework for client portals and embedded analytics, reading metrics from the semantic layer API.</title>
-    <rect x="918" y="318" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/nextjs.svg" x="959.8" y="326" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="985.8" y="339.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Next.js</text>
+    <rect x="948" y="484" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/nextjs.svg" x="989.8" y="492" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="1015.8" y="505.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Next.js</text>
   </a>
-  <path d="M890,373 L918,373" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <path d="M920,539 L948,539" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <a href="https://www.djangoproject.com" target="_blank" rel="noopener">
     <title>Python web framework for internal tools and portals, reading metrics from the semantic layer API.</title>
-    <rect x="918" y="356" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/django.svg" x="963.4" y="364" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="989.4" y="377.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Django</text>
+    <rect x="948" y="522" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/django.svg" x="993.4" y="530" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="1019.4" y="543.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Django</text>
   </a>
 </svg>
