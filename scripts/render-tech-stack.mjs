@@ -41,9 +41,9 @@ const SOURCE_GROUPS = [
     { name: 'Yuki', icon: '/logos/yuki.png', tip: 'Yuki bookkeeping.' },
   ] },
   { label: 'CRM', items: [{ name: 'HubSpot', icon: '/logos/hubspot.svg', tip: 'HubSpot companies, deals, contacts and line items.' }] },
-  { label: 'ERP · PLANNING', items: [
+  { label: 'ERP', items: [
     { name: 'Float', icon: '/logos/float.png', tip: 'Float resource and time planning.' },
-    { name: 'TimeTell', icon: '/logos/timetell.png', tip: 'TimeTell time registration and planning.' },
+    { name: 'Infor', icon: '/logos/infor.png', tip: 'Infor ERP.' },
   ] },
   { label: 'CUSTOMER CARE', items: [
     { name: 'Freshdesk', icon: '/logos/freshworks.png', tip: 'Freshdesk tickets and conversations.' },
@@ -324,7 +324,7 @@ conRows.forEach((r) => {
 });
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
-  <title id="ts-title">Tech stack: product databases (PostgreSQL, MySQL) are streamed with Debezium into the real-time warehouse (ClickHouse); bookkeeping (Exact Online, Yuki), CRM (HubSpot), ERP and planning (Float, TimeTell), customer care (Freshdesk, Zendesk) and spreadsheets (Google Sheets, Excel) are loaded in batch with Airbyte or Hevo Data into the batch warehouse (BigQuery, Snowflake or the Microsoft Fabric data warehouse). dbt runs as a separate transformation layer underneath the batch warehouse. Both warehouses feed the semantic layer, Cube or Microsoft Fabric semantic models. Extraction, warehouses, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (the nao analytics MCP), AI agents (the Quality Guardian, your own LangChain agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
+  <title id="ts-title">Tech stack: product databases (PostgreSQL, MySQL) are streamed with Debezium into the real-time warehouse (ClickHouse); bookkeeping (Exact Online, Yuki), CRM (HubSpot), ERP (Float, Infor), customer care (Freshdesk, Zendesk) and spreadsheets (Google Sheets, Excel) are loaded in batch with Airbyte or Hevo Data into the batch warehouse (BigQuery, Snowflake or the Microsoft Fabric data warehouse). dbt runs as a separate transformation layer underneath the batch warehouse. Both warehouses feed the semantic layer, Cube or Microsoft Fabric semantic models. Extraction, warehouses, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (the nao analytics MCP), AI agents (the Quality Guardian, your own LangChain agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="${INK}"/>
