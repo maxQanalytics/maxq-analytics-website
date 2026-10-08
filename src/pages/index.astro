@@ -517,6 +517,55 @@ import stackSvg from '../diagrams/tech-stack-2026-10-08.svg?raw';
     </div>
   </section>
 
+  <!-- In production: Freeday -->
+  <section id="freeday" class="py-24 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-10 md:mb-0 md:w-72">
+          <h2 class="text-3xl font-bold text-cream mb-5" style="letter-spacing: -0.02em">Freeday runs its whole company on <span class="text-brand-300">one model.</span></h2>
+          <a href="https://www.freeday.ai" target="_blank" rel="noopener" class="inline-flex items-center bg-cream rounded-xl px-5 py-3">
+            <img src="/logos/freeday.png" alt="Freeday" class="h-7 w-auto" />
+          </a>
+          <p class="text-white/85 text-sm leading-relaxed mt-6">Freeday builds AI digital employees for customer service and finance teams. Maxq designs, runs and maintains their complete analytics stack: Airbyte, dbt and Cube on Snowflake, with the Quality Guardian on top.</p>
+          <a href="https://docs.maxqanalytics.io/Case+Studies/Freeday" target="_blank" rel="noopener" class="inline-block mt-6 text-xs font-semibold text-brand-300 hover:text-white transition-colors">Read the case study →</a>
+        </div>
+        <div class="flex-1 space-y-8">
+          <div>
+            <h3 class="text-xl font-bold text-cream mb-3" style="letter-spacing: -0.01em">The starting point</h3>
+            <p class="text-white/85 leading-relaxed">Ahead of a growth-investor round, Freeday needed one set of metric definitions that finance, sales, operations and the board could all trust: ARR, NRR, CAC payback and the performance of every digital employee. The data sat in six systems: the Freeday platform itself, its ClickHouse event logs, HubSpot, Airtable, Exact Online and Google Sheets.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-cream mb-3" style="letter-spacing: -0.01em">What runs today</h3>
+            <ul class="space-y-2.5 text-white/85 leading-relaxed">
+              <li class="flex gap-3"><span class="text-brand-300 shrink-0">·</span>Airbyte loads all six sources into Snowflake every night. The Exact Online connector is an open-source Maxq contribution that Freeday runs on its own virtual machine.</li>
+              <li class="flex gap-3"><span class="text-brand-300 shrink-0">·</span>dbt builds 79 models and runs 131 tests in one 14-minute job each morning. Every metric is defined once, in version control, with its tests and documentation next to it.</li>
+              <li class="flex gap-3"><span class="text-brand-300 shrink-0">·</span>Cube serves 13 cubes and 14 views to every consumer: the Looker Studio reports for the commercial, operational and financial teams, the KPI portal, the investor sheet, Claude through an MCP server, and the metrics embedded in Freeday's own platform.</li>
+              <li class="flex gap-3"><span class="text-brand-300 shrink-0">·</span>The Quality Guardian runs 11 data-entry tests every morning and writes the fixes back to HubSpot and Airtable, so the three systems stay in step without anyone reconciling by hand.</li>
+            </ul>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
+            <div class="bg-ink p-5">
+              <div class="font-black text-2xl text-cream mb-1" style="letter-spacing: -0.03em">6</div>
+              <div class="text-xs text-white/70 leading-snug">source systems, one model, one set of definitions</div>
+            </div>
+            <div class="bg-ink p-5">
+              <div class="font-black text-2xl text-cream mb-1" style="letter-spacing: -0.03em">79 · 131</div>
+              <div class="text-xs text-white/70 leading-snug">dbt models and tests, built daily in 14 minutes</div>
+            </div>
+            <div class="bg-ink p-5">
+              <div class="font-black text-2xl text-cream mb-1" style="letter-spacing: -0.03em">13 · 14</div>
+              <div class="text-xs text-white/70 leading-snug">cubes and views, serving six consumers from one semantic layer</div>
+            </div>
+            <div class="bg-ink p-5">
+              <div class="font-black text-2xl text-cream mb-1" style="letter-spacing: -0.03em">90M+</div>
+              <div class="text-xs text-white/70 leading-snug">conversation events of the digital employees, modelled per case</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Final CTA -->
   <section class="py-24 px-6 bg-cream text-center relative">
     <div class="max-w-2xl mx-auto">
