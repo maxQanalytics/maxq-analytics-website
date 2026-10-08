@@ -31,13 +31,25 @@ const BRAND = '#1a4fff';
 const SANS = `'Outfit', system-ui, sans-serif`;
 const MONO = `'DM Mono', 'SF Mono', ui-monospace, monospace`;
 
-const SOURCES = [
-  { kind: 'ERP', systems: '' },
-  { kind: 'CRM', systems: 'HubSpot' },
-  { kind: 'Bookkeeping', systems: 'Exact Online · Yuki' },
-  { kind: 'Product database', systems: 'PostgreSQL · MySQL' },
-  { kind: 'Spreadsheets', systems: 'Google Sheets · Excel' },
-  { kind: 'Support tooling', systems: 'Freshdesk · Zendesk' },
+const SOURCE_GROUPS = [
+  { label: 'ERP', items: [{ name: 'Your ERP', tip: 'Your ERP system, loaded through its API or database.' }] },
+  { label: 'CRM', items: [{ name: 'HubSpot', icon: '/logos/hubspot.svg', tip: 'HubSpot companies, deals, contacts and line items.' }] },
+  { label: 'BOOKKEEPING', items: [
+    { name: 'Exact Online', icon: '/logos/exact.png', iconW: 46, tip: 'Exact Online general ledger, invoices and accounts.' },
+    { name: 'Yuki', icon: '/logos/yuki.png', tip: 'Yuki bookkeeping.' },
+  ] },
+  { label: 'PRODUCT DATABASE', items: [
+    { name: 'PostgreSQL', icon: '/logos/postgresql.svg', tip: 'Your application database, loaded in batch or streamed with change data capture.' },
+    { name: 'MySQL', icon: '/logos/mysql.svg', iconW: 30, tip: 'Your application database, loaded in batch or streamed with change data capture.' },
+  ] },
+  { label: 'SPREADSHEETS', items: [
+    { name: 'Google Sheets', icon: '/logos/google-sheets.svg', tip: 'Manual inputs, targets and mappings kept in Google Sheets.' },
+    { name: 'Excel', icon: '/logos/excel.svg', tip: 'Manual inputs, targets and mappings kept in Excel.' },
+  ] },
+  { label: 'SUPPORT TOOLING', items: [
+    { name: 'Freshdesk', icon: '/logos/freshworks.png', tip: 'Freshdesk tickets and conversations.' },
+    { name: 'Zendesk', icon: '/logos/zendesk.svg', tip: 'Zendesk tickets and conversations.' },
+  ] },
 ];
 
 const BATCH = {
@@ -117,7 +129,7 @@ const CONSUMER_GROUPS = [
 ];
 
 // geometry
-const SRC = { x: 14, w: 160, h: 40, pitch: 46, firstY: 70 };
+const SRC = { x: 14, w: 160 };
 const GAP = 36;                                   // between columns
 const BAND = { y: 54, labelY: 73, pad: 14, w: 206 };
 const TOOL = { h: 64, pitch: 76, firstY: 90, logoW: 130, logoH: 24 };
@@ -125,7 +137,7 @@ const CON = { w: 160, h: 34, pitch: 38, groupGap: 12, labelH: 18, firstY: 58 };
 const LABEL_Y = 44;
 const FONT = { label: 11, sub: 12, name: 13 };
 
-const extX = SRC.x + SRC.w + 50;
+const extX = SRC.x + SRC.w + 46;
 const whX = extX + BAND.w + GAP;
 const semW = BAND.w;
 const semX = whX + BAND.w + GAP;
@@ -144,20 +156,25 @@ const STREAMBAND = { y: BATCHBAND.y + BATCHBAND.h + 14, h: BAND.pad + 19 + TOOL.
 const batchMidY = BATCHBAND.y + BATCHBAND.h / 2;
 const streamMidY = STREAMBAND.y + STREAMBAND.h / 2;
 
-// consumer rows
-const conRows = [];
-{
+// grouped columns (sources and consumers): label rows and item rows
+function groupRows(groups) {
+  const rows = [];
   let y = CON.firstY;
-  CONSUMER_GROUPS.forEach((g) => {
-    conRows.push({ kind: 'label', y: y + 11, text: g.label });
+  groups.forEach((g) => {
+    rows.push({ kind: 'label', y: y + 11, text: g.label });
     y += CON.labelH;
-    g.items.forEach((it) => { conRows.push({ kind: 'item', y, item: it }); y += CON.pitch; });
+    g.items.forEach((it) => { rows.push({ kind: 'item', y, item: it }); y += CON.pitch; });
     y += CON.groupGap - (CON.pitch - CON.h);
   });
+  return rows;
 }
+const conRows = groupRows(CONSUMER_GROUPS);
+const srcRows = groupRows(SOURCE_GROUPS);
 const itemRows = conRows.filter((r) => r.kind === 'item');
+const srcItems = srcRows.filter((r) => r.kind === 'item');
 const conBottom = itemRows[itemRows.length - 1].y + CON.h;
-const CANVAS = { w: conX + CON.w + 14, h: Math.max(TR.y + TR.h, STREAMBAND.y + STREAMBAND.h, conBottom) + 14 };
+const srcBottom = srcItems[srcItems.length - 1].y + CON.h;
+const CANVAS = { w: conX + CON.w + 14, h: Math.max(TR.y + TR.h, STREAMBAND.y + STREAMBAND.h, conBottom, srcBottom) + 14 };
 
 // ---------------------------------------------------------------- helpers
 
@@ -186,31 +203,21 @@ function toolBox(x, y, w, tool) {
   return link(tool.url, tool.tip, inner);
 }
 
-function sourceBox(x, y, w, h, src) {
+function itemBox(x, y, it, w = CON.w) {
   const cx = x + w / 2;
-  if (!src.systems) {
-    return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#f5f3f0" stroke="${LINE}" stroke-width="1"/>
-  <text x="${cx}" y="${y + h / 2 + 4}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" font-weight="600" fill="${INK}">${esc(src.kind)}</text>`;
-  }
-  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#f5f3f0" stroke="${LINE}" stroke-width="1"/>
-  <text x="${cx}" y="${y + 16}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" font-weight="600" fill="${INK}">${esc(src.kind)}</text>
-  <text x="${cx}" y="${y + 31}" text-anchor="middle" font-family="${SANS}" font-size="11" fill="${TEXT}">${esc(src.systems)}</text>`;
-}
-
-function consumerBox(x, y, it) {
-  const cx = x + CON.w / 2;
   let content;
   if (it.logo) {
     content = image(it.logo, cx, y + CON.h / 2, 118, 20);
   } else if (it.icon) {
+    const iw = it.iconW ?? 18;
     const textW = it.name.length * 7.2;
-    const startX = cx - (18 + 8 + textW) / 2;
-    content = `${image(it.icon, startX + 9, y + CON.h / 2, 18, 18)}
-    <text x="${startX + 26}" y="${y + CON.h / 2 + 4.5}" font-family="${SANS}" font-size="${FONT.name}" font-weight="600" fill="${INK}">${esc(it.name)}</text>`;
+    const startX = cx - (iw + 8 + textW) / 2;
+    content = `${image(it.icon, startX + iw / 2, y + CON.h / 2, iw, 18)}
+    <text x="${startX + iw + 8}" y="${y + CON.h / 2 + 4.5}" font-family="${SANS}" font-size="${FONT.name}" font-weight="600" fill="${INK}">${esc(it.name)}</text>`;
   } else {
     content = `<text x="${cx}" y="${y + CON.h / 2 + 4.5}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.name}" font-weight="600" fill="${INK}">${esc(it.name)}</text>`;
   }
-  const inner = `<rect x="${x}" y="${y}" width="${CON.w}" height="${CON.h}" rx="3" fill="#f5f3f0" stroke="${it.self ? BRAND : LINE}" stroke-width="1"/>
+  const inner = `<rect x="${x}" y="${y}" width="${w}" height="${CON.h}" rx="3" fill="#f5f3f0" stroke="${it.self ? BRAND : LINE}" stroke-width="1"/>
     ${content}`;
   return link(it.url, it.tip, inner);
 }
@@ -237,11 +244,13 @@ const parts = [];
 // sources column, fanning into the extraction band through one elbow lane
 parts.push(colLabel(SRC.x + SRC.w / 2, LABEL_Y, 'SOURCES'));
 const laneX = SRC.x + SRC.w + (extX - SRC.x - SRC.w) / 2;
-const srcMids = SOURCES.map((_, j) => SRC.firstY + j * SRC.pitch + SRC.h / 2);
-SOURCES.forEach((src, j) => {
-  const y = SRC.firstY + j * SRC.pitch;
-  parts.push(sourceBox(SRC.x, y, SRC.w, SRC.h, src));
-  parts.push(line(SRC.x + SRC.w, y + SRC.h / 2, laneX, y + SRC.h / 2, { thin: true }));
+const srcMids = srcItems.map((r) => r.y + CON.h / 2);
+srcRows.forEach((r) => {
+  if (r.kind === 'label') parts.push(colLabel(SRC.x, r.y, r.text, { anchor: 'start' }));
+  else {
+    parts.push(line(SRC.x + SRC.w, r.y + CON.h / 2, laneX, r.y + CON.h / 2, { thin: true }));
+    parts.push(itemBox(SRC.x, r.y, r.item, SRC.w));
+  }
 });
 parts.push(line(laneX, Math.min(srcMids[0], batchMidY), laneX, Math.max(srcMids[srcMids.length - 1], streamMidY), { thin: true }));
 parts.push(line(laneX, batchMidY, extX, batchMidY, { arrow: true }));
@@ -288,7 +297,7 @@ conRows.forEach((r) => {
   if (r.kind === 'label') parts.push(colLabel(conX, r.y, r.text, { anchor: 'start' }));
   else {
     parts.push(line(busX, r.y + CON.h / 2, conX, r.y + CON.h / 2, { thin: true }));
-    parts.push(consumerBox(conX, r.y, r.item));
+    parts.push(itemBox(conX, r.y, r.item));
   }
 });
 
