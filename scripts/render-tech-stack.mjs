@@ -147,7 +147,9 @@ const OUTER = 82;                                 // sources -> frame and frame 
 const FRAME_PAD = 28;                             // frame edge to the first / last band
 const BAND = { y: 76, pad: 14, w: 206, labelH: 19 };
 const TOOL = { h: 64, pitch: 76, logoW: 130, logoH: 24 };
-const CON = { w: 160, h: 34, pitch: 38, groupGap: 12, labelH: 18, firstY: 60 };
+// firstY puts the midpoint of the first two source boxes level with the
+// streaming band's centre, so the arrow between them runs straight
+const CON = { w: 160, h: 34, pitch: 38, groupGap: 12, labelH: 18, firstY: 77.5 };
 const LABEL_Y = 44;
 const FONT = { label: 11, sub: 12, name: 13 };
 const STROKE = 1.2;                               // every connector, arrow or tick, same weight
