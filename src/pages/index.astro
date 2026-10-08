@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import stackSvg from '../diagrams/tech-stack-2026-10-08.svg?raw';
 ---
 
 <Layout>
@@ -296,88 +297,6 @@ import SiteFooter from '../components/SiteFooter.astro';
     </div>
   </section>
 
-  <!-- Product Items -->
-  <section id="features" class="py-24 px-6 bg-cream">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">What you get</div>
-        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Your data stack. All in <span class="text-brand-600">one place.</span></h2>
-        <p class="text-lg text-ink/55 max-w-2xl mx-auto">Five components that together give your organisation complete visibility into its data — from raw sources to AI-powered querying.</p>
-      </div>
-
-      <!-- Top row: 3 cards -->
-      <div class="grid md:grid-cols-3 gap-4 mb-4">
-
-        <!-- Domain Reports -->
-        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
-          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-          </div>
-          <h3 class="text-base font-bold text-ink mb-2">Domain Reports</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-4">Three purpose-built reporting domains aligned to how companies are structured: <strong>Commerce Atlas</strong> (go-to-market, unit economics), <strong>Finance Atlas</strong> (margins, financial operations), and <strong>Operations Atlas</strong> (utilisation, capacity). Each delivers periodic dashboards and trend analysis tailored to the domain's owners and targets.</p>
-          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Domain+Reports" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">View in docs →</a>
-        </div>
-
-        <!-- Data Model Explorer -->
-        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
-          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6M9 8h6M9 16h4" />
-            </svg>
-          </div>
-          <h3 class="text-base font-bold text-ink mb-2">Data Model Explorer</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-4">A unified, navigable interface that maps your entire data architecture. Source tables are shown post-transformation with aggregations for fast analysis. Each critical metric gets its own dedicated page with a scorecard, numerator/denominator breakdown, and business context provided by the client.</p>
-          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data%20Model%20Explorer" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">View in docs →</a>
-        </div>
-
-        <!-- Data Entry Tests -->
-        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
-          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-            </svg>
-          </div>
-          <h3 class="text-base font-bold text-ink mb-2">Data Entry Tests</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-4">Automated, client-specific tests that continuously validate data entries and business workflows. Each test is assigned an owner, a deeplink for direct resolution at the source, a context description, and a unique test ID — keeping data quality accountable and easy to communicate across teams.</p>
-          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Entry+Tests" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">View in docs →</a>
-        </div>
-
-      </div>
-
-      <!-- Bottom row: 2 cards centred -->
-      <div class="grid md:grid-cols-2 gap-4 md:max-w-3xl md:mx-auto">
-
-        <!-- Pipeline Freshness -->
-        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
-          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
-          <h3 class="text-base font-bold text-ink mb-2">Pipeline Freshness</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-4">A live flowchart of your full data pipeline from extraction through transformation to consumption. Every stakeholder can see how data moves across your architecture — which systems are involved, what the current status is, and where bottlenecks occur. Invaluable when planning refactors or expansions.</p>
-          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Freshness" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">View in docs →</a>
-        </div>
-
-        <!-- MCP Servers -->
-        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
-          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h3 class="text-base font-bold text-ink mb-2">MCP Servers</h3>
-          <p class="text-ink/60 text-sm leading-relaxed mb-4">We configure multiple Model Context Protocol servers tailored to specific use cases and agentic workflows — each one exposing the right slice of your semantic layer to the right AI system. Whether it's a customer-facing agent, an internal analyst assistant, or an automated reporting workflow, every MCP server is purpose-built for how that agent actually needs to query your data.</p>
-          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">View in docs →</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- Tech Stack -->
   <section id="stack" class="py-24 px-6 bg-white">
     <div class="max-w-6xl mx-auto">
@@ -387,83 +306,63 @@ import SiteFooter from '../components/SiteFooter.astro';
         <p class="text-lg text-ink/55 max-w-2xl mx-auto">We work with the leading modern data stack tools, keeping clients in full control of their own infrastructure.</p>
       </div>
 
-      <div class="flex flex-col md:flex-row items-stretch gap-0 md:min-h-[220px]">
-        {[
-          {
-            stage: 'Extraction',
-            color: 'bg-brand-50 border-brand-100',
-            labelColor: 'text-brand-600',
-            tools: [
-              { src: '/logos/hevo.png', alt: 'Hevo Data', tip: 'No-code pipeline platform for extracting and syncing data from 150+ sources into your warehouse.', url: 'https://hevodata.com' },
-              { src: '/logos/airbyte.svg', alt: 'Airbyte', tip: 'Open-source data integration platform for syncing data from APIs, databases and files.', url: 'https://airbyte.com' },
-              { src: '/logos/debezium.png', alt: 'Debezium', tip: 'Open-source CDC platform that streams database changes in real time for event-driven data pipelines.', url: 'https://debezium.io' },
-            ]
-          },
-          {
-            stage: 'Warehouse',
-            color: 'bg-brand-50 border-brand-100',
-            labelColor: 'text-brand-600',
-            tools: [
-              { src: '/logos/bigquery.png', alt: 'BigQuery', tip: "Google's serverless, scalable cloud data warehouse built for fast SQL analytics at any scale.", url: 'https://cloud.google.com/bigquery' },
-              { src: '/logos/snowflake.png', alt: 'Snowflake', tip: 'Cloud data platform with separated storage and compute, enabling flexible and cost-efficient scaling.', url: 'https://www.snowflake.com' },
-              { src: '/logos/clickhouse.png', alt: 'ClickHouse', tip: 'High-performance columnar database optimised for real-time analytics on very large datasets.', url: 'https://clickhouse.com' },
-            ]
-          },
-          {
-            stage: 'Transformation & Semantics',
-            color: 'bg-brand-50 border-brand-100',
-            labelColor: 'text-brand-600',
-            tools: [
-              { src: '/logos/dbt.png', alt: 'dbt', tip: 'SQL-based transformation tool that lets analytics engineers build, test and document data models in version control.', url: 'https://www.getdbt.com' },
-              { src: '/logos/cube.png', alt: 'Cube', tip: 'Semantic layer that defines business metrics centrally and exposes them consistently via API to any downstream tool.', url: 'https://cube.dev' },
-              { src: '/logos/fabric.png', alt: 'Microsoft Fabric', tip: "Microsoft's all-in-one analytics platform combining data engineering, warehousing, and BI in a unified environment.", url: 'https://www.microsoft.com/en-us/microsoft-fabric' },
-            ]
-          },
-          {
-            stage: 'Data Consumption',
-            color: 'bg-brand-50 border-brand-100',
-            labelColor: 'text-brand-600',
-            tools: [
-              { src: '/logos/data-studio.png', alt: 'Data Studio', cls: 'h-6 w-auto object-contain max-w-[140px]', tip: "Google's free BI tool for building interactive, shareable dashboards connected directly to your data sources.", url: 'https://lookerstudio.google.com' },
-              { src: '/logos/powerbi.png', alt: 'Power BI', cls: 'h-8 w-auto object-contain max-w-[120px]', tip: "Microsoft's business intelligence platform for creating rich reports and dashboards across your organisation.", url: 'https://powerbi.microsoft.com' },
-              { src: '/logos/claude.png', alt: 'Claude', cls: 'h-12 w-auto object-contain max-w-[160px]', tip: "Anthropic's AI assistant — connected to your semantic layer via MCP Server for natural language data querying.", url: 'https://claude.ai' },
-            ]
-          },
-        ].map((group, i) => (
-          <div class="flex flex-col md:flex-row items-stretch flex-1">
-            <div class={`flex-1 h-full border ${group.color} rounded-xl p-8 flex flex-col`}>
-              <span class={`text-xs font-mono font-bold uppercase tracking-widest ${group.labelColor}`}>{group.stage}</span>
-              <div class="flex-1 flex flex-col gap-4 items-center justify-center mt-4">
-                {group.tools.map(tool => (
-                  <a href={tool.url} target="_blank" rel="noopener" class="relative group/tip bg-white rounded-xl px-4 h-14 w-full flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-200">
-                    <img src={tool.src} alt={tool.alt} class={tool.cls ?? 'h-8 w-auto object-contain max-w-[120px]'} />
-                    <div class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-ink text-cream text-xs rounded-lg px-3 py-2 leading-relaxed opacity-0 group-hover/tip:opacity-100 transition-opacity duration-200 z-10 text-center shadow-lg">
-                      {tool.tip}
-                      <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-ink"></div>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-            {i < 3 && (
-              <>
-                <div class="hidden md:flex items-center px-2 text-ink/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-                <div class="flex md:hidden justify-center py-3 text-ink/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12l7 7 7-7" />
-                  </svg>
-                </div>
-              </>
-            )}
-          </div>
-        ))}
+      <!-- Flow chart, tablet and desktop: generated SVG (scripts/render-tech-stack.mjs) -->
+      <div class="hidden md:block">
+        <Fragment set:html={stackSvg} />
       </div>
 
-
+      <!-- Flow chart, phones: stacked cards -->
+      <div class="md:hidden flex flex-col gap-3">
+        <div class="rounded-2xl border border-ink/10 bg-cream p-5">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources</p>
+          <p class="text-sm text-ink/60">ERP · CRM · Bookkeeping · Product database · Spreadsheets · Support tooling</p>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Extraction</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">Airbyte</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">Hevo Data</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">Debezium</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Warehouse</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">BigQuery</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">Snowflake</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">ClickHouse</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Transformation · Semantics</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">dbt</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">Cube</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">Microsoft Fabric</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">Looker Studio</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">Power BI</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">Claude</span>
+          </div>
+        </div>
+        <p class="font-mono text-[10px] text-brand-600 uppercase tracking-wider text-center mt-2">Your own cloud accounts · you stay in control</p>
+      </div>
     </div>
   </section>
 

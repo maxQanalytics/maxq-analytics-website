@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 346" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
+  <title id="ts-title">Tech stack: your sources (ERP, CRM, bookkeeping, product database, spreadsheets, support tooling) are extracted with Airbyte, Hevo Data or Debezium into a warehouse (BigQuery, Snowflake or ClickHouse), transformed with dbt and served through the Cube semantic layer (or Microsoft Fabric as an all-in-one alternative) to Looker Studio, Power BI and Claude. Everything runs in your own cloud accounts.</title>
+  <defs>
+    <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0a0a0f"/>
+    </marker>
+  </defs>
+  <text x="80" y="44" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="9.5" letter-spacing="0.08em" fill="#5c5a56">SOURCES</text>
+  <rect x="14" y="86" width="132" height="26" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+  <text x="80" y="103" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">ERP</text>
+  <path d="M146,99 L171,99 L171,176 L196,176" fill="none" stroke="#5c5a56" stroke-width="0.9"/>
+  <rect x="14" y="118" width="132" height="26" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+  <text x="80" y="135" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">CRM</text>
+  <path d="M146,131 L171,131 L171,176 L196,176" fill="none" stroke="#5c5a56" stroke-width="0.9"/>
+  <rect x="14" y="150" width="132" height="26" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+  <text x="80" y="167" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">Bookkeeping</text>
+  <path d="M146,163 L171,163 L171,176 L196,176" fill="none" stroke="#5c5a56" stroke-width="0.9"/>
+  <rect x="14" y="182" width="132" height="26" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+  <text x="80" y="199" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">Product database</text>
+  <path d="M146,195 L171,195 L171,176 L196,176" fill="none" stroke="#5c5a56" stroke-width="0.9"/>
+  <rect x="14" y="214" width="132" height="26" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+  <text x="80" y="231" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">Spreadsheets</text>
+  <path d="M146,227 L171,227 L171,176 L196,176" fill="none" stroke="#5c5a56" stroke-width="0.9"/>
+  <rect x="14" y="246" width="132" height="26" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+  <text x="80" y="263" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">Support tooling</text>
+  <path d="M146,259 L171,259 L171,176 L196,176" fill="none" stroke="#5c5a56" stroke-width="0.9"/>
+  <path d="M190,176 L196,176" fill="none" stroke="#0a0a0f" stroke-width="1.4" marker-end="url(#ts-arrow)"/>
+  <rect x="196" y="54" width="188" height="244" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="290" y="72" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="9.5" letter-spacing="0.08em" fill="#5c5a56">EXTRACTION</text>
+  <a href="https://airbyte.com" target="_blank" rel="noopener">
+    <title>Open-source data integration platform for syncing data from APIs, databases and files.</title>
+    <rect x="210" y="86" width="160" height="58" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <text x="290" y="111" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0a0a0f">Airbyte</text>
+    <text x="290" y="129" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">open-source connectors</text>
+  </a>
+  <a href="https://hevodata.com" target="_blank" rel="noopener">
+    <title>No-code pipeline platform for extracting and syncing data from 150+ sources into your warehouse.</title>
+    <rect x="210" y="156" width="160" height="58" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <text x="290" y="181" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0a0a0f">Hevo Data</text>
+    <text x="290" y="199" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">no-code · 150+ sources</text>
+  </a>
+  <a href="https://debezium.io" target="_blank" rel="noopener">
+    <title>Open-source CDC platform that streams database changes in real time for event-driven data pipelines.</title>
+    <rect x="210" y="226" width="160" height="58" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <text x="290" y="251" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0a0a0f">Debezium</text>
+    <text x="290" y="269" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">change data capture</text>
+  </a>
+  <path d="M384,176 L407,176 L407,176 L430,176" fill="none" stroke="#0a0a0f" stroke-width="1.4" marker-end="url(#ts-arrow)"/>
+  <rect x="430" y="54" width="188" height="244" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="524" y="72" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="9.5" letter-spacing="0.08em" fill="#5c5a56">WAREHOUSE</text>
+  <a href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">
+    <title>Google's serverless, scalable cloud data warehouse built for fast SQL analytics at any scale.</title>
+    <rect x="444" y="86" width="160" height="58" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <text x="524" y="111" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0a0a0f">BigQuery</text>
+    <text x="524" y="129" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">serverless · Google Cloud</text>
+  </a>
+  <a href="https://www.snowflake.com" target="_blank" rel="noopener">
+    <title>Cloud data platform with separated storage and compute, enabling flexible and cost-efficient scaling.</title>
+    <rect x="444" y="156" width="160" height="58" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <text x="524" y="181" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0a0a0f">Snowflake</text>
+    <text x="524" y="199" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">storage and compute apart</text>
+  </a>
+  <a href="https://clickhouse.com" target="_blank" rel="noopener">
+    <title>High-performance columnar database optimised for real-time analytics on very large datasets.</title>
+    <rect x="444" y="226" width="160" height="58" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <text x="524" y="251" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0a0a0f">ClickHouse</text>
+    <text x="524" y="269" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">real-time columnar analytics</text>
+  </a>
+  <path d="M618,176 L641,176 L641,176 L664,176" fill="none" stroke="#0a0a0f" stroke-width="1.4" marker-end="url(#ts-arrow)"/>
+  <rect x="664" y="54" width="188" height="244" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="758" y="72" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="9.5" letter-spacing="0.08em" fill="#5c5a56">TRANSFORMATION · SEMANTICS</text>
+  <a href="https://www.getdbt.com" target="_blank" rel="noopener">
+    <title>SQL-based transformation tool that lets analytics engineers build, test and document data models in version control.</title>
+    <rect x="678" y="86" width="160" height="58" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <text x="758" y="111" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0a0a0f">dbt</text>
+    <text x="758" y="129" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">models · tests · docs, in git</text>
+  </a>
+  <a href="https://cube.dev" target="_blank" rel="noopener">
+    <title>Semantic layer that defines business metrics centrally and exposes them consistently via API to any downstream tool.</title>
+    <rect x="678" y="156" width="160" height="58" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <text x="758" y="181" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0a0a0f">Cube</text>
+    <text x="758" y="199" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">semantic layer · metrics API</text>
+  </a>
+  <a href="https://www.microsoft.com/en-us/microsoft-fabric" target="_blank" rel="noopener">
+    <title>Microsoft's all-in-one analytics platform combining data engineering, warehousing and BI in a unified environment.</title>
+    <rect x="678" y="226" width="160" height="58" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <text x="758" y="251" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13.5" font-weight="700" fill="#0a0a0f">Microsoft Fabric</text>
+    <text x="758" y="269" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10.5" fill="#5c5a56">all-in-one alternative</text>
+  </a>
+  <text x="991" y="44" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="9.5" letter-spacing="0.08em" fill="#5c5a56">CONSUMERS</text>
+  <path d="M852,176 L884,176 L884,124 L916,124" fill="none" stroke="#5c5a56" stroke-width="0.9"/>
+  <a href="https://lookerstudio.google.com" target="_blank" rel="noopener"><title>Google's free BI tool for building interactive, shareable dashboards connected directly to your data sources.</title><rect x="916" y="104" width="150" height="40" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+  <text x="991" y="121" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#0a0a0f">Looker Studio</text>
+  <text x="991" y="135" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10" fill="#5c5a56">dashboards</text></a>
+  <path d="M852,176 L884,176 L884,180 L916,180" fill="none" stroke="#5c5a56" stroke-width="0.9"/>
+  <a href="https://powerbi.microsoft.com" target="_blank" rel="noopener"><title>Microsoft's business intelligence platform for creating rich reports and dashboards across your organisation.</title><rect x="916" y="160" width="150" height="40" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+  <text x="991" y="177" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#0a0a0f">Power BI</text>
+  <text x="991" y="191" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10" fill="#5c5a56">reports</text></a>
+  <path d="M852,176 L884,176 L884,236 L916,236" fill="none" stroke="#5c5a56" stroke-width="0.9"/>
+  <a href="https://claude.ai" target="_blank" rel="noopener"><title>Anthropic's AI assistant, connected to your semantic layer via an MCP server for natural-language data querying.</title><rect x="916" y="216" width="150" height="40" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+  <text x="991" y="233" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#0a0a0f">Claude</text>
+  <text x="991" y="247" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="10" fill="#5c5a56">ask in plain language</text></a>
+  <text x="524" y="324" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="9.5" letter-spacing="0.08em" fill="#1a4fff" font-weight="500">YOUR OWN CLOUD ACCOUNTS · YOU STAY IN CONTROL</text>
+</svg>
