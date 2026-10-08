@@ -97,10 +97,11 @@ const SEMANTIC = {
 
 const CONSUMER_GROUPS = [
   {
-    label: 'AI AGENTS',
+    label: 'AI MODELS',
     items: [
-      { name: 'Quality Guardian', icon: '/logos/quality-guardian.png', url: '/add-ons/quality-guardian', tip: 'Maxq add-on: an agent that investigates failing data-entry tests and writes the fix back to the source system.', self: true },
-      { name: 'Client agents', tip: 'Your own agents, reading governed metrics through the semantic layer instead of raw tables.' },
+      { name: 'Claude', icon: '/logos/claude-icon.svg', url: 'https://claude.ai', tip: "Anthropic's models, connected to your semantic layer through an MCP server for natural-language data questions." },
+      { name: 'OpenAI', icon: '/logos/openai.svg', url: 'https://openai.com', tip: 'OpenAI models, reading the same metric definitions through the semantic layer API.' },
+      { name: 'Gemini', icon: '/logos/gemini.svg', url: 'https://gemini.google.com', tip: "Google's Gemini models, reading the same metric definitions through the semantic layer API." },
     ],
   },
   {
@@ -110,11 +111,10 @@ const CONSUMER_GROUPS = [
     ],
   },
   {
-    label: 'AI MODELS',
+    label: 'AI AGENTS',
     items: [
-      { name: 'Claude', icon: '/logos/claude-icon.svg', url: 'https://claude.ai', tip: "Anthropic's models, connected to your semantic layer through an MCP server for natural-language data questions." },
-      { name: 'OpenAI', icon: '/logos/openai.svg', url: 'https://openai.com', tip: 'OpenAI models, reading the same metric definitions through the semantic layer API.' },
-      { name: 'Gemini', icon: '/logos/gemini.svg', url: 'https://gemini.google.com', tip: "Google's Gemini models, reading the same metric definitions through the semantic layer API." },
+      { name: 'Quality Guardian', icon: '/logos/quality-guardian.png', url: '/add-ons/quality-guardian', tip: 'Maxq add-on: an agent that investigates failing data-entry tests and writes the fix back to the source system.', self: true },
+      { name: 'Client agents', tip: 'Your own agents, reading governed metrics through the semantic layer instead of raw tables.' },
     ],
   },
   {
@@ -135,7 +135,7 @@ const CONSUMER_GROUPS = [
 
 // geometry
 const SRC = { x: 14, w: 160 };
-const GAP = 36;                                   // between columns
+const GAP = 18;                                   // between the columns inside the Semantic Nexus
 const BAND = { y: 76, labelY: 95, pad: 14, w: 206 };
 const TOOL = { h: 64, pitch: 76, firstY: 112, logoW: 130, logoH: 24 };
 const CON = { w: 160, h: 34, pitch: 38, groupGap: 12, labelH: 18, firstY: 60 };
@@ -143,12 +143,13 @@ const LABEL_Y = 44;
 const TOP = 22; // room above the bands for the Semantic Nexus label
 const FONT = { label: 11, sub: 12, name: 13 };
 
-const extX = SRC.x + SRC.w + 46;
+const OUTER = 82;                                 // sources -> frame and frame -> consumers
+const extX = SRC.x + SRC.w + OUTER;
 const whX = extX + BAND.w + GAP;
 const semW = BAND.w;
 const semX = whX + BAND.w + GAP;
-const busX = semX + semW + GAP / 2 + 6;
-const conX = semX + semW + GAP + 16;
+const busX = semX + semW + OUTER / 2;
+const conX = semX + semW + OUTER;
 
 const toolW = BAND.w - 2 * BAND.pad;
 const toolY = (j) => TOOL.firstY + j * TOOL.pitch;
@@ -319,7 +320,7 @@ conRows.forEach((r) => {
 });
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
-  <title id="ts-title">Tech stack: your sources (product databases such as PostgreSQL and MySQL streamed with Debezium; ERP and planning tools such as Float and TimeTell, CRM such as HubSpot, bookkeeping such as Exact Online and Yuki, spreadsheets such as Google Sheets and Excel, support tooling such as Freshdesk and Zendesk) loaded in batch with Airbyte or Hevo Data) land in a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube or Microsoft Fabric semantic models serve the result as the semantic layer. Extraction, warehouse, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI agents (the Quality Guardian, your own client agents), MCPs (the nao analytics MCP), AI models (Claude, OpenAI, Gemini), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
+  <title id="ts-title">Tech stack: your sources (product databases such as PostgreSQL and MySQL streamed with Debezium; ERP and planning tools such as Float and TimeTell, CRM such as HubSpot, bookkeeping such as Exact Online and Yuki, spreadsheets such as Google Sheets and Excel, support tooling such as Freshdesk and Zendesk) loaded in batch with Airbyte or Hevo Data) land in a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube or Microsoft Fabric semantic models serve the result as the semantic layer. Extraction, warehouse, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (the nao analytics MCP), AI agents (the Quality Guardian, your own client agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="${INK}"/>
