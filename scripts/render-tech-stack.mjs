@@ -32,15 +32,19 @@ const SANS = `'Outfit', system-ui, sans-serif`;
 const MONO = `'DM Mono', 'SF Mono', ui-monospace, monospace`;
 
 const SOURCE_GROUPS = [
-  { label: 'ERP', items: [{ name: 'Your ERP', tip: 'Your ERP system, loaded through its API or database.' }] },
+  { label: 'PRODUCT DATABASE', stream: true, items: [
+    { name: 'PostgreSQL', icon: '/logos/postgresql.svg', tip: 'Your application database, streamed with change data capture.' },
+    { name: 'MySQL', icon: '/logos/mysql.svg', iconW: 30, tip: 'Your application database, streamed with change data capture.' },
+  ] },
+  { label: 'ERP · PLANNING', items: [
+    { name: 'Your ERP', tip: 'Your ERP system, loaded through its API or database.' },
+    { name: 'Float', icon: '/logos/float.png', tip: 'Float resource and time planning.' },
+    { name: 'TimeTell', icon: '/logos/timetell.png', tip: 'TimeTell time registration and planning.' },
+  ] },
   { label: 'CRM', items: [{ name: 'HubSpot', icon: '/logos/hubspot.svg', tip: 'HubSpot companies, deals, contacts and line items.' }] },
   { label: 'BOOKKEEPING', items: [
     { name: 'Exact Online', icon: '/logos/exact.png', iconW: 46, tip: 'Exact Online general ledger, invoices and accounts.' },
     { name: 'Yuki', icon: '/logos/yuki.png', tip: 'Yuki bookkeeping.' },
-  ] },
-  { label: 'PRODUCT DATABASE', items: [
-    { name: 'PostgreSQL', icon: '/logos/postgresql.svg', tip: 'Your application database, loaded in batch or streamed with change data capture.' },
-    { name: 'MySQL', icon: '/logos/mysql.svg', iconW: 30, tip: 'Your application database, loaded in batch or streamed with change data capture.' },
   ] },
   { label: 'SPREADSHEETS', items: [
     { name: 'Google Sheets', icon: '/logos/google-sheets.svg', tip: 'Manual inputs, targets and mappings kept in Google Sheets.' },
@@ -73,6 +77,7 @@ const WAREHOUSE = {
     { name: 'BigQuery', logo: '/logos/bigquery.png', sub: 'serverless · Google Cloud', url: 'https://cloud.google.com/bigquery', tip: "Google's serverless, scalable cloud data warehouse built for fast SQL analytics at any scale." },
     { name: 'Snowflake', logo: '/logos/snowflake.png', sub: 'storage and compute apart', url: 'https://www.snowflake.com', tip: 'Cloud data platform with separated storage and compute, enabling flexible and cost-efficient scaling.' },
     { name: 'ClickHouse', logo: '/logos/clickhouse.png', sub: 'real-time analytics', url: 'https://clickhouse.com', tip: 'High-performance columnar database optimised for real-time analytics on very large datasets.' },
+    { name: 'Microsoft Fabric', logo: '/logos/fabric.png', logoH: 22, sub: 'data warehouse', url: 'https://www.microsoft.com/en-us/microsoft-fabric', tip: 'The Fabric data warehouse, for clients on the Microsoft stack.' },
   ],
 };
 
@@ -131,10 +136,11 @@ const CONSUMER_GROUPS = [
 // geometry
 const SRC = { x: 14, w: 160 };
 const GAP = 36;                                   // between columns
-const BAND = { y: 54, labelY: 73, pad: 14, w: 206 };
-const TOOL = { h: 64, pitch: 76, firstY: 90, logoW: 130, logoH: 24 };
-const CON = { w: 160, h: 34, pitch: 38, groupGap: 12, labelH: 18, firstY: 58 };
+const BAND = { y: 76, labelY: 95, pad: 14, w: 206 };
+const TOOL = { h: 64, pitch: 76, firstY: 112, logoW: 130, logoH: 24 };
+const CON = { w: 160, h: 34, pitch: 38, groupGap: 12, labelH: 18, firstY: 60 };
 const LABEL_Y = 44;
+const TOP = 22; // room above the bands for the Semantic Nexus label
 const FONT = { label: 11, sub: 12, name: 13 };
 
 const extX = SRC.x + SRC.w + 46;
@@ -146,13 +152,13 @@ const conX = semX + semW + GAP + 16;
 
 const toolW = BAND.w - 2 * BAND.pad;
 const toolY = (j) => TOOL.firstY + j * TOOL.pitch;
-const bandH = toolY(2) + TOOL.h + BAND.pad - BAND.y;
+const bandH = toolY(WAREHOUSE.tools.length - 1) + TOOL.h + BAND.pad - BAND.y;
 const bandMidY = BAND.y + bandH / 2;
 const bandBottom = BAND.y + bandH;
 
 const TR = { y: bandBottom + 22, h: BAND.pad + 19 + TOOL.h + BAND.pad };   // transformation band
-const BATCHBAND = { y: BAND.y, h: BAND.pad + 19 + TOOL.h + TOOL.pitch + BAND.pad };
-const STREAMBAND = { y: BATCHBAND.y + BATCHBAND.h + 14, h: BAND.pad + 19 + TOOL.h + BAND.pad };
+const STREAMBAND = { y: BAND.y, h: BAND.pad + 19 + TOOL.h + BAND.pad };
+const BATCHBAND = { y: STREAMBAND.y + STREAMBAND.h + 14, h: BAND.pad + 19 + TOOL.h + TOOL.pitch + BAND.pad };
 const batchMidY = BATCHBAND.y + BATCHBAND.h / 2;
 const streamMidY = STREAMBAND.y + STREAMBAND.h / 2;
 
@@ -163,7 +169,7 @@ function groupRows(groups) {
   groups.forEach((g) => {
     rows.push({ kind: 'label', y: y + 11, text: g.label });
     y += CON.labelH;
-    g.items.forEach((it) => { rows.push({ kind: 'item', y, item: it }); y += CON.pitch; });
+    g.items.forEach((it) => { rows.push({ kind: 'item', y, item: it, stream: !!g.stream }); y += CON.pitch; });
     y += CON.groupGap - (CON.pitch - CON.h);
   });
   return rows;
@@ -244,7 +250,6 @@ const parts = [];
 // sources column, fanning into the extraction band through one elbow lane
 parts.push(colLabel(SRC.x + SRC.w / 2, LABEL_Y, 'SOURCES'));
 const laneX = SRC.x + SRC.w + (extX - SRC.x - SRC.w) / 2;
-const srcMids = srcItems.map((r) => r.y + CON.h / 2);
 srcRows.forEach((r) => {
   if (r.kind === 'label') parts.push(colLabel(SRC.x, r.y, r.text, { anchor: 'start' }));
   else {
@@ -252,11 +257,23 @@ srcRows.forEach((r) => {
     parts.push(itemBox(SRC.x, r.y, r.item, SRC.w));
   }
 });
-parts.push(line(laneX, Math.min(srcMids[0], batchMidY), laneX, Math.max(srcMids[srcMids.length - 1], streamMidY), { thin: true }));
-parts.push(line(laneX, batchMidY, extX, batchMidY, { arrow: true }));
+const streamMids = srcItems.filter((r) => r.stream).map((r) => r.y + CON.h / 2);
+const batchMids = srcItems.filter((r) => !r.stream).map((r) => r.y + CON.h / 2);
+parts.push(line(laneX, Math.min(...streamMids, streamMidY), laneX, Math.max(...streamMids, streamMidY), { thin: true }));
 parts.push(line(laneX, streamMidY, extX, streamMidY, { arrow: true }));
+parts.push(line(laneX, Math.min(...batchMids, batchMidY), laneX, Math.max(...batchMids, batchMidY), { thin: true }));
+parts.push(line(laneX, batchMidY, extX, batchMidY, { arrow: true }));
 
-// extraction: batch band on top, streaming band below
+// Semantic Nexus frame: the three columns we design and run
+{
+  const fx = extX - 12, fy = BAND.y - 24;
+  const fw = semX + semW + 12 - fx;
+  const fh = Math.max(TR.y + TR.h, BATCHBAND.y + BATCHBAND.h) + 12 - fy;
+  parts.push(`<rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" rx="8" fill="none" stroke="${BRAND}" stroke-width="1.2" stroke-dasharray="6 4"/>`);
+  parts.push(`<text x="${fx + fw / 2}" y="${fy - 8}" text-anchor="middle" font-family="${MONO}" font-size="${FONT.label}" font-weight="500" letter-spacing="0.08em" fill="${BRAND}">SEMANTIC NEXUS</text>`);
+}
+
+// extraction: streaming band on top, batch band below
 parts.push(band(extX, BATCHBAND.y, BAND.w, BATCHBAND.h));
 parts.push(colLabel(extX + BAND.w / 2, BATCHBAND.y + 19, BATCH.label));
 BATCH.tools.forEach((t, j) => parts.push(toolBox(extX + BAND.pad, BATCHBAND.y + BAND.pad + 19 + j * TOOL.pitch, toolW, t)));
@@ -302,7 +319,7 @@ conRows.forEach((r) => {
 });
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
-  <title id="ts-title">Tech stack: your sources (ERP, CRM such as HubSpot, bookkeeping such as Exact Online and Yuki, product databases such as PostgreSQL and MySQL, spreadsheets such as Google Sheets and Excel, support tooling such as Freshdesk and Zendesk) are extracted in batch with Airbyte or Hevo Data, or streamed with Debezium, into a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube or Microsoft Fabric semantic models serve the result as the semantic layer. Consumers read from the semantic layer in five groups: AI agents (the Quality Guardian, your own client agents), MCPs (the nao analytics MCP), AI models (Claude, OpenAI, Gemini), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
+  <title id="ts-title">Tech stack: your sources (product databases such as PostgreSQL and MySQL streamed with Debezium; ERP and planning tools such as Float and TimeTell, CRM such as HubSpot, bookkeeping such as Exact Online and Yuki, spreadsheets such as Google Sheets and Excel, support tooling such as Freshdesk and Zendesk) loaded in batch with Airbyte or Hevo Data) land in a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube or Microsoft Fabric semantic models serve the result as the semantic layer. Extraction, warehouse, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI agents (the Quality Guardian, your own client agents), MCPs (the nao analytics MCP), AI models (Claude, OpenAI, Gemini), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="${INK}"/>
