@@ -26,16 +26,6 @@ import stackSvg from '../diagrams/tech-stack-2026-10-08.svg?raw';
       <p class="text-lg md:text-xl text-cream/90 max-w-xl mx-auto mb-10 leading-relaxed">
         One source of truth for your entire business, from raw data to boardroom KPIs. So every team works from the same numbers, every time.
       </p>
-      <div class="flex gap-3 justify-center flex-wrap mb-14">
-        <a href="#features" class="inline-flex items-center gap-2 text-cream font-semibold px-8 py-3.5 rounded-full transition-colors text-sm" style="border: 1px solid rgba(255,255,255,0.20)" onmouseover="this.style.borderColor='rgba(255,255,255,0.50)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.20)';this.style.background=''">
-          See how it works
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-        </a>
-        <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
-          Schedule a Call
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
       <!-- Dashboard mockup -->
     </div>
   </section>
@@ -52,7 +42,7 @@ import stackSvg from '../diagrams/tech-stack-2026-10-08.svg?raw';
         ].map(stat => (
           <div class="flex flex-col gap-2">
             <span class="text-4xl md:text-5xl font-black text-cream tracking-tight" style="letter-spacing: -0.03em">{stat.value}</span>
-            <span class="text-xs font-mono text-cream leading-snug uppercase tracking-wider">{stat.label}</span>
+            <span class="text-sm font-mono font-medium text-cream leading-snug uppercase tracking-wider">{stat.label}</span>
           </div>
         ))}
       </div>
