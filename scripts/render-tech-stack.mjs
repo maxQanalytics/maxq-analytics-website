@@ -36,23 +36,22 @@ const SOURCE_GROUPS = [
     { name: 'PostgreSQL', icon: '/logos/postgresql.svg', tip: 'Your application database, streamed with change data capture.' },
     { name: 'MySQL', icon: '/logos/mysql.svg', iconW: 30, tip: 'Your application database, streamed with change data capture.' },
   ] },
-  { label: 'ERP · PLANNING', items: [
-    { name: 'Your ERP', tip: 'Your ERP system, loaded through its API or database.' },
-    { name: 'Float', icon: '/logos/float.png', tip: 'Float resource and time planning.' },
-    { name: 'TimeTell', icon: '/logos/timetell.png', tip: 'TimeTell time registration and planning.' },
-  ] },
-  { label: 'CRM', items: [{ name: 'HubSpot', icon: '/logos/hubspot.svg', tip: 'HubSpot companies, deals, contacts and line items.' }] },
   { label: 'BOOKKEEPING', items: [
     { name: 'Exact Online', icon: '/logos/exact.png', iconW: 46, tip: 'Exact Online general ledger, invoices and accounts.' },
     { name: 'Yuki', icon: '/logos/yuki.png', tip: 'Yuki bookkeeping.' },
   ] },
+  { label: 'CRM', items: [{ name: 'HubSpot', icon: '/logos/hubspot.svg', tip: 'HubSpot companies, deals, contacts and line items.' }] },
+  { label: 'ERP · PLANNING', items: [
+    { name: 'Float', icon: '/logos/float.png', tip: 'Float resource and time planning.' },
+    { name: 'TimeTell', icon: '/logos/timetell.png', tip: 'TimeTell time registration and planning.' },
+  ] },
+  { label: 'CUSTOMER CARE', items: [
+    { name: 'Freshdesk', icon: '/logos/freshworks.png', tip: 'Freshdesk tickets and conversations.' },
+    { name: 'Zendesk', icon: '/logos/zendesk.svg', tip: 'Zendesk tickets and conversations.' },
+  ] },
   { label: 'SPREADSHEETS', items: [
     { name: 'Google Sheets', icon: '/logos/google-sheets.svg', tip: 'Manual inputs, targets and mappings kept in Google Sheets.' },
     { name: 'Excel', icon: '/logos/excel.svg', tip: 'Manual inputs, targets and mappings kept in Excel.' },
-  ] },
-  { label: 'SUPPORT TOOLING', items: [
-    { name: 'Freshdesk', icon: '/logos/freshworks.png', tip: 'Freshdesk tickets and conversations.' },
-    { name: 'Zendesk', icon: '/logos/zendesk.svg', tip: 'Zendesk tickets and conversations.' },
   ] },
 ];
 
@@ -71,12 +70,20 @@ const STREAM = {
   ],
 };
 
+// the real-time warehouse is fed by the streaming extraction; the batch
+// warehouse by the batch extraction
+const REALTIME = {
+  label: 'WAREHOUSE · REAL-TIME',
+  tools: [
+    { name: 'ClickHouse', logo: '/logos/clickhouse.png', sub: 'real-time analytics', url: 'https://clickhouse.com', tip: 'High-performance columnar database optimised for real-time analytics on very large datasets, fed by the streaming extraction.' },
+  ],
+};
+
 const WAREHOUSE = {
-  label: 'WAREHOUSE',
+  label: 'WAREHOUSE · BATCH',
   tools: [
     { name: 'BigQuery', logo: '/logos/bigquery.png', sub: 'serverless · Google Cloud', url: 'https://cloud.google.com/bigquery', tip: "Google's serverless, scalable cloud data warehouse built for fast SQL analytics at any scale." },
     { name: 'Snowflake', logo: '/logos/snowflake.png', sub: 'storage and compute apart', url: 'https://www.snowflake.com', tip: 'Cloud data platform with separated storage and compute, enabling flexible and cost-efficient scaling.' },
-    { name: 'ClickHouse', logo: '/logos/clickhouse.png', sub: 'real-time analytics', url: 'https://clickhouse.com', tip: 'High-performance columnar database optimised for real-time analytics on very large datasets.' },
     { name: 'Microsoft Fabric', logo: '/logos/fabric.png', logoH: 22, sub: 'data warehouse', url: 'https://www.microsoft.com/en-us/microsoft-fabric', tip: 'The Fabric data warehouse, for clients on the Microsoft stack.' },
   ],
 };
@@ -114,14 +121,14 @@ const CONSUMER_GROUPS = [
     label: 'AI AGENTS',
     items: [
       { name: 'Quality Guardian', icon: '/logos/quality-guardian.png', url: '/add-ons/quality-guardian', tip: 'Maxq add-on: an agent that investigates failing data-entry tests and writes the fix back to the source system.', self: true },
-      { name: 'Client agents', tip: 'Your own agents, reading governed metrics through the semantic layer instead of raw tables.' },
+      { name: 'LangChain agents', icon: '/logos/langchain.svg', iconW: 22, url: 'https://www.langchain.com', tip: 'Your own agents, built on LangChain or a similar framework, reading governed metrics through the semantic layer instead of raw tables.' },
     ],
   },
   {
     label: 'REPORTS',
     items: [
       { name: 'Data Studio', logo: '/logos/data-studio.png', url: 'https://lookerstudio.google.com', tip: "Google's free BI tool for building interactive, shareable dashboards connected directly to your data sources." },
-      { name: 'Power BI', logo: '/logos/powerbi.png', url: 'https://powerbi.microsoft.com', tip: "Microsoft's business intelligence platform for creating rich reports and dashboards across your organisation." },
+      { name: 'Power BI', icon: '/logos/powerbi-icon.svg', url: 'https://powerbi.microsoft.com', tip: "Microsoft's business intelligence platform for creating rich reports and dashboards across your organisation." },
     ],
   },
   {
@@ -136,32 +143,30 @@ const CONSUMER_GROUPS = [
 // geometry
 const SRC = { x: 14, w: 160 };
 const GAP = 18;                                   // between the columns inside the Semantic Nexus
-const BAND = { y: 76, labelY: 95, pad: 14, w: 206 };
-const TOOL = { h: 64, pitch: 76, firstY: 112, logoW: 130, logoH: 24 };
+const OUTER = 82;                                 // sources -> frame and frame -> consumers
+const FRAME_PAD = 28;                             // frame edge to the first / last band
+const BAND = { y: 76, pad: 14, w: 206, labelH: 19 };
+const TOOL = { h: 64, pitch: 76, logoW: 130, logoH: 24 };
 const CON = { w: 160, h: 34, pitch: 38, groupGap: 12, labelH: 18, firstY: 60 };
 const LABEL_Y = 44;
-const TOP = 22; // room above the bands for the Semantic Nexus label
 const FONT = { label: 11, sub: 12, name: 13 };
 
-const OUTER = 82;                                 // sources -> frame and frame -> consumers
 const extX = SRC.x + SRC.w + OUTER;
 const whX = extX + BAND.w + GAP;
 const semW = BAND.w;
 const semX = whX + BAND.w + GAP;
 const busX = semX + semW + OUTER / 2;
 const conX = semX + semW + OUTER;
-
 const toolW = BAND.w - 2 * BAND.pad;
-const toolY = (j) => TOOL.firstY + j * TOOL.pitch;
-const bandH = toolY(WAREHOUSE.tools.length - 1) + TOOL.h + BAND.pad - BAND.y;
-const bandMidY = BAND.y + bandH / 2;
-const bandBottom = BAND.y + bandH;
 
-const TR = { y: bandBottom + 22, h: BAND.pad + 19 + TOOL.h + BAND.pad };   // transformation band
-const STREAMBAND = { y: BAND.y, h: BAND.pad + 19 + TOOL.h + BAND.pad };
-const BATCHBAND = { y: STREAMBAND.y + STREAMBAND.h + 14, h: BAND.pad + 19 + TOOL.h + TOOL.pitch + BAND.pad };
-const batchMidY = BATCHBAND.y + BATCHBAND.h / 2;
-const streamMidY = STREAMBAND.y + STREAMBAND.h / 2;
+const bandHFor = (n) => BAND.pad + BAND.labelH + TOOL.h + (n - 1) * TOOL.pitch + BAND.pad;
+const mid = (b) => b.y + b.h / 2;
+const STREAMBAND = { y: BAND.y, h: bandHFor(STREAM.tools.length) };
+const BATCHBAND = { y: STREAMBAND.y + STREAMBAND.h + 14, h: bandHFor(BATCH.tools.length) };
+const RTBAND = { y: BAND.y, h: bandHFor(REALTIME.tools.length) };
+const WHBAND = { y: RTBAND.y + RTBAND.h + 14, h: bandHFor(WAREHOUSE.tools.length) };
+const TR = { y: WHBAND.y + WHBAND.h + 22, h: bandHFor(1) };
+const SEMBAND = { y: BAND.y, h: WHBAND.y + WHBAND.h - BAND.y };
 
 // grouped columns (sources and consumers): label rows and item rows
 function groupRows(groups) {
@@ -181,7 +186,7 @@ const itemRows = conRows.filter((r) => r.kind === 'item');
 const srcItems = srcRows.filter((r) => r.kind === 'item');
 const conBottom = itemRows[itemRows.length - 1].y + CON.h;
 const srcBottom = srcItems[srcItems.length - 1].y + CON.h;
-const CANVAS = { w: conX + CON.w + 14, h: Math.max(TR.y + TR.h, STREAMBAND.y + STREAMBAND.h, conBottom, srcBottom) + 14 };
+const CANVAS = { w: conX + CON.w + 14, h: Math.max(TR.y + TR.h, conBottom, srcBottom) + 14 };
 
 // ---------------------------------------------------------------- helpers
 
@@ -248,9 +253,25 @@ function line(x1, y1, x2, y2, { thin = false, arrow = false } = {}) {
 
 const parts = [];
 
-// sources column, fanning into the extraction band through one elbow lane
+// Semantic Nexus frame first, so every arrow is drawn on top of its fill
+{
+  const fx = extX - FRAME_PAD, fy = BAND.y - 24;
+  const fw = semX + semW + FRAME_PAD - fx;
+  const fh = TR.y + TR.h + 12 - fy;
+  parts.push(`<rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" rx="8" fill="#eef2ff" stroke="${BRAND}" stroke-width="1.2" stroke-dasharray="6 4"/>`);
+  parts.push(`<text x="${fx + fw / 2}" y="${fy - 8}" text-anchor="middle" font-family="${MONO}" font-size="${FONT.label}" font-weight="500" letter-spacing="0.08em" fill="${BRAND}">SEMANTIC NEXUS</text>`);
+}
+
+// a band with its label and tool boxes
+function drawBand(x, b, spec) {
+  parts.push(band(x, b.y, BAND.w, b.h));
+  parts.push(colLabel(x + BAND.w / 2, b.y + 19, spec.label));
+  spec.tools.forEach((t, j) => parts.push(toolBox(x + BAND.pad, b.y + BAND.pad + BAND.labelH + j * TOOL.pitch, toolW, t)));
+}
+
+// sources column: two lanes, streaming sources into the streaming band, the rest into the batch band
 parts.push(colLabel(SRC.x + SRC.w / 2, LABEL_Y, 'SOURCES'));
-const laneX = SRC.x + SRC.w + (extX - SRC.x - SRC.w) / 2;
+const laneX = SRC.x + SRC.w + (extX - FRAME_PAD - SRC.x - SRC.w) / 2;
 srcRows.forEach((r) => {
   if (r.kind === 'label') parts.push(colLabel(SRC.x, r.y, r.text, { anchor: 'start' }));
   else {
@@ -260,48 +281,31 @@ srcRows.forEach((r) => {
 });
 const streamMids = srcItems.filter((r) => r.stream).map((r) => r.y + CON.h / 2);
 const batchMids = srcItems.filter((r) => !r.stream).map((r) => r.y + CON.h / 2);
-parts.push(line(laneX, Math.min(...streamMids, streamMidY), laneX, Math.max(...streamMids, streamMidY), { thin: true }));
-parts.push(line(laneX, streamMidY, extX, streamMidY, { arrow: true }));
-parts.push(line(laneX, Math.min(...batchMids, batchMidY), laneX, Math.max(...batchMids, batchMidY), { thin: true }));
-parts.push(line(laneX, batchMidY, extX, batchMidY, { arrow: true }));
+parts.push(line(laneX, Math.min(...streamMids, mid(STREAMBAND)), laneX, Math.max(...streamMids, mid(STREAMBAND)), { thin: true }));
+parts.push(line(laneX, mid(STREAMBAND), extX, mid(STREAMBAND), { arrow: true }));
+parts.push(line(laneX, Math.min(...batchMids, mid(BATCHBAND)), laneX, Math.max(...batchMids, mid(BATCHBAND)), { thin: true }));
+parts.push(line(laneX, mid(BATCHBAND), extX, mid(BATCHBAND), { arrow: true }));
 
-// Semantic Nexus frame: the three columns we design and run
-{
-  const fx = extX - 12, fy = BAND.y - 24;
-  const fw = semX + semW + 12 - fx;
-  const fh = Math.max(TR.y + TR.h, BATCHBAND.y + BATCHBAND.h) + 12 - fy;
-  parts.push(`<rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" rx="8" fill="#eef2ff" stroke="${BRAND}" stroke-width="1.2" stroke-dasharray="6 4"/>`);
-  parts.push(`<text x="${fx + fw / 2}" y="${fy - 8}" text-anchor="middle" font-family="${MONO}" font-size="${FONT.label}" font-weight="500" letter-spacing="0.08em" fill="${BRAND}">SEMANTIC NEXUS</text>`);
-}
+// extraction: streaming on top, batch below; each feeds its own warehouse band
+drawBand(extX, STREAMBAND, STREAM);
+drawBand(extX, BATCHBAND, BATCH);
+parts.push(line(extX + BAND.w, mid(STREAMBAND), whX, mid(STREAMBAND), { arrow: true }));
+parts.push(line(extX + BAND.w, mid(BATCHBAND), whX, mid(BATCHBAND), { arrow: true }));
 
-// extraction: streaming band on top, batch band below
-parts.push(band(extX, BATCHBAND.y, BAND.w, BATCHBAND.h));
-parts.push(colLabel(extX + BAND.w / 2, BATCHBAND.y + 19, BATCH.label));
-BATCH.tools.forEach((t, j) => parts.push(toolBox(extX + BAND.pad, BATCHBAND.y + BAND.pad + 19 + j * TOOL.pitch, toolW, t)));
-parts.push(line(extX + BAND.w, batchMidY, whX, batchMidY, { arrow: true }));
-parts.push(band(extX, STREAMBAND.y, BAND.w, STREAMBAND.h));
-parts.push(colLabel(extX + BAND.w / 2, STREAMBAND.y + 19, STREAM.label));
-STREAM.tools.forEach((t, j) => parts.push(toolBox(extX + BAND.pad, STREAMBAND.y + BAND.pad + 19 + j * TOOL.pitch, toolW, t)));
-parts.push(line(extX + BAND.w, streamMidY, whX, streamMidY, { arrow: true }));
+// warehouse: real-time on top, batch below; transformation under the batch warehouse, arrow up
+drawBand(whX, RTBAND, REALTIME);
+drawBand(whX, WHBAND, WAREHOUSE);
+drawBand(whX, TR, { label: TRANSFORMATION.label, tools: [TRANSFORMATION.tool] });
+parts.push(line(whX + BAND.w / 2, TR.y, whX + BAND.w / 2, WHBAND.y + WHBAND.h, { arrow: true }));
+parts.push(line(whX + BAND.w, mid(RTBAND), semX, mid(RTBAND), { arrow: true }));
+parts.push(line(whX + BAND.w, mid(WHBAND), semX, mid(WHBAND), { arrow: true }));
 
-// warehouse band
-parts.push(band(whX, BAND.y, BAND.w, bandH));
-parts.push(colLabel(whX + BAND.w / 2, BAND.labelY, WAREHOUSE.label));
-WAREHOUSE.tools.forEach((t, j) => parts.push(toolBox(whX + BAND.pad, toolY(j), toolW, t)));
-parts.push(line(whX + BAND.w, bandMidY, semX, bandMidY, { arrow: true }));
-
-// transformation band under the warehouse, arrow up into it
-parts.push(band(whX, TR.y, BAND.w, TR.h));
-parts.push(colLabel(whX + BAND.w / 2, TR.y + 19, TRANSFORMATION.label));
-parts.push(toolBox(whX + BAND.pad, TR.y + BAND.pad + 19, toolW, TRANSFORMATION.tool));
-parts.push(line(whX + BAND.w / 2, TR.y, whX + BAND.w / 2, bandBottom, { arrow: true }));
-
-// semantic layer band, boxes stacked around the band's middle
-parts.push(band(semX, BAND.y, semW, bandH));
-parts.push(colLabel(semX + semW / 2, BAND.labelY, SEMANTIC.label));
+// semantic layer: one band spanning both warehouse bands, boxes stacked around its middle
+parts.push(band(semX, SEMBAND.y, semW, SEMBAND.h));
+parts.push(colLabel(semX + semW / 2, SEMBAND.y + 19, SEMANTIC.label));
 {
   const n = SEMANTIC.tools.length;
-  const top = bandMidY - ((n - 1) * TOOL.pitch + TOOL.h) / 2;
+  const top = mid(SEMBAND) - ((n - 1) * TOOL.pitch + TOOL.h) / 2;
   SEMANTIC.tools.forEach((t, j) => parts.push(toolBox(semX + BAND.pad, top + j * TOOL.pitch, toolW, t)));
 }
 
@@ -309,8 +313,8 @@ parts.push(colLabel(semX + semW / 2, BAND.labelY, SEMANTIC.label));
 parts.push(colLabel(conX + CON.w / 2, LABEL_Y, 'CONSUMERS'));
 const firstMid = itemRows[0].y + CON.h / 2;
 const lastMid = itemRows[itemRows.length - 1].y + CON.h / 2;
-parts.push(line(semX + semW, bandMidY, busX, bandMidY));
-parts.push(line(busX, firstMid, busX, lastMid, { thin: true }));
+parts.push(line(semX + semW, mid(SEMBAND), busX, mid(SEMBAND)));
+parts.push(line(busX, Math.min(firstMid, mid(SEMBAND)), busX, Math.max(lastMid, mid(SEMBAND)), { thin: true }));
 conRows.forEach((r) => {
   if (r.kind === 'label') parts.push(colLabel(conX, r.y, r.text, { anchor: 'start' }));
   else {
@@ -320,7 +324,7 @@ conRows.forEach((r) => {
 });
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
-  <title id="ts-title">Tech stack: your sources (product databases such as PostgreSQL and MySQL streamed with Debezium; ERP and planning tools such as Float and TimeTell, CRM such as HubSpot, bookkeeping such as Exact Online and Yuki, spreadsheets such as Google Sheets and Excel, support tooling such as Freshdesk and Zendesk) loaded in batch with Airbyte or Hevo Data) land in a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube or Microsoft Fabric semantic models serve the result as the semantic layer. Extraction, warehouse, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (the nao analytics MCP), AI agents (the Quality Guardian, your own client agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
+  <title id="ts-title">Tech stack: product databases (PostgreSQL, MySQL) are streamed with Debezium into the real-time warehouse (ClickHouse); bookkeeping (Exact Online, Yuki), CRM (HubSpot), ERP and planning (Float, TimeTell), customer care (Freshdesk, Zendesk) and spreadsheets (Google Sheets, Excel) are loaded in batch with Airbyte or Hevo Data into the batch warehouse (BigQuery, Snowflake or the Microsoft Fabric data warehouse). dbt runs as a separate transformation layer underneath the batch warehouse. Both warehouses feed the semantic layer, Cube or Microsoft Fabric semantic models. Extraction, warehouses, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (the nao analytics MCP), AI agents (the Quality Guardian, your own LangChain agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="${INK}"/>

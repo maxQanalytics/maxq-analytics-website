@@ -1,106 +1,108 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1166 674" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
-  <title id="ts-title">Tech stack: your sources (product databases such as PostgreSQL and MySQL streamed with Debezium; ERP and planning tools such as Float and TimeTell, CRM such as HubSpot, bookkeeping such as Exact Online and Yuki, spreadsheets such as Google Sheets and Excel, support tooling such as Freshdesk and Zendesk) loaded in batch with Airbyte or Hevo Data) land in a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube or Microsoft Fabric semantic models serve the result as the semantic layer. Extraction, warehouse, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (the nao analytics MCP), AI agents (the Quality Guardian, your own client agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1166 636" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
+  <title id="ts-title">Tech stack: product databases (PostgreSQL, MySQL) are streamed with Debezium into the real-time warehouse (ClickHouse); bookkeeping (Exact Online, Yuki), CRM (HubSpot), ERP and planning (Float, TimeTell), customer care (Freshdesk, Zendesk) and spreadsheets (Google Sheets, Excel) are loaded in batch with Airbyte or Hevo Data into the batch warehouse (BigQuery, Snowflake or the Microsoft Fabric data warehouse). dbt runs as a separate transformation layer underneath the batch warehouse. Both warehouses feed the semantic layer, Cube or Microsoft Fabric semantic models. Extraction, warehouses, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (the nao analytics MCP), AI agents (the Quality Guardian, your own LangChain agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#0a0a0f"/>
     </marker>
   </defs>
+  <rect x="228" y="52" width="710" height="557" rx="8" fill="#eef2ff" stroke="#1a4fff" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="583" y="44" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" font-weight="500" letter-spacing="0.08em" fill="#1a4fff">SEMANTIC NEXUS</text>
   <text x="94" y="44" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">SOURCES</text>
   <text x="14" y="71" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">PRODUCT DATABASE</text>
-  <path d="M174,95 L215,95" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <path d="M174,95 L201,95" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <g>
     <title>Your application database, streamed with change data capture.</title>
     <rect x="14" y="78" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
     <image href="/logos/postgresql.svg" x="45" y="86" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
     <text x="71" y="99.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">PostgreSQL</text>
   </g>
-  <path d="M174,133 L215,133" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <path d="M174,133 L201,133" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <g>
     <title>Your application database, streamed with change data capture.</title>
     <rect x="14" y="116" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
     <image href="/logos/mysql.svg" x="57" y="124" width="30" height="18" preserveAspectRatio="xMidYMid meet"/>
     <text x="95" y="137.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">MySQL</text>
   </g>
-  <text x="14" y="173" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">ERP · PLANNING</text>
-  <path d="M174,197 L215,197" fill="none" stroke="#5c5a56" stroke-width="1"/>
-  <g>
-    <title>Your ERP system, loaded through its API or database.</title>
-    <rect x="14" y="180" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <text x="94" y="201.5" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Your ERP</text>
-  </g>
-  <path d="M174,235 L215,235" fill="none" stroke="#5c5a56" stroke-width="1"/>
-  <g>
-    <title>Float resource and time planning.</title>
-    <rect x="14" y="218" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/float.png" x="63" y="226" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="89" y="239.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Float</text>
-  </g>
-  <path d="M174,273 L215,273" fill="none" stroke="#5c5a56" stroke-width="1"/>
-  <g>
-    <title>TimeTell time registration and planning.</title>
-    <rect x="14" y="256" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/timetell.png" x="52.2" y="264" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="78.2" y="277.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">TimeTell</text>
-  </g>
-  <text x="14" y="313" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">CRM</text>
-  <path d="M174,337 L215,337" fill="none" stroke="#5c5a56" stroke-width="1"/>
-  <g>
-    <title>HubSpot companies, deals, contacts and line items.</title>
-    <rect x="14" y="320" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/hubspot.svg" x="55.8" y="328" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="81.8" y="341.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">HubSpot</text>
-  </g>
-  <text x="14" y="377" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">BOOKKEEPING</text>
-  <path d="M174,401 L215,401" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <text x="14" y="173" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">BOOKKEEPING</text>
+  <path d="M174,197 L201,197" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <g>
     <title>Exact Online general ledger, invoices and accounts.</title>
-    <rect x="14" y="384" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/exact.png" x="23.799999999999997" y="392" width="46" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="77.8" y="405.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Exact Online</text>
+    <rect x="14" y="180" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/exact.png" x="23.799999999999997" y="188" width="46" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="77.8" y="201.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Exact Online</text>
   </g>
-  <path d="M174,439 L215,439" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <path d="M174,235 L201,235" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <g>
     <title>Yuki bookkeeping.</title>
-    <rect x="14" y="422" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/yuki.png" x="66.6" y="430" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="92.6" y="443.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Yuki</text>
+    <rect x="14" y="218" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/yuki.png" x="66.6" y="226" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="92.6" y="239.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Yuki</text>
   </g>
-  <text x="14" y="479" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">SPREADSHEETS</text>
-  <path d="M174,503 L215,503" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <text x="14" y="275" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">CRM</text>
+  <path d="M174,299 L201,299" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <g>
-    <title>Manual inputs, targets and mappings kept in Google Sheets.</title>
-    <rect x="14" y="486" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/google-sheets.svg" x="34.199999999999996" y="494" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="60.199999999999996" y="507.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Google Sheets</text>
+    <title>HubSpot companies, deals, contacts and line items.</title>
+    <rect x="14" y="282" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/hubspot.svg" x="55.8" y="290" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="81.8" y="303.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">HubSpot</text>
   </g>
-  <path d="M174,541 L215,541" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <text x="14" y="339" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">ERP · PLANNING</text>
+  <path d="M174,363 L201,363" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <g>
-    <title>Manual inputs, targets and mappings kept in Excel.</title>
-    <rect x="14" y="524" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/excel.svg" x="63" y="532" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="89" y="545.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Excel</text>
+    <title>Float resource and time planning.</title>
+    <rect x="14" y="346" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/float.png" x="63" y="354" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="89" y="367.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Float</text>
   </g>
-  <text x="14" y="581" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">SUPPORT TOOLING</text>
-  <path d="M174,605 L215,605" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <path d="M174,401 L201,401" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <g>
+    <title>TimeTell time registration and planning.</title>
+    <rect x="14" y="384" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/timetell.png" x="52.2" y="392" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="78.2" y="405.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">TimeTell</text>
+  </g>
+  <text x="14" y="441" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">CUSTOMER CARE</text>
+  <path d="M174,465 L201,465" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <g>
     <title>Freshdesk tickets and conversations.</title>
-    <rect x="14" y="588" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/freshworks.png" x="48.6" y="596" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="74.6" y="609.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Freshdesk</text>
+    <rect x="14" y="448" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/freshworks.png" x="48.6" y="456" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="74.6" y="469.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Freshdesk</text>
   </g>
-  <path d="M174,643 L215,643" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <path d="M174,503 L201,503" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <g>
     <title>Zendesk tickets and conversations.</title>
-    <rect x="14" y="626" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/zendesk.svg" x="55.8" y="634" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
-    <text x="81.8" y="647.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Zendesk</text>
+    <rect x="14" y="486" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/zendesk.svg" x="55.8" y="494" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="81.8" y="507.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Zendesk</text>
   </g>
-  <path d="M215,95 L215,133" fill="none" stroke="#5c5a56" stroke-width="1"/>
-  <path d="M215,131.5 L256,131.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <path d="M215,197 L215,643" fill="none" stroke="#5c5a56" stroke-width="1"/>
-  <path d="M215,294.5 L256,294.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <rect x="244" y="52" width="678" height="511" rx="8" fill="#eef2ff" stroke="#1a4fff" stroke-width="1.2" stroke-dasharray="6 4"/>
-  <text x="583" y="44" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" font-weight="500" letter-spacing="0.08em" fill="#1a4fff">SEMANTIC NEXUS</text>
+  <text x="14" y="543" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">SPREADSHEETS</text>
+  <path d="M174,567 L201,567" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <g>
+    <title>Manual inputs, targets and mappings kept in Google Sheets.</title>
+    <rect x="14" y="550" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/google-sheets.svg" x="34.199999999999996" y="558" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="60.199999999999996" y="571.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Google Sheets</text>
+  </g>
+  <path d="M174,605 L201,605" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <g>
+    <title>Manual inputs, targets and mappings kept in Excel.</title>
+    <rect x="14" y="588" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
+    <image href="/logos/excel.svg" x="63" y="596" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="89" y="609.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Excel</text>
+  </g>
+  <path d="M201,95 L201,133" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <path d="M201,131.5 L256,131.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+  <path d="M201,197 L201,605" fill="none" stroke="#5c5a56" stroke-width="1"/>
+  <path d="M201,294.5 L256,294.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+  <rect x="256" y="76" width="206" height="111" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
+  <text x="359" y="95" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">EXTRACTION · STREAMING</text>
+  <a href="https://debezium.io" target="_blank" rel="noopener">
+    <title>Open-source CDC platform that streams database changes in real time for event-driven data pipelines.</title>
+    <rect x="270" y="109" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <image href="/logos/debezium.png" x="294" y="120" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
+    <text x="359" y="161" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">change data capture</text>
+  </a>
   <rect x="256" y="201" width="206" height="187" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
   <text x="359" y="220" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">EXTRACTION · BATCH</text>
   <a href="https://airbyte.com" target="_blank" rel="noopener">
@@ -115,68 +117,63 @@
     <image href="/logos/hevo.png" x="294" y="323" width="130" height="20" preserveAspectRatio="xMidYMid meet"/>
     <text x="359" y="362" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">no-code · 150+ sources</text>
   </a>
-  <path d="M462,294.5 L480,294.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <rect x="256" y="76" width="206" height="111" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
-  <text x="359" y="95" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">EXTRACTION · STREAMING</text>
-  <a href="https://debezium.io" target="_blank" rel="noopener">
-    <title>Open-source CDC platform that streams database changes in real time for event-driven data pipelines.</title>
-    <rect x="270" y="109" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
-    <image href="/logos/debezium.png" x="294" y="120" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
-    <text x="359" y="161" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">change data capture</text>
-  </a>
   <path d="M462,131.5 L480,131.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <rect x="480" y="76" width="206" height="342" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
-  <text x="583" y="95" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">WAREHOUSE</text>
+  <path d="M462,294.5 L480,294.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+  <rect x="480" y="76" width="206" height="111" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
+  <text x="583" y="95" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">WAREHOUSE · REAL-TIME</text>
+  <a href="https://clickhouse.com" target="_blank" rel="noopener">
+    <title>High-performance columnar database optimised for real-time analytics on very large datasets, fed by the streaming extraction.</title>
+    <rect x="494" y="109" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <image href="/logos/clickhouse.png" x="518" y="120" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
+    <text x="583" y="161" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">real-time analytics</text>
+  </a>
+  <rect x="480" y="201" width="206" height="263" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
+  <text x="583" y="220" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">WAREHOUSE · BATCH</text>
   <a href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">
     <title>Google's serverless, scalable cloud data warehouse built for fast SQL analytics at any scale.</title>
-    <rect x="494" y="112" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
-    <image href="/logos/bigquery.png" x="518" y="123" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
-    <text x="583" y="164" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">serverless · Google Cloud</text>
+    <rect x="494" y="234" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <image href="/logos/bigquery.png" x="518" y="245" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
+    <text x="583" y="286" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">serverless · Google Cloud</text>
   </a>
   <a href="https://www.snowflake.com" target="_blank" rel="noopener">
     <title>Cloud data platform with separated storage and compute, enabling flexible and cost-efficient scaling.</title>
-    <rect x="494" y="188" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
-    <image href="/logos/snowflake.png" x="518" y="199" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
-    <text x="583" y="240" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">storage and compute apart</text>
-  </a>
-  <a href="https://clickhouse.com" target="_blank" rel="noopener">
-    <title>High-performance columnar database optimised for real-time analytics on very large datasets.</title>
-    <rect x="494" y="264" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
-    <image href="/logos/clickhouse.png" x="518" y="275" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
-    <text x="583" y="316" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">real-time analytics</text>
+    <rect x="494" y="310" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <image href="/logos/snowflake.png" x="518" y="321" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
+    <text x="583" y="362" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">storage and compute apart</text>
   </a>
   <a href="https://www.microsoft.com/en-us/microsoft-fabric" target="_blank" rel="noopener">
     <title>The Fabric data warehouse, for clients on the Microsoft stack.</title>
-    <rect x="494" y="340" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
-    <image href="/logos/fabric.png" x="518" y="352" width="130" height="22" preserveAspectRatio="xMidYMid meet"/>
-    <text x="583" y="392" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">data warehouse</text>
+    <rect x="494" y="386" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <image href="/logos/fabric.png" x="518" y="398" width="130" height="22" preserveAspectRatio="xMidYMid meet"/>
+    <text x="583" y="438" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">data warehouse</text>
   </a>
-  <path d="M686,247 L704,247" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <rect x="480" y="440" width="206" height="111" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
-  <text x="583" y="459" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">TRANSFORMATION</text>
+  <rect x="480" y="486" width="206" height="111" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
+  <text x="583" y="505" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">TRANSFORMATION</text>
   <a href="https://www.getdbt.com" target="_blank" rel="noopener">
     <title>SQL-based transformation tool that lets analytics engineers build, test and document data models in version control. Runs as its own layer on top of the warehouse.</title>
-    <rect x="494" y="473" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
-    <image href="/logos/dbt.png" x="518" y="484" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
-    <text x="583" y="525" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">models · tests · docs in git</text>
+    <rect x="494" y="519" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <image href="/logos/dbt.png" x="518" y="530" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
+    <text x="583" y="571" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">models · tests · docs in git</text>
   </a>
-  <path d="M583,440 L583,418" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
-  <rect x="704" y="76" width="206" height="342" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
+  <path d="M583,486 L583,464" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+  <path d="M686,131.5 L704,131.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+  <path d="M686,332.5 L704,332.5" fill="none" stroke="#0a0a0f" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+  <rect x="704" y="76" width="206" height="388" rx="5" fill="#fafaf8" stroke="#5c5a56" stroke-width="1"/>
   <text x="807" y="95" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">SEMANTIC LAYER</text>
   <a href="https://cube.dev" target="_blank" rel="noopener">
     <title>Semantic layer that defines business metrics centrally and exposes them consistently via API to any downstream tool.</title>
-    <rect x="718" y="177" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
-    <image href="/logos/cube.png" x="742" y="188" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
-    <text x="807" y="229" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">metrics defined once · API</text>
+    <rect x="718" y="200" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <image href="/logos/cube.png" x="742" y="211" width="130" height="24" preserveAspectRatio="xMidYMid meet"/>
+    <text x="807" y="252" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">metrics defined once · API</text>
   </a>
   <a href="https://www.microsoft.com/en-us/microsoft-fabric" target="_blank" rel="noopener">
     <title>Microsoft Fabric semantic models, the semantic layer for Power BI and the rest of the Microsoft stack.</title>
-    <rect x="718" y="253" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
-    <image href="/logos/fabric.png" x="742" y="265" width="130" height="22" preserveAspectRatio="xMidYMid meet"/>
-    <text x="807" y="305" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">semantic models</text>
+    <rect x="718" y="276" width="178" height="64" rx="4" fill="#ffffff" stroke="#0a0a0f" stroke-width="1.2"/>
+    <image href="/logos/fabric.png" x="742" y="288" width="130" height="22" preserveAspectRatio="xMidYMid meet"/>
+    <text x="807" y="328" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="12" fill="#3d3b38">semantic models</text>
   </a>
   <text x="1072" y="44" text-anchor="middle" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">CONSUMERS</text>
-  <path d="M910,247 L951,247" fill="none" stroke="#0a0a0f" stroke-width="1.5"/>
+  <path d="M910,270 L951,270" fill="none" stroke="#0a0a0f" stroke-width="1.5"/>
   <path d="M951,95 L951,541" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <text x="992" y="71" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">AI MODELS</text>
   <path d="M951,95 L992,95" fill="none" stroke="#5c5a56" stroke-width="1"/>
@@ -217,11 +214,12 @@
     <text x="1027.4" y="303.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Quality Guardian</text>
   </a>
   <path d="M951,337 L992,337" fill="none" stroke="#5c5a56" stroke-width="1"/>
-  <g>
-    <title>Your own agents, reading governed metrics through the semantic layer instead of raw tables.</title>
+  <a href="https://www.langchain.com" target="_blank" rel="noopener">
+    <title>Your own agents, built on LangChain or a similar framework, reading governed metrics through the semantic layer instead of raw tables.</title>
     <rect x="992" y="320" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <text x="1072" y="341.5" text-anchor="middle" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Client agents</text>
-  </g>
+    <image href="/logos/langchain.svg" x="999.4" y="328" width="22" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="1029.4" y="341.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">LangChain agents</text>
+  </a>
   <text x="992" y="377" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">REPORTS</text>
   <path d="M951,401 L992,401" fill="none" stroke="#5c5a56" stroke-width="1"/>
   <a href="https://lookerstudio.google.com" target="_blank" rel="noopener">
@@ -233,7 +231,8 @@
   <a href="https://powerbi.microsoft.com" target="_blank" rel="noopener">
     <title>Microsoft's business intelligence platform for creating rich reports and dashboards across your organisation.</title>
     <rect x="992" y="422" width="160" height="34" rx="3" fill="#f5f3f0" stroke="#5c5a56" stroke-width="1"/>
-    <image href="/logos/powerbi.png" x="1013" y="429" width="118" height="20" preserveAspectRatio="xMidYMid meet"/>
+    <image href="/logos/powerbi-icon.svg" x="1030.2" y="430" width="18" height="18" preserveAspectRatio="xMidYMid meet"/>
+    <text x="1056.2" y="443.5" font-family="'Outfit', system-ui, sans-serif" font-size="13" font-weight="600" fill="#0a0a0f">Power BI</text>
   </a>
   <text x="992" y="479" text-anchor="start" font-family="'DM Mono', 'SF Mono', ui-monospace, monospace" font-size="11" letter-spacing="0.08em" fill="#5c5a56">YOUR OWN APPS</text>
   <path d="M951,503 L992,503" fill="none" stroke="#5c5a56" stroke-width="1"/>
