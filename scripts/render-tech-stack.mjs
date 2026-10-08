@@ -150,6 +150,7 @@ const TOOL = { h: 64, pitch: 76, logoW: 130, logoH: 24 };
 const CON = { w: 160, h: 34, pitch: 38, groupGap: 12, labelH: 18, firstY: 60 };
 const LABEL_Y = 44;
 const FONT = { label: 11, sub: 12, name: 13 };
+const STROKE = 1.2;                               // every connector, arrow or tick, same weight
 
 const extX = SRC.x + SRC.w + OUTER;
 const whX = extX + BAND.w + GAP;
@@ -241,12 +242,12 @@ function band(x, y, w, h) {
 // elbow connector: horizontal, vertical, horizontal; turns at midX
 function elbow(x1, y1, x2, y2, { thin = false, midX } = {}) {
   const mx = midX ?? (x1 + x2) / 2;
-  return `<path d="M${x1},${y1} L${mx},${y1} L${mx},${y2} L${x2},${y2}" fill="none" stroke="${thin ? LINE : INK}" stroke-width="${thin ? 1 : 1.5}"/>`;
+  return `<path d="M${x1},${y1} L${mx},${y1} L${mx},${y2} L${x2},${y2}" fill="none" stroke="${thin ? LINE : INK}" stroke-width="${STROKE}"/>`;
 }
 
 function line(x1, y1, x2, y2, { thin = false, arrow = false } = {}) {
   const m = arrow ? ' marker-end="url(#ts-arrow)"' : '';
-  return `<path d="M${x1},${y1} L${x2},${y2}" fill="none" stroke="${thin ? LINE : INK}" stroke-width="${thin ? 1 : 1.5}"${m}/>`;
+  return `<path d="M${x1},${y1} L${x2},${y2}" fill="none" stroke="${thin ? LINE : INK}" stroke-width="${STROKE}"${m}/>`;
 }
 
 // ---------------------------------------------------------------- build
