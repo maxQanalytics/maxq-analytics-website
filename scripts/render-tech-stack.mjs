@@ -321,7 +321,7 @@ parts.push(line(busX, Math.min(firstMid, mid(SEMBAND)), busX, Math.max(lastMid, 
 conRows.forEach((r) => {
   if (r.kind === 'label') parts.push(colLabel(conX, r.y, r.text, { anchor: 'start' }));
   else {
-    parts.push(line(busX, r.y + CON.h / 2, conX, r.y + CON.h / 2, { thin: true }));
+    parts.push(line(busX, r.y + CON.h / 2, conX, r.y + CON.h / 2, { arrow: true }));
     parts.push(itemBox(conX, r.y, r.item));
   }
 });
