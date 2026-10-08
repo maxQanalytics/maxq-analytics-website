@@ -91,8 +91,6 @@ const CONSUMER_GROUPS = [
   },
 ];
 
-const OWNED_LABEL = 'YOUR OWN CLOUD ACCOUNTS · YOU STAY IN CONTROL';
-
 // geometry
 const SRC = { x: 14, w: 132, h: 26, pitch: 32, firstY: 86 };
 const BAND = { gap: 46, firstX: 196, y: 54, labelY: 72, pad: 14 };
@@ -128,8 +126,7 @@ const conRows = [];
   });
 }
 const conBottom = Math.max(...conRows.filter((r) => r.kind === 'item').map((r) => r.y)) + CON.h;
-const ownedY = Math.max(altY + altH, conBottom) + 28;
-const CANVAS = { w: conX + CON.w + 14, h: ownedY + 14 };
+const CANVAS = { w: conX + CON.w + 14, h: Math.max(altY + altH, conBottom) + 14 };
 
 // ---------------------------------------------------------------- helpers
 
@@ -250,12 +247,9 @@ conRows.forEach((r) => {
   }
 });
 
-// ownership label under the bands
-const ownedCx = (bandX(0) + bandRight(LAYERS.length - 1)) / 2;
-parts.push(colLabel(ownedCx, ownedY, OWNED_LABEL, { brand: true }));
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
-  <title id="ts-title">Tech stack: your sources (ERP, CRM, bookkeeping, product database, spreadsheets, support tooling) are extracted with Airbyte, Hevo Data or Debezium into a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer on top of the warehouse, Cube serves the result as the semantic layer, and Microsoft Fabric is the all-in-one alternative for warehouse and transformation. Consumers read from the semantic layer in three groups: AI agents (Claude, OpenAI, the Quality Guardian), reports (Looker Studio, Power BI) and your own apps (Next.js, Django). Everything runs in your own cloud accounts.</title>
+  <title id="ts-title">Tech stack: your sources (ERP, CRM, bookkeeping, product database, spreadsheets, support tooling) are extracted with Airbyte, Hevo Data or Debezium into a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer on top of the warehouse, Cube serves the result as the semantic layer, and Microsoft Fabric is the all-in-one alternative for warehouse and transformation. Consumers read from the semantic layer in three groups: AI agents (Claude, OpenAI, the Quality Guardian), reports (Looker Studio, Power BI) and your own apps (Next.js, Django).</title>
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="${INK}"/>
