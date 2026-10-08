@@ -203,10 +203,14 @@ function image(href, cx, cy, w, h) {
   return `<image href="${esc(href)}" x="${cx - w / 2}" y="${cy - h / 2}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid meet"/>`;
 }
 
-function link(url, tip, inner) {
-  if (!url) return `<g>\n    <title>${esc(tip)}</title>\n    ${inner}\n  </g>`;
+// each component is a hover target: the page's script reads data-tip-name and
+// data-tip-text and shows its own tooltip (no SVG title element, so no native
+// delay and nothing pops up in the empty space between components)
+function link(url, name, tip, inner) {
+  const data = `data-tip-name="${esc(name)}" data-tip-text="${esc(tip)}"`;
+  if (!url) return `<g ${data}>\n    ${inner}\n  </g>`;
   const target = url.startsWith('/') ? '' : ' target="_blank" rel="noopener"';
-  return `<a href="${esc(url)}"${target}>\n    <title>${esc(tip)}</title>\n    ${inner}\n  </a>`;
+  return `<a href="${esc(url)}"${target} ${data}>\n    ${inner}\n  </a>`;
 }
 
 function toolBox(x, y, w, tool) {
@@ -215,7 +219,7 @@ function toolBox(x, y, w, tool) {
   const inner = `<rect x="${x}" y="${y}" width="${w}" height="${TOOL.h}" rx="4" fill="#ffffff" stroke="${INK}" stroke-width="1.2"/>
     ${image(tool.logo, cx, y + 23, TOOL.logoW, lh)}
     <text x="${cx}" y="${y + 52}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" fill="${TEXT}">${esc(tool.sub)}</text>`;
-  return link(tool.url, tool.tip, inner);
+  return link(tool.url, tool.name, tool.tip, inner);
 }
 
 function itemBox(x, y, it, w = CON.w) {
@@ -234,7 +238,7 @@ function itemBox(x, y, it, w = CON.w) {
   }
   const inner = `<rect x="${x}" y="${y}" width="${w}" height="${CON.h}" rx="3" fill="#f5f3f0" stroke="${it.self ? BRAND : LINE}" stroke-width="1"/>
     ${content}`;
-  return link(it.url, it.tip, inner);
+  return link(it.url, it.name, it.tip, inner);
 }
 
 function band(x, y, w, h) {
@@ -326,8 +330,7 @@ conRows.forEach((r) => {
   }
 });
 
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
-  <title id="ts-title">Tech stack: product databases (PostgreSQL, MySQL) are streamed with Debezium into the real-time warehouse (ClickHouse); bookkeeping (Exact Online, Yuki), CRM (HubSpot), ERP (Float, Infor), customer care (Freshdesk, Zendesk) and spreadsheets (Google Sheets, Excel) are loaded in batch with Airbyte or Hevo Data into the batch warehouse (BigQuery, Snowflake or the Microsoft Fabric data warehouse). dbt runs as a separate transformation layer underneath the batch warehouse. Both warehouses feed the semantic layer, Cube or Microsoft Fabric semantic models. Extraction, warehouses, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (nao analytics), AI agents (the Quality Guardian, your own LangChain agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-label="Tech stack: product databases (PostgreSQL, MySQL) are streamed with Debezium into the real-time warehouse (ClickHouse); bookkeeping (Exact Online, Yuki), CRM (HubSpot), ERP (Float, Infor), customer care (Freshdesk, Zendesk) and spreadsheets (Google Sheets, Excel) are loaded in batch with Airbyte or Hevo Data into the batch warehouse (BigQuery, Snowflake or the Microsoft Fabric data warehouse). dbt runs as a separate transformation layer underneath the batch warehouse. Both warehouses feed the semantic layer, Cube or Microsoft Fabric semantic models. Extraction, warehouses, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (nao analytics), AI agents (the Quality Guardian, your own LangChain agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django)." style="width:100%;height:auto;display:block">
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="${INK}"/>

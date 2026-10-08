@@ -333,9 +333,39 @@ import stackSvg from '../diagrams/tech-stack-2026-10-08.svg?raw';
       </div>
 
       <!-- Flow chart, tablet and desktop: generated SVG (scripts/render-tech-stack.mjs) -->
-      <div class="hidden md:block">
+      <div id="stack-chart" class="hidden md:block">
         <Fragment set:html={stackSvg} />
       </div>
+      <!-- Custom tooltip for the chart: instant, name in bold, only on components -->
+      <div id="stack-tip" class="pointer-events-none fixed z-50 max-w-xs bg-ink text-cream text-xs rounded-lg px-3 py-2 leading-relaxed shadow-lg" style="display:none">
+        <strong class="block font-bold text-sm mb-0.5"></strong>
+        <span class="text-cream/85"></span>
+      </div>
+      <script>
+        const tip = document.getElementById('stack-tip');
+        const tipName = tip.querySelector('strong');
+        const tipText = tip.querySelector('span');
+        function placeTip(e) {
+          const pad = 14;
+          const r = tip.getBoundingClientRect();
+          let x = e.clientX + pad;
+          let y = e.clientY + pad;
+          if (x + r.width > window.innerWidth - 8) x = e.clientX - r.width - pad;
+          if (y + r.height > window.innerHeight - 8) y = e.clientY - r.height - pad;
+          tip.style.left = x + 'px';
+          tip.style.top = y + 'px';
+        }
+        document.querySelectorAll('#stack-chart [data-tip-name]').forEach((node) => {
+          node.addEventListener('mouseenter', (e) => {
+            tipName.textContent = node.getAttribute('data-tip-name');
+            tipText.textContent = node.getAttribute('data-tip-text');
+            tip.style.display = 'block';
+            placeTip(e);
+          });
+          node.addEventListener('mousemove', placeTip);
+          node.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+        });
+      </script>
 
       <!-- Flow chart, phones: stacked cards -->
       <div class="md:hidden flex flex-col gap-3">
