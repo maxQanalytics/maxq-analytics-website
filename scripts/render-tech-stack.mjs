@@ -31,13 +31,26 @@ const BRAND = '#1a4fff';
 const SANS = `'Outfit', system-ui, sans-serif`;
 const MONO = `'DM Mono', 'SF Mono', ui-monospace, monospace`;
 
-const SOURCES = ['ERP', 'CRM', 'Bookkeeping', 'Product database', 'Spreadsheets', 'Support tooling'];
+const SOURCES = [
+  { kind: 'ERP', systems: '' },
+  { kind: 'CRM', systems: 'HubSpot' },
+  { kind: 'Bookkeeping', systems: 'Exact Online · Yuki' },
+  { kind: 'Product database', systems: 'PostgreSQL · MySQL' },
+  { kind: 'Spreadsheets', systems: 'Google Sheets · Excel' },
+  { kind: 'Support tooling', systems: 'Freshdesk · Zendesk' },
+];
 
-const EXTRACTION = {
-  label: 'EXTRACTION',
+const BATCH = {
+  label: 'EXTRACTION · BATCH',
   tools: [
     { name: 'Airbyte', logo: '/logos/airbyte.svg', sub: 'open-source connectors', url: 'https://airbyte.com', tip: 'Open-source data integration platform for syncing data from APIs, databases and files.' },
     { name: 'Hevo Data', logo: '/logos/hevo.png', logoH: 20, sub: 'no-code · 150+ sources', url: 'https://hevodata.com', tip: 'No-code pipeline platform for extracting and syncing data from 150+ sources into your warehouse.' },
+  ],
+};
+
+const STREAM = {
+  label: 'EXTRACTION · STREAMING',
+  tools: [
     { name: 'Debezium', logo: '/logos/debezium.png', sub: 'change data capture', url: 'https://debezium.io', tip: 'Open-source CDC platform that streams database changes in real time for event-driven data pipelines.' },
   ],
 };
@@ -104,7 +117,7 @@ const CONSUMER_GROUPS = [
 ];
 
 // geometry
-const SRC = { x: 14, w: 142, h: 28, pitch: 34, firstY: 88 };
+const SRC = { x: 14, w: 160, h: 40, pitch: 46, firstY: 70 };
 const GAP = 36;                                   // between columns
 const BAND = { y: 54, labelY: 73, pad: 14, w: 206 };
 const TOOL = { h: 64, pitch: 76, firstY: 90, logoW: 130, logoH: 24 };
@@ -126,6 +139,10 @@ const bandMidY = BAND.y + bandH / 2;
 const bandBottom = BAND.y + bandH;
 
 const TR = { y: bandBottom + 22, h: BAND.pad + 19 + TOOL.h + BAND.pad };   // transformation band
+const BATCHBAND = { y: BAND.y, h: BAND.pad + 19 + TOOL.h + TOOL.pitch + BAND.pad };
+const STREAMBAND = { y: BATCHBAND.y + BATCHBAND.h + 14, h: BAND.pad + 19 + TOOL.h + BAND.pad };
+const batchMidY = BATCHBAND.y + BATCHBAND.h / 2;
+const streamMidY = STREAMBAND.y + STREAMBAND.h / 2;
 
 // consumer rows
 const conRows = [];
@@ -140,7 +157,7 @@ const conRows = [];
 }
 const itemRows = conRows.filter((r) => r.kind === 'item');
 const conBottom = itemRows[itemRows.length - 1].y + CON.h;
-const CANVAS = { w: conX + CON.w + 14, h: Math.max(TR.y + TR.h, conBottom) + 14 };
+const CANVAS = { w: conX + CON.w + 14, h: Math.max(TR.y + TR.h, STREAMBAND.y + STREAMBAND.h, conBottom) + 14 };
 
 // ---------------------------------------------------------------- helpers
 
@@ -169,9 +186,15 @@ function toolBox(x, y, w, tool) {
   return link(tool.url, tool.tip, inner);
 }
 
-function softBox(x, y, w, h, text) {
+function sourceBox(x, y, w, h, src) {
+  const cx = x + w / 2;
+  if (!src.systems) {
+    return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#f5f3f0" stroke="${LINE}" stroke-width="1"/>
+  <text x="${cx}" y="${y + h / 2 + 4}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" font-weight="600" fill="${INK}">${esc(src.kind)}</text>`;
+  }
   return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#f5f3f0" stroke="${LINE}" stroke-width="1"/>
-  <text x="${x + w / 2}" y="${y + h / 2 + 4}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" fill="${TEXT}">${esc(text)}</text>`;
+  <text x="${cx}" y="${y + 16}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" font-weight="600" fill="${INK}">${esc(src.kind)}</text>
+  <text x="${cx}" y="${y + 31}" text-anchor="middle" font-family="${SANS}" font-size="11" fill="${TEXT}">${esc(src.systems)}</text>`;
 }
 
 function consumerBox(x, y, it) {
@@ -213,18 +236,26 @@ const parts = [];
 
 // sources column, fanning into the extraction band through one elbow lane
 parts.push(colLabel(SRC.x + SRC.w / 2, LABEL_Y, 'SOURCES'));
-SOURCES.forEach((name, j) => {
+const laneX = SRC.x + SRC.w + (extX - SRC.x - SRC.w) / 2;
+const srcMids = SOURCES.map((_, j) => SRC.firstY + j * SRC.pitch + SRC.h / 2);
+SOURCES.forEach((src, j) => {
   const y = SRC.firstY + j * SRC.pitch;
-  parts.push(softBox(SRC.x, y, SRC.w, SRC.h, name));
-  parts.push(elbow(SRC.x + SRC.w, y + SRC.h / 2, extX - 8, bandMidY, { thin: true, midX: SRC.x + SRC.w + (extX - SRC.x - SRC.w) / 2 }));
+  parts.push(sourceBox(SRC.x, y, SRC.w, SRC.h, src));
+  parts.push(line(SRC.x + SRC.w, y + SRC.h / 2, laneX, y + SRC.h / 2, { thin: true }));
 });
-parts.push(line(extX - 8, bandMidY, extX, bandMidY, { arrow: true }));
+parts.push(line(laneX, Math.min(srcMids[0], batchMidY), laneX, Math.max(srcMids[srcMids.length - 1], streamMidY), { thin: true }));
+parts.push(line(laneX, batchMidY, extX, batchMidY, { arrow: true }));
+parts.push(line(laneX, streamMidY, extX, streamMidY, { arrow: true }));
 
-// extraction band
-parts.push(band(extX, BAND.y, BAND.w, bandH));
-parts.push(colLabel(extX + BAND.w / 2, BAND.labelY, EXTRACTION.label));
-EXTRACTION.tools.forEach((t, j) => parts.push(toolBox(extX + BAND.pad, toolY(j), toolW, t)));
-parts.push(line(extX + BAND.w, bandMidY, whX, bandMidY, { arrow: true }));
+// extraction: batch band on top, streaming band below
+parts.push(band(extX, BATCHBAND.y, BAND.w, BATCHBAND.h));
+parts.push(colLabel(extX + BAND.w / 2, BATCHBAND.y + 19, BATCH.label));
+BATCH.tools.forEach((t, j) => parts.push(toolBox(extX + BAND.pad, BATCHBAND.y + BAND.pad + 19 + j * TOOL.pitch, toolW, t)));
+parts.push(line(extX + BAND.w, batchMidY, whX, batchMidY, { arrow: true }));
+parts.push(band(extX, STREAMBAND.y, BAND.w, STREAMBAND.h));
+parts.push(colLabel(extX + BAND.w / 2, STREAMBAND.y + 19, STREAM.label));
+STREAM.tools.forEach((t, j) => parts.push(toolBox(extX + BAND.pad, STREAMBAND.y + BAND.pad + 19 + j * TOOL.pitch, toolW, t)));
+parts.push(line(extX + BAND.w, streamMidY, whX, streamMidY, { arrow: true }));
 
 // warehouse band
 parts.push(band(whX, BAND.y, BAND.w, bandH));
@@ -262,7 +293,7 @@ conRows.forEach((r) => {
 });
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-labelledby="ts-title" style="width:100%;height:auto;display:block">
-  <title id="ts-title">Tech stack: your sources (ERP, CRM, bookkeeping, product database, spreadsheets, support tooling) are extracted with Airbyte, Hevo Data or Debezium into a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube or Microsoft Fabric semantic models serve the result as the semantic layer. Consumers read from the semantic layer in five groups: AI agents (the Quality Guardian, your own client agents), MCPs (the nao analytics MCP), AI models (Claude, OpenAI, Gemini), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
+  <title id="ts-title">Tech stack: your sources (ERP, CRM such as HubSpot, bookkeeping such as Exact Online and Yuki, product databases such as PostgreSQL and MySQL, spreadsheets such as Google Sheets and Excel, support tooling such as Freshdesk and Zendesk) are extracted in batch with Airbyte or Hevo Data, or streamed with Debezium, into a warehouse (BigQuery, Snowflake or ClickHouse). dbt runs as a separate transformation layer underneath the warehouse, Cube or Microsoft Fabric semantic models serve the result as the semantic layer. Consumers read from the semantic layer in five groups: AI agents (the Quality Guardian, your own client agents), MCPs (the nao analytics MCP), AI models (Claude, OpenAI, Gemini), reports (Data Studio, Power BI) and your own apps (Next.js, Django).</title>
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="${INK}"/>
