@@ -53,12 +53,8 @@ export const DESCRIPTIONS = {
 // Pages that are live but reachable only by their URL (not in the nav or
 // footer). They stay indexable but are left out of the sitemap.
 export const UNLISTED_PATHS = [
-  '/add-ons/deal-expander/',
-  '/add-ons/enterprise-valuator/',
-  '/add-ons/firefighter/',
-  '/add-ons/metricsrouter/',
-  '/add-ons/upsell-calculator/',
-  '/add-ons/weekly-okr-tracker/',
+  // Empty since 2026-10-09: the unlisted add-on pages were archived to
+  // src/archive/add-ons/ (their descriptions above are kept for when they return).
 ];
 
 // Preview editions: /add-ons/<slug>-YYYY-MM-DD-word-word-word and homepage

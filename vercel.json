@@ -4,6 +4,40 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "redirects": [
-    { "source": "/features", "destination": "/#product-items", "permanent": false }
+    {
+      "source": "/features",
+      "destination": "/#product-items",
+      "permanent": false
+    },
+    {
+      "source": "/add-ons/deal-expander{/}?",
+      "destination": "/add-ons/",
+      "permanent": true
+    },
+    {
+      "source": "/add-ons/enterprise-valuator{/}?",
+      "destination": "/add-ons/",
+      "permanent": true
+    },
+    {
+      "source": "/add-ons/firefighter{/}?",
+      "destination": "/add-ons/",
+      "permanent": true
+    },
+    {
+      "source": "/add-ons/metricsrouter{/}?",
+      "destination": "/add-ons/",
+      "permanent": true
+    },
+    {
+      "source": "/add-ons/upsell-calculator{/}?",
+      "destination": "/add-ons/",
+      "permanent": true
+    },
+    {
+      "source": "/add-ons/weekly-okr-tracker{/}?",
+      "destination": "/add-ons/",
+      "permanent": true
+    }
   ]
 }

@@ -13,6 +13,14 @@ pages live in `src/pages/add-ons/`; nav and footer links are hand-maintained in
 - Commit only the files that belong to the change. The tree may carry other
   in-progress work; stage by path, never `git add -A`.
 
+## Archived add-on pages (since 2026-10-09)
+Add-on pages that are not sold actively live in `src/archive/add-ons/`, outside
+the build, with their old URLs redirecting to `/add-ons/` in `vercel.json`.
+Do not put a page back under `src/pages/` just because it exists there; see
+`src/archive/add-ons/README.md` for the steps. Pages that are live but not in
+the nav are indexable by Google, so a page that must stay private needs
+`<Layout noindex>` or the archive.
+
 ## Preview editions of add-on pages (unlisted URLs)
 Used when an add-on page is rebuilt and should be reviewed, or shown to one
 prospect, before it replaces the public page. Full procedure in

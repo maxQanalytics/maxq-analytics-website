@@ -1,0 +1,659 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+---
+
+<Layout title="OKR Tracker — Maxq Analytics">
+  <SiteNav />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-20 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <a href="/add-ons" class="inline-flex items-center gap-2 font-mono text-xs text-white/40 hover:text-white/70 transition-colors mb-8">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        All add-ons
+      </a>
+      <div class="flex items-center gap-2 mb-6">
+        <span class="font-mono text-[10px] font-medium text-brand-300 bg-brand-600/10 border border-brand-600/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Add-on</span>
+        <span class="font-mono text-[10px] font-medium text-violet-400 bg-violet-400/10 border border-violet-400/20 px-2 py-0.5 rounded-full uppercase tracking-wider">Report</span>
+      </div>
+      <h1 class="font-black mb-6 leading-none" style="font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.04em">OKR Tracker</h1>
+      <p class="text-xl text-cream/55 max-w-2xl leading-relaxed mb-10">A bespoke report template that standardises how your team sets, tracks, and reviews OKRs each week — with live metrics, progress charts, and annotated context all in one place.</p>
+      <a href="https://calendly.com/philip-boontje?utm_content=okr-tracker" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        Set up your first OKR cycle
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">How it works</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 280px">OKR reviews that actually tell the story.</h2>
+        </div>
+        <div class="space-y-4 text-ink/60 leading-relaxed max-w-xl pt-1">
+          <p>Most OKR tracking lives in a spreadsheet that nobody opens between quarters. The OKR Tracker is a structured weekly report template that pulls actual metric performance into a consistent format your team reviews together every week.</p>
+          <p>Each key result gets its own chart: target vs. actual, week by week, with annotations for context — a spike caused by a LinkedIn post, a dip caused by an outage. The narrative is built in, not reconstructed after the fact.</p>
+          <p>The data source is flexible depending on the level of automation your team wants. At the fully automated end, the report connects directly to your Semantic Nexus and refreshes without any manual input. If you're not there yet, it can be populated from a spreadsheet instead — giving you the same structured format while you build toward a more automated setup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mockup -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Example output</div>
+        <h2 class="text-3xl font-bold text-ink mb-2" style="letter-spacing: -0.02em">What a weekly check-in looks like.</h2>
+        <p class="text-ink/50 text-sm">Q2 2026 · Key Result 02 · Onboarding perception · Owner: Lars Vermeer</p>
+      </div>
+
+      <!-- KR one-pager inlined -->
+      <div class="kr-onepager">
+        <div class="krp-page">
+
+          <div class="krp-header">
+            <span class="krp-header-objective">Objective: <em>Deliver every implementation with a 9+</em></span>
+            <span class="krp-header-period">Q2 2026 · April – June</span>
+          </div>
+
+          <div class="krp-kr-strip">
+            <div class="krp-kr-strip-left">
+              <div class="krp-kr-strip-top">
+                <span class="krp-kr-code">Key Result 02:&nbsp;</span>
+                <span class="krp-kr-text">Onboarding perception &gt; 4.0</span>
+              </div>
+              <div class="krp-kr-strip-meta">
+                <span class="krp-owner">Owner: Lars Vermeer</span>
+                <span>·</span>
+                <span>Weekly manual assessment by implementation lead · 1–5 scale</span>
+              </div>
+            </div>
+            <div class="krp-score-cards">
+              <div class="krp-score-block">
+                <div class="krp-score-block-text">
+                  <div class="krp-score-label">Current Score</div>
+                  <div class="krp-score-value">3.3</div>
+                  <div class="krp-score-target">Target: 4.0</div>
+                </div>
+                <div class="krp-rag-badge">⚠ 77%</div>
+              </div>
+              <div class="krp-score-block">
+                <div class="krp-score-block-text">
+                  <div class="krp-score-label">Expected Score</div>
+                  <div class="krp-score-value krp-green">4.2</div>
+                  <div class="krp-score-target">Target: 4.0</div>
+                </div>
+                <div class="krp-rag-badge krp-green">✓ 105%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="krp-body">
+
+            <div>
+              <div class="krp-section-eyebrow">Tracking</div>
+              <div class="krp-section-title">Progress over time</div>
+              <div class="krp-charts-grid">
+                <div class="krp-chart-panel">
+                  <div class="krp-chart-sub-title">Key Result Score (1–5)</div>
+                  <div class="krp-chart-wrapper">
+                    <canvas id="krChart"></canvas>
+                  </div>
+                </div>
+                <div class="krp-chart-panel">
+                  <div class="krp-chart-sub-title">OKR Score (0–100%)</div>
+                  <div class="krp-chart-wrapper">
+                    <canvas id="scoreChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="krp-section-eyebrow">Execution</div>
+              <div class="krp-section-title">Key initiatives</div>
+              <div class="krp-initiatives-table">
+                <div class="krp-initiatives-table-head">
+                  <span>Initiative</span>
+                  <span>Due date</span>
+                  <span>Delay remedy</span>
+                  <span>KR impact</span>
+                </div>
+
+                <div class="krp-initiative-row">
+                  <div>
+                    <div class="krp-ini-name">Dedicated implementation coach per client</div>
+                    <div class="krp-ini-desc">All clients have been assigned a dedicated implementation coach. The single point of contact model has been fully rolled out and has measurably reduced escalation volume and improved response times across active implementations.</div>
+                    <div class="krp-ini-owner">Owner: Tom Vandenberg</div>
+                  </div>
+                  <div>
+                    <div class="krp-ini-due">15 Apr 2026</div>
+                    <div class="krp-ini-delivery-date">Delivered: 15 Apr 2026</div>
+                    <span class="krp-ini-status-badge krp-delivered">✓ Delivered</span>
+                  </div>
+                  <div class="krp-ini-remedy krp-none">—</div>
+                  <div><span class="krp-ini-impact-badge krp-high">High</span></div>
+                </div>
+
+                <div class="krp-initiative-row">
+                  <div>
+                    <div class="krp-ini-name">Weekly check-in cadence (first 90 days)</div>
+                    <div class="krp-ini-desc">Weekly check-in cadence has been successfully rolled out across all active implementations in the first 90 days. Early signals are now consistently captured before they affect perception scores, and client teams report higher confidence in the process.</div>
+                    <div class="krp-ini-owner">Owner: Lisa Kramer</div>
+                  </div>
+                  <div>
+                    <div class="krp-ini-due">1 Jun 2026</div>
+                    <div class="krp-ini-delivery-date">Delivered: 2 May 2026</div>
+                    <span class="krp-ini-status-badge krp-delivered">✓ Delivered</span>
+                  </div>
+                  <div class="krp-ini-remedy krp-none">—</div>
+                  <div><span class="krp-ini-impact-badge krp-medium">Medium</span></div>
+                </div>
+
+                <div class="krp-initiative-row">
+                  <div>
+                    <div class="krp-ini-name">Onboarding playbook redesign</div>
+                    <div class="krp-ini-desc">Playbook redesign remains in progress and has not yet been fully delivered against the original due date of 28 April. Internal review cycles ran longer than planned. A revised version is under final sign-off and delivery is expected by 25 May 2026.</div>
+                    <div class="krp-ini-owner">Owner: Sarah Mitchell</div>
+                  </div>
+                  <div>
+                    <div class="krp-ini-due">28 Apr 2026</div>
+                    <div class="krp-ini-delivery-date">Delivered: 20 May 2026</div>
+                    <span class="krp-ini-status-badge krp-delayed">✗ Overdue</span>
+                  </div>
+                  <div class="krp-ini-remedy">
+                    <div class="krp-remedy-item">1. Escalated to implementation lead; daily stand-up introduced to unblock open review items.</div>
+                    <div class="krp-remedy-item">2. Revised go-live target agreed with stakeholders; final sign-off expected by 25 May.</div>
+                  </div>
+                  <div><span class="krp-ini-impact-badge krp-inactive">Inactive</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="krp-section-eyebrow">Signals</div>
+              <div class="krp-section-title">Major increases and drops</div>
+              <div class="krp-comments-columns">
+                <div class="krp-comments-col">
+                  <div class="krp-col-label krp-green">▲ Increases</div>
+                  <div class="krp-comment-card krp-positive">
+                    <div class="krp-comment-header">
+                      <div class="krp-comment-dot"></div>
+                      <div class="krp-comment-client">Acme Financial</div>
+                      <div class="krp-comment-delta">
+                        <span class="krp-delta-kr">4.2</span>
+                        <span class="krp-delta-change krp-up">↑1.4</span>
+                      </div>
+                    </div>
+                    <div class="krp-comment-text">After a dedicated coach was assigned in week 3, Acme's score jumped from 2.8 to 4.2 over four weeks. Client feedback: <em>"Response times have dramatically improved and we finally feel like a priority."</em></div>
+                  </div>
+                  <div class="krp-comment-card krp-positive">
+                    <div class="krp-comment-header">
+                      <div class="krp-comment-dot"></div>
+                      <div class="krp-comment-client">RetailPlus Group</div>
+                      <div class="krp-comment-delta">
+                        <span class="krp-delta-kr">3.9</span>
+                        <span class="krp-delta-change krp-up">↑0.8</span>
+                      </div>
+                    </div>
+                    <div class="krp-comment-text">Adoption of the revised onboarding playbook drove a steady improvement for RetailPlus. Client cited clearer milestone tracking and proactive communication as the main drivers of improved confidence.</div>
+                  </div>
+                </div>
+                <div class="krp-comments-col">
+                  <div class="krp-col-label krp-red">▼ Drops</div>
+                  <div class="krp-comment-card krp-negative">
+                    <div class="krp-comment-header">
+                      <div class="krp-comment-dot"></div>
+                      <div class="krp-comment-client">HealthCheck GmbH</div>
+                      <div class="krp-comment-delta">
+                        <span class="krp-delta-kr">2.9</span>
+                        <span class="krp-delta-change krp-down">↓0.9</span>
+                      </div>
+                    </div>
+                    <div class="krp-comment-text">Score dropped sharply during the week of 1 May due to delays in their data migration phase. Issue has been escalated and a remediation plan with clear deadlines is now in place. Recovery expected by end of May.</div>
+                  </div>
+                  <div class="krp-comment-card krp-negative">
+                    <div class="krp-comment-header">
+                      <div class="krp-comment-dot"></div>
+                      <div class="krp-comment-client">LogisticsPro BV</div>
+                      <div class="krp-comment-delta">
+                        <span class="krp-delta-kr">3.0</span>
+                        <span class="krp-delta-change krp-down">↓0.5</span>
+                      </div>
+                    </div>
+                    <div class="krp-comment-text">Client perception declined citing insufficient communication during the system integration phase. A dedicated follow-up call has been scheduled and a revised communication plan has been agreed with the account lead.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="krp-footer">
+            <div class="krp-footer-left">OKR Tracker · Maxq Analytics</div>
+            <div class="krp-footer-right">Generated 18 May 2026 · Q2 2026</div>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="text-xs text-ink/40 mt-6 text-center font-mono">Illustrative output — key results and initiatives are configured per client context.</p>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="py-24 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-4">Roadmap</div>
+        <h2 class="text-3xl font-bold text-cream" style="letter-spacing: -0.02em">Where we're taking it.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">1</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">In progress</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Active development at Freeday</h3>
+          <p class="text-white/50 text-sm leading-relaxed">We are actively developing the OKR Tracker with Freeday to support their weekly team check-in for their implementation funnel. The report tracks key metrics that directly reflect the reliability and performance of their implementation process — giving the team a consistent, data-backed view every week and surfacing blockers before they compound.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center font-black text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5)">2</div>
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-wider">Coming next</span>
+          </div>
+          <h3 class="font-bold text-cream text-lg mb-3">Plug-and-play template</h3>
+          <p class="text-white/50 text-sm leading-relaxed">The goal is to make the OKR Tracker accessible without a weeks-long implementation. We're working towards a template-based setup that lets clients define their key results, connect their data source, and have a working weekly check-in report running within a few hours — rather than a bespoke build from scratch each time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-24 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-8 md:mb-0">
+          <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Pricing</div>
+          <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em; max-width: 260px">Implementation only.</h2>
+        </div>
+        <div class="max-w-xl pt-1">
+          <p class="text-ink/60 leading-relaxed mb-5">The OKR Tracker is a report template — not a standalone product. Every implementation is built around your specific key results, your data model, and the metrics that actually matter to your team. That level of bespoke configuration makes it impractical to charge a recurring or usage-based fee.</p>
+          <p class="text-ink/60 leading-relaxed mb-8">We charge for the implementation work only: scoping which key results to track, wiring them to your live data in Semantic Nexus, and building the report in a format your team will actually use in their weekly rhythm.</p>
+          <div class="bg-warm border border-ink/10 rounded-xl p-6 flex flex-col sm:flex-row sm:items-center gap-5">
+            <div class="flex-1">
+              <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-1">Pricing model</p>
+              <p class="font-black text-ink text-xl" style="letter-spacing: -0.02em">Implementation fee only</p>
+              <p class="text-ink/50 text-sm mt-1">No licence fee — you own the template once it's built.</p>
+            </div>
+            <a href="https://calendly.com/philip-boontje?utm_content=okr-tracker" target="_blank" rel="noopener" class="shrink-0 inline-flex items-center gap-2 bg-ink text-cream font-semibold px-6 py-3 rounded-full hover:bg-ink/80 transition-colors text-sm">
+              Get a scope
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-14">
+        <div class="text-xs font-mono font-medium text-brand-600 uppercase tracking-widest mb-4">Built and maintained by</div>
+        <h2 class="text-3xl font-bold text-ink" style="letter-spacing: -0.02em">The person behind the OKR Tracker.</h2>
+      </div>
+      <div class="max-w-sm">
+        <div class="bg-cream rounded-2xl p-8 border border-ink/8">
+          <img src="/team/philip.png" alt="Philip Boontje" class="w-16 h-16 rounded-full object-cover mb-6 ring-2 ring-ink/8" />
+          <h3 class="font-bold text-ink text-lg mb-1">Philip Boontje</h3>
+          <p class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-1">Product Owner · Maintainer & developer</p>
+          <p class="font-mono text-[10px] text-ink/35 uppercase tracking-wider mb-4">Founder · Maxq Analytics</p>
+          <p class="text-ink/60 text-sm leading-relaxed">Philip is the product owner and developer on the OKR Tracker. He designs the report structure, wires it to client data in Semantic Nexus, and adapts each implementation to the specific key results and team rhythm of the client.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 bg-ink text-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-6">Get started</div>
+      <h2 class="text-4xl font-black mb-4" style="letter-spacing: -0.03em">OKR reviews that <span class="text-brand-300">tell the whole story.</span></h2>
+      <p class="text-cream/50 mb-10 leading-relaxed">We'll map your key results, wire them to your live data, and build the first weekly check-in together — so your team walks into the next review with a report that's already ready.</p>
+      <a href="https://calendly.com/philip-boontje?utm_content=okr-tracker" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-colors text-sm">
+        Set up your first OKR cycle
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <SiteFooter />
+</Layout>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+  .kr-onepager {
+    --krp-cream: #FCF9F7; --krp-sand: #EFE9E4;
+    --krp-orange: #FF641D; --krp-orangeFaint: rgba(255,100,29,.07);
+    --krp-dark: #0D0A19;
+    --krp-green: #22C55E; --krp-greenFaint: rgba(34,197,94,.07);
+    --krp-red: #EF4444;   --krp-redFaint: rgba(239,68,68,.07);
+    --krp-amber: #F59E0B; --krp-amberFaint: rgba(245,158,11,.07);
+    --krp-text: #1A1712; --krp-textSec: #6B6560; --krp-textMut: #A8A29E;
+    --krp-white: #FFF; --krp-cardBdr: #E8E2DB;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    color: var(--krp-text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    zoom: 0.8;
+    transform-origin: top left;
+  }
+
+  .krp-page {
+    max-width: 1080px;
+    margin: 0 auto;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 32px rgba(13,10,25,.12);
+  }
+
+  .krp-header {
+    background: var(--krp-dark);
+    padding: 13px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .krp-header-objective {
+    font-size: 16px; font-weight: 600;
+    color: rgba(255,255,255,.75); letter-spacing: -.01em;
+  }
+  .krp-header-objective em { font-style: normal; color: rgba(255,255,255,.95); }
+  .krp-header-period {
+    font-size: 12px; font-weight: 700; letter-spacing: .10em;
+    text-transform: uppercase; color: var(--krp-orange);
+    white-space: nowrap; flex-shrink: 0;
+  }
+
+  .krp-kr-strip {
+    background: var(--krp-white);
+    border-bottom: 1px solid var(--krp-cardBdr);
+    border-left: 3px solid var(--krp-orange);
+    padding: 8px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .krp-kr-strip-left { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+  .krp-kr-strip-top  { display: flex; align-items: baseline; flex-wrap: nowrap; }
+  .krp-kr-code { font-size: 22px; font-weight: 600; color: var(--krp-orange); white-space: nowrap; }
+  .krp-kr-text { font-size: 22px; font-weight: 600; color: var(--krp-text); }
+  .krp-kr-strip-meta {
+    font-size: 12px; color: var(--krp-textMut);
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+  }
+  .krp-owner { color: var(--krp-textSec); font-weight: 600; }
+
+  .krp-score-cards {
+    display: flex; border: 1px solid var(--krp-cardBdr);
+    border-radius: 8px; overflow: hidden; flex-shrink: 0;
+    background: var(--krp-cream);
+  }
+  .krp-score-block {
+    padding: 8px 18px; text-align: center;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .krp-score-block + .krp-score-block { border-left: 1px solid var(--krp-cardBdr); }
+  .krp-score-block-text { display: flex; flex-direction: column; gap: 1px; }
+  .krp-score-label {
+    font-size: 9px; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--krp-textMut);
+  }
+  .krp-score-value {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 34px; font-weight: 700; font-style: italic;
+    color: var(--krp-amber); line-height: 1;
+  }
+  .krp-score-value.krp-green { color: var(--krp-green); }
+  .krp-score-target { font-size: 11px; color: var(--krp-textMut); }
+  .krp-rag-badge {
+    display: inline-flex; align-items: center;
+    padding: 3px 9px; border-radius: 20px;
+    font-size: 11px; font-weight: 700; letter-spacing: .04em;
+    text-transform: uppercase;
+    background: var(--krp-amberFaint); color: var(--krp-amber);
+    border: 1px solid rgba(245,158,11,.25); white-space: nowrap;
+  }
+  .krp-rag-badge.krp-green {
+    background: var(--krp-greenFaint); color: var(--krp-green);
+    border-color: rgba(34,197,94,.25);
+  }
+
+  .krp-body {
+    background: var(--krp-cream);
+    padding: 28px 32px;
+    display: flex; flex-direction: column; gap: 32px;
+  }
+
+  .krp-section-eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--krp-orange); margin-bottom: 6px;
+  }
+  .krp-section-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 22px; font-weight: 700; color: var(--krp-dark);
+    margin-bottom: 16px; letter-spacing: -.015em; line-height: 1.2;
+  }
+
+  .krp-charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .krp-chart-panel {
+    background: var(--krp-white); border: 1px solid var(--krp-cardBdr);
+    border-radius: 14px; padding: 16px;
+  }
+  .krp-chart-sub-title {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--krp-text);
+    margin-bottom: 8px; text-align: center;
+  }
+  .krp-chart-wrapper { position: relative; height: 405px; }
+
+  .krp-initiatives-table {
+    background: var(--krp-white); border: 1px solid var(--krp-cardBdr);
+    border-radius: 12px; overflow: hidden;
+  }
+  .krp-initiatives-table-head {
+    display: grid; grid-template-columns: 2fr 130px 2fr 80px;
+    padding: 8px 16px; background: var(--krp-sand);
+    border-bottom: 1px solid var(--krp-cardBdr); gap: 12px;
+  }
+  .krp-initiatives-table-head span {
+    font-size: 9px; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--krp-text);
+  }
+  .krp-initiative-row {
+    display: grid; grid-template-columns: 2fr 130px 2fr 80px;
+    padding: 12px 16px; gap: 12px; align-items: start;
+    border-bottom: 1px solid var(--krp-cardBdr); transition: background .15s;
+  }
+  .krp-initiative-row:last-child { border-bottom: none; }
+  .krp-initiative-row:hover { background: var(--krp-cream); }
+  .krp-ini-name {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 13px; font-weight: 700; color: var(--krp-dark);
+    letter-spacing: -.01em; line-height: 1.3;
+  }
+  .krp-ini-owner { font-size: 10px; color: var(--krp-textMut); margin-top: 2px; margin-bottom: 4px; }
+  .krp-ini-desc  { font-size: 11px; color: var(--krp-textSec); line-height: 1.55; margin-top: 4px; }
+  .krp-ini-due   { font-size: 11px; color: var(--krp-textSec); font-weight: 500; padding-top: 1px; }
+  .krp-ini-delivery-date { font-size: 10px; color: var(--krp-textMut); margin-top: 3px; margin-bottom: 4px; }
+  .krp-ini-status-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 9px; font-weight: 700; padding: 3px 8px;
+    border-radius: 20px; letter-spacing: .04em; text-transform: uppercase; width: fit-content;
+  }
+  .krp-ini-status-badge.krp-delivered { background: var(--krp-greenFaint); color: var(--krp-green); }
+  .krp-ini-status-badge.krp-delayed   { background: var(--krp-redFaint);   color: var(--krp-red); }
+  .krp-ini-remedy      { font-size: 11px; color: var(--krp-textSec); line-height: 1.5; padding-top: 1px; }
+  .krp-ini-remedy.krp-none { color: var(--krp-textMut); }
+  .krp-remedy-item { font-size: 11px; color: var(--krp-textSec); line-height: 1.5; margin-bottom: 4px; }
+  .krp-remedy-item:last-child { margin-bottom: 0; }
+  .krp-ini-impact-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; padding: 3px 10px;
+    border-radius: 20px; letter-spacing: .06em; text-transform: uppercase; width: fit-content;
+  }
+  .krp-ini-impact-badge.krp-high     { background: var(--krp-greenFaint); color: var(--krp-green); }
+  .krp-ini-impact-badge.krp-medium   { background: var(--krp-amberFaint); color: var(--krp-amber); }
+  .krp-ini-impact-badge.krp-inactive { background: rgba(168,162,158,.12); color: var(--krp-textMut); }
+
+  .krp-comments-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .krp-comments-col     { display: flex; flex-direction: column; gap: 10px; }
+  .krp-col-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px; }
+  .krp-col-label.krp-green { color: var(--krp-green); }
+  .krp-col-label.krp-red   { color: var(--krp-red); }
+  .krp-comment-card {
+    background: var(--krp-white); border: 1px solid var(--krp-cardBdr);
+    border-radius: 12px; padding: 14px 16px;
+  }
+  .krp-comment-card.krp-positive { border-top: 3px solid var(--krp-green); }
+  .krp-comment-card.krp-negative { border-top: 3px solid var(--krp-red); }
+  .krp-comment-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .krp-comment-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .krp-positive .krp-comment-dot { background: var(--krp-green); }
+  .krp-negative .krp-comment-dot { background: var(--krp-red); }
+  .krp-comment-client {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 14px; font-weight: 700; color: var(--krp-dark); letter-spacing: -.01em;
+  }
+  .krp-comment-delta { display: flex; align-items: center; gap: 6px; margin-left: auto; flex-shrink: 0; }
+  .krp-delta-kr {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 14px; font-weight: 700; font-style: italic; color: var(--krp-dark);
+  }
+  .krp-delta-change { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+  .krp-delta-change.krp-up   { background: var(--krp-greenFaint); color: var(--krp-green); }
+  .krp-delta-change.krp-down { background: var(--krp-redFaint);   color: var(--krp-red); }
+  .krp-comment-text { font-size: 12px; color: var(--krp-textSec); line-height: 1.6; }
+
+  .krp-footer {
+    background: var(--krp-white); border-top: 1px solid var(--krp-cardBdr);
+    padding: 14px 32px; display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .krp-footer-left  { font-size: 11px; color: var(--krp-textMut); font-weight: 500; }
+  .krp-footer-right { font-size: 11px; color: var(--krp-textMut); font-weight: 500; }
+</style>
+
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script is:inline>
+  (function () {
+    const dataLabelPlugin = {
+      id: 'dataLabelPlugin',
+      afterDatasetsDraw(chart) {
+        const ctx = chart.ctx;
+        ctx.save();
+        chart.data.datasets.forEach((dataset, di) => {
+          const opts = dataset.dataLabels;
+          if (!opts || opts.display === false) return;
+          const meta = chart.getDatasetMeta(di);
+          if (meta.hidden) return;
+          ctx.font = '600 10px "DM Sans", system-ui, sans-serif';
+          ctx.textAlign = 'center';
+          meta.data.forEach((el, idx) => {
+            const raw = dataset.data[idx];
+            if (raw === null || raw === undefined) return;
+            const label  = opts.formatter ? opts.formatter(raw) : String(raw);
+            const align  = opts.align || 'top';
+            const offset = opts.offset !== undefined ? opts.offset : 6;
+            ctx.fillStyle = opts.color || '#A8A29E';
+            if (align === 'top') { ctx.textBaseline = 'bottom'; ctx.fillText(label, el.x, el.y - offset); }
+            else                 { ctx.textBaseline = 'top';    ctx.fillText(label, el.x, el.y + offset); }
+          });
+        });
+        ctx.restore();
+      }
+    };
+    Chart.register(dataLabelPlugin);
+
+    const labels = [
+      ['4 Apr','n=15'],['10 Apr','n=16'],['17 Apr','n=15'],
+      ['24 Apr','n=17'],['1 May','n=18'],['8 May','n=20'],['15 May','n=18'],
+      '22 May','29 May','5 Jun','12 Jun','19 Jun','26 Jun'
+    ];
+
+    const krActuals     = [3.20,3.30,3.50,3.30,2.80,3.00,3.30,null,null,null,null,null,null];
+    const krExpect      = [null,null,null,null,null,null,3.30,3.30,3.60,3.70,3.90,4.10,4.20];
+    const krTarget      = labels.map(() => 4.00);
+    const krLow         = [2.50,2.58,2.67,2.75,2.83,2.92,3.00,3.08,3.17,3.25,3.33,3.42,3.50];
+    const krHigh        = [3.00,3.08,3.17,3.25,3.33,3.42,3.50,3.58,3.67,3.75,3.83,3.92,4.00];
+    const scoreActuals  = [73,77,83,77,60,67,77,null,null,null,null,null,null];
+    const scoreExpect   = [null,null,null,null,null,null,77,77,87,90,97,103,107];
+    const scoreTarget   = labels.map(() => 100);
+    const scoreLow      = [50,53,56,58,61,64,67,69,72,75,78,81,83];
+    const scoreHigh     = [67,69,72,75,78,81,83,86,89,92,94,97,100];
+
+    function dl(formatter, align, color) {
+      return { formatter, align, offset: 6, color: color || '#A8A29E' };
+    }
+
+    function makeOpts(yMin, yMax, yFn) {
+      return {
+        responsive: true, maintainAspectRatio: false,
+        layout: { padding: { top: 22, bottom: 4 } },
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#0D0A19', titleColor: '#A8A29E', bodyColor: '#fff',
+            padding: 10, borderColor: 'rgba(255,255,255,.08)', borderWidth: 1,
+            callbacks: { label: ctx => ctx.parsed.y !== null ? ` ${ctx.dataset.label}: ${yFn(ctx.parsed.y)}` : null }
+          }
+        },
+        scales: {
+          x: { grid: { color: '#EFE9E4' }, ticks: { font: { size: 9.5 }, color: '#1A1712', maxRotation: 0 } },
+          y: { min: yMin, max: yMax, grid: { color: '#EFE9E4' }, ticks: { font: { size: 10 }, color: '#1A1712', callback: yFn } }
+        }
+      };
+    }
+
+    const krOpts = makeOpts(1, 5, v => v.toFixed(1));
+    krOpts.plugins.tooltip.filter = item => item.datasetIndex < 3;
+
+    new Chart(document.getElementById('krChart'), {
+      type: 'line',
+      data: { labels, datasets: [
+        { label:'Target',      data: krTarget,  borderColor:'#0D0A19', borderWidth:1, pointRadius:0, tension:0, spanGaps:true, dataLabels:{display:false} },
+        { label:'Actuals',     data: krActuals, borderColor:'#6D4BEF', borderWidth:2, pointRadius:2.5, pointBackgroundColor:'#6D4BEF', tension:0.3, spanGaps:false, dataLabels: dl(v=>v.toFixed(2),'top','#6D4BEF') },
+        { label:'Expectation', data: krExpect,  borderColor:'#8B7EE8', borderWidth:2, borderDash:[6,4], pointRadius:2, pointBackgroundColor:'#8B7EE8', tension:0.3, spanGaps:false, dataLabels: dl(v=>v.toFixed(2),'bottom','#8B7EE8') },
+        { label:'Low',  data:krLow,  borderColor:'transparent', borderWidth:0, pointRadius:0, tension:0.3, spanGaps:true, fill:'origin', backgroundColor:'rgba(239,68,68,0.14)',  dataLabels:{display:false} },
+        { label:'Mid',  data:krLow,  borderColor:'transparent', borderWidth:0, pointRadius:0, tension:0.3, spanGaps:true, fill:'+1',     backgroundColor:'rgba(234,179,8,0.15)',  dataLabels:{display:false} },
+        { label:'High', data:krHigh, borderColor:'transparent', borderWidth:0, pointRadius:0, tension:0.3, spanGaps:true, fill:'end',    backgroundColor:'rgba(34,197,94,0.14)',  dataLabels:{display:false} }
+      ]},
+      options: krOpts
+    });
+
+    const sOpts = makeOpts(0, 133, v => v + '%');
+    sOpts.plugins.tooltip.filter = item => item.datasetIndex < 3;
+
+    new Chart(document.getElementById('scoreChart'), {
+      type: 'line',
+      data: { labels, datasets: [
+        { label:'Target',      data: scoreTarget,  borderColor:'#0D0A19', borderWidth:1, pointRadius:0, tension:0, spanGaps:true, dataLabels:{display:false} },
+        { label:'Actuals',     data: scoreActuals, borderColor:'#6D4BEF', borderWidth:2, pointRadius:2.5, pointBackgroundColor:'#6D4BEF', tension:0.3, spanGaps:false, dataLabels: dl(v=>v+'%','top','#6D4BEF') },
+        { label:'Expectation', data: scoreExpect,  borderColor:'#8B7EE8', borderWidth:2, borderDash:[6,4], pointRadius:2, pointBackgroundColor:'#8B7EE8', tension:0.3, spanGaps:false, dataLabels: dl(v=>v+'%','bottom','#8B7EE8') },
+        { label:'Low',  data:scoreLow,  borderColor:'transparent', borderWidth:0, pointRadius:0, tension:0.3, spanGaps:true, fill:'origin', backgroundColor:'rgba(239,68,68,0.14)',  dataLabels:{display:false} },
+        { label:'Mid',  data:scoreLow,  borderColor:'transparent', borderWidth:0, pointRadius:0, tension:0.3, spanGaps:true, fill:'+1',     backgroundColor:'rgba(234,179,8,0.15)',  dataLabels:{display:false} },
+        { label:'High', data:scoreHigh, borderColor:'transparent', borderWidth:0, pointRadius:0, tension:0.3, spanGaps:true, fill:'end',    backgroundColor:'rgba(34,197,94,0.14)',  dataLabels:{display:false} }
+      ]},
+      options: sOpts
+    });
+  })();
+</script>
