@@ -21,6 +21,11 @@ Do not put a page back under `src/pages/` just because it exists there; see
 the nav are indexable by Google, so a page that must stay private needs
 `<Layout noindex>` or the archive.
 
+## Wish list (since 2026-10-09)
+Ideas for the site live as GitHub issues with the `wishlist` label and are
+mirrored in `docs/wishlist.md`. When Philip mentions something he would like
+to add, create the issue first, then add the line to the file.
+
 ## Preview editions of add-on pages (unlisted URLs)
 Used when an add-on page is rebuilt and should be reviewed, or shown to one
 prospect, before it replaces the public page. Full procedure in
