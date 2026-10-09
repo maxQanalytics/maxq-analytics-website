@@ -61,8 +61,9 @@ export const UNLISTED_PATHS = [
   '/add-ons/weekly-okr-tracker/',
 ];
 
-// Preview editions of add-on pages: /add-ons/<slug>-YYYY-MM-DD-word-word-word
-export const PREVIEW_EDITION = /\/add-ons\/[a-z-]+-\d{4}-\d{2}-\d{2}-[a-z]+-[a-z]+-[a-z]+\/?$/;
+// Preview editions: /add-ons/<slug>-YYYY-MM-DD-word-word-word and homepage
+// editions /home-YYYY-MM-DD-word-word-word
+export const PREVIEW_EDITION = /^\/(add-ons\/[a-z-]+|home)-\d{4}-\d{2}-\d{2}-[a-z]+-[a-z]+-[a-z]+\/?$/;
 
 export const ORGANIZATION = {
   '@context': 'https://schema.org',

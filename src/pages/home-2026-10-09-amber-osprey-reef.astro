@@ -1,0 +1,628 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import stackSvg from '../diagrams/tech-stack-2026-10-09h.svg?raw';
+
+// Maxq Product Show, episode 001 (public on YouTube since 2026-09-10)
+const EPISODE = {
+  id: '5_eraCaZDSw',
+  watch: 'https://www.youtube.com/watch?v=5_eraCaZDSw',
+  channel: 'https://www.youtube.com/@maxq-analytics?sub_confirmation=1',
+  playlist: 'https://www.youtube.com/playlist?list=PLTJTa1v34BEw',
+  summary: 'Sarah Thiebault walks Philip through nao, the open source analytics agent behind our Analytics Assistant: what a typical data stack looks like, why the consumption layer is still the point of friction, what a context layer adds on top of the semantic layer, and a live demo in the nao app, in Slack and in Claude.',
+  chapters: [
+    { t: 0,    label: '0:00',  title: 'Welcome and the plan for this episode' },
+    { t: 175,  label: '2:55',  title: 'A typical data analytics stack' },
+    { t: 392,  label: '6:32',  title: 'Adding a context layer' },
+    { t: 760,  label: '12:40', title: 'What matters when building an analytics agent' },
+    { t: 1025, label: '17:05', title: 'Live demo: the nao app' },
+    { t: 1891, label: '31:31', title: 'The Slack interface' },
+    { t: 2073, label: '34:33', title: 'The Claude MCP interface' },
+    { t: 2434, label: '40:34', title: 'Use cases' },
+    { t: 2735, label: '45:35', title: 'Wrap-up' },
+  ],
+};
+---
+
+<Layout title="Maxq Analytics — Agentic Analytics on all your data" noindex>
+  <SiteNav />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-10 px-6 bg-ink text-cream relative overflow-hidden">
+    <div class="hero-grid-lines" aria-hidden="true">
+      <div class="hero-line-v" style="left: 20%"></div>
+      <div class="hero-line-v" style="left: 40%"></div>
+      <div class="hero-line-v" style="left: 60%"></div>
+      <div class="hero-line-v" style="left: 80%"></div>
+      <div class="hero-line-h" style="top: 25%"></div>
+      <div class="hero-line-h" style="top: 50%"></div>
+      <div class="hero-line-h" style="top: 75%"></div>
+    </div>
+    <div class="max-w-5xl mx-auto text-center relative">
+      <p class="mb-8"><span class="inline-block text-xs font-mono bg-brand-500/20 text-brand-300 border border-brand-300/30 rounded-full px-3 py-1">Preview · 2026-10-09 · Product show, variant A</span></p>
+      <h1 class="font-black mb-7 leading-none mx-auto" style="font-size: clamp(36px, 5.8vw, 68px); letter-spacing: -0.03em; max-width: 820px">
+        Agentic Analytics<br><span class="text-brand-300">On all your data</span>
+      </h1>
+      <p class="text-lg md:text-xl text-cream max-w-xl mx-auto leading-relaxed">
+        One source of truth for your entire business, from raw data to company-wide agentic workflows. So every team works with the same numbers, every time.
+      </p>
+      <!-- Dashboard mockup -->
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="pt-11 pb-12 px-6 bg-ink text-cream">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+        {[
+          { value: '9', label: 'Active deployments' },
+          { value: '460+', label: 'Employees connected' },
+          { value: '€65M+', label: 'Tracked annual revenue' },
+          { value: '25k+', label: 'Analytics API requests / day' },
+        ].map(stat => (
+          <div class="flex flex-col gap-2">
+            <span class="text-4xl md:text-5xl font-black text-cream tracking-tight" style="letter-spacing: -0.03em">{stat.value}</span>
+            <span class="text-sm font-mono font-medium text-cream leading-snug uppercase tracking-wider">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Logo Carousel -->
+  <section class="py-12 bg-cream">
+    <div class="max-w-6xl mx-auto overflow-hidden">
+    <p class="text-center text-xs font-mono font-medium text-ink/40 uppercase tracking-widest mb-8">Trusted by</p>
+    <div class="marquee-fade-wrapper">
+      <div class="flex gap-14 items-center animate-marquee whitespace-nowrap">
+        {(() => {
+          const logos = [
+            { src: '/logos/delta.png', alt: 'Delta Safety Training', href: 'https://www.deltasafetytraining.nl' },
+            { src: '/logos/clubcollect.png', alt: 'Club Collect', href: 'https://www.clubcollect.com', h: 'h-6' },
+            { src: '/logos/ciphix.png', alt: 'Ciphix', href: 'https://www.ciphix.com', h: 'h-6' },
+            { src: '/logos/freeday.svg', alt: 'Freeday', href: 'https://www.freeday.ai' },
+            { src: '/logos/cjob.png', alt: 'C-Job Naval Architects', href: 'https://c-job.com' },
+            { src: '/logos/rebelsai.png', alt: 'RebelsAI', href: 'https://www.rebelsai.nl' },
+            { src: '/twelve-logo.svg', alt: 'Twelve', href: 'https://www.twelve.eu', h: 'h-6' },
+            { src: '/logos/wyngaard.svg', alt: 'Wyngaard Kaas', href: 'https://www.wijngaardkaas.nl/nl_NL/', h: 'h-8' },
+            { src: '/logos/twizzit.png', alt: 'Twizzit', href: 'https://www.twizzit.com/nl-be/', h: 'h-7' },
+          ];
+          return [...logos, ...logos, ...logos, ...logos].map((logo, i) => (
+            <a href={logo.href} target="_blank" rel="noopener" class="inline-flex items-center shrink-0">
+              <img src={logo.src} alt={logo.alt} class={`${logo.h ?? 'h-7'} w-auto object-contain hover:opacity-80 transition-opacity duration-300`} />
+            </a>
+          ));
+        })()}
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <style>
+    /* Hero grid lines */
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0.04;
+    }
+    .hero-line-v {
+      position: absolute;
+      width: 1px;
+      top: 0; bottom: 0;
+      background: #8aaaff;
+    }
+    .hero-line-h {
+      position: absolute;
+      height: 1px;
+      left: 0; right: 0;
+      background: #8aaaff;
+    }
+    /* Marquee */
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      animation: marquee 35s linear infinite;
+      width: max-content;
+    }
+    @media (hover: hover) {
+      .animate-marquee:hover {
+        animation-play-state: paused;
+      }
+    }
+    /* Dashboard mockup */
+    .hero-visual {
+      margin-top: 56px;
+      position: relative;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-dashboard {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-dashboard::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(26,79,255,0.4), transparent);
+    }
+    .dash-topbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .dash-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+    .dash-tab {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: rgba(255,255,255,0.25);
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-left: 4px;
+    }
+    .dash-tab-active {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.5);
+    }
+    .dash-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .dash-metric {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: left;
+    }
+    .dash-metric-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .dash-metric-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: #f5f3f0;
+      letter-spacing: -0.02em;
+    }
+    .dash-metric-change {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: #8aaaff;
+      margin-top: 4px;
+    }
+    .dash-chart {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 16px;
+      height: 100px;
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .dash-bar {
+      flex: 1;
+      background: linear-gradient(to top, rgba(26,79,255,0.3), rgba(26,79,255,0.08));
+      border-radius: 3px 3px 0 0;
+      min-height: 8px;
+    }
+    @media (max-width: 640px) {
+      .dash-grid { grid-template-columns: 1fr 1fr; }
+      .dash-metric:nth-child(3) { grid-column: span 2; }
+      .hero-visual { margin-top: 40px; }
+    }
+    @media (max-width: 400px) {
+      .dash-grid { grid-template-columns: 1fr; }
+      .dash-metric:nth-child(3) { grid-column: span 1; }
+      .hero-dashboard { padding: 16px; }
+    }
+    /* Fade edges */
+    .marquee-fade-wrapper { position: relative; }
+    .marquee-fade-wrapper::before,
+    .marquee-fade-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-fade-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, #f5f3f0, transparent);
+    }
+    .marquee-fade-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, #f5f3f0, transparent);
+    }
+  </style>
+
+
+  <!-- Homepage preview edition 2026-10-09 amber-osprey-reef. Product Show (variant A, episode band): dark band after the client logos -->
+  <section id="product-show" class="py-20 px-6 bg-ink text-cream">
+    <div class="max-w-6xl mx-auto">
+      <div class="md:flex items-center gap-14">
+        <a href={EPISODE.watch} target="_blank" rel="noopener" class="group block shrink-0 md:w-[46%] relative rounded-2xl overflow-hidden ring-1 ring-white/10" aria-label="Watch episode 001 on YouTube">
+          <img src="/product-show/001/thumbnail.jpg" alt="Maxq Product Show episode 001: Analytics agents, explained" class="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-500" />
+          <span class="absolute inset-0 flex items-center justify-center">
+            <span class="w-16 h-16 rounded-full bg-cream text-ink flex items-center justify-center shadow-lg group-hover:bg-brand-300 transition-colors"><svg class="w-6 h-6 ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+          </span>
+          <span class="absolute bottom-3 right-3 text-xs font-mono bg-ink/80 text-cream px-2 py-1 rounded">46:22</span>
+        </a>
+        <div class="mt-10 md:mt-0 flex-1">
+          <p class="text-xs font-mono font-medium text-brand-300 uppercase tracking-widest mb-4">Maxq Product Show · Episode 001</p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="letter-spacing: -0.02em">Analytics agents, explained</h2>
+          <p class="text-cream/70 leading-relaxed mb-5">{EPISODE.summary}</p>
+          <p class="text-sm text-cream/50 mb-8">With Sarah Thiebault, data engineer, and Philip Boontje. 46 minutes.</p>
+          <div class="flex flex-wrap gap-3">
+            <a href={EPISODE.watch} target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-cream text-ink font-semibold px-6 py-3 rounded-full hover:bg-brand-300 transition-colors text-sm">Watch on YouTube <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a href={EPISODE.channel} target="_blank" rel="noopener" class="inline-flex items-center gap-2 border border-white/20 text-cream font-semibold px-6 py-3 rounded-full hover:border-white/60 transition-colors text-sm">Subscribe to the show</a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-14 pt-10 border-t border-white/10">
+        <p class="text-xs font-mono text-cream/40 uppercase tracking-widest mb-5">Chapters</p>
+        <ol class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-2">
+          {EPISODE.chapters.map(c => (
+            <li><a href={`${EPISODE.watch}&t=${c.t}s`} target="_blank" rel="noopener" class="group flex gap-4 text-sm py-1.5"><span class="font-mono text-brand-300 w-12 shrink-0">{c.label}</span><span class="text-cream/70 group-hover:text-cream transition-colors">{c.title}</span></a></li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Items -->
+  <section id="features" class="py-24 px-6 bg-cream">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Deployed with <span class="text-brand-600">open source</span> components</h2>
+        <p class="text-lg text-ink/60 max-w-2xl mx-auto">Our open source Semantic Nexus architecture gives your organisation complete visibility into its data — from raw sources to AI-powered querying.</p>
+      </div>
+
+      <!-- Top row: 3 cards -->
+      <div class="grid md:grid-cols-3 gap-4 mb-4">
+
+        <!-- Domain Reports -->
+        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
+          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-ink mb-2">Domain Reports</h3>
+          <p class="text-ink text-sm leading-relaxed mb-4">Three purpose-built reporting domains aligned to how companies are structured: <strong>Commerce Atlas</strong> (go-to-market, unit economics), <strong>Finance Atlas</strong> (margins, financial operations), and <strong>Operations Atlas</strong> (utilisation, capacity). Each delivers periodic dashboards and trend analysis tailored to the domain's owners and targets.</p>
+          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Domain+Reports" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">Details →</a>
+        </div>
+
+        <!-- Data Model Explorer -->
+        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
+          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6M9 8h6M9 16h4" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-ink mb-2">Data Model Explorer</h3>
+          <p class="text-ink text-sm leading-relaxed mb-4">A unified, navigable interface that maps your entire data architecture. Source tables are shown post-transformation with aggregations for fast analysis. Each critical metric gets its own dedicated page with a scorecard, numerator/denominator breakdown, and business context provided by the client.</p>
+          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data%20Model%20Explorer" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">Details →</a>
+        </div>
+
+        <!-- Data Entry Tests -->
+        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
+          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-ink mb-2">Data Entry Tests</h3>
+          <p class="text-ink text-sm leading-relaxed mb-4">Automated, client-specific tests that continuously validate data entries and business workflows. Each test is assigned an owner, a deeplink for direct resolution at the source, a context description, and a unique test ID — keeping data quality accountable and easy to communicate across teams.</p>
+          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Entry+Tests" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">Details →</a>
+        </div>
+
+      </div>
+
+      <!-- Bottom row: 2 cards centred -->
+      <div class="grid md:grid-cols-2 gap-4 md:max-w-3xl md:mx-auto">
+
+        <!-- Pipeline Freshness -->
+        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
+          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-ink mb-2">Pipeline Freshness</h3>
+          <p class="text-ink text-sm leading-relaxed mb-4">A live flowchart of your full data pipeline from extraction through transformation to consumption. Every stakeholder can see how data moves across your architecture — which systems are involved, what the current status is, and where bottlenecks occur. Invaluable when planning refactors or expansions.</p>
+          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus#Data+Freshness" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">Details →</a>
+        </div>
+
+        <!-- MCP Servers -->
+        <div class="bg-warm rounded-xl p-7 flex flex-col border border-ink/8">
+          <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-5 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-ink mb-2">MCP Servers</h3>
+          <p class="text-ink text-sm leading-relaxed mb-4">We configure multiple Model Context Protocol servers tailored to specific use cases and agentic workflows — each one exposing the right slice of your semantic layer to the right AI system. Whether it's a customer-facing agent, an internal analyst assistant, or an automated reporting workflow, every MCP server is purpose-built for how that agent actually needs to query your data.</p>
+          <a href="https://docs.maxqanalytics.io/Products/Semantic+Nexus" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors">Details →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section id="stack" class="py-24 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Built on <span class="text-brand-600">best in class</span> tooling</h2>
+        <p class="text-lg text-ink/60 max-w-2xl mx-auto">We work with the leading data stack tools, keeping clients in full control of their own infrastructure. We have a tooling agnostic approach when implementing the Semantic Nexus, with a strong preference for open source and self hosted applications.</p>
+      </div>
+
+      <!-- Flow chart, tablet and desktop: generated SVG (scripts/render-tech-stack.mjs) -->
+      <div id="stack-chart" class="hidden md:block">
+        <Fragment set:html={stackSvg} />
+      </div>
+      <!-- Custom tooltip for the chart: instant, name in bold, only on components -->
+      <div id="stack-tip" class="pointer-events-none fixed z-50 max-w-xs bg-ink text-cream text-xs rounded-lg px-3 py-2 leading-relaxed shadow-lg" style="display:none">
+        <strong class="block font-bold text-sm mb-0.5"></strong>
+        <span class="text-cream/85"></span>
+      </div>
+      <script>
+        const tip = document.getElementById('stack-tip');
+        const tipName = tip.querySelector('strong');
+        const tipText = tip.querySelector('span');
+        function placeTip(e) {
+          const pad = 14;
+          const r = tip.getBoundingClientRect();
+          let x = e.clientX + pad;
+          let y = e.clientY + pad;
+          if (x + r.width > window.innerWidth - 8) x = e.clientX - r.width - pad;
+          if (y + r.height > window.innerHeight - 8) y = e.clientY - r.height - pad;
+          tip.style.left = x + 'px';
+          tip.style.top = y + 'px';
+        }
+        document.querySelectorAll('#stack-chart [data-tip-name]').forEach((node) => {
+          node.addEventListener('mouseenter', (e) => {
+            tipName.textContent = node.getAttribute('data-tip-name');
+            tipText.textContent = node.getAttribute('data-tip-text');
+            tip.style.display = 'block';
+            placeTip(e);
+          });
+          node.addEventListener('mousemove', placeTip);
+          node.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+        });
+      </script>
+
+      <!-- Flow chart, phones: stacked cards -->
+      <div class="md:hidden flex flex-col gap-3">
+        <div class="rounded-2xl border border-ink/10 bg-cream p-5">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources</p>
+          <p class="text-sm text-ink/60">Product database (PostgreSQL, MySQL) · Bookkeeping (Exact Online, Yuki) · CRM (HubSpot) · ERP (Float, Infor) · Customer care (Freshdesk, Zendesk) · Spreadsheets (Google Sheets, Excel)</p>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Extraction · streaming (product database)</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Debezium</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mt-4 mb-2">Extraction · batch (all other sources)</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Airbyte</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Hevo Data</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Warehouse · real-time (from the stream)</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">ClickHouse</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mt-4 mb-2">Warehouse · batch</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">BigQuery</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Snowflake</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Microsoft Fabric</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Transformation</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">dbt</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Semantic layer</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Cube</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Microsoft Fabric</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5 space-y-3">
+          <div>
+            <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · AI models</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Claude</span>
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">OpenAI</span>
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Gemini</span>
+            </div>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · MCPs</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-brand-600/40 text-ink/60">nao analytics</span>
+            </div>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · AI agents</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-brand-600/40 text-ink/60">Quality Guardian</span>
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">LangChain agents</span>
+            </div>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · Reports</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Data Studio</span>
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Power BI</span>
+            </div>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · Your own apps</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Next.js</span>
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Django</span>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Frameworks -->
+  <section id="frameworks" class="py-24 px-6 bg-ink text-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4" style="letter-spacing: -0.02em">Maintained by <span class="text-brand-300">reliable frameworks</span></h2>
+        <p class="text-lg text-cream max-w-2xl mx-auto">The Semantic Nexus is underpinned by three frameworks that cover architecture, performance tracking, and security.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+
+        <div class="bg-white/5 border border-white/10 rounded-xl p-8 flex flex-col">
+          <div class="text-brand-300 text-xs font-mono font-semibold uppercase tracking-widest mb-3">SDA</div>
+          <h3 class="text-lg font-bold mb-3">Standardised Data Architecture</h3>
+          <p class="text-cream leading-relaxed text-sm mb-5">Best practices for building a data pipeline and data model that is robust, flexible, and low cost — refined over years of real client work.</p>
+          <a href="https://docs.maxqanalytics.io/Design/Frameworks#Standardised%20Data%20Architecture" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-300 hover:text-white transition-colors">Details →</a>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 rounded-xl p-8 flex flex-col">
+          <div class="text-brand-300 text-xs font-mono font-semibold uppercase tracking-widest mb-3">IPF</div>
+          <h3 class="text-lg font-bold mb-3">Integrated Performance Framework</h3>
+          <p class="text-cream leading-relaxed text-sm mb-5">A systematised way of presenting the data model that strikes the right balance between simplicity and depth for all stakeholders.</p>
+          <a href="https://docs.maxqanalytics.io/Design/Frameworks#Integrated%20Performance%20Framework" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-300 hover:text-white transition-colors">Details →</a>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 rounded-xl p-8 flex flex-col">
+          <div class="text-brand-300 text-xs font-mono font-semibold uppercase tracking-widest mb-3">MSP</div>
+          <h3 class="text-lg font-bold mb-3">Modular Security Protocol</h3>
+          <p class="text-cream leading-relaxed text-sm mb-5">A structured set of security checks designed for client-side and open-core architectures, where the security environment is inherently more complex.</p>
+          <a href="https://docs.maxqanalytics.io/Design/Frameworks#Modular%20Security%20Protocol" target="_blank" rel="noopener" class="mt-auto text-xs font-semibold text-brand-300 hover:text-white transition-colors">Details →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <!-- In production: Freeday -->
+  <section id="freeday" class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">Depended upon daily by <span class="text-brand-600">long term clients</span></h2>
+        <p class="text-lg text-ink/60 max-w-2xl mx-auto">How one of our clients, Freeday, runs its reporting and operations on the Semantic Nexus we built and maintain for them.</p>
+      </div>
+      <div class="md:flex items-start gap-16">
+        <div class="shrink-0 mb-10 md:mb-0 md:w-72">
+          <a href="https://www.freeday.ai" target="_blank" rel="noopener" class="inline-flex items-center bg-white border border-ink/10 rounded-xl px-5 py-3">
+            <img src="/logos/freeday.svg" alt="Freeday" class="h-7 w-auto" />
+          </a>
+          <p class="text-ink/60 text-sm leading-relaxed mt-6">Freeday builds AI digital employees for customer service and finance teams. Maxq designs, runs and maintains their complete analytics stack: Airbyte, dbt and Cube on Snowflake, with the Quality Guardian on top.</p>
+          <a href="https://www.freeday.ai" target="_blank" rel="noopener" class="inline-block mt-6 text-xs font-semibold text-brand-600 hover:text-ink transition-colors">Visit Freeday →</a>
+        </div>
+        <div class="flex-1 space-y-8">
+          <div>
+            <h3 class="text-xl font-bold text-ink mb-3" style="letter-spacing: -0.01em">The starting point</h3>
+            <p class="text-ink/60 leading-relaxed">Ahead of a growth-investor round, Freeday needed one set of metric definitions that finance, sales, operations and the board could all trust: ARR, NRR, CAC payback and the performance of every digital employee. The data sat in six systems: the Freeday platform itself, its ClickHouse event logs, HubSpot, Airtable, Exact Online and Google Sheets.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-ink mb-3" style="letter-spacing: -0.01em">What runs today</h3>
+            <ul class="space-y-2.5 text-ink/60 leading-relaxed">
+              <li class="flex gap-3"><span class="text-brand-600 shrink-0">·</span>Airbyte loads all six sources into Snowflake every night. The Exact Online connector is an open-source Maxq contribution that Freeday runs on its own virtual machine.</li>
+              <li class="flex gap-3"><span class="text-brand-600 shrink-0">·</span>dbt builds 79 models and runs 131 tests in one 14-minute job each morning. Every metric is defined once, in version control, with its tests and documentation next to it.</li>
+              <li class="flex gap-3"><span class="text-brand-600 shrink-0">·</span>Cube serves 13 cubes and 14 views to every consumer: the Data Studio reports for the commercial, operational and financial teams, the KPI portal, the investor sheet, Claude through an MCP server, and the metrics embedded in Freeday's own platform.</li>
+              <li class="flex gap-3"><span class="text-brand-600 shrink-0">·</span>The Quality Guardian runs 11 data-entry tests every morning and writes the fixes back to HubSpot and the operating model in Airtable, so the three systems stay in step without anyone reconciling by hand.</li>
+            </ul>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 rounded-2xl overflow-hidden border border-ink/10">
+            <div class="bg-cream p-5">
+              <div class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em">6</div>
+              <div class="text-xs text-ink/60 leading-snug">source systems linked into one data model</div>
+            </div>
+            <div class="bg-cream p-5">
+              <div class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em">79</div>
+              <div class="text-xs text-ink/60 leading-snug">dbt models built daily in 14 minutes</div>
+            </div>
+            <div class="bg-cream p-5">
+              <div class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em">131</div>
+              <div class="text-xs text-ink/60 leading-snug">integrity tests linked to model re-builds</div>
+            </div>
+            <div class="bg-cream p-5">
+              <div class="font-black text-2xl text-ink mb-1" style="letter-spacing: -0.03em">90M+</div>
+              <div class="text-xs text-ink/60 leading-snug">AI agent conversations tracked</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-24 px-6 bg-cream text-center relative">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-black text-ink mb-4" style="letter-spacing: -0.03em">
+        Is there <span class="text-brand-600">business value</span> we can create together?
+      </h2>
+      <p class="text-lg text-ink/60 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Schedule half an hour with Philip where you show how your data is set up now, together you will explore what one source of truth would change for your team, and whether it's worth the investment.
+      </p>
+      <a href="https://calendly.com/philip-boontje" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-ink text-cream font-semibold px-10 py-4 rounded-full hover:bg-ink/80 transition-colors text-base">
+        Schedule a Call
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <SiteFooter />
+</Layout>

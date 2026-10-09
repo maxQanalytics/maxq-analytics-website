@@ -27,6 +27,12 @@ c=['ridge','cove','delta','fjord','glen','knoll','mesa','reef','shoal','strand',
 print(random.choice(a)+'-'+random.choice(b)+'-'+random.choice(c))"
 ```
 
+Homepage editions follow the same pattern with `home` as the slug:
+`/home-<YYYY-MM-DD>-<word>-<word>-<word>` in `src/pages/home-<slug>.astro`, a
+complete copy of `src/pages/index.astro` with the change applied, `noindex`
+and the preview badge in the hero. `PREVIEW_EDITION` in `src/seo.mjs` keeps
+both kinds out of the sitemap.
+
 ## Building an edition
 
 1. Take screenshots of the product first (for Quality Guardian: the script and
@@ -68,3 +74,6 @@ screenshots in place, and set the registry status to `promoted`.
 | Quality Guardian | `/add-ons/quality-guardian-2026-09-14-quartz-badger-cove` | 2026-09-14 | same folder and flow SVG | **promoted** to `/add-ons/quality-guardian` on 2026-09-14 (edition 5 + lightbox, plus in-place rounds: Freeday section trimmed and re-headed, Under the hood headings, cropped config frame, 11-tests tile, white title, team roles, new closing CTA; Schedule shot swapped for the Nightly Sweep job editor `schedule-job.jpg`, cropped frame, later on 2026-09-14) |
 | Quality Guardian | `/add-ons/quality-guardian-2026-09-14-meadow-heron-delta` | 2026-09-14 | same folder and flow SVG | preview (edition 6 with all text sizes 1 step larger, for readability comparison) |
 | Quality Guardian | `/add-ons/quality-guardian-2026-09-14-juniper-badger-weir` | 2026-09-14 | same folder and flow SVG | preview (edition 6 with all text sizes 2 steps larger, for readability comparison) |
+| Homepage | `/home-2026-10-09-amber-osprey-reef` | 2026-10-09 | `public/product-show/001/` (episode thumbnail) | preview (Product Show variant A: dark episode band after the client logos, thumbnail + chapter grid, links out to YouTube) |
+| Homepage | `/home-2026-10-09-quartz-badger-shoal` | 2026-10-09 | same folder | preview (Product Show variant B: click-to-play player with chapter navigation, before the final CTA; fires `product_show_play` in PostHog) |
+| Homepage | `/home-2026-10-09-lantern-wren-strand` | 2026-10-09 | same folder (+ host and guest portrait cut-outs) | preview (Product Show variant C: editorial programme block after the client logos, "001" numeral, one-line thesis, chapter list, portrait collage) |
