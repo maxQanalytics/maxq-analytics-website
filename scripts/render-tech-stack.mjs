@@ -20,7 +20,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-const DATE = '2026-10-09f';
+const DATE = '2026-10-09g';
 
 // ---------------------------------------------------------------- spec
 
@@ -33,8 +33,8 @@ const MONO = `'DM Mono', 'SF Mono', ui-monospace, monospace`;
 
 const SOURCE_GROUPS = [
   { label: 'PRODUCT DATABASE', stream: true, items: [
-    { name: 'PostgreSQL', oss: true, icon: '/logos/postgresql.svg', tip: 'Your application database, streamed with change data capture.' },
     { name: 'MySQL', icon: '/logos/mysql.svg', iconW: 30, tip: 'Your application database, streamed with change data capture.' },
+    { name: 'PostgreSQL', oss: true, icon: '/logos/postgresql.svg', tip: 'Your application database, streamed with change data capture.' },
   ] },
   { label: 'BOOKKEEPING', items: [
     { name: 'Exact Online', icon: '/logos/exact.png', iconW: 46, tip: 'Exact Online general ledger, invoices and accounts.' },
