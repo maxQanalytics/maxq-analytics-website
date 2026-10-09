@@ -6,6 +6,15 @@ export const SITE_URL = 'https://www.maxqanalytics.io';
 export const SITE_NAME = 'Maxq Analytics';
 export const DEFAULT_DESCRIPTION =
   'Agentic analytics on all your data. The open source Semantic Nexus gives your business one source of truth, from raw data to company-wide agentic workflows.';
+// One plain statement of who Maxq is, for people and for search engines and
+// language models alike. Shown on the homepage and used as the Organisation
+// description; keep the wording identical on LinkedIn, GitHub and YouTube.
+export const ABOUT_SENTENCES = [
+  'Maxq Analytics is a data analytics consultancy in De Bilt, Netherlands.',
+  'It designs, runs and maintains open-source analytics stacks built on Airbyte, dbt and Cube for scale-ups and mid-sized companies, so finance, sales and operations work from one set of metrics.',
+  'Its reference architecture is the Semantic Nexus.',
+];
+export const ABOUT = ABOUT_SENTENCES.join(' ');
 export const SHARE_IMAGE = '/og/maxq-analytics.png';   // 1200 x 630, rendered by scripts/render-share-image.sh
 export const LOGO_IMAGE = '/og/maxq-analytics-logo-512.png';
 
@@ -58,13 +67,48 @@ export const PREVIEW_EDITION = /\/add-ons\/[a-z-]+-\d{4}-\d{2}-\d{2}-[a-z]+-[a-z
 export const ORGANIZATION = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': SITE_URL + '/#organization',
   name: SITE_NAME,
+  alternateName: 'Maxq',
   legalName: 'MAXQ Analytics B.V.',
   url: SITE_URL + '/',
   logo: SITE_URL + LOGO_IMAGE,
-  description: DEFAULT_DESCRIPTION,
+  description: ABOUT,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'De Holle Bilt 25',
+    postalCode: '3732 HM',
+    addressLocality: 'De Bilt',
+    addressCountry: 'NL',
+  },
+  areaServed: ['Netherlands', 'Belgium', 'Europe'],
+  founder: {
+    '@type': 'Person',
+    name: 'Philip Boontje',
+    jobTitle: 'Founder and Guild Lead',
+    sameAs: 'https://www.linkedin.com/in/philipboontje',
+  },
+  vatID: 'NL867198461B01',
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'KvK',
+    name: 'Dutch Chamber of Commerce number',
+    value: '95597166',
+  },
+  knowsAbout: [
+    'Data analytics consulting',
+    'Semantic layer (Cube)',
+    'dbt data transformation',
+    'Airbyte data integration',
+    'Snowflake, BigQuery and ClickHouse data warehouses',
+    'Model Context Protocol (MCP) servers',
+    'Agentic analytics and AI data agents',
+    'Data quality testing',
+    'Financial and operational KPI reporting',
+  ],
   sameAs: [
     'https://www.linkedin.com/company/maxq-analytics/',
     'https://www.youtube.com/@maxq-analytics',
+    'https://github.com/maxQanalytics',
   ],
 };

@@ -51,3 +51,9 @@ prospect, before it replaces the public page. Full procedure in
 - Sitemap: `@astrojs/sitemap` (pinned to 3.2.x, the last line for Astro 4)
   writes `sitemap-index.xml`; preview editions and `UNLISTED_PATHS` are
   filtered out in `astro.config.mjs`. `public/robots.txt` points to it.
+- Who we are: `ABOUT_SENTENCES` in `src/seo.mjs` is the one-paragraph
+  definition of the company (consultancy, De Bilt, Airbyte/dbt/Cube, Semantic
+  Nexus). The homepage shows it in the "Who we are" block after the client
+  logos and the Organisation markup uses it as description, with address,
+  founder, KvK, VAT and `knowsAbout`. Keep the same wording on LinkedIn,
+  GitHub and YouTube; change it in one place only.
