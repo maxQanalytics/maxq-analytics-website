@@ -38,3 +38,16 @@ prospect, before it replaces the public page. Full procedure in
 - **Promoting**: copy the edition's content over the public page
   (`src/pages/add-ons/<addon-slug>.astro`), drop the preview badge and
   `noindex`, keep the edition file in place, mark it promoted in the registry.
+
+## Search and link previews (since 2026-10-09)
+- `src/seo.mjs` holds the per-page meta descriptions (keyed by path with a
+  trailing slash, 160 characters max), the unlisted-page list and the
+  Organisation markup. `Layout.astro` reads it and writes the description,
+  canonical URL, Open Graph tags and, on the homepage, the JSON-LD block.
+  A new page needs an entry there (or a `description` prop on `<Layout>`).
+- Share image: `public/og/maxq-analytics.png` (1200 x 630) and the square
+  logo for the Organisation markup are rendered from `scripts/og/*.html`
+  with `sh scripts/render-share-image.sh`.
+- Sitemap: `@astrojs/sitemap` (pinned to 3.2.x, the last line for Astro 4)
+  writes `sitemap-index.xml`; preview editions and `UNLISTED_PATHS` are
+  filtered out in `astro.config.mjs`. `public/robots.txt` points to it.
