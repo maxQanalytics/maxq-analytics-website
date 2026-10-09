@@ -20,7 +20,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-const DATE = '2026-10-09';
+const DATE = '2026-10-09b';
 
 // ---------------------------------------------------------------- spec
 
@@ -199,9 +199,20 @@ function colLabel(x, y, text, { anchor = 'middle' } = {}) {
   return `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="${MONO}" font-size="${FONT.label}" letter-spacing="0.08em" fill="${LINE}">${esc(text)}</text>`;
 }
 
-// open source marker: a small keyhole circle, same symbol as the legend top right
-function ossMark(cx, cy) {
-  return `<circle cx="${cx}" cy="${cy}" r="4.5" fill="none" stroke="${LINE}" stroke-width="1"/><circle cx="${cx}" cy="${cy}" r="1.6" fill="${LINE}"/>`;
+// open source tag: the OSI keyhole (a thick ring open at the bottom) with
+// the words next to it, in a small white pill that sits on top of a box's
+// border in its upper right corner
+const OSI_GREEN = '#3da639';
+const TAG = { h: 16, pad: 6, icon: 11, gap: 4, font: 8.5, text: 'OPEN SOURCE' };
+TAG.w = TAG.pad + TAG.icon + TAG.gap + TAG.text.length * 6.1 + TAG.pad;
+function ossTag(rightX, borderY) {
+  const x = rightX - TAG.w, y = borderY - TAG.h / 2;
+  const cx = x + TAG.pad + TAG.icon / 2, cy = borderY, r = 3.9;
+  const a = (deg) => [cx + r * Math.cos(deg * Math.PI / 180), cy + r * Math.sin(deg * Math.PI / 180)];
+  const [sx, sy] = a(125), [ex, ey] = a(55);
+  return `<rect x="${x}" y="${y}" width="${TAG.w}" height="${TAG.h}" rx="${TAG.h / 2}" fill="#ffffff" stroke="${LINE}" stroke-width="0.8"/>
+    <path d="M${sx.toFixed(2)},${sy.toFixed(2)} A${r},${r} 0 1 1 ${ex.toFixed(2)},${ey.toFixed(2)}" fill="none" stroke="${OSI_GREEN}" stroke-width="2.3" stroke-linecap="butt"/>
+    <text x="${x + TAG.pad + TAG.icon + TAG.gap}" y="${cy + 3}" font-family="${MONO}" font-size="${TAG.font}" letter-spacing="0.06em" fill="${INK}">${TAG.text}</text>`;
 }
 
 function image(href, cx, cy, w, h) {
@@ -224,7 +235,7 @@ function toolBox(x, y, w, tool) {
   const inner = `<rect x="${x}" y="${y}" width="${w}" height="${TOOL.h}" rx="4" fill="#ffffff" stroke="${INK}" stroke-width="1.2"/>
     ${image(tool.logo, cx, y + 23, TOOL.logoW, lh)}
     <text x="${cx}" y="${y + 52}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" fill="${TEXT}">${esc(tool.sub)}</text>
-    ${tool.oss ? ossMark(x + w - 11, y + 11) : ''}`;
+    ${tool.oss ? ossTag(x + w - 8, y) : ''}`;
   return link(tool.url, tool.name, tool.tip, inner);
 }
 
@@ -244,7 +255,7 @@ function itemBox(x, y, it, w = CON.w) {
   }
   const inner = `<rect x="${x}" y="${y}" width="${w}" height="${CON.h}" rx="3" fill="#f5f3f0" stroke="${LINE}" stroke-width="1"/>
     ${content}
-    ${it.oss ? ossMark(x + w - 9, y + 9) : ''}`;
+    ${it.oss ? ossTag(x + w - 8, y) : ''}`;
   return link(it.url, it.name, it.tip, inner);
 }
 
@@ -321,16 +332,6 @@ parts.push(colLabel(semX + semW / 2, SEMBAND.y + 19, SEMANTIC.label));
   const n = SEMANTIC.tools.length;
   const top = mid(SEMBAND) - ((n - 1) * TOOL.pitch + TOOL.h) / 2;
   SEMANTIC.tools.forEach((t, j) => parts.push(toolBox(semX + BAND.pad, top + j * TOOL.pitch, toolW, t)));
-}
-
-// open source legend, top right, small: the marker plus a label; hover explains it
-{
-  const lx = CANVAS.w - 14, ly = 18;
-  const text = 'OPEN SOURCE';
-  const tw = text.length * 7.6;
-  const inner = `${ossMark(lx - tw - 12, ly)}
-    <text x="${lx}" y="${ly + 4}" text-anchor="end" font-family="${MONO}" font-size="${FONT.label}" letter-spacing="0.08em" fill="${LINE}">${text}</text>`;
-  parts.push(link(null, 'Open source', 'Components marked with this symbol are open source: Airbyte, ClickHouse, dbt, Cube and nao analytics. No licence fees, no lock-in, and you can run them on your own infrastructure.', inner));
 }
 
 // consumers: one bus line from the semantic layer, ticks into each box
