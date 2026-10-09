@@ -20,7 +20,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-const DATE = '2026-10-09g';
+const DATE = '2026-10-09h';
 
 // ---------------------------------------------------------------- spec
 
@@ -147,7 +147,7 @@ const GAP = 18;                                   // between the columns inside 
 const OUTER = 82;                                 // sources -> frame and frame -> consumers
 const FRAME_PAD = 28;                             // frame edge to the first / last band
 const BAND = { y: 76, pad: 14, w: 206, labelH: 19 };
-const TOOL = { h: 64, pitch: 76, logoW: 130, logoH: 24 };
+const TOOL = { h: 64, pitch: 78.5, logoW: 130, logoH: 24 };   // 14.5 between boxes, room for the OS tag
 // firstY puts the midpoint of the first two source boxes level with the
 // streaming band's centre, so the arrow between them runs straight
 const CON = { w: 160, h: 34, pitch: 38, groupGap: 12, labelH: 18, firstY: 77.5 };
