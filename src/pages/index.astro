@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { ABOUT_SENTENCES } from '../seo.mjs';
 import stackSvg from '../diagrams/tech-stack-2026-10-09h.svg?raw';
 ---
 
@@ -243,14 +242,6 @@ import stackSvg from '../diagrams/tech-stack-2026-10-09h.svg?raw';
     }
   </style>
 
-
-  <!-- Who we are: one plain statement of the company, for people and for search engines and language models (see ABOUT in src/seo.mjs) -->
-  <section id="about" class="pt-4 pb-20 px-6 bg-cream">
-    <div class="max-w-3xl mx-auto text-center">
-      <p class="text-xs font-mono font-medium text-ink/40 uppercase tracking-widest mb-6">Who we are</p>
-      <p class="text-lg md:text-xl text-ink/70 leading-relaxed">{ABOUT_SENTENCES.join(' ')}</p>
-    </div>
-  </section>
 
   <!-- Product Items -->
   <section id="features" class="py-24 px-6 bg-cream">

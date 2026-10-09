@@ -53,7 +53,7 @@ prospect, before it replaces the public page. Full procedure in
   filtered out in `astro.config.mjs`. `public/robots.txt` points to it.
 - Who we are: `ABOUT_SENTENCES` in `src/seo.mjs` is the one-paragraph
   definition of the company (consultancy, De Bilt, Airbyte/dbt/Cube, Semantic
-  Nexus). The homepage shows it in the "Who we are" block after the client
-  logos and the Organisation markup uses it as description, with address,
+  Nexus). It is not shown on any page (Philip removed the homepage block on
+  2026-10-09); the Organisation markup uses it as description, with address,
   founder, KvK, VAT and `knowsAbout`. Keep the same wording on LinkedIn,
   GitHub and YouTube; change it in one place only.

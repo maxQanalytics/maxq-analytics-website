@@ -7,8 +7,8 @@ export const SITE_NAME = 'Maxq Analytics';
 export const DEFAULT_DESCRIPTION =
   'Agentic analytics on all your data. The open source Semantic Nexus gives your business one source of truth, from raw data to company-wide agentic workflows.';
 // One plain statement of who Maxq is, for people and for search engines and
-// language models alike. Shown on the homepage and used as the Organisation
-// description; keep the wording identical on LinkedIn, GitHub and YouTube.
+// language models alike. Used as the Organisation description (not shown on
+// any page); keep the wording identical on LinkedIn, GitHub and YouTube.
 export const ABOUT_SENTENCES = [
   'Maxq Analytics is a data analytics consultancy in De Bilt, Netherlands.',
   'It designs, runs and maintains open-source analytics stacks built on Airbyte, dbt and Cube for scale-ups and mid-sized companies, so finance, sales and operations work from one set of metrics.',
