@@ -4,21 +4,21 @@ import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 const plans = [
   {
-    "name": "Semantic Nexus Architecture",
+    "name": "Architecture",
     "price": "€0",
     "unit": "",
     "label": "Celebrating open source",
     "desc": "The full architecture, the three core frameworks and its embedded tooling are freely available. We believe software should not be a source of lock-in."
   },
   {
-    "name": "Semantic Nexus Implementation",
+    "name": "Implementation",
     "price": "€5.0k",
     "unit": "/sprint",
-    "label": "Building the nexus",
+    "label": "Get the nexus built",
     "desc": "Each sprint is 40 hours of a medior data engineer, scheduled one or two months in advance, stackable to accelerate delivery. When the data-stack scope grows, follow-up sprints are considered."
   },
   {
-    "name": "Semantic Nexus Operations",
+    "name": "Operations",
     "price": "€2.5k",
     "unit": "/mo",
     "label": "Maintaining the impact",
@@ -42,7 +42,7 @@ const footnote = "Underlying tool costs (extraction, warehouse, distribution, BI
         {plans.map((p) => (
           <div class="grid md:grid-cols-[1.1fr_0.9fr_1.6fr] gap-6 md:gap-10 p-8">
             <div>
-              <h3 class="text-xl font-bold text-ink leading-tight" style="letter-spacing: -0.01em">Semantic Nexus<br>{p.name.replace('Semantic Nexus ', '')}</h3>
+              <h3 class="text-xl font-bold text-ink leading-tight" style="letter-spacing: -0.01em">{p.name}</h3>
             </div>
             <div>
               <div class="text-2xl font-black text-ink" style="letter-spacing: -0.02em">{p.price}<span class="text-sm font-normal text-ink/40">{p.unit}</span></div>
