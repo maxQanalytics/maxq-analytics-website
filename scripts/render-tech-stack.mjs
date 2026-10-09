@@ -20,7 +20,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-const DATE = '2026-10-09b';
+const DATE = '2026-10-09c';
 
 // ---------------------------------------------------------------- spec
 
@@ -200,19 +200,19 @@ function colLabel(x, y, text, { anchor = 'middle' } = {}) {
 }
 
 // open source tag: the OSI keyhole (a thick ring open at the bottom) with
-// the words next to it, in a small white pill that sits on top of a box's
-// border in its upper right corner
+// the words next to it, in a small white pill that sits on the box's lower
+// right corner, overlapping both the bottom and the right border
 const OSI_GREEN = '#3da639';
-const TAG = { h: 16, pad: 6, icon: 11, gap: 4, font: 8.5, text: 'OPEN SOURCE' };
-TAG.w = TAG.pad + TAG.icon + TAG.gap + TAG.text.length * 6.1 + TAG.pad;
+const TAG = { h: 16, pad: 4, icon: 10, gap: 3, font: 8, text: 'OPEN SOURCE', overlap: 6 };
+TAG.w = TAG.pad + TAG.icon + TAG.gap + TAG.text.length * 5.2 + TAG.pad;
 function ossTag(rightX, borderY) {
   const x = rightX - TAG.w, y = borderY - TAG.h / 2;
-  const cx = x + TAG.pad + TAG.icon / 2, cy = borderY, r = 3.9;
+  const cx = x + TAG.pad + TAG.icon / 2, cy = borderY, r = 3.5;
   const a = (deg) => [cx + r * Math.cos(deg * Math.PI / 180), cy + r * Math.sin(deg * Math.PI / 180)];
   const [sx, sy] = a(125), [ex, ey] = a(55);
   return `<rect x="${x}" y="${y}" width="${TAG.w}" height="${TAG.h}" rx="${TAG.h / 2}" fill="#ffffff" stroke="${LINE}" stroke-width="0.8"/>
-    <path d="M${sx.toFixed(2)},${sy.toFixed(2)} A${r},${r} 0 1 1 ${ex.toFixed(2)},${ey.toFixed(2)}" fill="none" stroke="${OSI_GREEN}" stroke-width="2.3" stroke-linecap="butt"/>
-    <text x="${x + TAG.pad + TAG.icon + TAG.gap}" y="${cy + 3}" font-family="${MONO}" font-size="${TAG.font}" letter-spacing="0.06em" fill="${INK}">${TAG.text}</text>`;
+    <path d="M${sx.toFixed(2)},${sy.toFixed(2)} A${r},${r} 0 1 1 ${ex.toFixed(2)},${ey.toFixed(2)}" fill="none" stroke="${OSI_GREEN}" stroke-width="2.1" stroke-linecap="butt"/>
+    <text x="${x + TAG.pad + TAG.icon + TAG.gap}" y="${cy + 3}" font-family="${MONO}" font-size="${TAG.font}" letter-spacing="0.04em" fill="${INK}">${TAG.text}</text>`;
 }
 
 function image(href, cx, cy, w, h) {
@@ -235,7 +235,7 @@ function toolBox(x, y, w, tool) {
   const inner = `<rect x="${x}" y="${y}" width="${w}" height="${TOOL.h}" rx="4" fill="#ffffff" stroke="${INK}" stroke-width="1.2"/>
     ${image(tool.logo, cx, y + 23, TOOL.logoW, lh)}
     <text x="${cx}" y="${y + 52}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" fill="${TEXT}">${esc(tool.sub)}</text>
-    ${tool.oss ? ossTag(x + w - 8, y) : ''}`;
+    ${tool.oss ? ossTag(x + w + TAG.overlap, y + TOOL.h) : ''}`;
   return link(tool.url, tool.name, tool.tip, inner);
 }
 
@@ -255,7 +255,7 @@ function itemBox(x, y, it, w = CON.w) {
   }
   const inner = `<rect x="${x}" y="${y}" width="${w}" height="${CON.h}" rx="3" fill="#f5f3f0" stroke="${LINE}" stroke-width="1"/>
     ${content}
-    ${it.oss ? ossTag(x + w - 8, y) : ''}`;
+    ${it.oss ? ossTag(x + w + TAG.overlap, y + CON.h) : ''}`;
   return link(it.url, it.name, it.tip, inner);
 }
 
