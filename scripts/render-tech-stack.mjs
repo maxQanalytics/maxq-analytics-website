@@ -20,7 +20,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-const DATE = '2026-10-09c';
+const DATE = '2026-10-09d';
 
 // ---------------------------------------------------------------- spec
 
@@ -33,7 +33,7 @@ const MONO = `'DM Mono', 'SF Mono', ui-monospace, monospace`;
 
 const SOURCE_GROUPS = [
   { label: 'PRODUCT DATABASE', stream: true, items: [
-    { name: 'PostgreSQL', icon: '/logos/postgresql.svg', tip: 'Your application database, streamed with change data capture.' },
+    { name: 'PostgreSQL', oss: true, icon: '/logos/postgresql.svg', tip: 'Your application database, streamed with change data capture.' },
     { name: 'MySQL', icon: '/logos/mysql.svg', iconW: 30, tip: 'Your application database, streamed with change data capture.' },
   ] },
   { label: 'BOOKKEEPING', items: [
@@ -59,6 +59,7 @@ const BATCH = {
   label: 'EXTRACTION · BATCH',
   tools: [
     { name: 'Airbyte', oss: true, logo: '/logos/airbyte.svg', sub: 'open-source connectors', url: 'https://airbyte.com', tip: 'Open-source data integration platform for syncing data from APIs, databases and files.' },
+    { name: 'dlt', oss: true, logo: '/logos/dlt.png', logoH: 20, sub: 'python pipelines · code', url: 'https://dlthub.com', tip: 'Open-source Python library (data load tool) for writing extraction pipelines in code, with schema inference, incremental loads and a growing set of verified sources.' },
     { name: 'Hevo Data', logo: '/logos/hevo.png', logoH: 20, sub: 'no-code · 150+ sources', url: 'https://hevodata.com', tip: 'No-code pipeline platform for extracting and syncing data from 150+ sources into your warehouse.' },
   ],
 };
@@ -66,7 +67,7 @@ const BATCH = {
 const STREAM = {
   label: 'EXTRACTION · STREAMING',
   tools: [
-    { name: 'Debezium', logo: '/logos/debezium.png', sub: 'change data capture', url: 'https://debezium.io', tip: 'Open-source CDC platform that streams database changes in real time for event-driven data pipelines.' },
+    { name: 'Debezium', oss: true, logo: '/logos/debezium.png', sub: 'change data capture', url: 'https://debezium.io', tip: 'Open-source CDC platform that streams database changes in real time for event-driven data pipelines.' },
   ],
 };
 
