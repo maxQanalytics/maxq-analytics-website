@@ -240,6 +240,21 @@ const EPISODE = {
       .dash-metric:nth-child(3) { grid-column: span 1; }
       .hero-dashboard { padding: 16px; }
     }
+    /* Stack chart, phones: logo chips and tool boxes in the SVG's visual language */
+    .sx-wrap { display: flex; flex-wrap: wrap; gap: 14px 16px; }            /* room for the OS tag */
+    .sx-card .sx-wrap { margin-bottom: 18px; }
+    .sx-card .sx-wrap:last-child { margin-bottom: 0; }
+    .sx-chip { position: relative; display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 10px;
+      background: #f5f3f0; border: 1px solid #5c5a56; border-radius: 3px; font-size: 13px; font-weight: 600; color: #0a0a0f; white-space: nowrap; }
+    .sx-chip img { height: 18px; width: auto; object-fit: contain; }
+    .sx-chip.sx-self { border-color: rgba(26,79,255,0.5); }
+    .sx-tool { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      flex: 1 1 128px; min-width: 128px; height: 58px; padding: 0 10px; background: #fff; border: 1.2px solid #0a0a0f; border-radius: 4px; }
+    .sx-tool img { max-width: 110px; width: auto; object-fit: contain; }
+    .sx-tool small { font-size: 11px; line-height: 1.1; color: #3d3b38; text-align: center; }
+    .sx-os { position: absolute; right: -6px; bottom: -8px; display: inline-flex; align-items: center; gap: 3px; height: 16px; padding: 0 5px 0 4px;
+      border-radius: 8px; background: #e9f6e5; border: 0.8px solid #a9d9a2; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.04em; font-weight: 400; color: #0a0a0f; }
+    .sx-os i { display: inline-block; width: 7px; height: 7px; border: 2px solid #3da639; border-bottom-color: transparent; border-radius: 50%; transform: rotate(45deg); }
     /* Fade edges */
     .marquee-fade-wrapper { position: relative; }
     .marquee-fade-wrapper::before,
@@ -343,6 +358,60 @@ const EPISODE = {
     </div>
   </section>
 
+  <!-- Maxq Product Show: click-to-play player with chapter navigation (promoted from preview edition 2026-10-09 cobalt-lynx-ridge) -->
+  <section id="product-show" class="py-24 px-6 bg-warm">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">See it working on the <span class="text-brand-600">Maxq Product Show</span></h2>
+        <p class="text-lg text-ink/60 max-w-2xl mx-auto">In every episode a Maxq engineer demonstrates one part of the stack live. Episode 001 explains how an analytics agent answers business questions from your warehouse in a chat, in Slack and in Claude.</p>
+      </div>
+      <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_320px] gap-12 items-start">
+        <div>
+          <div id="ps-player" class="relative aspect-video rounded-2xl overflow-hidden bg-ink shadow-lg">
+            <button type="button" id="ps-play" class="group absolute inset-0 w-full h-full" aria-label="Play episode 001">
+              <img src="/product-show/001/thumbnail.jpg" alt="" class="w-full h-full object-cover" />
+              <span class="absolute inset-0 flex items-center justify-center">
+                <span class="w-16 h-16 rounded-full bg-brand-500 text-cream flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform"><svg class="w-6 h-6 ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+              </span>
+            </button>
+          </div>
+          <div class="mt-5 flex flex-wrap items-baseline justify-between gap-3">
+            <div>
+              <p class="font-bold text-ink text-lg" style="letter-spacing: -0.01em">Analytics agents, explained: an introduction to nao</p>
+              <p class="text-sm text-ink/50">Episode 001 · 46 min · Sarah Thiebault and Philip Boontje</p>
+            </div>
+            <a href={EPISODE.watch} target="_blank" rel="noopener" class="text-sm font-semibold text-brand-600 hover:text-ink transition-colors">Open on YouTube →</a>
+          </div>
+        </div>
+        <aside class="mt-12 lg:mt-0">
+          <p class="text-xs font-mono text-ink/40 uppercase tracking-widest mb-4">Jump to a chapter</p>
+          <ol class="border-y border-ink/10 divide-y divide-ink/10">
+            {EPISODE.chapters.map(c => (
+              <li><button type="button" data-t={c.t} class="ps-chapter w-full text-left flex gap-4 py-3 text-sm hover:text-brand-600 transition-colors"><span class="font-mono text-ink/40 w-12 shrink-0">{c.label}</span><span class="text-ink/80">{c.title}</span></button></li>
+            ))}
+          </ol>
+        </aside>
+      </div>
+    </div>
+  </section>
+  <script is:inline>
+    (function () {
+      var wrap = document.getElementById('ps-player');
+      var id = '5_eraCaZDSw';
+      function load(t) {
+        wrap.innerHTML = '<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&start=' + (t || 0) + '" title="Maxq Product Show episode 001" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+        if (window.posthog) posthog.capture('product_show_play', { episode: '001', start: t || 0 });
+      }
+      document.getElementById('ps-play').addEventListener('click', function () { load(0); });
+      document.querySelectorAll('.ps-chapter').forEach(function (b) {
+        b.addEventListener('click', function () {
+          load(parseInt(b.getAttribute('data-t'), 10));
+          wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      });
+    })();
+  </script>
+
   <!-- Tech Stack -->
   <section id="stack" class="py-24 px-6 bg-white">
     <div class="max-w-6xl mx-auto">
@@ -367,103 +436,119 @@ const EPISODE = {
         function placeTip(e) {
           const pad = 14;
           const r = tip.getBoundingClientRect();
-          let x = e.clientX + pad;
-          let y = e.clientY + pad;
-          if (x + r.width > window.innerWidth - 8) x = e.clientX - r.width - pad;
-          if (y + r.height > window.innerHeight - 8) y = e.clientY - r.height - pad;
-          tip.style.left = x + 'px';
-          tip.style.top = y + 'px';
-        }
-        document.querySelectorAll('#stack-chart [data-tip-name]').forEach((node) => {
-          node.addEventListener('mouseenter', (e) => {
-            tipName.textContent = node.getAttribute('data-tip-name');
-            tipText.textContent = node.getAttribute('data-tip-text');
-            tip.style.display = 'block';
-            placeTip(e);
-          });
-          node.addEventListener('mousemove', placeTip);
-          node.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
-        });
-      </script>
-
-      <!-- Flow chart, phones: stacked cards -->
+      <!-- Flow chart, phones: stacked cards with the same logo boxes and chips as the SVG (option B, 2026-10-09) -->
       <div class="md:hidden flex flex-col gap-3">
-        <div class="rounded-2xl border border-ink/10 bg-cream p-5">
-          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources</p>
-          <p class="text-sm text-ink/60">Product database (PostgreSQL, MySQL) · Bookkeeping (Exact Online, Yuki) · CRM (HubSpot) · ERP (Float, Infor) · Customer care (Freshdesk, Zendesk) · Spreadsheets (Google Sheets, Excel)</p>
+        <div class="rounded-2xl border border-ink/10 bg-cream p-5 sx-card">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · Product database</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/mysql.svg" alt="" width="30" height="18">MySQL</span>
+            <span class="sx-chip"><img src="/logos/postgresql.svg" alt="" width="18" height="18">PostgreSQL<span class="sx-os"><i></i>OS</span></span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · Bookkeeping</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/exact.png" alt="" width="46" height="18">Exact Online</span>
+            <span class="sx-chip"><img src="/logos/yuki.png" alt="" width="18" height="18">Yuki</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · CRM</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/hubspot.svg" alt="" width="18" height="18">HubSpot</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · ERP</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/float.png" alt="" width="18" height="18">Float</span>
+            <span class="sx-chip"><img src="/logos/infor.png" alt="" width="18" height="18">Infor</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · Customer care</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/freshworks.png" alt="" width="18" height="18">Freshdesk</span>
+            <span class="sx-chip"><img src="/logos/zendesk.svg" alt="" width="18" height="18">Zendesk</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · Spreadsheets</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/google-sheets.svg" alt="" width="18" height="18">Google Sheets</span>
+            <span class="sx-chip"><img src="/logos/excel.svg" alt="" width="18" height="18">Excel</span>
+          </div>
         </div>
         <div class="flex items-center justify-center text-ink/30">
           <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
-        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5 sx-card">
           <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Extraction · streaming (product database)</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Debezium</span>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/debezium.png" alt="Debezium" height="24" style="height:24px"><small>change data capture</small><span class="sx-os"><i></i>OS</span></span>
           </div>
-          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mt-4 mb-2">Extraction · batch (all other sources)</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Airbyte</span>
-            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Hevo Data</span>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Extraction · batch (all other sources)</p>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/airbyte.svg" alt="Airbyte" height="24" style="height:24px"><small>open-source connectors</small><span class="sx-os"><i></i>OS</span></span>
+            <span class="sx-tool"><img src="/logos/dlt.png" alt="dlt" height="20" style="height:20px"><small>python pipelines · code</small><span class="sx-os"><i></i>OS</span></span>
+            <span class="sx-tool"><img src="/logos/hevo.png" alt="Hevo Data" height="20" style="height:20px"><small>no-code · 150+ sources</small></span>
           </div>
         </div>
         <div class="flex items-center justify-center text-ink/30">
           <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
-        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5 sx-card">
           <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Warehouse · real-time (from the stream)</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">ClickHouse</span>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/clickhouse.png" alt="ClickHouse" height="24" style="height:24px"><small>real-time analytics</small><span class="sx-os"><i></i>OS</span></span>
           </div>
-          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mt-4 mb-2">Warehouse · batch</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">BigQuery</span>
-            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Snowflake</span>
-            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Microsoft Fabric</span>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Warehouse · batch</p>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/bigquery.png" alt="BigQuery" height="24" style="height:24px"><small>serverless · Google Cloud</small></span>
+            <span class="sx-tool"><img src="/logos/snowflake.png" alt="Snowflake" height="24" style="height:24px"><small>storage and compute apart</small></span>
+            <span class="sx-tool"><img src="/logos/fabric.png" alt="Microsoft Fabric" height="22" style="height:22px"><small>data warehouse</small></span>
           </div>
         </div>
         <div class="flex items-center justify-center text-ink/30">
           <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
-        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5 sx-card">
           <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Transformation</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">dbt</span>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/dbt.png" alt="dbt" height="24" style="height:24px"><small>models · tests · docs in git</small><span class="sx-os"><i></i>OS</span></span>
           </div>
         </div>
         <div class="flex items-center justify-center text-ink/30">
           <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
-        <div class="rounded-2xl border border-ink/10 bg-warm p-5">
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5 sx-card">
           <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Semantic layer</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Cube</span>
-            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Microsoft Fabric</span>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/cube.png" alt="Cube" height="24" style="height:24px"><small>metrics defined once · API</small><span class="sx-os"><i></i>OS</span></span>
+            <span class="sx-tool"><img src="/logos/fabric.png" alt="Microsoft Fabric" height="22" style="height:22px"><small>semantic models</small></span>
           </div>
         </div>
         <div class="flex items-center justify-center text-ink/30">
           <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
-        <div class="rounded-2xl border border-ink/10 bg-warm p-5 space-y-3">
-          <div>
-            <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · AI models</p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Claude</span>
-              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">OpenAI</span>
-              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">Gemini</span>
-            </div>
+        <div class="rounded-2xl border border-ink/10 bg-warm p-5 sx-card">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · AI models</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/claude-icon.svg" alt="" width="18" height="18">Claude</span>
+            <span class="sx-chip"><img src="/logos/openai.svg" alt="" width="18" height="18">OpenAI</span>
+            <span class="sx-chip"><img src="/logos/gemini.svg" alt="" width="18" height="18">Gemini</span>
           </div>
-          <div>
-            <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · MCPs</p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-brand-600/40 text-ink/60">nao analytics</span>
-            </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · MCPs</p>
+          <div class="sx-wrap">
+            <span class="sx-chip sx-self"><img src="/logos/nao.png" alt="" width="18" height="18">nao analytics<span class="sx-os"><i></i>OS</span></span>
           </div>
-          <div>
-            <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · AI agents</p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-brand-600/40 text-ink/60">Quality Guardian</span>
-              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/60">LangChain agents</span>
-            </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · AI agents</p>
+          <div class="sx-wrap">
+            <span class="sx-chip sx-self"><img src="/logos/quality-guardian.png" alt="" width="18" height="18">Quality Guardian</span>
+            <span class="sx-chip"><img src="/logos/langchain.svg" alt="" width="22" height="18">LangChain agents</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · Reports</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/data-studio-icon.svg" alt="" width="18" height="18">Data Studio</span>
+            <span class="sx-chip"><img src="/logos/powerbi-icon.svg" alt="" width="18" height="18">Power BI</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · Your own apps</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/nextjs.svg" alt="" width="18" height="18">Next.js</span>
+            <span class="sx-chip"><img src="/logos/django.svg" alt="" width="18" height="18">Django</span>
+          </div>
+        </div>
+      </div>
           </div>
           <div>
             <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · Reports</p>
@@ -572,60 +657,6 @@ const EPISODE = {
       </div>
     </div>
   </section>
-
-  <!-- Maxq Product Show: click-to-play player with chapter navigation (promoted from preview edition 2026-10-09 cobalt-lynx-ridge) -->
-  <section id="product-show" class="py-24 px-6 bg-white">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">See it working on the <span class="text-brand-600">Maxq Product Show</span></h2>
-        <p class="text-lg text-ink/60 max-w-2xl mx-auto">In every episode a Maxq engineer demonstrates one part of the stack live. Episode 001 explains how an analytics agent answers business questions from your warehouse in a chat, in Slack and in Claude.</p>
-      </div>
-      <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_320px] gap-12 items-start">
-        <div>
-          <div id="ps-player" class="relative aspect-video rounded-2xl overflow-hidden bg-ink shadow-lg">
-            <button type="button" id="ps-play" class="group absolute inset-0 w-full h-full" aria-label="Play episode 001">
-              <img src="/product-show/001/thumbnail.jpg" alt="" class="w-full h-full object-cover" />
-              <span class="absolute inset-0 flex items-center justify-center">
-                <span class="w-16 h-16 rounded-full bg-brand-500 text-cream flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform"><svg class="w-6 h-6 ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-              </span>
-            </button>
-          </div>
-          <div class="mt-5 flex flex-wrap items-baseline justify-between gap-3">
-            <div>
-              <p class="font-bold text-ink text-lg" style="letter-spacing: -0.01em">Analytics agents, explained: an introduction to nao</p>
-              <p class="text-sm text-ink/50">Episode 001 · 46 min · Sarah Thiebault and Philip Boontje</p>
-            </div>
-            <a href={EPISODE.watch} target="_blank" rel="noopener" class="text-sm font-semibold text-brand-600 hover:text-ink transition-colors">Open on YouTube →</a>
-          </div>
-        </div>
-        <aside class="mt-12 lg:mt-0">
-          <p class="text-xs font-mono text-ink/40 uppercase tracking-widest mb-4">Jump to a chapter</p>
-          <ol class="border-y border-ink/10 divide-y divide-ink/10">
-            {EPISODE.chapters.map(c => (
-              <li><button type="button" data-t={c.t} class="ps-chapter w-full text-left flex gap-4 py-3 text-sm hover:text-brand-600 transition-colors"><span class="font-mono text-ink/40 w-12 shrink-0">{c.label}</span><span class="text-ink/80">{c.title}</span></button></li>
-            ))}
-          </ol>
-        </aside>
-      </div>
-    </div>
-  </section>
-  <script is:inline>
-    (function () {
-      var wrap = document.getElementById('ps-player');
-      var id = '5_eraCaZDSw';
-      function load(t) {
-        wrap.innerHTML = '<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&start=' + (t || 0) + '" title="Maxq Product Show episode 001" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
-        if (window.posthog) posthog.capture('product_show_play', { episode: '001', start: t || 0 });
-      }
-      document.getElementById('ps-play').addEventListener('click', function () { load(0); });
-      document.querySelectorAll('.ps-chapter').forEach(function (b) {
-        b.addEventListener('click', function () {
-          load(parseInt(b.getAttribute('data-t'), 10));
-          wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-      });
-    })();
-  </script>
 
   <!-- Final CTA -->
   <section class="py-24 px-6 bg-cream text-center relative">
