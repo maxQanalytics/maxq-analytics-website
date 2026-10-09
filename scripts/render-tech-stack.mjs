@@ -20,7 +20,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-const DATE = '2026-10-08';
+const DATE = '2026-10-09';
 
 // ---------------------------------------------------------------- spec
 
@@ -58,7 +58,7 @@ const SOURCE_GROUPS = [
 const BATCH = {
   label: 'EXTRACTION · BATCH',
   tools: [
-    { name: 'Airbyte', logo: '/logos/airbyte.svg', sub: 'open-source connectors', url: 'https://airbyte.com', tip: 'Open-source data integration platform for syncing data from APIs, databases and files.' },
+    { name: 'Airbyte', oss: true, logo: '/logos/airbyte.svg', sub: 'open-source connectors', url: 'https://airbyte.com', tip: 'Open-source data integration platform for syncing data from APIs, databases and files.' },
     { name: 'Hevo Data', logo: '/logos/hevo.png', logoH: 20, sub: 'no-code · 150+ sources', url: 'https://hevodata.com', tip: 'No-code pipeline platform for extracting and syncing data from 150+ sources into your warehouse.' },
   ],
 };
@@ -75,7 +75,7 @@ const STREAM = {
 const REALTIME = {
   label: 'WAREHOUSE · REAL-TIME',
   tools: [
-    { name: 'ClickHouse', logo: '/logos/clickhouse.png', sub: 'real-time analytics', url: 'https://clickhouse.com', tip: 'High-performance columnar database optimised for real-time analytics on very large datasets, fed by the streaming extraction.' },
+    { name: 'ClickHouse', oss: true, logo: '/logos/clickhouse.png', sub: 'real-time analytics', url: 'https://clickhouse.com', tip: 'High-performance columnar database optimised for real-time analytics on very large datasets, fed by the streaming extraction.' },
   ],
 };
 
@@ -91,13 +91,13 @@ const WAREHOUSE = {
 // sits under the warehouse, arrow going up into it
 const TRANSFORMATION = {
   label: 'TRANSFORMATION',
-  tool: { name: 'dbt', logo: '/logos/dbt.png', sub: 'models · tests · docs in git', url: 'https://www.getdbt.com', tip: 'SQL-based transformation tool that lets analytics engineers build, test and document data models in version control. Runs as its own layer on top of the warehouse.' },
+  tool: { name: 'dbt', oss: true, logo: '/logos/dbt.png', sub: 'models · tests · docs in git', url: 'https://www.getdbt.com', tip: 'SQL-based transformation tool that lets analytics engineers build, test and document data models in version control. Runs as its own layer on top of the warehouse.' },
 };
 
 const SEMANTIC = {
   label: 'SEMANTIC LAYER',
   tools: [
-    { name: 'Cube', logo: '/logos/cube.png', sub: 'metrics defined once · API', url: 'https://cube.dev', tip: 'Semantic layer that defines business metrics centrally and exposes them consistently via API to any downstream tool.' },
+    { name: 'Cube', oss: true, logo: '/logos/cube.png', sub: 'metrics defined once · API', url: 'https://cube.dev', tip: 'Semantic layer that defines business metrics centrally and exposes them consistently via API to any downstream tool.' },
     { name: 'Microsoft Fabric', logo: '/logos/fabric.png', logoH: 22, sub: 'semantic models', url: 'https://www.microsoft.com/en-us/microsoft-fabric', tip: "Microsoft Fabric semantic models, the semantic layer for Power BI and the rest of the Microsoft stack." },
   ],
 };
@@ -114,7 +114,7 @@ const CONSUMER_GROUPS = [
   {
     label: 'MCPS',
     items: [
-      { name: 'nao analytics', icon: '/logos/nao.png', url: '/add-ons/analytics-assistant', tip: 'Maxq add-on: the nao-based Analytics Assistant, an MCP server that answers data questions in Slack and in Claude.', self: true },
+      { name: 'nao analytics', oss: true, icon: '/logos/nao.png', url: '/add-ons/analytics-assistant', tip: 'Maxq add-on: the nao-based Analytics Assistant, an MCP server that answers data questions in Slack and in Claude.', self: true },
     ],
   },
   {
@@ -199,6 +199,11 @@ function colLabel(x, y, text, { anchor = 'middle' } = {}) {
   return `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="${MONO}" font-size="${FONT.label}" letter-spacing="0.08em" fill="${LINE}">${esc(text)}</text>`;
 }
 
+// open source marker: a small keyhole circle, same symbol as the legend top right
+function ossMark(cx, cy) {
+  return `<circle cx="${cx}" cy="${cy}" r="4.5" fill="none" stroke="${LINE}" stroke-width="1"/><circle cx="${cx}" cy="${cy}" r="1.6" fill="${LINE}"/>`;
+}
+
 function image(href, cx, cy, w, h) {
   return `<image href="${esc(href)}" x="${cx - w / 2}" y="${cy - h / 2}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid meet"/>`;
 }
@@ -218,7 +223,8 @@ function toolBox(x, y, w, tool) {
   const lh = tool.logoH ?? TOOL.logoH;
   const inner = `<rect x="${x}" y="${y}" width="${w}" height="${TOOL.h}" rx="4" fill="#ffffff" stroke="${INK}" stroke-width="1.2"/>
     ${image(tool.logo, cx, y + 23, TOOL.logoW, lh)}
-    <text x="${cx}" y="${y + 52}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" fill="${TEXT}">${esc(tool.sub)}</text>`;
+    <text x="${cx}" y="${y + 52}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" fill="${TEXT}">${esc(tool.sub)}</text>
+    ${tool.oss ? ossMark(x + w - 11, y + 11) : ''}`;
   return link(tool.url, tool.name, tool.tip, inner);
 }
 
@@ -236,8 +242,9 @@ function itemBox(x, y, it, w = CON.w) {
   } else {
     content = `<text x="${cx}" y="${y + CON.h / 2 + 4.5}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.name}" font-weight="600" fill="${INK}">${esc(it.name)}</text>`;
   }
-  const inner = `<rect x="${x}" y="${y}" width="${w}" height="${CON.h}" rx="3" fill="#f5f3f0" stroke="${it.self ? BRAND : LINE}" stroke-width="1"/>
-    ${content}`;
+  const inner = `<rect x="${x}" y="${y}" width="${w}" height="${CON.h}" rx="3" fill="#f5f3f0" stroke="${LINE}" stroke-width="1"/>
+    ${content}
+    ${it.oss ? ossMark(x + w - 9, y + 9) : ''}`;
   return link(it.url, it.name, it.tip, inner);
 }
 
@@ -314,6 +321,16 @@ parts.push(colLabel(semX + semW / 2, SEMBAND.y + 19, SEMANTIC.label));
   const n = SEMANTIC.tools.length;
   const top = mid(SEMBAND) - ((n - 1) * TOOL.pitch + TOOL.h) / 2;
   SEMANTIC.tools.forEach((t, j) => parts.push(toolBox(semX + BAND.pad, top + j * TOOL.pitch, toolW, t)));
+}
+
+// open source legend, top right, small: the marker plus a label; hover explains it
+{
+  const lx = CANVAS.w - 14, ly = 18;
+  const text = 'OPEN SOURCE';
+  const tw = text.length * 7.6;
+  const inner = `${ossMark(lx - tw - 12, ly)}
+    <text x="${lx}" y="${ly + 4}" text-anchor="end" font-family="${MONO}" font-size="${FONT.label}" letter-spacing="0.08em" fill="${LINE}">${text}</text>`;
+  parts.push(link(null, 'Open source', 'Components marked with this symbol are open source: Airbyte, ClickHouse, dbt, Cube and nao analytics. No licence fees, no lock-in, and you can run them on your own infrastructure.', inner));
 }
 
 // consumers: one bus line from the semantic layer, ticks into each box
