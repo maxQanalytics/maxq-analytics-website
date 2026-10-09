@@ -3,6 +3,25 @@ import Layout from '../layouts/Layout.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import stackSvg from '../diagrams/tech-stack-2026-10-09h.svg?raw';
+// Maxq Product Show, episode 001 (public on YouTube since 2026-09-10)
+const EPISODE = {
+  id: '5_eraCaZDSw',
+  watch: 'https://www.youtube.com/watch?v=5_eraCaZDSw',
+  channel: 'https://www.youtube.com/@maxq-analytics?sub_confirmation=1',
+  playlist: 'https://www.youtube.com/playlist?list=PLTJTa1v34BEw',
+  summary: 'Sarah Thiebault walks Philip through nao, the open source analytics agent behind our Analytics Assistant: what a typical data stack looks like, why the consumption layer is still the point of friction, what a context layer adds on top of the semantic layer, and a live demo in the nao app, in Slack and in Claude.',
+  chapters: [
+    { t: 0,    label: '0:00',  title: 'Welcome and the plan for this episode' },
+    { t: 175,  label: '2:55',  title: 'A typical data analytics stack' },
+    { t: 392,  label: '6:32',  title: 'Adding a context layer' },
+    { t: 760,  label: '12:40', title: 'What matters when building an analytics agent' },
+    { t: 1025, label: '17:05', title: 'Live demo: the nao app' },
+    { t: 1891, label: '31:31', title: 'The Slack interface' },
+    { t: 2073, label: '34:33', title: 'The Claude MCP interface' },
+    { t: 2434, label: '40:34', title: 'Use cases' },
+    { t: 2735, label: '45:35', title: 'Wrap-up' },
+  ],
+};
 ---
 
 <Layout title="Maxq Analytics — Agentic Analytics on all your data">
@@ -553,6 +572,60 @@ import stackSvg from '../diagrams/tech-stack-2026-10-09h.svg?raw';
       </div>
     </div>
   </section>
+
+  <!-- Maxq Product Show: click-to-play player with chapter navigation (promoted from preview edition 2026-10-09 cobalt-lynx-ridge) -->
+  <section id="product-show" class="py-24 px-6 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-4xl font-bold text-ink mb-4" style="letter-spacing: -0.02em">See it working on the <span class="text-brand-600">Maxq Product Show</span></h2>
+        <p class="text-lg text-ink/60 max-w-2xl mx-auto">In every episode a Maxq engineer demonstrates one part of the stack live. Episode 001 explains how an analytics agent answers business questions from your warehouse in a chat, in Slack and in Claude.</p>
+      </div>
+      <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_320px] gap-12 items-start">
+        <div>
+          <div id="ps-player" class="relative aspect-video rounded-2xl overflow-hidden bg-ink shadow-lg">
+            <button type="button" id="ps-play" class="group absolute inset-0 w-full h-full" aria-label="Play episode 001">
+              <img src="/product-show/001/thumbnail.jpg" alt="" class="w-full h-full object-cover" />
+              <span class="absolute inset-0 flex items-center justify-center">
+                <span class="w-16 h-16 rounded-full bg-brand-500 text-cream flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform"><svg class="w-6 h-6 ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+              </span>
+            </button>
+          </div>
+          <div class="mt-5 flex flex-wrap items-baseline justify-between gap-3">
+            <div>
+              <p class="font-bold text-ink text-lg" style="letter-spacing: -0.01em">Analytics agents, explained: an introduction to nao</p>
+              <p class="text-sm text-ink/50">Episode 001 · 46 min · Sarah Thiebault and Philip Boontje</p>
+            </div>
+            <a href={EPISODE.watch} target="_blank" rel="noopener" class="text-sm font-semibold text-brand-600 hover:text-ink transition-colors">Open on YouTube →</a>
+          </div>
+        </div>
+        <aside class="mt-12 lg:mt-0">
+          <p class="text-xs font-mono text-ink/40 uppercase tracking-widest mb-4">Jump to a chapter</p>
+          <ol class="border-y border-ink/10 divide-y divide-ink/10">
+            {EPISODE.chapters.map(c => (
+              <li><button type="button" data-t={c.t} class="ps-chapter w-full text-left flex gap-4 py-3 text-sm hover:text-brand-600 transition-colors"><span class="font-mono text-ink/40 w-12 shrink-0">{c.label}</span><span class="text-ink/80">{c.title}</span></button></li>
+            ))}
+          </ol>
+        </aside>
+      </div>
+    </div>
+  </section>
+  <script is:inline>
+    (function () {
+      var wrap = document.getElementById('ps-player');
+      var id = '5_eraCaZDSw';
+      function load(t) {
+        wrap.innerHTML = '<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&start=' + (t || 0) + '" title="Maxq Product Show episode 001" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+        if (window.posthog) posthog.capture('product_show_play', { episode: '001', start: t || 0 });
+      }
+      document.getElementById('ps-play').addEventListener('click', function () { load(0); });
+      document.querySelectorAll('.ps-chapter').forEach(function (b) {
+        b.addEventListener('click', function () {
+          load(parseInt(b.getAttribute('data-t'), 10));
+          wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      });
+    })();
+  </script>
 
   <!-- Final CTA -->
   <section class="py-24 px-6 bg-cream text-center relative">
