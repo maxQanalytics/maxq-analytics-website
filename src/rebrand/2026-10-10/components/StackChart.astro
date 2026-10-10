@@ -1,0 +1,171 @@
+---
+// The tech-stack flow chart of the live homepage (src/diagrams/tech-stack-2026-10-09h.svg,
+// rendered by scripts/render-tech-stack.mjs), with motion added in CSS only: the
+// connectors carry dashes that flow towards the consumers, and the dashed
+// Semantic Nexus band slowly circulates. Phones get the same stacked cards as live.
+import rawSvg from '../../../diagrams/tech-stack-2026-10-09h.svg?raw';
+import { BASE } from '../config.mjs';
+// Links inside the chart stay inside this edition
+const stackSvg = rawSvg.replace(/href="\/add-ons\//g, `href="${BASE}/add-ons/`);
+---
+<div id="rb-stack" class="hidden md:block rb-reveal">
+  <Fragment set:html={stackSvg} />
+</div>
+<div id="rb-stack-tip" class="pointer-events-none fixed z-50 max-w-xs bg-ink text-white text-xs rounded-md px-3 py-2 leading-relaxed shadow-lg" style="display:none">
+  <strong class="block font-medium text-sm mb-0.5"></strong>
+  <span class="text-white/80"></span>
+</div>
+<script is:inline>
+  (function () {
+    var tip = document.getElementById('rb-stack-tip'), tn = tip.querySelector('strong'), tt = tip.querySelector('span');
+    function place(e) {
+      var r = tip.getBoundingClientRect(), x = e.clientX + 14, y = e.clientY + 14;
+      if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14;
+      if (y + r.height > innerHeight - 8) y = e.clientY - r.height - 14;
+      tip.style.left = x + 'px'; tip.style.top = y + 'px';
+    }
+    document.querySelectorAll('#rb-stack [data-tip-name]').forEach(function (n) {
+      n.addEventListener('mouseenter', function (e) { tn.textContent = n.getAttribute('data-tip-name'); tt.textContent = n.getAttribute('data-tip-text'); tip.style.display = 'block'; place(e); });
+      n.addEventListener('mousemove', place);
+      n.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+    });
+  })();
+</script>
+
+<!-- Phones: stacked cards with the same logo boxes and chips as the SVG -->
+      <div class="md:hidden flex flex-col gap-3">
+        <div class="rounded-lg border rb-line bg-[#f7f7f8] p-5 sx-card">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · Product database</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/mysql.svg" alt="" width="30" height="18">MySQL</span>
+            <span class="sx-chip"><img src="/logos/postgresql.svg" alt="" width="18" height="18">PostgreSQL<span class="sx-os"><i></i>OS</span></span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · Bookkeeping</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/exact.png" alt="" width="46" height="18">Exact Online</span>
+            <span class="sx-chip"><img src="/logos/yuki.png" alt="" width="18" height="18">Yuki</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · CRM</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/hubspot.svg" alt="" width="18" height="18">HubSpot</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · ERP</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/float.png" alt="" width="18" height="18">Float</span>
+            <span class="sx-chip"><img src="/logos/infor.png" alt="" width="18" height="18">Infor</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · Customer care</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/freshworks.png" alt="" width="18" height="18">Freshdesk</span>
+            <span class="sx-chip"><img src="/logos/zendesk.svg" alt="" width="18" height="18">Zendesk</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Sources · Spreadsheets</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/google-sheets.svg" alt="" width="18" height="18">Google Sheets</span>
+            <span class="sx-chip"><img src="/logos/excel.svg" alt="" width="18" height="18">Excel</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-lg border rb-line bg-[#f7f7f8] p-5 sx-card">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Extraction · streaming (product database)</p>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/debezium.png" alt="Debezium" height="24" style="height:24px"><small>change data capture</small><span class="sx-os"><i></i>OS</span></span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Extraction · batch (all other sources)</p>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/airbyte.svg" alt="Airbyte" height="24" style="height:24px"><small>open-source connectors</small><span class="sx-os"><i></i>OS</span></span>
+            <span class="sx-tool"><img src="/logos/dlt.png" alt="dlt" height="20" style="height:20px"><small>python pipelines · code</small><span class="sx-os"><i></i>OS</span></span>
+            <span class="sx-tool"><img src="/logos/hevo.png" alt="Hevo Data" height="20" style="height:20px"><small>no-code · 150+ sources</small></span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-lg border rb-line bg-[#f7f7f8] p-5 sx-card">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Warehouse · real-time (from the stream)</p>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/clickhouse.png" alt="ClickHouse" height="24" style="height:24px"><small>real-time analytics</small><span class="sx-os"><i></i>OS</span></span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Warehouse · batch</p>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/bigquery.png" alt="BigQuery" height="24" style="height:24px"><small>serverless · Google Cloud</small></span>
+            <span class="sx-tool"><img src="/logos/snowflake.png" alt="Snowflake" height="24" style="height:24px"><small>storage and compute apart</small></span>
+            <span class="sx-tool"><img src="/logos/fabric.png" alt="Microsoft Fabric" height="22" style="height:22px"><small>data warehouse</small></span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-lg border rb-line bg-[#f7f7f8] p-5 sx-card">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Transformation</p>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/dbt.png" alt="dbt" height="24" style="height:24px"><small>models · tests · docs in git</small><span class="sx-os"><i></i>OS</span></span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-lg border rb-line bg-[#f7f7f8] p-5 sx-card">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Semantic layer</p>
+          <div class="sx-wrap">
+            <span class="sx-tool"><img src="/logos/cube.png" alt="Cube" height="24" style="height:24px"><small>metrics defined once · API</small><span class="sx-os"><i></i>OS</span></span>
+            <span class="sx-tool"><img src="/logos/fabric.png" alt="Microsoft Fabric" height="22" style="height:22px"><small>semantic models</small></span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="rounded-lg border rb-line bg-[#f7f7f8] p-5 sx-card">
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · AI models</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/claude-icon.svg" alt="" width="18" height="18">Claude</span>
+            <span class="sx-chip"><img src="/logos/openai.svg" alt="" width="18" height="18">OpenAI</span>
+            <span class="sx-chip"><img src="/logos/gemini.svg" alt="" width="18" height="18">Gemini</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · MCPs</p>
+          <div class="sx-wrap">
+            <span class="sx-chip sx-self"><img src="/logos/nao.png" alt="" width="18" height="18">nao analytics<span class="sx-os"><i></i>OS</span></span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · AI agents</p>
+          <div class="sx-wrap">
+            <span class="sx-chip sx-self"><img src="/logos/quality-guardian.png" alt="" width="18" height="18">Quality Guardian</span>
+            <span class="sx-chip"><img src="/logos/langchain.svg" alt="" width="22" height="18">LangChain agents</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · Reports</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/data-studio-icon.svg" alt="" width="18" height="18">Data Studio</span>
+            <span class="sx-chip"><img src="/logos/powerbi-icon.svg" alt="" width="18" height="18">Power BI</span>
+          </div>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mb-2">Consumers · Your own apps</p>
+          <div class="sx-wrap">
+            <span class="sx-chip"><img src="/logos/nextjs.svg" alt="" width="18" height="18">Next.js</span>
+            <span class="sx-chip"><img src="/logos/django.svg" alt="" width="18" height="18">Django</span>
+          </div>
+    </div>
+</div>
+
+
+<style is:global>
+  @keyframes rbFlow { to { stroke-dashoffset: -20; } }
+  @keyframes rbBand { to { stroke-dashoffset: -40; } }
+  #rb-stack path[marker-end] { stroke-dasharray: 4 6; }
+  .rb-in #rb-stack path[marker-end], #rb-stack.rb-in path[marker-end] { animation: rbFlow 1.1s linear infinite; }
+  #rb-stack.rb-in rect[stroke-dasharray] { animation: rbBand 6s linear infinite; }
+  @media (prefers-reduced-motion: reduce) { #rb-stack path[marker-end] { stroke-dasharray: none; animation: none !important; } #rb-stack rect { animation: none !important; } }
+  .sx-wrap { display: flex; flex-wrap: wrap; gap: 14px 16px; }
+  .sx-card .sx-wrap { margin-bottom: 18px; }
+  .sx-card .sx-wrap:last-child { margin-bottom: 0; }
+  .sx-chip { position: relative; display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 10px;
+    background: #fff; border: 1px solid rgba(10,10,15,0.35); border-radius: 4px; font-size: 13px; font-weight: 500; color: #0a0a0f; white-space: nowrap; }
+  .sx-chip img { height: 18px; width: auto; object-fit: contain; }
+  .sx-chip.sx-self { border-color: rgba(26,79,255,0.6); }
+  .sx-tool { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    flex: 1 1 128px; min-width: 128px; min-height: 58px; padding: 8px 10px; background: #fff; border: 1px solid #0a0a0f; border-radius: 4px; }
+  .sx-tool img { max-width: 110px; width: auto; object-fit: contain; }
+  .sx-tool small { font-size: 11px; line-height: 1.1; color: #3d3b38; text-align: center; }
+  .sx-os { position: absolute; right: -6px; bottom: -8px; display: inline-flex; align-items: center; gap: 3px; height: 16px; padding: 0 5px 0 4px;
+    border-radius: 8px; background: #e9f6e5; border: 0.8px solid #a9d9a2; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.04em; font-weight: 400; color: #0a0a0f; }
+  .sx-os i { display: inline-block; width: 7px; height: 7px; border: 2px solid #3da639; border-bottom-color: transparent; border-radius: 50%; transform: rotate(45deg); }
+</style>

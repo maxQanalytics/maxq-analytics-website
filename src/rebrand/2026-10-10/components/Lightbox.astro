@@ -1,0 +1,27 @@
+<!-- Lightbox for every .rb-zoom frame on the page -->
+<div id="rbLightbox" class="fixed inset-0 z-[1000] bg-white/90 backdrop-blur-sm overflow-y-auto" hidden>
+  <button id="rbLightboxClose" aria-label="Close" class="fixed top-4 right-4 z-10 w-10 h-10 rounded-md bg-ink text-white flex items-center justify-center">
+    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="rb-lb-pad min-h-full flex items-start justify-center px-4 py-10 md:px-10 md:py-14">
+    <figure class="m-0 w-full" style="max-width: 1600px">
+      <img id="rbLightboxImg" src="" alt="" class="w-full h-auto block rounded-lg border rb-line shadow-2xl bg-white" />
+      <figcaption id="rbLightboxCap" class="text-ink/60 text-sm mt-4 text-center font-mono"></figcaption>
+    </figure>
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    var box = document.getElementById('rbLightbox'), img = document.getElementById('rbLightboxImg'), cap = document.getElementById('rbLightboxCap');
+    function close() { box.hidden = true; img.src = ''; document.documentElement.style.overflow = ''; }
+    document.querySelectorAll('.rb-zoom').forEach(function (f) {
+      f.addEventListener('click', function () {
+        img.src = f.getAttribute('data-src'); img.alt = f.getAttribute('data-alt') || ''; cap.textContent = img.alt;
+        box.hidden = false; box.scrollTop = 0; document.documentElement.style.overflow = 'hidden';
+      });
+    });
+    document.getElementById('rbLightboxClose').addEventListener('click', close);
+    box.addEventListener('click', function (e) { if (e.target === box || e.target.tagName === 'FIGURE' || e.target.classList.contains('rb-lb-pad')) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
+  })();
+</script>

@@ -1,0 +1,60 @@
+---
+// Rebrand edition 2026-10-10 (unlisted): partners page. Content as on src/pages/partners.astro.
+import Layout from '../../rebrand/2026-10-10/Layout.astro';
+const utm = '?utm_source=maxq&utm_medium=referral&utm_campaign=partners';
+const groups = [
+  {
+    label: 'Platforms',
+    logos: [
+      { src: '/logos/clubcollect.png', alt: 'ClubCollect', h: 24 },
+      { src: '/twelve-logo.svg', alt: 'Twelve', h: 20 },
+    ],
+    text: 'We integrate directly into their product to give their clients custom dashboards, agentic workflows, and reports — without needing an in-house data team.',
+    links: [
+      ['Visit ClubCollect', `https://www.clubcollect.com${utm}`],
+      ['Visit Twelve', `https://www.twelve.eu${utm}`],
+    ],
+  },
+  {
+    label: 'Investors',
+    logos: [{ src: '/logos/ish.svg', alt: 'Invisible Software Holdings', h: 40 }],
+    text: "As the data & analytics partner for ISH's portfolio, we implement the Semantic Nexus across their holdings — turning fragmented data into a shared standard.",
+    links: [['Visit ISH', `https://www.invsholdings.co.uk/${utm}`]],
+  },
+  {
+    label: 'Specialists',
+    logos: [{ src: '/logos/sparck.svg', alt: 'Sparck Finance', h: 24 }],
+    text: 'Domain specialists who deepen our work in financial modelling and reporting, extending our capabilities where deep expertise matters most.',
+    links: [['Visit Sparck Finance', `https://www.sparckfinance.nl/${utm}`]],
+  },
+];
+const arrow = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+---
+
+<Layout title="Partners — Maxq Analytics">
+  <section class="pt-36 md:pt-44 pb-32 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="rb-reveal max-w-3xl mb-16">
+        <p class="rb-label mb-4">Partners</p>
+        <h1 class="rb-h1 text-ink">Partner ecosystem.</h1>
+        <p class="text-lg text-ink/60 leading-relaxed mt-6 max-w-2xl">A select group of platforms, investors, and specialists who share our standards for data quality and metric driven governance.</p>
+      </div>
+      <div class="rb-reveal rb-grid-cells md:grid-cols-3 rounded-lg overflow-hidden">
+        {groups.map((g) => (
+          <div class="flex flex-col">
+            <div class="h-36 border-b rb-line flex items-center justify-center gap-8 px-6">
+              {g.logos.map((l) => <img src={l.src} alt={l.alt} style={`height:${l.h}px; filter: brightness(0) opacity(0.8)`} class="w-auto object-contain" />)}
+            </div>
+            <div class="p-7 md:p-8 flex flex-col flex-1">
+              <span class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-4">{g.label}</span>
+              <p class="text-[14px] text-ink/60 leading-relaxed mb-6">{g.text}</p>
+              <div class="mt-auto flex flex-wrap gap-x-6 gap-y-2">
+                {g.links.map(([label, href]) => <a href={href} target="_blank" rel="noopener" class="rb-link">{label} <Fragment set:html={arrow} /></a>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,159 @@
+---
+import { BASE, ADD_ONS, link } from './config.mjs';
+const docs = 'https://docs.maxqanalytics.io';
+const cols = [
+  {
+    title: 'Semantic Nexus',
+    items: [
+      ['Domain Reports', `${docs}/Products/Semantic+Nexus#Domain+Reports`],
+      ['Data Model Explorer', `${docs}/Products/Semantic+Nexus#Data%20Model%20Explorer`],
+      ['Data Entry Tests', `${docs}/Products/Semantic+Nexus#Data+Entry+Tests`],
+      ['Pipeline Freshness', `${docs}/Products/Semantic+Nexus#Data+Freshness`],
+      ['MCP Servers', `${docs}/Products/Semantic+Nexus`],
+    ],
+  },
+  {
+    title: 'Frameworks',
+    items: [
+      ['Standardised Data Architecture', `${docs}/Design/Frameworks#Standardised%20Data%20Architecture`],
+      ['Integrated Performance Framework', `${docs}/Design/Frameworks#Integrated%20Performance%20Framework`],
+      ['Modular Security Protocol', `${docs}/Design/Frameworks#Modular%20Security%20Protocol`],
+    ],
+  },
+  {
+    title: 'Add-ons',
+    items: ADD_ONS.map((a) => [a.label, link(a.href)]),
+  },
+];
+---
+<footer class="bg-[#fafafa] border-t rb-line text-ink px-6 pt-14 pb-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-x-6 gap-y-10 pb-12">
+      <div class="col-span-2 md:col-span-1">
+        <img src="/maxq-analytics-logo.png" alt="Maxq Analytics" class="h-20 w-auto -ml-3 -mt-5" style="filter: brightness(0)" />
+      </div>
+      {cols.map((c) => (
+        <div>
+          <h4 class="rb-label mb-4">{c.title}</h4>
+          <ul class="space-y-2 text-[13px] text-ink/70">
+            {c.items.map(([label, href]) => (
+              <li><a href={href} {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})} class="hover:text-ink transition-colors">{label}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      <div>
+        <h4 class="rb-label mb-4">Chamber of Commerce</h4>
+        <p class="text-[13px] text-ink/70 leading-relaxed">MAXQ Analytics B.V.<br>KvK 95597166<br>VAT NL867198461B01</p>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div>
+          <h4 class="rb-label mb-4">Come visit us</h4>
+          <p class="text-[13px] text-ink/70 leading-relaxed">De Holle Bilt 25<br>3732 HM De Bilt<br>Netherlands</p>
+        </div>
+        <div class="flex items-center gap-4 text-ink/60">
+          <a href="https://www.linkedin.com/company/maxq-analytics/" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-ink transition-colors">
+            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@maxq-analytics" target="_blank" rel="noopener" aria-label="YouTube" class="hover:text-ink transition-colors">
+            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="pt-6 border-t rb-line flex flex-col md:flex-row justify-between gap-3 font-mono text-[11px] uppercase tracking-wider text-ink/50">
+      <div class="flex items-center gap-6 flex-wrap">
+        <span>&copy; {new Date().getFullYear()} Maxq Analytics</span>
+        <a href="/privacy-policy" class="hover:text-ink transition-colors">Privacy Policy</a>
+        <a href="/terms-of-service" class="hover:text-ink transition-colors">Terms</a>
+      </div>
+      <span>Data architecture &amp; engineering guild</span>
+    </div>
+  </div>
+</footer>
+
+<script is:inline define:vars={{ BASE }}>
+  (function () {
+    var overlay    = document.getElementById('calendlyModal');
+    var container  = document.getElementById('calendlyContainer');
+    var widgetHost = document.getElementById('calendlyWidgetHost');
+    var closeBtn   = document.getElementById('calendlyClose');
+    var CALENDLY   = 'https://calendly.com/philip-boontje?hide_gdpr_banner=1&background_color=ffffff&text_color=0a0a0f&primary_color=1a4fff';
+
+    // Tracking: pages of this edition attribute to the same add-on as their live page
+    var ADDON_SLUGS = {
+      '/':                            'homepage',
+      '/add-ons/analytics-assistant': 'analytics-assistant',
+      '/add-ons/quality-guardian':    'quality-guardian',
+    };
+    function addonForPath() {
+      var p = window.location.pathname.replace(BASE, '').replace(/^(.+)\/$/, '$1') || '/';
+      return ADDON_SLUGS[p];
+    }
+
+    function openModal(utmContent, btnText) {
+      var url = CALENDLY;
+      if (utmContent) url += '&utm_content=' + encodeURIComponent(utmContent);
+      widgetHost.innerHTML = '';
+      Calendly.initInlineWidget({ url: url, parentElement: widgetHost });
+      overlay.style.opacity = '1';
+      overlay.style.visibility = 'visible';
+      container.style.transform = 'translateY(0) scale(1)';
+      document.body.style.overflow = 'hidden';
+      var addon = addonForPath();
+      if (addon) {
+        fetch('/api/track-cta', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ addon: addon, page: window.location.pathname, btnText: btnText || '' }),
+        }).catch(function () {});
+      }
+    }
+    function closeModal() {
+      overlay.style.opacity = '0';
+      overlay.style.visibility = 'hidden';
+      container.style.transform = 'translateY(20px) scale(0.97)';
+      document.body.style.overflow = '';
+      setTimeout(function () { widgetHost.innerHTML = ''; }, 300);
+    }
+    document.querySelectorAll('a[href*="calendly.com"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var utmContent = '';
+        try { utmContent = new URL(a.href).searchParams.get('utm_content') || ''; } catch (err) {}
+        var btnText = Array.from(a.childNodes)
+          .filter(function (n) { return n.nodeType === 3; })
+          .map(function (n) { return n.textContent.trim(); })
+          .filter(Boolean)
+          .join(' ');
+        if (window.posthog) {
+          posthog.capture('cta_click', Object.assign({ label: btnText || (a.textContent || '').trim(), path: window.location.pathname }, window.__maxq_utm || {}));
+          posthog.capture('booking_started', window.__maxq_utm || {});
+        }
+        openModal(utmContent, btnText);
+      });
+    });
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.style.visibility === 'visible') closeModal(); });
+
+    window.addEventListener('message', function (e) {
+      if (e.origin !== 'https://calendly.com') return;
+      var data = e.data;
+      if (typeof data === 'string') { try { data = JSON.parse(data); } catch (err) { return; } }
+      if (!data || data.event !== 'calendly.event_scheduled') return;
+      if (window.posthog) posthog.capture('booking_completed', window.__maxq_utm || {});
+      var addon = addonForPath();
+      if (!addon) return;
+      var payload = data.payload || {};
+      var eventUri   = payload.event   && (payload.event.uri   || payload.event);
+      var inviteeUri = payload.invitee && (payload.invitee.uri || payload.invitee);
+      if (!eventUri || !inviteeUri) return;
+      fetch('/api/calendly-event', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ addon: addon, eventUri: eventUri, inviteeUri: inviteeUri }),
+      }).catch(function () {});
+    });
+  })();
+</script>

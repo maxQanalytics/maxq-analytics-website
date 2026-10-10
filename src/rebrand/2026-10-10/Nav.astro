@@ -1,0 +1,78 @@
+---
+import { NAV, ADD_ONS, CALENDLY, link } from './config.mjs';
+---
+<!-- Calendly modal (opened by Footer.astro's script for every calendly.com link) -->
+<div id="calendlyModal" style="position:fixed;inset:0;background:rgba(10,10,15,0.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease;">
+  <div id="calendlyContainer" style="background:#fff;border-radius:12px;width:100%;max-width:680px;max-height:90vh;overflow:hidden;transform:translateY(20px) scale(0.97);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);box-shadow:0 24px 80px rgba(0,0,0,0.2);border:1px solid rgba(10,10,15,0.1)">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid rgba(10,10,15,0.08);">
+      <div>
+        <div style="font-size:16px;font-weight:500;letter-spacing:-0.01em;color:#0a0a0f">Schedule a call with Philip</div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(10,10,15,0.5);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px">30 min · no pitch deck · just data talk</div>
+      </div>
+      <button id="calendlyClose" aria-label="Close" style="width:34px;height:34px;border-radius:6px;border:1px solid rgba(10,10,15,0.12);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div id="calendlyWidgetHost" style="height:640px;overflow:hidden;"></div>
+  </div>
+</div>
+
+<nav class="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-md border-b rb-line">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href={link('/')} class="flex items-center -ml-3" aria-label="Maxq Analytics home">
+      <img src="/maxq-analytics-logo.png" alt="Maxq Analytics" class="h-20 w-auto object-contain" style="filter: brightness(0)" />
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <div class="flex items-center gap-7 text-sm text-ink/70">
+        {NAV.map((n) => <a href={link(n.href)} class="hover:text-ink transition-colors">{n.label}</a>)}
+        <div class="relative group/addons">
+          <a href={link('/add-ons')} class="hover:text-ink transition-colors flex items-center gap-1">
+            Add-ons
+            <svg class="w-3 h-3 opacity-70 transition-transform duration-150 group-hover/addons:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 hidden group-hover/addons:block z-50">
+            <div class="bg-white border rb-line rounded-lg shadow-xl py-2 px-1.5 w-52">
+              {ADD_ONS.map((a, i) => (
+                <Fragment>
+                  {i > 0 && <div class="my-1.5 border-t rb-line"></div>}
+                  <p class="rb-label !text-[9px] px-2 pt-1 mb-0.5">{a.group}</p>
+                  <a href={link(a.href)} class="block px-2 py-1.5 text-[13px] text-ink/80 hover:text-ink hover:bg-ink/[0.04] rounded-md transition-colors">{a.label}</a>
+                </Fragment>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href={CALENDLY} target="_blank" rel="noopener" class="rb-btn rb-btn-primary !h-9">
+        Schedule a meeting
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <button id="mobileMenuBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5" aria-label="Open menu" aria-expanded="false">
+      <span class="hamburger-line block w-6 h-0.5 bg-ink transition-all duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-ink transition-all duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-ink transition-all duration-300"></span>
+    </button>
+  </div>
+  <div id="mobileMenu" class="md:hidden hidden bg-white border-t rb-line">
+    <div class="px-6 py-2 flex flex-col">
+      {NAV.map((n) => <a href={link(n.href)} class="mobile-nav-link py-3 text-[15px] text-ink border-b rb-line">{n.label}</a>)}
+      <a href={link('/add-ons')} class="mobile-nav-link py-3 text-[15px] text-ink border-b rb-line">Add-ons</a>
+      <a href={CALENDLY} target="_blank" rel="noopener" class="rb-btn rb-btn-primary justify-center my-3">Schedule a meeting</a>
+    </div>
+  </div>
+</nav>
+<script>
+  const btn = document.getElementById('mobileMenuBtn');
+  const menu = document.getElementById('mobileMenu');
+  const lines = btn.querySelectorAll('.hamburger-line');
+  function setOpen(open) {
+    menu.classList.toggle('hidden', !open);
+    btn.setAttribute('aria-expanded', String(open));
+    lines[0].style.transform = open ? 'translateY(8px) rotate(45deg)' : '';
+    lines[1].style.opacity = open ? '0' : '';
+    lines[2].style.transform = open ? 'translateY(-8px) rotate(-45deg)' : '';
+  }
+  btn.addEventListener('click', () => setOpen(menu.classList.contains('hidden')));
+  document.querySelectorAll('.mobile-nav-link').forEach((l) => l.addEventListener('click', () => setOpen(false)));
+</script>

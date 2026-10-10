@@ -1,0 +1,397 @@
+---
+// Rebrand edition 2026-10-10 (unlisted): Quality Guardian. Copy as on
+// src/pages/add-ons/quality-guardian.astro (promoted edition quartz-badger-cove).
+// Screenshots: /public/add-ons/quality-guardian/2026-09-14/ (John's Cleaning demo client).
+import Layout from '../../../rebrand/2026-10-10/Layout.astro';
+import SectionHead from '../../../rebrand/2026-10-10/components/SectionHead.astro';
+import Frame from '../../../rebrand/2026-10-10/components/Frame.astro';
+import Lightbox from '../../../rebrand/2026-10-10/components/Lightbox.astro';
+import { link } from '../../../rebrand/2026-10-10/config.mjs';
+import flowSvg from '../../../diagrams/quality-guardian-flow-2026-09-14.svg?raw';
+
+const shots = '/add-ons/quality-guardian/2026-09-14';
+const calendly = 'https://calendly.com/philip-boontje?utm_content=quality-guardian';
+const arrow = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+const check = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+const tour = [
+  {
+    tag: 'Latest run', title: 'One run, one verdict per record',
+    text: 'The run header shows the scope it used. Five verdict counters split the records: <strong class="font-medium text-ink">Ready to fix</strong>, <strong class="font-medium text-ink">New row ready</strong>, <strong class="font-medium text-ink">Possible match</strong>, <strong class="font-medium text-ink">No match</strong>, <strong class="font-medium text-ink">Incomplete</strong>. Each row names the object, the proposed fix, whether it was written, and links to the record in its source system.',
+    bullets: ['Pre-run confirmation states how many records and which tests a run will touch, and whether write-back is on.', 'Live progress: every queued record is visible from the first second and fills in as it finishes.', 'A running run can be terminated; what finished is kept.', 'Export the run as a branded PDF, records needing manual action first.'],
+    img: 'latest-run.jpg', h: 1125, bar: 'quality-guardian · johns-cleaning', alt: 'Quality Guardian Latest run page: a completed run of three overdue invoices, each ready to fix with the status written back',
+  },
+  {
+    tag: 'Manual Config', title: 'Every test, every owner, every switch',
+    text: 'Tests are grouped per source system, each with its failing count, pass rate and owner, and a link to the failing records. Tick the tests a run should cover, set how many issues to resolve and how many investigation steps each record may take, and choose a random sample or the most recent failures.',
+    bullets: ['Agent features: model choice (Claude Sonnet 5 by default), one write-back switch per system, web search, Slack reports.', 'Settings are stored server-side and shared by everyone who signs in.', 'Blank fields fall back to the deployment defaults, so nothing has to be filled in to start.'],
+    img: 'config.jpg', h: 4023, max: 560, bar: 'quality-guardian · johns-cleaning · config', alt: 'Quality Guardian Manual Config page: run settings, 32 entry tests grouped per source system with owners and pass rates, and agent feature toggles',
+  },
+  {
+    tag: 'Schedule', title: 'Runs by itself, every morning',
+    text: 'Create jobs that run daily, weekly or monthly at an hour you pick, shown in your local time. Each job carries its own run settings, so a nightly sweep can cover every test while a Monday job focuses on invoices only. A scheduled run is labelled with its job name in the logs.',
+    bullets: ['One job per time slot, checked when you save, so two jobs never silently collide.', 'Disable a job to park it without losing its settings.'],
+    img: 'schedule-job.jpg', h: 4482, max: 560, bar: 'quality-guardian · johns-cleaning · scheduling · nightly-sweep', alt: 'Quality Guardian scheduled job Nightly Sweep, daily at 09:00: its own run settings, entry tests per source system with owners and pass rates, and agent feature toggles',
+  },
+  {
+    tag: 'Logs', title: 'What the agent did, step by step',
+    text: 'Every run is kept. Pick one and see its model, the number of agent steps, tool calls and tool errors, and how many records were written back. Each record carries two labelled chips: the <strong class="font-medium text-ink">verdict</strong> the investigation reached, with its confidence, and the <strong class="font-medium text-ink">write-back</strong> state: written, dry-run, failed, not configured, skipped as duplicate, or not attempted.',
+    bullets: ['Expand a record for the full trace: every query it ran, what came back, and the reasoning behind the conclusion.', 'Raw JSON of any run is one click away.', 'The period report collapses runs over a date range into distinct open issues, with how often each was seen, as a PDF.'],
+    img: 'logs.jpg', h: 1165, bar: 'quality-guardian · johns-cleaning · logs', alt: 'Quality Guardian Logs page: run list, run header, step counters, and a record trace with verdict and write-back chips',
+  },
+];
+const features = [
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>', title: 'Entry tests with owners', text: 'Plain-language tests per object and source system, each with a named test owner, failing count and pass rate. Defined once in your dbt project; the guardian reads the failures.' },
+  { icon: '<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>', title: 'Scored investigations', text: 'Read-only SQL over curated tables, web search as fallback, a step budget per record, and a verdict with high, medium or low confidence every time. Only candidates from your own data qualify for an automatic fix.' },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>', title: 'Guarded write-back', text: 'Field fills and row creation in Airtable, HubSpot or your operations database. Off by default, one switch per system, dry-run reporting while off, duplicate check before any create, and the outcome stored on every record.' },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M21 12c0 4.418-4.03 8-9 8a9.9 9.9 0 01-4-.8L3 20l1.3-3.9A7.6 7.6 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>', title: 'Slack action list per owner', text: "After each run: what was fixed, and a section per test owner with Issue, Found, Action and Where per record. Fixed labels, a link to the record, and a deep link to the run's logs." },
+  { icon: '<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>', title: 'Scheduled jobs', text: 'Daily, weekly or monthly jobs at the hour you choose, each with its own run settings. One job per slot, enforced when you save. Runs show which job triggered them.' },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>', title: 'Full trace and audit trail', text: 'Every run is kept with its model, steps, tool calls and errors. Per record: the verdict, the write-back state, and the complete investigation trace. Raw JSON on request.' },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>', title: 'PDF reports', text: 'A branded PDF per run, manual-action records first. A period report over any date range that collapses repeated failures into distinct open issues, with how often each was seen.' },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>', title: 'Login and users', text: 'Email and password sign-in for your team, invite links to add colleagues, and a user list to remove them. Nothing is reachable without a session.' },
+];
+const roadmap = [
+  { n: 1, when: 'Next up', title: 'Owners addressed directly in Slack', text: `Each owner's section delivered as a thread, mention or direct message instead of one channel post, and a "resolved since last run" count in the header once the previous run's records are re-checked against the tests.` },
+  { n: 2, when: 'In design', title: 'Remediation instructions and revert', text: 'Per-test remediation instructions from your data model become the leading input for how a fix is made. And an applied fix can be reverted from the dashboard, because a high-confidence verdict can still be wrong.' },
+  { n: 3, when: 'Coming later', title: 'Fix-rate analytics', text: 'Records and fixes aggregated per week, month or quarter, and the share of investigations that led to a fix. Plus a dedicated client domain and several jobs running in parallel.' },
+];
+const freedayStats = [
+  { value: '3', label: 'source systems kept in step: HubSpot, Airtable, Exact Online' },
+  { value: '11', label: 'data-entry tests run every morning, on HubSpot and Airtable entities' },
+  { value: 'daily', label: 'scheduled run, with write-back to Airtable and HubSpot switched on' },
+];
+---
+
+<Layout title="Quality Guardian — Maxq Analytics">
+
+  <!-- Hero -->
+  <section class="pt-32 md:pt-40 px-6 overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+      <a href={link('/add-ons')} class="rb-reveal inline-flex items-center gap-2 rb-label hover:!text-ink transition-colors mb-10">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        All add-ons
+      </a>
+      <p class="rb-reveal rb-label mb-4"><span class="text-brand-600">Protect</span> · Add-on</p>
+      <h1 class="rb-h1 rb-reveal text-ink">Quality Guardian</h1>
+      <p class="rb-reveal text-lg md:text-xl text-ink/60 leading-relaxed mt-7 max-w-3xl">An AI agent that picks up every failed data-entry test in your analytics warehouse, investigates the record behind it, fixes it in the source system when it is sure, and hands everything else to the right test owner as a ready-to-act list in Slack.</p>
+      <div class="rb-reveal mt-9">
+        <a href={calendly} target="_blank" rel="noopener" class="rb-btn rb-btn-primary">Schedule live demo <Fragment set:html={arrow} /></a>
+      </div>
+      <div class="rb-reveal mt-16 md:mt-20 rb-fade">
+        <Frame src={`${shots}/logs.jpg`} alt="Quality Guardian Logs page: run list, run header, step counters, and a record trace with verdict and write-back chips" bar="quality-guardian · johns-cleaning · logs" fade={false} zoom={false} height={1165} eager />
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="px-6 pt-24">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="How it works" title="Test it, investigate it, fix it." />
+      <div class="hidden md:block rb-reveal">
+        <Fragment set:html={flowSvg} />
+      </div>
+      <div class="md:hidden flex flex-col gap-3">
+
+        <!-- 1 Tests -->
+        <div class="flex-1 rounded-lg border rb-line bg-[#f7f7f8] p-5 relative">
+          <span class="absolute -top-3 left-5 w-7 h-7 rounded-full bg-brand-600 text-white font-black text-xs flex items-center justify-center ring-4 ring-white">1</span>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mt-2 mb-1">Your warehouse</p>
+          <h3 class="font-bold text-ink mb-3 leading-snug">Data-entry tests fail</h3>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">dbt tests</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">one owner per test</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">Snowflake · BigQuery</span>
+          </div>
+        </div>
+
+        <!-- arrow -->
+        <div class="flex md:flex-col items-center justify-center md:w-10 md:pt-16 shrink-0 text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+
+        <!-- 2 Investigate -->
+        <div class="flex-1 rounded-lg border rb-line bg-[#f7f7f8] p-5 relative">
+          <span class="absolute -top-3 left-5 w-7 h-7 rounded-full bg-brand-600 text-white font-black text-xs flex items-center justify-center ring-4 ring-white">2</span>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mt-2 mb-1">Per failing record</p>
+          <h3 class="font-bold text-ink mb-3 leading-snug">The agent investigates</h3>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">2a read-only SQL</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">2b web search</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-ink/10 text-ink/70">2c step budget</span>
+          </div>
+        </div>
+
+        <!-- arrow -->
+        <div class="flex md:flex-col items-center justify-center md:w-10 md:pt-16 shrink-0 text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+
+        <!-- 3 Verdict -->
+        <div class="flex-1 rounded-lg border rb-line bg-[#f7f7f8] p-5 relative">
+          <span class="absolute -top-3 left-5 w-7 h-7 rounded-full bg-brand-600 text-white font-black text-xs flex items-center justify-center ring-4 ring-white">3</span>
+          <p class="font-mono text-[10px] text-ink/40 uppercase tracking-wider mt-2 mb-1">Always</p>
+          <h3 class="font-bold text-ink mb-3 leading-snug">A verdict with a confidence score</h3>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-green-50 border border-green-200 text-green-800">high</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-amber-50 border border-amber-200 text-amber-800">medium</span>
+            <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-red-50 border border-red-200 text-red-800">low</span>
+          </div>
+        </div>
+
+        <!-- split arrow -->
+        <div class="flex md:flex-col items-center justify-center md:w-10 md:pt-16 shrink-0 text-ink/30">
+          <svg class="w-5 h-5 rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h6"/><path d="M10 12c3 0 3-5 6-5h3"/><path d="M10 12c3 0 3 5 6 5h3"/><polyline points="16 4 19 7 16 10"/><polyline points="16 14 19 17 16 20"/></svg>
+        </div>
+
+        <!-- 4a / 4b outcomes -->
+        <div class="flex-1 flex flex-col gap-3 md:self-stretch">
+          <div class="flex-1 rounded-2xl border border-green-200 bg-green-50 p-5 relative">
+            <span class="absolute -top-3 left-5 w-7 h-7 rounded-full bg-green-600 text-white font-black text-xs flex items-center justify-center ring-4 ring-white">4a</span>
+            <p class="font-mono text-[10px] text-green-800/60 uppercase tracking-wider mt-2 mb-1">High confidence, own data</p>
+            <h3 class="font-bold text-ink leading-snug mb-2">Fix written to the source system</h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-green-200 text-green-900">fill a field</span>
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-green-200 text-green-900">create a row</span>
+            </div>
+          </div>
+          <div class="flex-1 rounded-2xl border border-amber-200 bg-amber-50 p-5 relative">
+            <span class="absolute -top-3 left-5 w-7 h-7 rounded-full bg-amber-600 text-white font-black text-xs flex items-center justify-center ring-4 ring-white">4b</span>
+            <p class="font-mono text-[10px] text-amber-800/60 uppercase tracking-wider mt-2 mb-1">Everything else</p>
+            <h3 class="font-bold text-ink leading-snug mb-2">Action card to the test owner</h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-amber-200 text-amber-900">Slack</span>
+              <span class="font-mono text-[10px] px-2 py-1 rounded-md bg-white border border-amber-200 text-amber-900">Issue · Found · Action · Where</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product tour -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="Product tour" title="The dashboard, page by page." intro="Screenshots from the current version, captured 14 September 2026 on our John's Cleaning demo client: a cleaning company whose operations portal, Exact Online, HubSpot, Nmbrs payroll and Mollie all have to agree with each other." />
+      <div class="space-y-24">
+        {tour.map((t, i) => (
+          <div class="rb-reveal grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start border-t rb-line pt-10">
+            <div class:list={['min-w-0 md:col-span-4', i % 2 === 1 && 'md:order-2']}>
+              <p class="rb-label !text-brand-600 mb-4">{String(i + 1).padStart(2, '0')} · {t.tag}</p>
+              <h3 class="rb-h3 text-2xl text-ink mb-4">{t.title}</h3>
+              <p class="text-[15px] text-ink/60 leading-relaxed mb-5" set:html={t.text} />
+              <ul class="space-y-2 text-[14px] text-ink/55 leading-relaxed">
+                {t.bullets.map((b) => <li class="flex gap-3"><span class="w-1 h-1 rounded-full bg-brand-600 mt-[9px] shrink-0"></span>{b}</li>)}
+              </ul>
+            </div>
+            <div class:list={['min-w-0 md:col-span-8', i % 2 === 1 && 'md:order-1']}>
+              <Frame src={`${shots}/${t.img}`} alt={t.alt} bar={t.bar} height={t.h} maxHeight={t.max} fade={t.max ? 'strong' : false} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Slack report -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="After every run" title="The Slack report: fixed, and to be fixed by whom." intro="Posted to a channel of your choice after each run. The layout is fixed on purpose: the same four labels on every card, so a test owner can act on it, or paste it into their own assistant." />
+      <div class="rb-reveal max-w-4xl">
+      <div class="rounded-[10px] overflow-hidden shadow-2xl border border-black/40" style="background: #1a1d21;">
+
+        <!-- Channel bar -->
+        <div class="flex items-center gap-3 px-4 py-3 border-b" style="border-color: rgba(255,255,255,0.08);">
+          <div class="flex items-center gap-2">
+            <div class="w-3.5 h-3.5 rounded-sm flex items-center justify-center" style="background: #4a154b;">
+              <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="white"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.687 8.834a2.528 2.528 0 0 1-2.521 2.521 2.527 2.527 0 0 1-2.521-2.521V2.522A2.527 2.527 0 0 1 15.166 0a2.528 2.528 0 0 1 2.521 2.522v6.312zM15.166 18.956a2.528 2.528 0 0 1 2.521 2.522A2.528 2.528 0 0 1 15.166 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zM15.166 17.687a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.312A2.527 2.527 0 0 1 24 15.166a2.528 2.528 0 0 1-2.522 2.521h-6.312z"/></svg>
+            </div>
+            <span class="text-xs font-medium" style="color: rgba(255,255,255,0.5)">#data-quality</span>
+          </div>
+        </div>
+
+        <div class="px-5 py-5">
+          <div class="flex gap-3">
+            <div class="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center text-white font-black text-sm" style="background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%); letter-spacing: -0.02em">QG</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-baseline gap-2 mb-2">
+                <span class="font-bold text-sm" style="color: #fff">Quality Guardian</span>
+                <span class="font-mono text-[10px] px-1.5 py-0.5 rounded" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4)">APP</span>
+                <span class="text-xs" style="color: rgba(255,255,255,0.3)">Today at 9:04 AM</span>
+              </div>
+
+              <!-- Header -->
+              <p class="text-base font-bold mb-1" style="color: #fff">3 fixed automatically · 2 require test owner action</p>
+              <p class="text-xs mb-4" style="color: rgba(255,255,255,0.4)">John's Cleaning · 14 Sep 2026, 09:04 · 5 records · <span style="color: #93c5fd">Open logs</span></p>
+
+              <div class="h-px mb-4" style="background: rgba(255,255,255,0.12)"></div>
+
+              <!-- Fixed -->
+              <p class="text-sm font-bold mb-2" style="color: #fff">FIXED ENTRY ISSUES (3)</p>
+              <div class="space-y-1 mb-5 text-xs" style="color: rgba(255,255,255,0.65)">
+                <p><span class="font-mono" style="color: rgba(255,255,255,0.45)">DET_012</span> · Invoice <span class="font-mono">INV-2026-05498</span> · Status set to <span class="font-mono" style="color: #4ade80">Overdue</span> · written to John's Portal</p>
+                <p><span class="font-mono" style="color: rgba(255,255,255,0.45)">DET_012</span> · Invoice <span class="font-mono">INV-2026-04360</span> · Status set to <span class="font-mono" style="color: #4ade80">Overdue</span> · written to John's Portal</p>
+                <p><span class="font-mono" style="color: rgba(255,255,255,0.45)">DET_012</span> · Invoice <span class="font-mono">INV-2026-05718</span> · Status set to <span class="font-mono" style="color: #4ade80">Overdue</span> · written to John's Portal</p>
+              </div>
+
+              <div class="h-px mb-4" style="background: rgba(255,255,255,0.12)"></div>
+
+              <!-- Owner section -->
+              <p class="text-sm font-bold mb-3" style="color: #fff">REQUIRES TEST OWNER ACTION — Marieke de Jong (2)</p>
+
+              <div class="rounded-lg p-3 mb-2" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+                <p class="text-xs font-bold mb-2" style="color: #fff"><span class="font-mono" style="color: #fbbf24">DET_021-1</span> · Cleaner Fleur Jansen · Verify, then set</p>
+                <div class="space-y-1 text-xs" style="color: rgba(255,255,255,0.65)">
+                  <p><span class="font-bold" style="color: rgba(255,255,255,0.85)">Issue</span>&nbsp; Employed cleaner is not linked to an Nmbrs payroll employee.</p>
+                  <p><span class="font-bold" style="color: rgba(255,255,255,0.85)">Found</span>&nbsp; One Nmbrs employee "F. Jansen" with the same start date and email domain; no employee id stored on the cleaner.</p>
+                  <p><span class="font-bold" style="color: rgba(255,255,255,0.85)">Action</span>&nbsp; Confirm it is the same person, then set <span class="font-mono">nmbrs_employee_id</span> to <span class="font-mono">10482</span>.</p>
+                  <p><span class="font-bold" style="color: rgba(255,255,255,0.85)">Where</span>&nbsp; John's Portal › Cleaner › <span class="font-mono">cln_7f3a…</span> · <span style="color: #93c5fd">Open record</span></p>
+                </div>
+              </div>
+
+              <div class="rounded-lg p-3 mb-3" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+                <p class="text-xs font-bold mb-2" style="color: #fff"><span class="font-mono" style="color: #fbbf24">DET_024-1</span> · Customer Bakkerij De Molen · Create the row</p>
+                <div class="space-y-1 text-xs" style="color: rgba(255,255,255,0.65)">
+                  <p><span class="font-bold" style="color: rgba(255,255,255,0.85)">Issue</span>&nbsp; Active commercial customer has no HubSpot company.</p>
+                  <p><span class="font-bold" style="color: rgba(255,255,255,0.85)">Found</span>&nbsp; No HubSpot company matches the name, domain or Exact account code. Customer is active with three jobs this month.</p>
+                  <p><span class="font-bold" style="color: rgba(255,255,255,0.85)">Action</span>&nbsp; Create the HubSpot company with name, domain <span class="font-mono">demolen.nl</span> and the Exact account code <span class="font-mono">1042</span>.</p>
+                  <p><span class="font-bold" style="color: rgba(255,255,255,0.85)">Where</span>&nbsp; John's Portal › Customer › <span class="font-mono">cus_2b91…</span> · <span style="color: #93c5fd">Open record</span></p>
+                </div>
+              </div>
+
+              <p class="text-xs italic" style="color: rgba(255,255,255,0.35)">Your assistant can work from this section as-is, using your own access to the named systems.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <p class="text-xs text-ink/45 mt-4 font-mono">Layout as shipped on 14 September 2026. Record details in this example are illustrative.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- In production: Freeday -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto rb-reveal grid md:grid-cols-12 gap-10 md:gap-14 border-t rb-line pt-14">
+      <div class="md:col-span-4">
+        <p class="rb-label mb-4">In production</p>
+        <h2 class="rb-h2 text-ink mb-8">Freeday runs it every morning.</h2>
+        <a href="https://www.freeday.ai" target="_blank" rel="noopener" class="inline-flex items-center border rb-line rounded-lg px-5 py-3.5">
+          <img src="/logos/freeday.svg" alt="Freeday" class="h-7 w-auto" />
+        </a>
+        <p class="text-ink/60 text-[15px] leading-relaxed mt-6">Freeday builds AI digital employees for customer service and finance teams. Maxq runs their analytics stack: Airbyte, dbt and Cube on Snowflake.</p>
+      </div>
+      <div class="md:col-span-8 space-y-10 md:pt-8">
+        <div>
+          <h3 class="rb-h3 text-xl text-ink mb-3">The problem</h3>
+          <p class="text-ink/60 leading-relaxed">Freeday's customer data lives in three systems that have to agree: HubSpot for companies and deals, Airtable for operations and the digital employees, Exact Online for invoicing. A company sold in HubSpot but missing in Airtable, or a customer without its Exact account code, means a digital employee that cannot be provisioned or an invoice that cannot be sent. The data-entry tests in their dbt project catch these every morning. Fixing them by hand did not scale.</p>
+        </div>
+        <div>
+          <h3 class="rb-h3 text-xl text-ink mb-3">What the guardian does for them</h3>
+          <ul class="space-y-3 text-ink/60 leading-relaxed">
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 mt-[10px] shrink-0"></span>Creates the missing Airtable row for a digital employee sold in HubSpot, with the fields taken from the curated warehouse tables.</li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 mt-[10px] shrink-0"></span>Fills the Exact Online account code on a company once it finds the matching account, and knows that internal test companies map to Freeday's own account.</li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 mt-[10px] shrink-0"></span>Proposes an industry for HubSpot companies that have none, looked up on the web, and leaves that one for a human to confirm rather than writing it.</li>
+          </ul>
+        </div>
+        <div class="rb-grid-cells sm:grid-cols-3 rounded-lg overflow-hidden">
+          {freedayStats.map((s) => (
+            <div class="p-5">
+              <div class="text-[30px] font-medium text-ink leading-none mb-2" style="letter-spacing:-0.04em" data-count={s.value}>{s.value}</div>
+              <div class="text-xs text-ink/55 leading-snug">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="What you get" title="Everything in the current version." />
+      <div class="rb-reveal rb-grid-cells md:grid-cols-2 lg:grid-cols-4 rounded-lg overflow-hidden">
+        {features.map((f) => (
+          <div class="p-7">
+            <svg class="w-5 h-5 text-brand-600 mb-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" set:html={f.icon} />
+            <h3 class="rb-h3 text-[17px] text-ink mb-2.5">{f.title}</h3>
+            <p class="text-[14px] text-ink/60 leading-relaxed">{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="Roadmap" title="What's coming next." />
+      <div class="rb-reveal rb-grid-cells md:grid-cols-3 rounded-lg overflow-hidden">
+        {roadmap.map((r) => (
+          <div class="p-7 md:p-8">
+            <p class:list={['rb-label mb-6', r.n === 1 && '!text-brand-600']}>{r.n} · {r.when}</p>
+            <h3 class="rb-h3 text-xl text-ink mb-3">{r.title}</h3>
+            <p class="text-[14px] text-ink/60 leading-relaxed">{r.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto rb-reveal grid md:grid-cols-12 gap-8 border-t rb-line pt-14">
+      <div class="md:col-span-4">
+        <p class="rb-label mb-4">Pricing</p>
+        <h2 class="rb-h2 text-ink">Implementation plus managed service.</h2>
+      </div>
+      <div class="md:col-span-8 md:pt-8">
+        <p class="text-[17px] text-ink/60 leading-relaxed mb-5">Two components. An implementation fee covers writing the data-entry tests for your systems, connecting the warehouse and the source systems, and setting up write-back, Slack and the schedule. An ongoing licence covers hosting, model usage and keeping the tests and the agent maintained.</p>
+        <p class="text-[17px] text-ink/60 leading-relaxed mb-8">The licence scales with the number of tests under watch, so a focused setup on invoices and customers pays less than coverage across every system. We scope the exact structure together based on your context.</p>
+        <div class="rb-grid-cells sm:grid-cols-[1fr_1fr_auto] rounded-lg overflow-hidden">
+          <div class="p-5 flex gap-3"><span class="text-brand-600 mt-1" set:html={check} /><div><p class="font-medium text-ink text-sm">Implementation fee</p><p class="text-ink/55 text-xs mt-1">Tests, connections, write-back and Slack setup.</p></div></div>
+          <div class="p-5 flex gap-3"><span class="text-brand-600 mt-1" set:html={check} /><div><p class="font-medium text-ink text-sm">Licence fee</p><p class="text-ink/55 text-xs mt-1">Hosting, model usage and maintenance, scaled by tests under watch.</p></div></div>
+          <div class="p-5 flex items-center"><a href={calendly} target="_blank" rel="noopener" class="rb-btn rb-btn-primary">Get a scope <Fragment set:html={arrow} /></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="Built and maintained by" title="The people behind the Quality Guardian." />
+      <div class="rb-reveal rb-grid-cells md:grid-cols-2 rounded-lg overflow-hidden">
+        <div class="p-7 md:p-9 flex gap-6">
+          <img src="/team/philip.png" alt="Philip Boontje" class="w-20 h-20 rounded-md object-cover shrink-0" />
+          <div>
+            <h3 class="rb-h3 text-lg text-ink">Philip Boontje</h3>
+            <p class="rb-label !text-brand-600 mt-1">Product Owner</p>
+            <p class="rb-label mt-1 mb-4">Founder · Maxq Analytics</p>
+            <p class="text-[14px] text-ink/60 leading-relaxed">Philip built the Quality Guardian: the investigation agent, the guarded write-back, the scheduling and the Slack report. He shapes the product around the data-quality problems he sees at Maxq's clients, and runs the demo client it is developed against.</p>
+          </div>
+        </div>
+        <div class="p-7 md:p-9 flex gap-6">
+          <img src="/team/valentin.png" alt="Valentin Cathelain" class="w-20 h-20 rounded-md object-cover shrink-0" />
+          <div>
+            <h3 class="rb-h3 text-lg text-ink">Valentin Cathelain</h3>
+            <p class="rb-label !text-brand-600 mt-1">Developer &amp; Maintainer</p>
+            <p class="rb-label mt-1 mb-4">Medior Data Engineer · Maxq Analytics</p>
+            <p class="text-[14px] text-ink/60 leading-relaxed">Valentin develops the Quality Guardian with Philip, from test configuration to client-side implementation across environments.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="px-6 py-32">
+    <div class="max-w-6xl mx-auto rb-reveal border-t rb-line pt-20 md:flex items-end justify-between gap-12">
+      <div class="max-w-2xl">
+        <p class="rb-label mb-4">Get started</p>
+        <h2 class="rb-h2 text-ink">See it run <span class="text-brand-600">on your own data.</span></h2>
+        <p class="text-lg text-ink/60 leading-relaxed mt-5">In a live demo we walk through a real morning run. From there: we connect the Quality Guardian to your analytics warehouse, add data-entry tests to your dbt project with an owner per test, plug in the source systems it may write to, and switch on the schedule and the Slack report. The first fixes land within the first weeks.</p>
+      </div>
+      <a href={calendly} target="_blank" rel="noopener" class="rb-btn rb-btn-primary !h-11 !px-5 mt-8 md:mt-0 shrink-0">Schedule live demo <Fragment set:html={arrow} /></a>
+    </div>
+  </section>
+
+  <Lightbox />
+</Layout>

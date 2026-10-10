@@ -1,0 +1,11 @@
+---
+// Left-aligned section heading: mono label, title, optional intro paragraph.
+interface Props { label?: string; title: string; intro?: string; class?: string }
+const { label, title, intro, class: cls = '' } = Astro.props;
+---
+<div class:list={['rb-reveal max-w-3xl mb-14', cls]}>
+  {label && <p class="rb-label mb-4">{label}</p>}
+  <h2 class="rb-h2 text-ink" set:html={title} />
+  {intro && <p class="text-[17px] leading-relaxed text-ink/60 mt-5 max-w-2xl" set:html={intro} />}
+  <slot />
+</div>

@@ -1,0 +1,252 @@
+---
+// Rebrand edition 2026-10-10 (unlisted): homepage. Same copy as the live
+// homepage (src/pages/index.astro); new design per docs/design-inspiration.md.
+import Layout from '../../rebrand/2026-10-10/Layout.astro';
+import SectionHead from '../../rebrand/2026-10-10/components/SectionHead.astro';
+import Frame from '../../rebrand/2026-10-10/components/Frame.astro';
+import SlackThread from '../../rebrand/2026-10-10/components/SlackThread.astro';
+import LogoGrid from '../../rebrand/2026-10-10/components/LogoGrid.astro';
+import StackChart from '../../rebrand/2026-10-10/components/StackChart.astro';
+import { CALENDLY } from '../../rebrand/2026-10-10/config.mjs';
+
+const shots = '/add-ons/quality-guardian/2026-09-14';
+const docs = 'https://docs.maxqanalytics.io';
+const stats = [
+  { value: '9', label: 'Active deployments' },
+  { value: '460+', label: 'Employees connected' },
+  { value: '€65M+', label: 'Tracked annual revenue' },
+  { value: '25k+', label: 'Analytics API requests / day' },
+];
+const components = [
+  { title: 'Domain Reports', href: `${docs}/Products/Semantic+Nexus#Domain+Reports`, text: 'Three purpose-built reporting domains aligned to how companies are structured: <strong class="font-medium text-ink">Commerce Atlas</strong> (go-to-market, unit economics), <strong class="font-medium text-ink">Finance Atlas</strong> (margins, financial operations), and <strong class="font-medium text-ink">Operations Atlas</strong> (utilisation, capacity). Each delivers periodic dashboards and trend analysis tailored to the domain\'s owners and targets.' },
+  { title: 'Data Model Explorer', href: `${docs}/Products/Semantic+Nexus#Data%20Model%20Explorer`, text: 'A unified, navigable interface that maps your entire data architecture. Source tables are shown post-transformation with aggregations for fast analysis. Each critical metric gets its own dedicated page with a scorecard, numerator/denominator breakdown, and business context provided by the client.' },
+  { title: 'Data Entry Tests', href: `${docs}/Products/Semantic+Nexus#Data+Entry+Tests`, text: 'Automated, client-specific tests that continuously validate data entries and business workflows. Each test is assigned an owner, a deeplink for direct resolution at the source, a context description, and a unique test ID — keeping data quality accountable and easy to communicate across teams.' },
+  { title: 'Pipeline Freshness', href: `${docs}/Products/Semantic+Nexus#Data+Freshness`, text: 'A live flowchart of your full data pipeline from extraction through transformation to consumption. Every stakeholder can see how data moves across your architecture — which systems are involved, what the current status is, and where bottlenecks occur. Invaluable when planning refactors or expansions.' },
+  { title: 'MCP Servers', href: `${docs}/Products/Semantic+Nexus`, text: 'We configure multiple Model Context Protocol servers tailored to specific use cases and agentic workflows — each one exposing the right slice of your semantic layer to the right AI system. Whether it\'s a customer-facing agent, an internal analyst assistant, or an automated reporting workflow, every MCP server is purpose-built for how that agent actually needs to query your data.' },
+];
+const frameworks = [
+  { code: 'SDA', title: 'Standardised Data Architecture', href: `${docs}/Design/Frameworks#Standardised%20Data%20Architecture`, text: 'Best practices for building a data pipeline and data model that is robust, flexible, and low cost — refined over years of real client work.' },
+  { code: 'IPF', title: 'Integrated Performance Framework', href: `${docs}/Design/Frameworks#Integrated%20Performance%20Framework`, text: 'A systematised way of presenting the data model that strikes the right balance between simplicity and depth for all stakeholders.' },
+  { code: 'MSP', title: 'Modular Security Protocol', href: `${docs}/Design/Frameworks#Modular%20Security%20Protocol`, text: 'A structured set of security checks designed for client-side and open-core architectures, where the security environment is inherently more complex.' },
+];
+const freedayStats = [
+  { value: '6', label: 'source systems linked into one data model' },
+  { value: '79', label: 'dbt models built daily in 14 minutes' },
+  { value: '131', label: 'integrity tests linked to model re-builds' },
+  { value: '90M+', label: 'AI agent conversations tracked' },
+];
+const EPISODE = {
+  id: '5_eraCaZDSw',
+  watch: 'https://www.youtube.com/watch?v=5_eraCaZDSw',
+  chapters: [
+    { t: 0,    label: '0:00',  title: 'Welcome and the plan for this episode' },
+    { t: 175,  label: '2:55',  title: 'A typical data analytics stack' },
+    { t: 392,  label: '6:32',  title: 'Adding a context layer' },
+    { t: 760,  label: '12:40', title: 'What matters when building an analytics agent' },
+    { t: 1025, label: '17:05', title: 'Live demo: the nao app' },
+    { t: 1891, label: '31:31', title: 'The Slack interface' },
+    { t: 2073, label: '34:33', title: 'The Claude MCP interface' },
+    { t: 2434, label: '40:34', title: 'Use cases' },
+    { t: 2735, label: '45:35', title: 'Wrap-up' },
+  ],
+};
+const arrow = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+---
+
+<Layout title="Maxq Analytics — Agentic Analytics on all your data">
+
+  <!-- Hero -->
+  <section class="pt-32 md:pt-44 px-6 overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+      <a href="#product-show" class="rb-reveal inline-flex items-center gap-2 border rb-line rounded-full pl-1.5 pr-3 py-1 text-[13px] text-ink/70 hover:border-ink/30 transition-colors mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand-600 ml-1.5"></span>
+        Maxq Product Show, episode 001
+        <span class="text-ink/40" set:html={arrow} />
+      </a>
+      <h1 class="rb-h1 rb-reveal text-ink max-w-4xl">Agentic analytics<br /> on all your data.</h1>
+      <p class="rb-reveal text-lg md:text-xl text-ink/60 max-w-2xl leading-relaxed mt-7">One source of truth for your entire business, from raw data to company-wide agentic workflows. So every team works with the same numbers, every time.</p>
+      <div class="rb-reveal flex flex-wrap gap-3 mt-9">
+        <a href={CALENDLY} target="_blank" rel="noopener" class="rb-btn rb-btn-primary">Schedule a meeting <Fragment set:html={arrow} /></a>
+        <a href="#product-show" class="rb-btn rb-btn-ghost">Watch the Product Show</a>
+      </div>
+
+      <!-- Product visual: Quality Guardian run, with the Analytics Assistant answering in Slack on top -->
+      <div class="rb-reveal relative mt-16 md:mt-20 pb-6">
+        <div class="md:w-[86%] rb-fade">
+          <Frame src={`${shots}/latest-run.jpg`} alt="Quality Guardian, Latest run: a completed run with a verdict per record" bar="quality-guardian · latest run" fade={false} zoom={false} height={1125} eager />
+        </div>
+        <div class="mt-6 md:mt-0 md:absolute md:right-0 md:top-[22%] md:w-[400px]">
+          <SlackThread compact />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="px-6">
+    <div class="max-w-6xl mx-auto rb-reveal">
+      <div class="rb-grid-cells grid-cols-2 md:grid-cols-4 rounded-lg overflow-hidden">
+        {stats.map((s) => (
+          <div class="py-9 md:py-11 px-2 md:px-8">
+            <div class="text-[40px] md:text-[52px] font-medium text-ink leading-none" style="letter-spacing:-0.04em" data-count={s.value}>{s.value}</div>
+            <div class="rb-label mt-3">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section class="px-6 pt-24">
+    <div class="max-w-6xl mx-auto">
+      <div class="rb-reveal flex items-end justify-between gap-6 mb-8">
+        <p class="rb-label">Trusted by</p>
+      </div>
+      <div class="rb-reveal"><LogoGrid /></div>
+    </div>
+  </section>
+
+  <!-- Semantic Nexus components -->
+  <section id="features" class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="Semantic Nexus" title='Deployed with <span class="text-brand-600">open source</span> components.' intro="Our open source Semantic Nexus architecture gives your organisation complete visibility into its data — from raw sources to AI-powered querying." />
+      <div class="rb-reveal rb-grid-cells md:grid-cols-6 rounded-lg overflow-hidden">
+        {components.map((c, i) => (
+          <div class:list={['p-7 md:p-8 flex flex-col', i < 3 ? 'md:col-span-2' : 'md:col-span-3']}>
+            <span class="font-mono text-xs text-brand-600 mb-6">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="rb-h3 text-lg text-ink mb-3">{c.title}</h3>
+            <p class="text-[14px] text-ink/60 leading-relaxed mb-6" set:html={c.text} />
+            <a href={c.href} target="_blank" rel="noopener" class="rb-link mt-auto">Details <Fragment set:html={arrow} /></a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tooling -->
+  <section id="stack" class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="Tooling" title='Built on <span class="text-brand-600">best in class</span> tooling.' intro="We work with the leading data stack tools, keeping clients in full control of their own infrastructure. We have a tooling agnostic approach when implementing the Semantic Nexus, with a strong preference for open source and self hosted applications." />
+      <StackChart />
+    </div>
+  </section>
+
+  <!-- Frameworks -->
+  <section id="frameworks" class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="Frameworks" title='Maintained by <span class="text-brand-600">reliable frameworks</span>.' intro="The Semantic Nexus is underpinned by three frameworks that cover architecture, performance tracking, and security." />
+      <div class="rb-reveal rb-grid-cells md:grid-cols-3 rounded-lg overflow-hidden">
+        {frameworks.map((f) => (
+          <div class="p-7 md:p-9 flex flex-col">
+            <div class="font-mono text-[40px] leading-none text-brand-600 mb-8" style="letter-spacing:-0.02em">{f.code}</div>
+            <h3 class="rb-h3 text-lg text-ink mb-3">{f.title}</h3>
+            <p class="text-[14px] text-ink/60 leading-relaxed mb-6">{f.text}</p>
+            <a href={f.href} target="_blank" rel="noopener" class="rb-link mt-auto">Details <Fragment set:html={arrow} /></a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- In production: Freeday -->
+  <section id="freeday" class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="In production" title='Depended upon daily by <span class="text-brand-600">long term clients</span>.' intro="How one of our clients, Freeday, runs its reporting and operations on the Semantic Nexus we built and maintain for them." />
+      <div class="rb-reveal grid md:grid-cols-12 gap-10 md:gap-14 border-t rb-line pt-12">
+        <div class="md:col-span-4">
+          <a href="https://www.freeday.ai" target="_blank" rel="noopener" class="inline-flex items-center border rb-line rounded-lg px-5 py-3.5">
+            <img src="/logos/freeday.svg" alt="Freeday" class="h-7 w-auto" />
+          </a>
+          <p class="text-ink/60 text-[15px] leading-relaxed mt-6">Freeday builds AI digital employees for customer service and finance teams. Maxq designs, runs and maintains their complete analytics stack: Airbyte, dbt and Cube on Snowflake, with the Quality Guardian on top.</p>
+          <a href="https://www.freeday.ai" target="_blank" rel="noopener" class="rb-link mt-5">Visit Freeday <Fragment set:html={arrow} /></a>
+        </div>
+        <div class="md:col-span-8 space-y-10">
+          <div>
+            <h3 class="rb-h3 text-xl text-ink mb-3">The starting point</h3>
+            <p class="text-ink/60 leading-relaxed">Ahead of a growth-investor round, Freeday needed one set of metric definitions that finance, sales, operations and the board could all trust: ARR, NRR, CAC payback and the performance of every digital employee. The data sat in six systems: the Freeday platform itself, its ClickHouse event logs, HubSpot, Airtable, Exact Online and Google Sheets.</p>
+          </div>
+          <div>
+            <h3 class="rb-h3 text-xl text-ink mb-3">What runs today</h3>
+            <ul class="space-y-3 text-ink/60 leading-relaxed">
+              <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 mt-[10px] shrink-0"></span>Airbyte loads all six sources into Snowflake every night. The Exact Online connector is an open-source Maxq contribution that Freeday runs on its own virtual machine.</li>
+              <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 mt-[10px] shrink-0"></span>dbt builds 79 models and runs 131 tests in one 14-minute job each morning. Every metric is defined once, in version control, with its tests and documentation next to it.</li>
+              <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 mt-[10px] shrink-0"></span>Cube serves 13 cubes and 14 views to every consumer: the Data Studio reports for the commercial, operational and financial teams, the KPI portal, the investor sheet, Claude through an MCP server, and the metrics embedded in Freeday's own platform.</li>
+              <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-600 mt-[10px] shrink-0"></span>The Quality Guardian runs 11 data-entry tests every morning and writes the fixes back to HubSpot and the operating model in Airtable, so the three systems stay in step without anyone reconciling by hand.</li>
+            </ul>
+          </div>
+          <div class="rb-grid-cells grid-cols-2 lg:grid-cols-4 rounded-lg overflow-hidden">
+            {freedayStats.map((s) => (
+              <div class="p-5">
+                <div class="text-[30px] font-medium text-ink leading-none mb-2" style="letter-spacing:-0.04em" data-count={s.value}>{s.value}</div>
+                <div class="text-xs text-ink/55 leading-snug">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Maxq Product Show -->
+  <section id="product-show" class="px-6 pt-32 scroll-mt-20">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="Maxq Product Show" title='See it working on the <span class="text-brand-600">Maxq Product Show</span>.' intro="In every episode a Maxq engineer demonstrates one part of the stack live. Episode 001 explains how an analytics agent answers business questions from your warehouse in a chat, in Slack and in Claude." />
+      <div class="rb-reveal lg:grid lg:grid-cols-[minmax(0,1fr)_340px] gap-12 items-start">
+        <div>
+          <div id="ps-player" class="relative aspect-video rounded-[10px] overflow-hidden bg-ink border rb-line">
+            <button type="button" id="ps-play" class="group absolute inset-0 w-full h-full" aria-label="Play episode 001">
+              <img src="/product-show/001/thumbnail.jpg" alt="" class="w-full h-full object-cover" />
+              <span class="absolute inset-0 flex items-center justify-center">
+                <span class="w-16 h-16 rounded-full bg-brand-600 text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform"><svg class="w-6 h-6 ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+              </span>
+            </button>
+          </div>
+          <div class="mt-5 flex flex-wrap items-baseline justify-between gap-3">
+            <div>
+              <p class="rb-h3 text-ink text-lg">Analytics agents, explained: an introduction to nao</p>
+              <p class="text-sm text-ink/50">Episode 001 · 46 min · Sarah Thiebault and Philip Boontje</p>
+            </div>
+            <a href={EPISODE.watch} target="_blank" rel="noopener" class="rb-link">Open on YouTube <Fragment set:html={arrow} /></a>
+          </div>
+        </div>
+        <aside class="mt-12 lg:mt-0">
+          <p class="rb-label mb-4">Jump to a chapter</p>
+          <ol class="border-y rb-line divide-y divide-ink/[0.08]">
+            {EPISODE.chapters.map((c) => (
+              <li><button type="button" data-t={c.t} class="ps-chapter w-full text-left flex gap-4 py-3 text-sm hover:text-brand-600 transition-colors"><span class="font-mono text-ink/40 w-12 shrink-0">{c.label}</span><span class="text-ink/80">{c.title}</span></button></li>
+            ))}
+          </ol>
+        </aside>
+      </div>
+    </div>
+  </section>
+  <script is:inline>
+    (function () {
+      var wrap = document.getElementById('ps-player');
+      var id = '5_eraCaZDSw';
+      function load(t) {
+        wrap.innerHTML = '<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&start=' + (t || 0) + '" title="Maxq Product Show episode 001" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+        if (window.posthog) posthog.capture('product_show_play', { episode: '001', start: t || 0 });
+      }
+      document.getElementById('ps-play').addEventListener('click', function () { load(0); });
+      document.querySelectorAll('.ps-chapter').forEach(function (b) {
+        b.addEventListener('click', function () {
+          load(parseInt(b.getAttribute('data-t'), 10));
+          wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      });
+    })();
+  </script>
+
+  <!-- Final CTA -->
+  <section class="px-6 py-32">
+    <div class="max-w-6xl mx-auto rb-reveal border-t rb-line pt-20 md:flex items-end justify-between gap-12">
+      <div class="max-w-2xl">
+        <h2 class="rb-h2 text-ink">Is there <span class="text-brand-600">business value</span> we can create together?</h2>
+        <p class="text-lg text-ink/60 leading-relaxed mt-5">Schedule half an hour with Philip. Together you will explore what one source of truth would change for your team, and whether it's worth the investment.</p>
+      </div>
+      <a href={CALENDLY} target="_blank" rel="noopener" class="rb-btn rb-btn-primary !h-11 !px-5 mt-8 md:mt-0 shrink-0">Schedule a Call <Fragment set:html={arrow} /></a>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,177 @@
+---
+// Rebrand edition 2026-10-10 (unlisted): Analytics Assistant. Copy as on
+// src/pages/add-ons/analytics-assistant.astro; the Slack example moved up to
+// be the hero visual and plays itself.
+import Layout from '../../../rebrand/2026-10-10/Layout.astro';
+import SectionHead from '../../../rebrand/2026-10-10/components/SectionHead.astro';
+import SlackThread from '../../../rebrand/2026-10-10/components/SlackThread.astro';
+import { link } from '../../../rebrand/2026-10-10/config.mjs';
+const calendly = 'https://calendly.com/philip-boontje?utm_content=analytics-assistant';
+const arrow = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+const steps = [
+  { title: 'The context layer is built from your Semantic Nexus', text: "We sync your dbt models, Cube definitions, metric glossary and business rules into the assistant's context: which table is the source of truth, how revenue is defined, which time column to filter on, which clients are archived. The assistant knows what your best analyst knows — and a weekly sync keeps that knowledge current." },
+  { title: 'Anyone asks, wherever they already work', text: 'Mention the assistant in a Slack channel, open the web chat, or add it to Claude as a connector with a single URL. Threads keep their memory, so a follow-up like “now by store” or “top five products in June” just works. No SQL, no ticket, no queue.' },
+  { title: 'Every answer is accurate, explained and shareable', text: 'Each answer comes with a chart, the CSV behind it, and a short note on scope and methodology. The generated SQL is one click away for anyone who wants to check the logic. A thumbs-down goes straight to the context owner, so the context improves question by question.' },
+];
+const features = [
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7z"/><path stroke-linecap="round" d="M8 9h8M8 13h5"/>', title: 'Governed context layer', text: 'Metric definitions, business rules and table knowledge from your dbt and Cube models, synced weekly. Two people asking the same question get the same number — and a new colleague is onboarded the moment they ask.' },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M21 12c0 4.418-4.03 8-9 8a9.9 9.9 0 01-4-.8L3 20l1.3-3.9A7.6 7.6 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>', title: 'Slack-native answers', text: "Mention the assistant in any channel and get the answer in the thread, with a chart image and CSV, visible to everyone. Threads remember context. Scheduled posts deliver recurring numbers, like Monday's gross turnover, without anyone asking." },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>', title: 'Claude connector', text: "Add the assistant to Claude as an MCP connector by pasting one URL. Brainstorm with your data in a full conversation — “which product grew most between Q1 and Q2?” — and get the same numbers as in Slack, because it's the same context layer." },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>', title: 'Tested accuracy', text: 'Your key metrics are covered by tests that run plain-language questions through the assistant and compare the result with the expected SQL. Every answer exposes its query, and a thumbs-down routes to the context owner for review.' },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v11H4zM8 21h8M12 16v5M7 13l3-3 2 2 4-4"/>', title: 'Stories: shared live dashboards', text: "Turn a conversation into a dashboard. Reorder or drop charts, add commentary, and share it with the team or keep it private. The story stays live against your data, so it's a page that updates rather than a screenshot that ages." },
+  { icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>', title: 'Your infrastructure, your model', text: 'Self-hosted on Google Cloud Run in your region, with invite-only access and role-based shielding of sensitive slices. Built on nao, an open-source framework, with any LLM behind it via your own API key. No per-seat licence, no vendor lock-in.' },
+];
+const check = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+---
+
+<Layout title="Analytics Assistant — Maxq Analytics">
+
+  <!-- Hero -->
+  <section class="pt-32 md:pt-40 px-6">
+    <div class="max-w-6xl mx-auto">
+      <a href={link('/add-ons')} class="rb-reveal inline-flex items-center gap-2 rb-label hover:!text-ink transition-colors mb-10">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        All add-ons
+      </a>
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+        <div class="lg:col-span-6">
+          <p class="rb-reveal rb-label mb-4"><span class="text-brand-600">Ask</span> · Add-on</p>
+          <h1 class="rb-h1 rb-reveal text-ink">Analytics Assistant</h1>
+          <p class="rb-reveal text-lg text-ink/60 leading-relaxed mt-7">An AI analyst for your whole company. Ask a question in Slack, in a chat window, or straight from Claude — and get an accurate, chart-backed answer in seconds, grounded in one governed context layer built on your Semantic Nexus.</p>
+          <div class="rb-reveal flex flex-wrap items-center gap-5 mt-9">
+            <a href={calendly} target="_blank" rel="noopener" class="rb-btn rb-btn-primary">Ask your first question <Fragment set:html={arrow} /></a>
+            <span class="rb-label">Built on nao · open source</span>
+          </div>
+        </div>
+        <div class="lg:col-span-6 rb-reveal">
+          <SlackThread />
+          <p class="text-xs text-ink/45 mt-4 leading-relaxed">Illustrative example using a fictional coffee-shop chain. The assistant answers with a chart, the data behind it, and how it got there.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="How it works" title="One context layer. Three ways to ask." />
+      <div class="rb-reveal rb-grid-cells md:grid-cols-3 rounded-lg overflow-hidden">
+        {steps.map((s, i) => (
+          <div class="p-7 md:p-8">
+            <span class="font-mono text-[40px] leading-none text-brand-600 block mb-8">{i + 1}</span>
+            <h3 class="rb-h3 text-lg text-ink mb-3">{s.title}</h3>
+            <p class="text-[14px] text-ink/60 leading-relaxed">{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="What you get" title="Everyone data-driven. One source of truth." />
+      <div class="rb-reveal rb-grid-cells md:grid-cols-2 lg:grid-cols-3 rounded-lg overflow-hidden">
+        {features.map((f) => (
+          <div class="p-7 md:p-8">
+            <svg class="w-5 h-5 text-brand-600 mb-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" set:html={f.icon} />
+            <h3 class="rb-h3 text-[17px] text-ink mb-2.5">{f.title}</h3>
+            <p class="text-[14px] text-ink/60 leading-relaxed">{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto rb-reveal grid md:grid-cols-12 gap-8 border-t rb-line pt-14">
+      <div class="md:col-span-4">
+        <p class="rb-label mb-4">Who it's for</p>
+        <h2 class="rb-h2 text-ink">The right fit.</h2>
+      </div>
+      <div class="md:col-span-8 space-y-5 text-[17px] text-ink/60 leading-relaxed md:pt-8">
+        <p>Companies that have a Semantic Nexus, or are building one, and far more people with data questions than people who can write SQL. Sales and customer success preparing for a client conversation. Leadership working through a strategic question and wanting the number in twenty seconds, not next week. Support and operations checking what the client said against what the system actually recorded.</p>
+        <p>It works best when the metric definitions are already agreed. The assistant makes them accessible to everyone; it doesn't invent them. That's exactly what the Semantic Nexus is for.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="Roadmap" title="What's coming next." />
+      <div class="rb-reveal rb-grid-cells md:grid-cols-2 rounded-lg overflow-hidden">
+        <div class="p-7 md:p-9">
+          <p class="rb-label !text-brand-600 mb-6">1 · Next up</p>
+          <h3 class="rb-h3 text-xl text-ink mb-3">Direct Cube connection</h3>
+          <p class="text-[14px] text-ink/60 leading-relaxed">Today the assistant reads your Cube definitions into its context and queries the warehouse. Next it plugs straight into the Cube semantic layer, so measures, dimensions and access rules live in exactly one place and the assistant inherits them automatically.</p>
+        </div>
+        <div class="p-7 md:p-9">
+          <p class="rb-label mb-6">2 · Coming later</p>
+          <h3 class="rb-h3 text-xl text-ink mb-3">Specialised agents on one context</h3>
+          <p class="text-[14px] text-ink/60 leading-relaxed">From a general-purpose analyst to a set of focused assistants for finance, customer success and operations, each with its own skills and shielding, all sharing the same governed context layer. The governance stays central; the expertise gets specific.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto rb-reveal grid md:grid-cols-12 gap-8 border-t rb-line pt-14">
+      <div class="md:col-span-4">
+        <p class="rb-label mb-4">Pricing</p>
+        <h2 class="rb-h2 text-ink">Implementation plus a flat licence.</h2>
+      </div>
+      <div class="md:col-span-8 md:pt-8">
+        <p class="text-[17px] text-ink/60 leading-relaxed mb-5">Two components. An implementation fee covers building the context layer from your Semantic Nexus, writing the accuracy tests for your key metrics, and wiring up Slack and Claude. A monthly licence covers hosting, model usage, and keeping the context maintained and in sync.</p>
+        <p class="text-[17px] text-ink/60 leading-relaxed mb-8">There is no per-seat pricing. The assistant is meant to be used by everyone in the company, so the licence is flat rather than per user. We scope the exact structure together based on your data model and the number of metrics under test.</p>
+        <div class="rb-grid-cells sm:grid-cols-[1fr_1fr_auto] rounded-lg overflow-hidden">
+          <div class="p-5 flex gap-3"><span class="text-brand-600 mt-1" set:html={check} /><div><p class="font-medium text-ink text-sm">Implementation fee</p><p class="text-ink/55 text-xs mt-1">Context layer, metric tests, Slack and Claude setup.</p></div></div>
+          <div class="p-5 flex gap-3"><span class="text-brand-600 mt-1" set:html={check} /><div><p class="font-medium text-ink text-sm">Monthly licence</p><p class="text-ink/55 text-xs mt-1">Hosting, model usage, context maintenance. Flat, not per seat.</p></div></div>
+          <div class="p-5 flex items-center"><a href={calendly} target="_blank" rel="noopener" class="rb-btn rb-btn-primary">Get a scope <Fragment set:html={arrow} /></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="px-6 pt-32">
+    <div class="max-w-6xl mx-auto">
+      <SectionHead label="Built and maintained by" title="The people behind the Analytics Assistant." />
+      <div class="rb-reveal rb-grid-cells md:grid-cols-2 rounded-lg overflow-hidden">
+        <div class="p-7 md:p-9 flex gap-6">
+          <img src="/team/sarah.png" alt="Sarah Thiébault" class="w-20 h-20 rounded-md object-cover shrink-0" />
+          <div>
+            <h3 class="rb-h3 text-lg text-ink">Sarah Thiébault</h3>
+            <p class="rb-label !text-brand-600 mt-1">Product Owner · Maintainer</p>
+            <p class="rb-label mt-1 mb-4">Medior Data Engineer · Maxq Analytics</p>
+            <p class="text-[14px] text-ink/60 leading-relaxed">Sarah leads the Analytics Assistant end to end. She built and deployed the first version, runs the context layer and its accuracy tests, and owns the roadmap and client rollouts. She is the main point of contact for the add-on after implementation.</p>
+          </div>
+        </div>
+        <div class="p-7 md:p-9 flex gap-6">
+          <img src="/team/philip.png" alt="Philip Boontje" class="w-20 h-20 rounded-md object-cover shrink-0" />
+          <div>
+            <h3 class="rb-h3 text-lg text-ink">Philip Boontje</h3>
+            <p class="rb-label !text-brand-600 mt-1">Product direction</p>
+            <p class="rb-label mt-1 mb-4">Guild Master · Maxq Analytics</p>
+            <p class="text-[14px] text-ink/60 leading-relaxed">Philip shapes how the assistant answers — short, consistent, chart-first — and connects it to the Semantic Nexus architecture it runs on, so the context layer is a by-product of the data model rather than a second thing to maintain.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="px-6 py-32">
+    <div class="max-w-6xl mx-auto rb-reveal border-t rb-line pt-20 md:flex items-end justify-between gap-12">
+      <div class="max-w-2xl">
+        <p class="rb-label mb-4">Get started</p>
+        <h2 class="rb-h2 text-ink">Give everyone a <span class="text-brand-600">data analyst</span>.</h2>
+        <p class="text-lg text-ink/60 leading-relaxed mt-5">We connect the assistant to your Semantic Nexus, load the context layer, write the first accuracy tests and put it in your Slack — so the first questions get answered within days, not quarters.</p>
+      </div>
+      <a href={calendly} target="_blank" rel="noopener" class="rb-btn rb-btn-primary !h-11 !px-5 mt-8 md:mt-0 shrink-0">Ask your first question <Fragment set:html={arrow} /></a>
+    </div>
+  </section>
+
+</Layout>

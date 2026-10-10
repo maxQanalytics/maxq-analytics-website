@@ -1,0 +1,41 @@
+---
+// Client logos in a table of cells (Axiom): no carousel, every few seconds one
+// cell fades to a logo that is not on screen. Logos are greyscale, colour on hover.
+import { CLIENTS } from '../config.mjs';
+const CELLS = 8;
+const shown = CLIENTS.slice(0, CELLS);
+---
+<div class="rb-logos rb-grid-cells grid-cols-2 md:grid-cols-4 rounded-lg overflow-hidden" data-logos={JSON.stringify(CLIENTS)}>
+  {shown.map((l) => (
+    <a href={l.href} target="_blank" rel="noopener" class="rb-logo-cell group flex items-center justify-center h-24 md:h-28 px-6">
+      <img src={l.src} alt={l.alt} style={`height:${l.h}px`} class="w-auto max-w-[150px] object-contain transition-all duration-500" />
+    </a>
+  ))}
+</div>
+<style is:global>
+  .rb-logo-cell img { filter: grayscale(1); opacity: .72; }
+  .rb-logo-cell:hover img { filter: none; opacity: 1; }
+  .rb-logo-cell img.rb-out { opacity: 0; transform: translateY(6px); }
+</style>
+<script is:inline>
+  (function () {
+    var grid = document.querySelector('.rb-logos');
+    if (!grid || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var all = JSON.parse(grid.getAttribute('data-logos'));
+    var cells = Array.prototype.slice.call(grid.querySelectorAll('.rb-logo-cell'));
+    var last = -1;
+    setInterval(function () {
+      var onScreen = cells.map(function (c) { return c.querySelector('img').getAttribute('src'); });
+      var spare = all.filter(function (l) { return onScreen.indexOf(l.src) === -1; });
+      if (!spare.length) return;
+      var i; do { i = Math.floor(Math.random() * cells.length); } while (i === last && cells.length > 1);
+      last = i;
+      var cell = cells[i], img = cell.querySelector('img'), next = spare[Math.floor(Math.random() * spare.length)];
+      img.classList.add('rb-out');
+      setTimeout(function () {
+        img.src = next.src; img.alt = next.alt; img.style.height = next.h + 'px'; cell.href = next.href;
+        requestAnimationFrame(function () { img.classList.remove('rb-out'); });
+      }, 500);
+    }, 2600);
+  })();
+</script>

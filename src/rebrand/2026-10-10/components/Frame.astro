@@ -1,0 +1,16 @@
+---
+// A product screenshot in window chrome. `fade` lets the image run out at the
+// bottom (Axiom), `maxHeight` crops tall shots, `zoom` opens the lightbox.
+interface Props { src: string; alt: string; bar?: string; maxHeight?: number; fade?: 'strong' | 'soft' | false; zoom?: boolean; width?: number; height?: number; eager?: boolean; class?: string }
+const { src, alt, bar = '', maxHeight, fade = 'soft', zoom = true, width = 1800, height, eager = false, class: cls = '' } = Astro.props;
+---
+<figure class:list={['rb-frame m-0', zoom && 'rb-zoom cursor-zoom-in', cls]} data-src={src} data-alt={alt}>
+  <div class="rb-frame-bar">
+    <i></i><i></i><i></i>
+    {bar && <span class="ml-3 font-mono text-[10px] text-ink/40 truncate">{bar}</span>}
+    {zoom && <span class="ml-auto font-mono text-[10px] text-ink/40 hidden sm:inline">click to enlarge</span>}
+  </div>
+  <div class:list={['overflow-hidden', fade === 'strong' && 'rb-fade', fade === 'soft' && 'rb-fade-soft']} style={maxHeight ? `max-height:${maxHeight}px` : undefined}>
+    <img src={src} alt={alt} class="w-full block" loading={eager ? 'eager' : 'lazy'} width={width} height={height} />
+  </div>
+</figure>

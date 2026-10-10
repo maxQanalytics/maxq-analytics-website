@@ -1,0 +1,51 @@
+---
+// Rebrand edition 2026-10-10 (unlisted): pricing page. Plans as on src/pages/pricing.astro.
+import Layout from '../../rebrand/2026-10-10/Layout.astro';
+const plans = [
+  {
+    "name": "Architecture",
+    "price": "€0",
+    "unit": "",
+    "label": "Celebrating open source",
+    "desc": "The full architecture, the three core frameworks and its embedded tooling are freely available. We believe software should not be a source of lock-in."
+  },
+  {
+    "name": "Implementation",
+    "price": "€5.0k",
+    "unit": "/sprint",
+    "label": "Building your nexus",
+    "desc": "Each sprint is 40 hours of a medior data engineer, scheduled one or two months in advance, stackable to accelerate delivery. When the data-stack under management grows, follow-up sprints are scoped together."
+  },
+  {
+    "name": "Operations",
+    "price": "€2.5k",
+    "unit": "/mo",
+    "label": "Maintaining the impact",
+    "desc": "Ongoing monitoring, systems maintenance, stack cost optimisation, quarterly framework adherence reviews, ad-hoc development requests and issue resolution."
+  }
+];
+const footnote = "Underlying tool costs (extraction, warehouse, distribution, BI, AI) billed directly by vendors";
+---
+
+<Layout title="Pricing — Maxq Analytics">
+  <section class="pt-36 md:pt-44 pb-32 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="rb-reveal max-w-3xl mb-16">
+        <p class="rb-label mb-4">Pricing</p>
+        <h1 class="rb-h1 text-ink">Pricing.</h1>
+        <p class="text-lg text-ink/60 leading-relaxed mt-6 max-w-2xl">The Semantic Nexus is an open architecture, so we charge implementation costs of the selected tooling and after delivery migrate to the operations phase. Here we monitor, maintain and improve the data stack.</p>
+      </div>
+      <div class="rb-reveal rb-grid-cells md:grid-cols-3 rounded-lg overflow-hidden">
+        {plans.map((p, i) => (
+          <div class="p-7 md:p-9 flex flex-col">
+            <span class="font-mono text-xs text-brand-600 mb-8">{String(i + 1).padStart(2, '0')} · {p.label}</span>
+            <h2 class="rb-h3 text-2xl text-ink mb-4">{p.name}</h2>
+            <div class="text-[44px] font-medium text-ink leading-none mb-6" style="letter-spacing:-0.04em">{p.price}<span class="text-base text-ink/45 font-normal tracking-normal ml-1">{p.unit}</span></div>
+            <p class="text-[14px] text-ink/60 leading-relaxed">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+      <p class="rb-reveal rb-label mt-8">{footnote}</p>
+    </div>
+  </section>
+</Layout>

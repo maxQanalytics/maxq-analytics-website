@@ -79,3 +79,18 @@ screenshots in place, and set the registry status to `promoted`.
 | Homepage | `/home-2026-10-09-lantern-wren-strand` | 2026-10-09 | same folder (+ host and guest portrait cut-outs) | preview (Product Show variant C: editorial programme block after the client logos, "001" numeral, one-line thesis, chapter list, portrait collage) |
 | Homepage | `/home-2026-10-09-granite-wren-glen` | 2026-10-09 | same folder | preview (variant B2: Philip picked B; player narrowed from ~760 px to ~620 px by taking the section to max-w-5xl, smaller play button; everything else unchanged) |
 | Homepage | `/home-2026-10-09-cobalt-lynx-ridge` | 2026-10-09 | same folder | **promoted** to `/` on 2026-10-09 (variant B3: intro "Episode 001 explains how...", Analytics Assistant link under the chapters removed) |
+
+## Whole-site rebrand editions
+
+A complete copy of the public pages in a new design, under one unlisted
+prefix `/rebrand-<YYYY-MM-DD>-<word>-<word>-<word>/`. Pages in
+`src/pages/<that prefix>/`, shared layout, nav, footer and components in
+`src/rebrand/<YYYY-MM-DD>/` (`config.mjs` holds the prefix; every internal link
+goes through `link()`). The layout is always `noindex`, `PREVIEW_EDITION` in
+`src/seo.mjs` keeps every page under the prefix out of the sitemap, and the
+footer script maps the prefixed paths to the live add-on slugs for tracking.
+A new design round is a new prefix and a new `src/rebrand/<date>/` folder.
+
+| Edition URL | Built | Pages | Status |
+|---|---|---|---|
+| `/rebrand-2026-10-10-amber-wren-reef/` | 2026-10-10 | home, team, partners, pricing, add-ons, analytics-assistant, quality-guardian | preview (Axiom-inspired, see `docs/design-inspiration.md`: white background, ink text, one brand colour #1a4fff, hairline cell grids, product frames fading out at the bottom, swapping client-logo grid, flowing stack-chart connectors, self-playing Slack thread; copy unchanged from the live pages) |

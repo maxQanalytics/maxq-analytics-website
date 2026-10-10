@@ -57,9 +57,10 @@ export const UNLISTED_PATHS = [
   // src/archive/add-ons/ (their descriptions above are kept for when they return).
 ];
 
-// Preview editions: /add-ons/<slug>-YYYY-MM-DD-word-word-word and homepage
-// editions /home-YYYY-MM-DD-word-word-word
-export const PREVIEW_EDITION = /^\/(add-ons\/[a-z-]+|home)-\d{4}-\d{2}-\d{2}-[a-z]+-[a-z]+-[a-z]+\/?$/;
+// Preview editions: /add-ons/<slug>-YYYY-MM-DD-word-word-word, homepage
+// editions /home-YYYY-MM-DD-word-word-word, and whole-site rebrand editions
+// /rebrand-YYYY-MM-DD-word-word-word/... (every page under that prefix)
+export const PREVIEW_EDITION = /^\/((add-ons\/[a-z-]+|home)-\d{4}-\d{2}-\d{2}-[a-z]+-[a-z]+-[a-z]+\/?|rebrand-\d{4}-\d{2}-\d{2}-[a-z]+-[a-z]+-[a-z]+(\/.*)?)$/;
 
 export const ORGANIZATION = {
   '@context': 'https://schema.org',

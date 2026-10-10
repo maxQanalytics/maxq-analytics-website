@@ -1,0 +1,56 @@
+---
+// Rebrand edition 2026-10-10 (unlisted): add-ons overview. Content as on src/pages/add-ons/index.astro.
+import Layout from '../../../rebrand/2026-10-10/Layout.astro';
+import { CALENDLY, link } from '../../../rebrand/2026-10-10/config.mjs';
+const shots = '/add-ons/quality-guardian/2026-09-14';
+const arrow = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+---
+
+<Layout title="Add-ons — Maxq Analytics">
+  <section class="pt-36 md:pt-44 pb-32 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="rb-reveal max-w-3xl mb-16">
+        <p class="rb-label mb-4">Add-ons</p>
+        <h1 class="rb-h1 text-ink">Add-ons.</h1>
+        <p class="text-lg text-ink/60 leading-relaxed mt-6 max-w-2xl">Optional modules that plug directly into the Semantic Nexus. Each one solves a specific high-value problem, built on top of the same single source of truth.</p>
+      </div>
+      <div class="rb-reveal rb-grid-cells md:grid-cols-2 rounded-lg overflow-hidden">
+
+        <a href={link('/add-ons/analytics-assistant')} class="group flex flex-col">
+          <div class="h-64 md:h-72 bg-[#f7f7f8] border-b rb-line overflow-hidden relative">
+            <div class="absolute left-8 right-8 top-8 rounded-[10px] overflow-hidden border border-black/40 shadow-xl rb-fade transition-transform duration-500 group-hover:-translate-y-1" style="background:#1a1d21">
+              <div class="px-4 py-2.5 border-b text-xs" style="border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55)">#analytics</div>
+              <div class="p-4 space-y-4 text-sm">
+                <div class="flex gap-3"><div class="shrink-0 w-7 h-7 rounded-md flex items-center justify-center text-white text-[10px] font-semibold" style="background:#3f4752">MK</div><p style="color: rgba(255,255,255,0.85)"><span class="px-1 rounded" style="background: rgba(26,79,255,0.28); color:#a9bdff">@assistant</span> what was total revenue in June, broken down by store?</p></div>
+                <div class="flex gap-3"><div class="shrink-0 w-7 h-7 rounded-md flex items-center justify-center text-white text-[10px] font-semibold" style="background:#1a4fff">AA</div><p style="color: rgba(255,255,255,0.85)">Total revenue in June was <span class="font-semibold text-white">€175.3K</span> across three stores. Hell's Kitchen led at €62.1K.</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-7 md:p-8 flex flex-col flex-1">
+            <span class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-4">Ask</span>
+            <h2 class="rb-h3 text-2xl text-ink mb-3">Analytics Assistant</h2>
+            <p class="text-[14px] text-ink/60 leading-relaxed mb-6">An AI analyst your whole team can talk to. Ask data questions in Slack, a web chat, or straight from Claude and get accurate, chart-backed answers in seconds, every one grounded in a governed context layer built on your Semantic Nexus.</p>
+            <span class="rb-link mt-auto">Explore Analytics Assistant <Fragment set:html={arrow} /></span>
+          </div>
+        </a>
+
+        <a href={link('/add-ons/quality-guardian')} class="group flex flex-col">
+          <div class="h-64 md:h-72 bg-[#f7f7f8] border-b rb-line overflow-hidden relative">
+            <div class="absolute left-8 right-8 top-8 rb-frame rb-fade transition-transform duration-500 group-hover:-translate-y-1">
+              <div class="rb-frame-bar"><i></i><i></i><i></i><span class="ml-3 font-mono text-[10px] text-ink/40">quality-guardian · logs</span></div>
+              <img src={`${shots}/logs.jpg`} alt="Quality Guardian Logs page" class="w-full block" loading="lazy" width="1800" height="1165" />
+            </div>
+          </div>
+          <div class="p-7 md:p-8 flex flex-col flex-1">
+            <span class="font-mono text-xs text-brand-600 uppercase tracking-wider mb-4">Protect</span>
+            <h2 class="rb-h3 text-2xl text-ink mb-3">Quality Guardian</h2>
+            <p class="text-[14px] text-ink/60 leading-relaxed mb-6">An AI automation that continuously scans your data for anomalies and surfaces them to the relevant data entry test owners with proposed corrections. Issues get to the right person with enough context to act, before a bad number reaches a report or a decision.</p>
+            <span class="rb-link mt-auto">Explore Quality Guardian <Fragment set:html={arrow} /></span>
+          </div>
+        </a>
+
+      </div>
+      <p class="rb-reveal text-[15px] text-ink/55 mt-10">Need something specific? We build bespoke add-ons for custom workflows. <a href={CALENDLY} target="_blank" rel="noopener" class="rb-link">Let's talk <Fragment set:html={arrow} /></a></p>
+    </div>
+  </section>
+</Layout>
