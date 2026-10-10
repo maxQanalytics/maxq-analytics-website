@@ -33,7 +33,8 @@ Captured 2026-10-10 in [design-inspiration/axiom/2026-10-10/](design-inspiration
 | `desktop-hero.png` | First screen on desktop |
 | `mobile-full.png` | Whole page on a phone (390 px, 2x) |
 | `mobile-hero.png` | First screen on a phone |
-| `desktop-scroll.webm` | Video: the hero for 6 seconds, then a slow scroll down, so the moving elements are kept |
+| `desktop-sections.webm` | Video: stops 4 seconds at every section of the page, so the moving elements are kept |
+| `desktop-scroll.webm` | Earlier video: the hero for 6 seconds, then one slow scroll to the bottom |
 | `page.html` | The rendered HTML of the page (text and structure; styles and images still load from axiom.co) |
 
 ## Stripe — https://stripe.com/
@@ -60,7 +61,7 @@ Captured 2026-10-10 in [design-inspiration/stripe/2026-10-10/](design-inspiratio
 
 | Folder | Page |
 |---|---|
-| `home/` | https://stripe.com/en-nl, with `desktop-scroll.webm` (includes the moving integrations flow chart) |
+| `home/` | https://stripe.com/en-nl, with `desktop-sections.webm` (4 seconds per section, including the moving integrations flow chart) and the earlier `desktop-scroll.webm` |
 | `customer-supabase/` | https://stripe.com/en-nl/customers/supabase |
 | `customer-linear/` | https://stripe.com/en-nl/customers/linear |
 | `customer-felyx/` | https://stripe.com/en-nl/customers/felyx (Dutch company) |
