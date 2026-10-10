@@ -35,3 +35,38 @@ Captured 2026-10-10 in [design-inspiration/axiom/2026-10-10/](design-inspiration
 | `mobile-hero.png` | First screen on a phone |
 | `desktop-scroll.webm` | Video: the hero for 6 seconds, then a slow scroll down, so the moving elements are kept |
 | `page.html` | The rendered HTML of the page (text and structure; styles and images still load from axiom.co) |
+
+## Stripe — https://stripe.com/
+
+Added 2026-10-10.
+
+- The integrations flow chart moves slowly and is dynamic: logos turn and
+  show other logos.
+- White background, not black. Much more relaxing and optimistic. Axiom has
+  more of a developer vibe, but Maxq's clients are usually CEOs.
+- Many different colours, not just a fixed set, which makes it happy and
+  colourful.
+- Images and photos of real things in the world, not only synthetic visuals
+  and UI screenshots.
+- They have a carousel, and it looks fine.
+- A central theme of pink, orange and purple that runs through the whole
+  site. Having one central theme is good.
+- Performance metrics in several places on the page: proof points.
+- Customer story pages, e.g. https://stripe.com/en-nl/customers/supabase.
+  The story page shows the client's configuration at the top right (logo,
+  products used, region, company type).
+
+Captured 2026-10-10 in [design-inspiration/stripe/2026-10-10/](design-inspiration/stripe/2026-10-10/):
+
+| Folder | Page |
+|---|---|
+| `home/` | https://stripe.com/en-nl, with `desktop-scroll.webm` (includes the moving integrations flow chart) |
+| `customer-supabase/` | https://stripe.com/en-nl/customers/supabase |
+| `customer-linear/` | https://stripe.com/en-nl/customers/linear |
+| `customer-felyx/` | https://stripe.com/en-nl/customers/felyx (Dutch company) |
+| `customer-figma/` | https://stripe.com/en-nl/customers/figma |
+| `customer-klarna/` | https://stripe.com/en-nl/customers/klarna |
+
+Each folder has `desktop-full.jpg`, `desktop-hero.png`, `mobile-full.jpg`,
+`mobile-hero.png` and `page.html`, like the Axiom capture (whose full-page
+shots are PNG).
