@@ -30,7 +30,9 @@ import { dirname, join } from 'node:path';
 //             numbered run order 1-2-3 on the layers it drives
 //   badges    no extra layer: a Dagster pill on the frame border and a small
 //             Dagster badge on every tool it schedules
-const VARIANTS = { lane: '2026-10-26-lane', sequence: '2026-10-26-sequence', badges: '2026-10-26-badges' };
+//   badges-b  Philip's pick of the three: badges, with the pill on the frame's
+//             bottom-right corner and no legend
+const VARIANTS = { lane: '2026-10-26-lane', sequence: '2026-10-26-sequence', badges: '2026-10-26-badges', 'badges-b': '2026-10-26-badges-b' };
 const VARIANT = process.argv[2] ?? null;
 if (VARIANT && !VARIANTS[VARIANT]) throw new Error(`unknown variant ${VARIANT}; use ${Object.keys(VARIANTS).join(', ')}`);
 const DATE = VARIANT ? VARIANTS[VARIANT] : '2026-10-09h';
@@ -216,7 +218,7 @@ const LANE = { y: TR.y + TR.h + 22, h: bandHFor(1) };
 const UNDER_Y = TR.y + TR.h + 12;
 const FRAME_BOTTOM = VARIANT === 'lane' ? LANE.y + LANE.h + 12 : VARIANT === 'sequence' ? UNDER_Y + 12 : TR.y + TR.h + 12;
 const LEGEND_Y = FRAME_BOTTOM + 24;
-const CANVAS = { w: conX + CON.w + 14, h: Math.max(VARIANT ? LEGEND_Y + 4 : TR.y + TR.h, conBottom, srcBottom) + 14 };
+const CANVAS = { w: conX + CON.w + 14, h: Math.max(VARIANT === 'badges-b' ? FRAME_BOTTOM + 16 : VARIANT ? LEGEND_Y + 4 : TR.y + TR.h, conBottom, srcBottom) + 14 };
 
 // ---------------------------------------------------------------- helpers
 
@@ -445,9 +447,12 @@ if (VARIANT) {
     parts.push(step(sem.r - 16, SEMBAND.y + 15, 3));
     parts.push(ctlNote(semX + semW / 2 + 8, 540, 'cache refresh'));
     parts.push(legend(frameCx, LEGEND_Y, (x, y) => ctl([[x, y], [x + 26, y]], { arrow: false })));
-  } else if (VARIANT === 'badges') {
-    // Dagster pill on the frame's top border, a badge on every tool it runs
-    const fy = BAND.y - 24, px = extX - FRAME_PAD + 18, ph = 28, pw = 214;
+  } else if (VARIANT === 'badges' || VARIANT === 'badges-b') {
+    // Dagster pill on the frame's border (top left, or bottom right in badges-b),
+    // a badge on every tool it runs
+    const ph = 28, pw = 214, bottom = VARIANT === 'badges-b';
+    const fy = bottom ? FRAME_BOTTOM : BAND.y - 24;
+    const px = bottom ? semX + semW + FRAME_PAD - 18 - pw : extX - FRAME_PAD + 18;
     const pill = `<rect x="${px}" y="${fy - ph / 2}" width="${pw}" height="${ph}" rx="${ph / 2}" fill="#ffffff" stroke="${BRAND}" stroke-width="1.2"/>
     ${image(ORCH.tool.icon, px + 22, fy, 16, 16)}
     <text x="${px + 36}" y="${fy + 4.5}" font-family="${SANS}" font-size="14" font-weight="600" fill="${INK}">Dagster</text>
@@ -459,7 +464,7 @@ if (VARIANT) {
     parts.push(dagsterBadge(whX + BAND.pad, boxY(TR, 0)));
     const n = SEMANTIC.tools.length, top = mid(SEMBAND) - ((n - 1) * TOOL.pitch + TOOL.h) / 2;
     SEMANTIC.tools.forEach((_, j) => parts.push(dagsterBadge(semX + BAND.pad, top + j * TOOL.pitch)));
-    parts.push(legend(frameCx, LEGEND_Y, (x, y) => dagsterBadge(x + 13, y)));
+    if (!bottom) parts.push(legend(frameCx, LEGEND_Y, (x, y) => dagsterBadge(x + 13, y)));
   }
 }
 
@@ -468,6 +473,7 @@ const ORCH_ARIA = {
   sequence: ' Dagster sits next to dbt and runs three steps in order: 1 batch extraction, 2 dbt, 3 the semantic layer refresh.',
   badges: ' Dagster orchestrates the Semantic Nexus: every tool it schedules (Airbyte, dlt, Hevo Data, dbt, Cube, Fabric semantic models) carries a Dagster badge.',
 };
+ORCH_ARIA['badges-b'] = ORCH_ARIA.badges;
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-label="Tech stack: product databases (PostgreSQL, MySQL) are streamed with Debezium into the real-time warehouse (ClickHouse); bookkeeping (Exact Online, Yuki), CRM (HubSpot), ERP (Float, Infor), customer care (Freshdesk, Zendesk) and spreadsheets (Google Sheets, Excel) are loaded in batch with Airbyte or Hevo Data into the batch warehouse (BigQuery, Snowflake or the Microsoft Fabric data warehouse). dbt runs as a separate transformation layer underneath the batch warehouse. Both warehouses feed the semantic layer, Cube or Microsoft Fabric semantic models. Extraction, warehouses, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (nao analytics), AI agents (the Quality Guardian, your own LangChain agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).${VARIANT ? ORCH_ARIA[VARIANT] : ''}" style="width:100%;height:auto;display:block">
   <defs>
