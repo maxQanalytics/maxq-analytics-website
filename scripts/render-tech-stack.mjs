@@ -20,7 +20,20 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-const DATE = '2026-10-09h';
+// Orchestration variants (2026-10-26, preview only): pass one as an argument,
+//   node scripts/render-tech-stack.mjs lane|sequence|badges
+// to draw Dagster into the Semantic Nexus. Without an argument the script
+// writes the live chart, unchanged.
+//   lane      a full-width orchestration layer under the stack, dashed control
+//             lines up into batch extraction, dbt and the semantic layer
+//   sequence  Dagster as a peer of dbt in the empty slot under extraction,
+//             numbered run order 1-2-3 on the layers it drives
+//   badges    no extra layer: a Dagster pill on the frame border and a small
+//             Dagster badge on every tool it schedules
+const VARIANTS = { lane: '2026-10-26-lane', sequence: '2026-10-26-sequence', badges: '2026-10-26-badges' };
+const VARIANT = process.argv[2] ?? null;
+if (VARIANT && !VARIANTS[VARIANT]) throw new Error(`unknown variant ${VARIANT}; use ${Object.keys(VARIANTS).join(', ')}`);
+const DATE = VARIANT ? VARIANTS[VARIANT] : '2026-10-09h';
 
 // ---------------------------------------------------------------- spec
 
@@ -141,6 +154,13 @@ const CONSUMER_GROUPS = [
   },
 ];
 
+// orchestration (variants only): Dagster runs the batch side of the Nexus;
+// the streaming side (Debezium into ClickHouse) runs continuously on its own
+const ORCH = {
+  label: 'ORCHESTRATION',
+  tool: { name: 'Dagster', oss: true, icon: '/logos/dagster.svg', sub: VARIANT === 'sequence' ? 'runs steps 1 → 2 → 3' : 'schedules · retries · lineage', url: 'https://dagster.io', tip: 'Open-source orchestrator. It runs the batch extraction, then the dbt models and tests, then the semantic layer refresh, on a schedule or as soon as new data arrives, and retries or alerts when a step fails.' },
+};
+
 // geometry
 const SRC = { x: 14, w: 160 };
 const GAP = 18;                                   // between the columns inside the Semantic Nexus
@@ -190,7 +210,13 @@ const itemRows = conRows.filter((r) => r.kind === 'item');
 const srcItems = srcRows.filter((r) => r.kind === 'item');
 const conBottom = itemRows[itemRows.length - 1].y + CON.h;
 const srcBottom = srcItems[srcItems.length - 1].y + CON.h;
-const CANVAS = { w: conX + CON.w + 14, h: Math.max(TR.y + TR.h, conBottom, srcBottom) + 14 };
+// lane: the orchestration layer under the dbt row, across all three columns
+const LANE = { y: TR.y + TR.h + 22, h: bandHFor(1) };
+// sequence: the control line to the semantic layer runs under the dbt band
+const UNDER_Y = TR.y + TR.h + 12;
+const FRAME_BOTTOM = VARIANT === 'lane' ? LANE.y + LANE.h + 12 : VARIANT === 'sequence' ? UNDER_Y + 12 : TR.y + TR.h + 12;
+const LEGEND_Y = FRAME_BOTTOM + 24;
+const CANVAS = { w: conX + CON.w + 14, h: Math.max(VARIANT ? LEGEND_Y + 4 : TR.y + TR.h, conBottom, srcBottom) + 14 };
 
 // ---------------------------------------------------------------- helpers
 
@@ -235,8 +261,16 @@ function link(url, name, tip, inner) {
 function toolBox(x, y, w, tool) {
   const cx = x + w / 2;
   const lh = tool.logoH ?? TOOL.logoH;
+  // a tool with only a mark (no wordmark logo): mark + name in the logo slot
+  let mark;
+  if (tool.logo) mark = image(tool.logo, cx, y + 23, TOOL.logoW, lh);
+  else {
+    const iw = 22, textW = tool.name.length * 8.6, startX = cx - (iw + 7 + textW) / 2;
+    mark = `${image(tool.icon, startX + iw / 2, y + 23, iw, iw)}
+    <text x="${startX + iw + 7}" y="${y + 28.5}" font-family="${SANS}" font-size="16" font-weight="600" fill="${INK}">${esc(tool.name)}</text>`;
+  }
   const inner = `<rect x="${x}" y="${y}" width="${w}" height="${TOOL.h}" rx="4" fill="#ffffff" stroke="${INK}" stroke-width="1.2"/>
-    ${image(tool.logo, cx, y + 23, TOOL.logoW, lh)}
+    ${mark}
     <text x="${cx}" y="${y + 52}" text-anchor="middle" font-family="${SANS}" font-size="${FONT.sub}" fill="${TEXT}">${esc(tool.sub)}</text>
     ${tool.oss ? ossTag(x + w + TAG.overlap, y + TOOL.h) : ''}`;
   return link(tool.url, tool.name, tool.tip, inner);
@@ -285,7 +319,7 @@ const parts = [];
 {
   const fx = extX - FRAME_PAD, fy = BAND.y - 24;
   const fw = semX + semW + FRAME_PAD - fx;
-  const fh = TR.y + TR.h + 12 - fy;
+  const fh = FRAME_BOTTOM - fy;
   parts.push(`<rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" rx="8" fill="#eef2ff" stroke="${BRAND}" stroke-width="1.2" stroke-dasharray="6 4"/>`);
   parts.push(`<text x="${fx + fw / 2}" y="${fy - 8}" text-anchor="middle" font-family="${MONO}" font-size="${FONT.label}" font-weight="500" letter-spacing="0.08em" fill="${BRAND}">SEMANTIC NEXUS</text>`);
 }
@@ -351,11 +385,98 @@ conRows.forEach((r) => {
   }
 });
 
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-label="Tech stack: product databases (PostgreSQL, MySQL) are streamed with Debezium into the real-time warehouse (ClickHouse); bookkeeping (Exact Online, Yuki), CRM (HubSpot), ERP (Float, Infor), customer care (Freshdesk, Zendesk) and spreadsheets (Google Sheets, Excel) are loaded in batch with Airbyte or Hevo Data into the batch warehouse (BigQuery, Snowflake or the Microsoft Fabric data warehouse). dbt runs as a separate transformation layer underneath the batch warehouse. Both warehouses feed the semantic layer, Cube or Microsoft Fabric semantic models. Extraction, warehouses, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (nao analytics), AI agents (the Quality Guardian, your own LangChain agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django)." style="width:100%;height:auto;display:block">
+// ---------------------------------------------------------------- orchestration variants
+
+// control flow: dashed, in the brand colour, so it never reads as data flow
+function ctl(points, { arrow = true } = {}) {
+  const d = points.map(([x, y], i) => `${i ? 'L' : 'M'}${x},${y}`).join(' ');
+  const m = arrow ? ' marker-end="url(#ts-arrow-ctl)"' : '';
+  return `<path d="${d}" fill="none" stroke="${BRAND}" stroke-width="${STROKE}" stroke-dasharray="4 3"${m}/>`;
+}
+function ctlNote(x, y, text, anchor = 'start') {
+  return `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="${MONO}" font-size="10" letter-spacing="0.04em" fill="${BRAND}">${esc(text)}</text>`;
+}
+// numbered run step, brand disc with a white digit
+function step(cx, cy, n) {
+  return `<circle cx="${cx}" cy="${cy}" r="9" fill="${BRAND}"/>
+  <text x="${cx}" y="${cy + 3.5}" text-anchor="middle" font-family="${MONO}" font-size="10" font-weight="500" fill="#ffffff">${n}</text>`;
+}
+// small Dagster mark in a white disc, sitting on a box's top-left corner
+function dagsterBadge(cx, cy) {
+  return `<circle cx="${cx}" cy="${cy}" r="9.5" fill="#ffffff" stroke="${BRAND}" stroke-width="1"/>
+  ${image(ORCH.tool.icon, cx, cy, 12, 12)}`;
+}
+// legend under the frame, centred on it: data vs orchestration
+function legend(cx, y, ctlSample) {
+  const w = 330, x = cx - w / 2;
+  return `${line(x, y, x + 26, y)}
+  <text x="${x + 34}" y="${y + 3.5}" font-family="${MONO}" font-size="10" letter-spacing="0.04em" fill="${LINE}">data flow</text>
+  ${ctlSample(x + 130, y)}
+  <text x="${x + 164}" y="${y + 3.5}" font-family="${MONO}" font-size="10" letter-spacing="0.04em" fill="${LINE}">orchestrated by Dagster</text>`;
+}
+
+if (VARIANT) {
+  const frameCx = (extX - FRAME_PAD + semX + semW + FRAME_PAD) / 2;
+  const sem = { l: semX, r: semX + semW };
+  if (VARIANT === 'lane') {
+    // a full-width layer under everything; Dagster under the warehouse column
+    parts.push(band(extX, LANE.y, semX + semW - extX, LANE.h));
+    parts.push(colLabel(extX + 14, LANE.y + 19, ORCH.label, { anchor: 'start' }));
+    const by = LANE.y + BAND.pad + BAND.labelH, bmid = by + TOOL.h / 2;
+    const extLine = extX + 150, semLine = semX + 56;
+    parts.push(ctl([[whX + BAND.pad, bmid], [extLine, bmid], [extLine, BATCHBAND.y + BATCHBAND.h]]));
+    parts.push(ctl([[whX + BAND.w / 2, by], [whX + BAND.w / 2, TR.y + TR.h]]));
+    parts.push(ctl([[whX + BAND.w - BAND.pad, bmid], [semLine, bmid], [semLine, SEMBAND.y + SEMBAND.h]]));
+    parts.push(ctlNote(extLine - 8, 540, 'runs the syncs', 'end'));
+    parts.push(ctlNote(whX + BAND.w / 2 + 8, LANE.y + 14, 'builds and tests'));
+    parts.push(ctlNote(semLine + 8, 540, 'refreshes the cache'));
+    parts.push(toolBox(whX + BAND.pad, by, toolW, ORCH.tool));
+    parts.push(legend(frameCx, LEGEND_Y, (x, y) => ctl([[x, y], [x + 26, y]], { arrow: false })));
+  } else if (VARIANT === 'sequence') {
+    // Dagster in the empty slot under batch extraction, next to dbt
+    drawBand(extX, TR, { label: ORCH.label, tools: [ORCH.tool] });
+    const cx = extX + BAND.w / 2;
+    parts.push(ctl([[cx, TR.y], [cx, BATCHBAND.y + BATCHBAND.h]]));
+    parts.push(ctl([[extX + BAND.w, mid(TR)], [whX, mid(TR)]]));
+    parts.push(ctl([[cx, TR.y + TR.h], [cx, UNDER_Y], [semX + semW / 2, UNDER_Y], [semX + semW / 2, SEMBAND.y + SEMBAND.h]]));
+    // run order on the layers it drives
+    parts.push(step(extX + BAND.w - 16, BATCHBAND.y + 15, 1));
+    parts.push(step(whX + BAND.w - 16, TR.y + 15, 2));
+    parts.push(step(sem.r - 16, SEMBAND.y + 15, 3));
+    parts.push(ctlNote(semX + semW / 2 + 8, 540, 'cache refresh'));
+    parts.push(legend(frameCx, LEGEND_Y, (x, y) => ctl([[x, y], [x + 26, y]], { arrow: false })));
+  } else if (VARIANT === 'badges') {
+    // Dagster pill on the frame's top border, a badge on every tool it runs
+    const fy = BAND.y - 24, px = extX - FRAME_PAD + 18, ph = 28, pw = 214;
+    const pill = `<rect x="${px}" y="${fy - ph / 2}" width="${pw}" height="${ph}" rx="${ph / 2}" fill="#ffffff" stroke="${BRAND}" stroke-width="1.2"/>
+    ${image(ORCH.tool.icon, px + 22, fy, 16, 16)}
+    <text x="${px + 36}" y="${fy + 4.5}" font-family="${SANS}" font-size="14" font-weight="600" fill="${INK}">Dagster</text>
+    <text x="${px + 96}" y="${fy + 3.5}" font-family="${MONO}" font-size="10" letter-spacing="0.06em" fill="${BRAND}">ORCHESTRATION</text>
+    ${ossTag(px + pw + TAG.overlap - 8, fy + ph / 2)}`;
+    parts.push(link(ORCH.tool.url, ORCH.tool.name, ORCH.tool.tip, pill));
+    const boxY = (b, j) => b.y + BAND.pad + BAND.labelH + j * TOOL.pitch;
+    BATCH.tools.forEach((_, j) => parts.push(dagsterBadge(extX + BAND.pad, boxY(BATCHBAND, j))));
+    parts.push(dagsterBadge(whX + BAND.pad, boxY(TR, 0)));
+    const n = SEMANTIC.tools.length, top = mid(SEMBAND) - ((n - 1) * TOOL.pitch + TOOL.h) / 2;
+    SEMANTIC.tools.forEach((_, j) => parts.push(dagsterBadge(semX + BAND.pad, top + j * TOOL.pitch)));
+    parts.push(legend(frameCx, LEGEND_Y, (x, y) => dagsterBadge(x + 13, y)));
+  }
+}
+
+const ORCH_ARIA = {
+  lane: ' Underneath the stack, an orchestration layer with Dagster runs the batch extraction, the dbt build and the semantic layer refresh.',
+  sequence: ' Dagster sits next to dbt and runs three steps in order: 1 batch extraction, 2 dbt, 3 the semantic layer refresh.',
+  badges: ' Dagster orchestrates the Semantic Nexus: every tool it schedules (Airbyte, dlt, Hevo Data, dbt, Cube, Fabric semantic models) carries a Dagster badge.',
+};
+
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${CANVAS.w} ${CANVAS.h}" role="img" aria-label="Tech stack: product databases (PostgreSQL, MySQL) are streamed with Debezium into the real-time warehouse (ClickHouse); bookkeeping (Exact Online, Yuki), CRM (HubSpot), ERP (Float, Infor), customer care (Freshdesk, Zendesk) and spreadsheets (Google Sheets, Excel) are loaded in batch with Airbyte or Hevo Data into the batch warehouse (BigQuery, Snowflake or the Microsoft Fabric data warehouse). dbt runs as a separate transformation layer underneath the batch warehouse. Both warehouses feed the semantic layer, Cube or Microsoft Fabric semantic models. Extraction, warehouses, transformation and semantic layer together are the Semantic Nexus. Consumers read from the semantic layer in five groups: AI models (Claude, OpenAI, Gemini), MCPs (nao analytics), AI agents (the Quality Guardian, your own LangChain agents), reports (Data Studio, Power BI) and your own apps (Next.js, Django).${VARIANT ? ORCH_ARIA[VARIANT] : ''}" style="width:100%;height:auto;display:block">
   <defs>
     <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="${INK}"/>
-    </marker>
+    </marker>${VARIANT ? `
+    <marker id="ts-arrow-ctl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="${BRAND}"/>
+    </marker>` : ''}
   </defs>
   ${parts.join('\n  ')}
 </svg>

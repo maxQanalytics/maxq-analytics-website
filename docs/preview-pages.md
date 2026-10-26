@@ -79,6 +79,9 @@ screenshots in place, and set the registry status to `promoted`.
 | Homepage | `/home-2026-10-09-lantern-wren-strand` | 2026-10-09 | same folder (+ host and guest portrait cut-outs) | preview (Product Show variant C: editorial programme block after the client logos, "001" numeral, one-line thesis, chapter list, portrait collage) |
 | Homepage | `/home-2026-10-09-granite-wren-glen` | 2026-10-09 | same folder | preview (variant B2: Philip picked B; player narrowed from ~760 px to ~620 px by taking the section to max-w-5xl, smaller play button; everything else unchanged) |
 | Homepage | `/home-2026-10-09-cobalt-lynx-ridge` | 2026-10-09 | same folder | **promoted** to `/` on 2026-10-09 (variant B3: intro "Episode 001 explains how...", Analytics Assistant link under the chapters removed) |
+| Homepage | `/home-2026-10-26-slate-kestrel-moor` | 2026-10-26 | flow chart `src/diagrams/tech-stack-2026-10-26-lane.svg` (`node scripts/render-tech-stack.mjs lane`) | preview (Dagster option A: full-width orchestration layer under the stack, dashed control lines up into batch extraction, dbt and the semantic layer) |
+| Homepage | `/home-2026-10-26-copper-otter-dune` | 2026-10-26 | `src/diagrams/tech-stack-2026-10-26-sequence.svg` (`... sequence`) | preview (Dagster option B: in the empty slot next to dbt, numbered run order 1 extraction, 2 dbt, 3 semantic layer) |
+| Homepage | `/home-2026-10-26-indigo-finch-vale` | 2026-10-26 | `src/diagrams/tech-stack-2026-10-26-badges.svg` (`... badges`) | preview (Dagster option C: Dagster pill on the Semantic Nexus frame, a Dagster badge on every tool it schedules, no extra lines) |
 
 ## Whole-site rebrand editions
 
